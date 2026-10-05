@@ -1,0 +1,757 @@
+/* ==========================================================================
+   scenes.css
+   "The Village That Remembers" - SVG Scene Artwork Styling & Day/Night Themes
+   ========================================================================== */
+
+/* --- Dynamic Day / Night Visibility Transitions --- */
+.day-only {
+  opacity: 1;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.night-only {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Night theme triggers */
+.theme-night .day-only {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.theme-night .night-only {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Cursed Day Theme (The Twist) */
+.theme-cursed-day .day-only {
+  opacity: 0.15;
+  filter: grayscale(80%) brightness(30%);
+}
+
+.theme-cursed-day .night-only {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* --- Sky Transitions --- */
+.sky-bg {
+  transition: opacity 0.8s ease;
+}
+
+.sky-day {
+  opacity: 1;
+}
+
+.sky-night {
+  opacity: 0;
+}
+
+.sky-cursed {
+  opacity: 0;
+}
+
+.theme-night .sky-day {
+  opacity: 0;
+}
+
+.theme-night .sky-night {
+  opacity: 1;
+}
+
+.theme-cursed-day .sky-day,
+.theme-cursed-day .sky-night {
+  opacity: 0;
+}
+
+.theme-cursed-day .sky-cursed {
+  opacity: 1;
+}
+
+/* --- Common Landscape & Earth Tones --- */
+.landscape-fill {
+  fill: #855b38;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .landscape-fill {
+  fill: #191c29;
+}
+
+.theme-cursed-day .landscape-fill {
+  fill: #1a0f12;
+}
+
+.ridge-fill {
+  fill: #6e4626;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .ridge-fill {
+  fill: #141724;
+}
+
+.theme-cursed-day .ridge-fill {
+  fill: #140b0e;
+}
+
+.ground-fill {
+  fill: #543317;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .ground-fill {
+  fill: #0d0f17;
+}
+
+.theme-cursed-day .ground-fill {
+  fill: #11070a;
+}
+
+.dirt-road {
+  fill: #a67c52;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .dirt-road {
+  fill: #1b1e2c;
+}
+
+.theme-cursed-day .dirt-road {
+  fill: #1e1115;
+}
+
+.path-fill {
+  fill: #bfa07c;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .path-fill {
+  fill: #272d42;
+}
+
+.theme-cursed-day .path-fill {
+  fill: #2d181e;
+}
+
+/* --- Distant Architecture & Foliage --- */
+.distant-roofs {
+  fill: #4d331e;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .distant-roofs {
+  fill: #0e111c;
+}
+
+.theme-cursed-day .distant-roofs {
+  fill: #120709;
+}
+
+.foliage-dark path {
+  fill: #2a3a1f;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .foliage-dark path {
+  fill: #0c120e;
+}
+
+.theme-cursed-day .foliage-dark path {
+  fill: #12090c;
+}
+
+.bush-dark {
+  fill: #3b4d2c;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .bush-dark {
+  fill: #101815;
+}
+
+/* --- Scene 1: Glass Bottle Hero --- */
+.interactive-bottle-hero {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.interactive-bottle-hero:hover {
+  transform: translate(140px, 516px) rotate(-15deg) scale(1.03);
+}
+
+.bottle-glow {
+  transition: opacity 0.5s ease;
+}
+
+.interactive-bottle-hero:hover .bottle-glow {
+  opacity: 0.35;
+}
+
+/* --- Scene 2: Entrance Archway --- */
+.stone-pillar {
+  fill: #b39779;
+  stroke: #5e4630;
+  stroke-width: 2.5;
+  transition: fill 0.8s ease, stroke 0.8s ease;
+}
+
+.theme-night .stone-pillar {
+  fill: #222638;
+  stroke: #12141f;
+}
+
+.theme-cursed-day .stone-pillar {
+  fill: #2b171c;
+  stroke: #160a0d;
+}
+
+.stone-cap, .stone-base {
+  fill: #94775a;
+  stroke: #483320;
+  stroke-width: 2;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .stone-cap, .theme-night .stone-base {
+  fill: #191c2b;
+  stroke: #0e101a;
+}
+
+.theme-cursed-day .stone-cap, .theme-cursed-day .stone-base {
+  fill: #201115;
+  stroke: #100609;
+}
+
+.stone-arch {
+  fill: #a6896b;
+  stroke: #543d28;
+  stroke-width: 3;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .stone-arch {
+  fill: #1f2334;
+  stroke: #12141f;
+}
+
+.stone-plaque {
+  fill: #7c6246;
+  stroke: #3b2816;
+  stroke-width: 1.5;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .stone-plaque {
+  fill: #141624;
+  stroke: #090a12;
+}
+
+.arch-inscription {
+  fill: #f7e6ca;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .arch-inscription {
+  fill: #92aecd;
+}
+
+.theme-cursed-day .arch-inscription {
+  fill: #cc2231;
+}
+
+.milestone-stone {
+  fill: #cbb497;
+  stroke: #664f37;
+  stroke-width: 2.5;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .milestone-stone {
+  fill: #262c40;
+  stroke: #121522;
+}
+
+/* --- Scene 3: Old Chai Stall --- */
+.wood-dark {
+  fill: #5a3c25;
+  stroke: #2e1d10;
+  stroke-width: 2;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .wood-dark {
+  fill: #161824;
+  stroke: #0b0c14;
+}
+
+.wood-post {
+  fill: #724c30;
+  stroke: #3b2413;
+  stroke-width: 2;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .wood-post {
+  fill: #1d2133;
+  stroke: #0e101a;
+}
+
+.tin-roof {
+  fill: #826e5e;
+  stroke: #3c3026;
+  stroke-width: 2;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .tin-roof {
+  fill: #212638;
+  stroke: #111420;
+}
+
+.wood-sign {
+  fill: #d5af7a;
+  stroke: #6a4722;
+  stroke-width: 1.5;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .wood-sign {
+  fill: #2b334d;
+  stroke: #161b2b;
+}
+
+.mud-stove {
+  fill: #7d5939;
+  stroke: #3f2a17;
+  stroke-width: 2;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .mud-stove {
+  fill: #1a1e2d;
+}
+
+.brass-kettle {
+  fill: #cf9340;
+  stroke: #684517;
+  stroke-width: 2;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .brass-kettle {
+  fill: #594732;
+  stroke: #281d11;
+}
+
+.brass-kettle-lid {
+  fill: #e8a951;
+}
+
+.clay-kulhad {
+  fill: #b56c42;
+  stroke: #613117;
+  stroke-width: 1.2;
+}
+
+/* Night Silhouette sitting in chair */
+.customer-silhouette {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* --- Scene 4: Village Well --- */
+.stone-well-wall {
+  fill: #8c765f;
+  stroke: #483827;
+  stroke-width: 3;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .stone-well-wall {
+  fill: #1b2030;
+  stroke: #0e111c;
+}
+
+.stone-well-rim {
+  fill: #ab957b;
+  stroke: #5a4632;
+  stroke-width: 3.5;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .stone-well-rim {
+  fill: #242a3f;
+  stroke: #131724;
+}
+
+.well-void {
+  fill: #060507;
+}
+
+/* --- Scene 5: Temple --- */
+.temple-stone-spire {
+  fill: #9a7d5e;
+  stroke: #4d3923;
+  stroke-width: 2.5;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .temple-stone-spire {
+  fill: #1c2132;
+  stroke: #0e111c;
+}
+
+.temple-lintel {
+  fill: #806346;
+  stroke: #382816;
+  stroke-width: 2;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .temple-lintel {
+  fill: #181c2b;
+}
+
+.temple-pillar {
+  fill: #917557;
+  stroke: #463421;
+  stroke-width: 2;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .temple-pillar {
+  fill: #212638;
+  stroke: #101320;
+}
+
+.brass-bell-body {
+  fill: #d4a34b;
+  stroke: #755118;
+  stroke-width: 2;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .brass-bell-body {
+  fill: #8f7445;
+  stroke: #3e2d10;
+}
+
+.brass-bell-rim {
+  fill: #ebd076;
+  stroke: #755118;
+  stroke-width: 2;
+}
+
+.temple-step-1 { fill: #82664b; }
+.temple-step-2 { fill: #72573d; }
+.temple-step-3 { fill: #614830; }
+
+.theme-night .temple-step-1 { fill: #1f2334; }
+.theme-night .temple-step-2 { fill: #191d2c; }
+.theme-night .temple-step-3 { fill: #141724; }
+
+/* --- Scene 6: Red House --- */
+.haveli-wall {
+  fill: #ded0bc;
+  stroke: #4d3a2b;
+  stroke-width: 2;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .haveli-wall {
+  fill: #222533;
+  stroke: #12141e;
+}
+
+.brick-patch {
+  fill: #994a36;
+  stroke: #522115;
+  stroke-width: 1.5;
+}
+
+.wood-eaves {
+  fill: #54371f;
+  stroke: #2c1a0c;
+  stroke-width: 2.5;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .wood-eaves {
+  fill: #151824;
+}
+
+.window-frame {
+  fill: #614027;
+  stroke: #2c1a0c;
+  stroke-width: 2;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .window-frame {
+  fill: #191c2b;
+}
+
+.red-door-leaf {
+  fill: #a81c22;
+  stroke: #4d070b;
+  stroke-width: 2.5;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .red-door-leaf {
+  fill: #5c0b10;
+  stroke: #2e0306;
+}
+
+.door-panel {
+  fill: #8f1217;
+  stroke: #3d0508;
+  stroke-width: 1.5;
+}
+
+.theme-night .door-panel {
+  fill: #4a060a;
+}
+
+/* --- Scene 7: Banyan Tree --- */
+.banyan-canopy {
+  fill: #2c4228;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .banyan-canopy {
+  fill: #0c1410;
+}
+
+.banyan-canopy-lobe {
+  fill: #21361d;
+  opacity: 0.95;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .banyan-canopy-lobe {
+  fill: #080f0b;
+}
+
+.banyan-trunk {
+  fill: #593e28;
+  stroke: #2c1d10;
+  stroke-width: 3;
+  transition: fill 0.8s ease;
+}
+
+.theme-night .banyan-trunk {
+  fill: #161822;
+  stroke: #090a0f;
+}
+
+/* --- Scene 05: Red House Elements --- */
+.veranda-pillar {
+  fill: #7c5839;
+  stroke: #3c2412;
+  stroke-width: 2;
+  transition: fill 0.8s ease;
+}
+.theme-night .veranda-pillar {
+  fill: #1a1e2d;
+  stroke: #0d0f17;
+}
+
+.lantern-metal {
+  fill: #3b2816;
+  stroke: #1e1307;
+  stroke-width: 1.5;
+}
+.theme-night .lantern-metal {
+  fill: #141724;
+}
+
+/* --- Scene 06: Banyan Tree Elements --- */
+.aerial-root {
+  stroke: #4a3421;
+  stroke-width: 2.2;
+  fill: none;
+  stroke-linecap: round;
+  transition: stroke 0.8s ease;
+}
+.theme-night .aerial-root {
+  stroke: #151822;
+}
+
+.banyan-shrine-stone {
+  fill: #7d6b56;
+  stroke: #423526;
+  stroke-width: 1.5;
+  transition: fill 0.8s ease;
+}
+.theme-night .banyan-shrine-stone {
+  fill: #1a202c;
+  stroke: #0d121c;
+}
+
+.sindoor-smear {
+  fill: #d9381e;
+  opacity: 0.9;
+}
+.theme-night .sindoor-smear {
+  fill: #8a1d0b;
+}
+
+/* Banyan Woman Silhouette */
+.banyan-woman-silhouette {
+  pointer-events: auto;
+  cursor: pointer;
+  transition: opacity 0.8s ease;
+}
+
+/* --- Scene 07: Empty Road Elements --- */
+.countryside-field {
+  fill: #b38b59;
+  transition: fill 0.8s ease;
+}
+.theme-night .countryside-field {
+  fill: #151a26;
+}
+
+.horizon-hill {
+  fill: #8a6c4b;
+  transition: fill 0.8s ease;
+}
+.theme-night .horizon-hill {
+  fill: #0f1320;
+}
+
+.acacia-foliage {
+  fill: #445932;
+  transition: fill 0.8s ease;
+}
+.theme-night .acacia-foliage {
+  fill: #0d140e;
+}
+
+/* --- Scene 08: Second Note Box & Cairn --- */
+.cairn-stone-block {
+  fill: #857564;
+  stroke: #453b30;
+  stroke-width: 2;
+  transition: fill 0.8s ease;
+}
+.theme-night .cairn-stone-block {
+  fill: #1e2230;
+  stroke: #0d101a;
+}
+
+.wooden-box-body {
+  fill: #613e22;
+  stroke: #331e0d;
+  stroke-width: 2;
+  transition: fill 0.8s ease;
+}
+.theme-night .wooden-box-body {
+  fill: #1b1c28;
+  stroke: #0c0d15;
+}
+
+.wooden-box-brass {
+  fill: #cfa148;
+  stroke: #664917;
+  stroke-width: 1.2;
+}
+.theme-night .wooden-box-brass {
+  fill: #735728;
+  stroke: #36260a;
+}
+
+/* --- Interactive Objects in SVG --- */
+.interactive-object {
+  cursor: pointer;
+  transition: filter 0.25s ease;
+}
+
+.interactive-object:hover {
+  filter: drop-shadow(0 0 6px rgba(246, 211, 101, 0.6));
+}
+
+.theme-night .interactive-object:hover {
+  filter: drop-shadow(0 0 8px rgba(123, 181, 232, 0.7));
+}
+
+.interactive-note-hero {
+  cursor: pointer;
+}
+
+.interactive-note-hero:hover .parchment-sheet {
+  filter: brightness(1.08);
+}
+
+/* ==========================================================================
+   Cinematic Horror Interaction Styles
+   ========================================================================== */
+
+/* --- 1. Red House Door Knock Horror States --- */
+#red-door-under-shadow {
+  transition: opacity 1.2s ease;
+}
+#red-door-under-shadow.active {
+  opacity: 0.9 !important;
+}
+
+.door-ajar #red-door-interior-gap {
+  opacity: 1 !important;
+  transition: opacity 0.8s ease;
+}
+
+.door-ajar #red-door-left-leaf {
+  transform-origin: 6px 70px;
+  transform: scaleX(0.85) skewY(-3deg);
+  transition: transform 1s ease;
+  filter: brightness(0.65);
+}
+
+.door-ajar #red-door-seam,
+.door-ajar #red-door-handle {
+  transform: translateX(-5px);
+  transition: transform 1s ease;
+}
+
+/* --- 2. Well Deep Upward Reflection --- */
+.well-subtle-reflection {
+  transition: opacity 1.4s ease;
+}
+.well-subtle-reflection.revealed {
+  opacity: 0.85 !important;
+}
+
+/* --- 3. Temple Step Diya & Extinguished State --- */
+.diya-flame-group {
+  transition: opacity 1.2s ease;
+}
+.diya-extinguished .diya-flame-group {
+  opacity: 0 !important;
+}
+.diya-smoke-wisp {
+  transition: opacity 1.5s ease;
+}
+.diya-extinguished .diya-smoke-wisp {
+  opacity: 0.75 !important;
+  animation: smokeWispAnim 4s infinite ease-out;
+}
+
+/* --- 4. Banyan Woman Dissolve State --- */
+.woman-dissolve {
+  opacity: 0 !important;
+  filter: blur(14px) !important;
+  pointer-events: none !important;
+  transition: opacity 1.8s ease, filter 1.8s ease !important;
+}
+
+/* --- 6. Day / Night Glitch Lag --- */
+.daylight-lag-dark {
+  filter: brightness(0.2) contrast(1.1) !important;
+  transition: filter 0.8s ease;
+}
+

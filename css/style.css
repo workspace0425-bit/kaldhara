@@ -1,0 +1,1432 @@
+/* ==========================================================================
+   style.css
+   "The Village That Remembers" - Kaldhara Core Styles
+   Mobile-First Interactive Storybook Engine
+   ========================================================================== */
+
+/* --- Reset & Variables --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  /* Day Theme Palette */
+  --day-sky-top: #f5caa0;
+  --day-sky-bottom: #c98a58;
+  --day-bg-overlay: rgba(245, 230, 210, 0.08);
+  --day-text-primary: #f8eedb;
+  --day-text-muted: #d9bf98;
+  --day-gold: #e2a853;
+  --day-gold-glow: rgba(226, 168, 83, 0.4);
+
+  /* Night Theme Palette */
+  --night-sky-top: #0a0c16;
+  --night-sky-bottom: #1c1f38;
+  --night-bg-overlay: rgba(10, 12, 22, 0.4);
+  --night-text-primary: #e6edfa;
+  --night-text-muted: #8ea3c4;
+  --night-cyan-glow: #7bb5e8;
+  --night-ambient-glow: rgba(123, 181, 232, 0.25);
+
+  /* Cursed Day Palette */
+  --cursed-sky-top: #0e0708;
+  --cursed-sky-bottom: #1c0e12;
+  --cursed-crimson: #a31924;
+  --cursed-glow: rgba(163, 25, 36, 0.45);
+
+  /* UI Dimensions */
+  --mobile-width: 390px;
+  --mobile-height: 844px;
+}
+
+/* --- Base Body & Desktop Framing --- */
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #050608;
+  font-family: 'Crimson Pro', Georgia, serif;
+  color: var(--day-text-primary);
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Centered desktop phone enclosure */
+.desktop-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #161922 0%, #08090d 100%);
+  position: relative;
+}
+
+/* Atmospheric subtle dust texture in background */
+.desktop-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#ffffff 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+/* --- Mobile Viewport Container (Target 390x844) --- */
+#viewport-container {
+  width: 100%;
+  max-width: var(--mobile-width);
+  height: 100%;
+  max-height: var(--mobile-height);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: #0b0d14;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.9), 0 0 100px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.8s ease;
+}
+
+@media (min-width: 450px) {
+  #viewport-container {
+    height: 94vh;
+    border-radius: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* --- HUD Header & Controls --- */
+.hud-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px 12px 18px;
+  background: linear-gradient(to bottom, rgba(7, 9, 15, 0.85) 0%, rgba(7, 9, 15, 0.4) 65%, transparent 100%);
+  backdrop-filter: blur(4px);
+  pointer-events: auto;
+}
+
+/* Audio Mute Button */
+.hud-btn {
+  background: rgba(22, 26, 38, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.hud-btn:hover, .hud-btn:active {
+  background: rgba(45, 54, 78, 0.85);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+/* Day / Night Toggle Pill Switch */
+.day-night-pill {
+  display: flex;
+  align-items: center;
+  position: relative;
+  background: rgba(14, 17, 26, 0.85);
+  border: 1px solid rgba(246, 211, 101, 0.3);
+  border-radius: 24px;
+  padding: 3px 4px;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease;
+}
+
+.day-night-pill:hover {
+  border-color: rgba(246, 211, 101, 0.6);
+}
+
+.toggle-option {
+  padding: 5px 12px;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #8c96a8;
+  border-radius: 18px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.toggle-option.active {
+  color: #120e06;
+  background: linear-gradient(135deg, #f7d58a 0%, #d89b3f 100%);
+  box-shadow: 0 2px 8px rgba(216, 155, 63, 0.5);
+}
+
+/* Night active mode for toggle */
+.theme-night .day-night-pill {
+  border-color: rgba(123, 181, 232, 0.4);
+}
+
+.theme-night .toggle-option.active {
+  color: #fff;
+  background: linear-gradient(135deg, #3a5c88 0%, #1c2e48 100%);
+  box-shadow: 0 2px 10px rgba(58, 92, 136, 0.5);
+}
+
+/* Cursed Day Toggle (The Final Twist) */
+.theme-cursed-day .day-night-pill {
+  border-color: rgba(180, 20, 30, 0.6);
+  animation: cursedFlicker 3s infinite alternate;
+}
+
+.theme-cursed-day .toggle-option.active {
+  background: linear-gradient(135deg, #8a141d 0%, #3e070c 100%);
+  color: #ffccd0;
+  box-shadow: 0 0 12px rgba(138, 20, 29, 0.6);
+}
+
+/* Scene Progress Pill (Scene 4 of 11) */
+.hud-progress {
+  font-family: 'Cinzel', serif;
+  font-size: 10.5px;
+  letter-spacing: 1px;
+  color: #b3a492;
+  background: rgba(14, 17, 26, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 5px 10px;
+  border-radius: 16px;
+  white-space: nowrap;
+}
+
+/* --- Scene Location Title Banner (Top Subheader) --- */
+.scene-header-info {
+  position: absolute;
+  top: 68px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 30;
+  pointer-events: none;
+  padding: 0 20px;
+}
+
+.hud-location-name {
+  font-family: 'Cinzel', serif;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: var(--day-gold);
+  opacity: 0.95;
+  margin-bottom: 4px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95), 0 0 10px rgba(0, 0, 0, 0.8);
+  transition: color 0.6s ease;
+}
+
+.theme-night .hud-location-name {
+  color: var(--night-cyan-glow);
+}
+
+.theme-cursed-day .hud-location-name {
+  color: var(--cursed-crimson);
+}
+
+.hud-scene-title {
+  font-family: 'Cinzel', serif;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 0 16px rgba(0, 0, 0, 0.9);
+}
+
+/* --- Scene Stage & Viewport --- */
+#scene-stage {
+  flex: 1;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.scene-stage-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.scene-artwork-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+.scene-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* --- Interactive Hotspot Beacon Markers --- */
+.hotspots-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.hotspot-beacon {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.beacon-core {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff7d6 0%, #e2a853 100%);
+  box-shadow: 0 0 10px rgba(226, 168, 83, 0.9);
+  transition: all 0.3s ease;
+}
+
+.beacon-pulse {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(246, 211, 101, 0.85);
+  animation: beaconPulseAnim 2.2s infinite ease-out;
+}
+
+.theme-night .beacon-core {
+  background: radial-gradient(circle, #ffffff 0%, #7bb5e8 100%);
+  box-shadow: 0 0 12px rgba(123, 181, 232, 0.95);
+}
+
+.theme-night .beacon-pulse {
+  border-color: rgba(123, 181, 232, 0.85);
+}
+
+.theme-cursed-day .beacon-core {
+  background: radial-gradient(circle, #ffced2 0%, #c41825 100%);
+  box-shadow: 0 0 14px rgba(196, 24, 37, 1);
+}
+
+.theme-cursed-day .beacon-pulse {
+  border-color: rgba(220, 30, 45, 0.85);
+}
+
+/* --- Bottom Story Dialogue Card (Hotspot Tap Popup) --- */
+#story-dialogue-card {
+  position: absolute;
+  bottom: 80px;
+  left: 18px;
+  right: 18px;
+  z-index: 50;
+  background: rgba(12, 14, 22, 0.92);
+  border: 1px solid rgba(226, 168, 83, 0.35);
+  border-radius: 14px;
+  padding: 14px 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.85);
+  transform: translateY(120%);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#story-dialogue-card.visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.theme-night #story-dialogue-card {
+  border-color: rgba(123, 181, 232, 0.35);
+}
+
+.theme-cursed-day #story-dialogue-card {
+  border-color: rgba(196, 24, 37, 0.55);
+}
+
+.dialogue-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.dialogue-title {
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--day-gold);
+  text-transform: uppercase;
+}
+
+.theme-night .dialogue-title {
+  color: var(--night-cyan-glow);
+}
+
+.theme-cursed-day .dialogue-title {
+  color: var(--cursed-crimson);
+}
+
+.dialogue-dismiss-hint {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #7d889b;
+  font-family: 'Cinzel', serif;
+}
+
+.dialogue-body {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 15.5px;
+  line-height: 1.45;
+  color: #f0f3fa;
+  font-style: italic;
+}
+
+/* --- Story Dialogue Card Multi-Step Dots --- */
+.dialogue-steps-dots {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.step-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  transition: all 0.3s ease;
+}
+
+.step-dot.active {
+  width: 14px;
+  border-radius: 4px;
+  background: var(--day-gold);
+}
+
+.theme-night .step-dot.active {
+  background: var(--night-cyan-glow);
+}
+
+/* --- Bottom Walking Navigation Controls --- */
+.nav-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px 18px 18px;
+  background: linear-gradient(to top, rgba(7, 9, 15, 0.95) 0%, rgba(7, 9, 15, 0.5) 75%, transparent 100%);
+  backdrop-filter: blur(4px);
+}
+
+.nav-walk-btn {
+  background: rgba(18, 22, 34, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #f7eedb;
+  font-family: 'Cinzel', serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  padding: 12px 22px;
+  min-height: 44px;
+  border-radius: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  transition: all 0.25s ease;
+}
+
+.nav-walk-btn:hover:not(:disabled) {
+  background: rgba(35, 42, 64, 0.95);
+  border-color: rgba(246, 211, 101, 0.5);
+  transform: translateY(-2px);
+}
+
+.nav-walk-btn:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.nav-walk-btn.btn-forward {
+  background: linear-gradient(135deg, rgba(46, 36, 23, 0.92) 0%, rgba(26, 20, 12, 0.92) 100%);
+  border-color: rgba(226, 168, 83, 0.45);
+}
+
+.theme-night .nav-walk-btn.btn-forward {
+  background: linear-gradient(135deg, rgba(23, 34, 52, 0.92) 0%, rgba(13, 20, 32, 0.92) 100%);
+  border-color: rgba(123, 181, 232, 0.45);
+}
+
+/* --- Tactile Physical Old Note Modal --- */
+#parchment-modal {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  background: rgba(3, 4, 7, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 24px 16px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+#parchment-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.parchment-container {
+  width: 100%;
+  max-width: 350px;
+  margin: auto 0;
+}
+
+.tactile-parchment-sheet {
+  width: 100%;
+  background-color: #f3e2c6;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(139, 90, 43, 0.1) 0%, transparent 45%),
+    radial-gradient(circle at 88% 82%, rgba(110, 55, 18, 0.12) 0%, transparent 50%),
+    linear-gradient(to bottom, #f5e6cc 0%, #ecd6b2 100%);
+  border: 1px solid #a3794d;
+  border-radius: 8px;
+  box-shadow: 
+    0 0 0 5px #e5cca1,
+    0 0 0 7px #7d4e24,
+    0 15px 45px rgba(0, 0, 0, 0.85);
+  padding: 20px 18px 18px 18px;
+  color: #2b180d;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: parchmentUnroll 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Handwritten Title (Caveat font) */
+.parchment-title-handwritten {
+  font-family: 'Caveat', cursive;
+  font-size: 29px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #3b200c;
+  line-height: 1.15;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.parchment-crease-line {
+  width: 55px;
+  height: 2px;
+  background: #8b5a2b;
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.parchment-crease-line::before {
+  content: '♦';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  color: #8b5a2b;
+  background: #f3e2c6;
+  padding: 0 4px;
+}
+
+/* Story Narrative Paragraphs */
+.parchment-narrative-body {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 15.5px;
+  line-height: 1.48;
+  color: #2e1a0d;
+  margin-bottom: 14px;
+  text-align: left;
+  width: 100%;
+}
+
+.parchment-narrative-body p {
+  margin-bottom: 9px;
+}
+
+.parchment-narrative-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Smaller Warning Inscription Section */
+.parchment-warning-box {
+  width: 100%;
+  margin-top: 6px;
+  margin-bottom: 18px;
+  padding: 10px 14px;
+  background: rgba(138, 28, 36, 0.07);
+  border-left: 3px solid #7d151d;
+  border-radius: 4px;
+  text-align: left;
+}
+
+.parchment-warning-title {
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  letter-spacing: 1.8px;
+  font-weight: 700;
+  color: #7d151d;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.parchment-warning-rules {
+  list-style: none;
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #2b180d;
+}
+
+.parchment-warning-rules li {
+  margin-bottom: 5px;
+  position: relative;
+  padding-left: 12px;
+}
+
+.parchment-warning-rules li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #7d151d;
+}
+
+/* Antique Story-Themed Seal Button */
+.antique-story-btn {
+  background: linear-gradient(135deg, #442211 0%, #291206 100%);
+  color: #f7eedb;
+  font-family: 'Cinzel', serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  border: 1.5px solid #825028;
+  border-radius: 24px;
+  padding: 12px 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(41, 18, 6, 0.45);
+  transition: all 0.25s ease;
+  width: 100%;
+}
+
+.antique-story-btn:hover {
+  background: linear-gradient(135deg, #592e17 0%, #3a1a09 100%);
+  border-color: #a86c38;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(41, 18, 6, 0.65);
+}
+
+/* Second Note Variations (Slightly Newer Look) */
+.tactile-parchment-sheet.newer-paper {
+  background-color: #f7eedb;
+  background-image: 
+    radial-gradient(#d6c0a0 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(230, 215, 190, 0.4), rgba(247, 238, 219, 0.9));
+  border: 1px solid rgba(139, 90, 43, 0.35);
+}
+
+.parchment-larger-gap {
+  width: 100%;
+  height: 14px;
+}
+
+.real-rules-lead {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 16px;
+  font-style: italic;
+  color: #7d151d;
+  font-weight: 600;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.real-rules-box {
+  background: rgba(125, 21, 29, 0.08);
+  border-left: 3.5px solid #8f1217;
+  padding: 12px 14px;
+  margin-bottom: 20px;
+}
+
+.parchment-real-rules-list {
+  padding-left: 18px;
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 14.5px;
+  line-height: 1.45;
+  color: #211107;
+}
+
+.parchment-real-rules-list li {
+  margin-bottom: 7px;
+  font-weight: 600;
+}
+
+.parchment-real-rules-list li:last-child {
+  margin-bottom: 0;
+  color: #8f1217;
+}
+
+.newer-paper .parchment-title-handwritten {
+  font-size: 25px;
+  margin-bottom: 4px;
+}
+
+.newer-paper .parchment-crease-line {
+  margin-bottom: 8px;
+}
+
+.newer-paper .parchment-narrative-body p {
+  margin-bottom: 4px;
+  font-size: 14.5px;
+  line-height: 1.35;
+}
+
+.newer-paper .parchment-larger-gap {
+  height: 8px;
+}
+
+.newer-paper .real-rules-lead {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.newer-paper .real-rules-box {
+  padding: 8px 12px;
+  margin-bottom: 14px;
+}
+
+.newer-paper .parchment-real-rules-list li {
+  margin-bottom: 4px;
+  font-size: 13.5px;
+  line-height: 1.35;
+}
+
+
+/* --- The Final Twist Fullscreen Cinematic Overlay --- */
+#twist-cinematic-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 150;
+  background: #020203;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#twist-cinematic-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.twist-content-box {
+  text-align: center;
+}
+
+.twist-line-1 {
+  font-family: 'Cinzel', serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #d11e2b;
+  margin-bottom: 18px;
+  text-shadow: 0 0 20px rgba(209, 30, 43, 0.8);
+  opacity: 0;
+  animation: twistFadeIn 1s 0.6s forwards;
+}
+
+.twist-line-2 {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 19px;
+  font-style: italic;
+  letter-spacing: 1px;
+  color: #dedede;
+  line-height: 1.5;
+  opacity: 0;
+  animation: twistFadeIn 1.2s 2.0s forwards;
+}
+
+/* ==========================================================================
+   Cinematic Overlay & Dialogue Choice Buttons
+   ========================================================================== */
+.cinematic-vignette-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.8s ease, background 0.8s ease;
+}
+
+.cinematic-vignette-overlay.blackout {
+  opacity: 1 !important;
+  background: #000000 !important;
+  transition: opacity 0.35s ease !important;
+  pointer-events: auto !important;
+}
+
+.cinematic-vignette-overlay.darken-subtle {
+  opacity: 0.45 !important;
+  background: #000000 !important;
+  transition: opacity 0.8s ease;
+}
+
+.cinematic-vignette-overlay.darken-deep {
+  opacity: 0.85 !important;
+  background: radial-gradient(circle at 50% 50%, #03060a 20%, #000000 90%) !important;
+  transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+
+.cinematic-vignette-overlay.darken-almost-total {
+  opacity: 0.94 !important;
+  background: #000000 !important;
+  transition: opacity 1.4s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+
+.cinematic-vignette-overlay.vignette-edges {
+  opacity: 1 !important;
+  background: radial-gradient(circle at 62% 52%, transparent 30%, rgba(3, 5, 10, 0.85) 100%) !important;
+  transition: opacity 1.5s ease;
+}
+
+/* Story Choice Action Button in Dialogue Card (e.g. LOOK INSIDE) */
+#dialogue-action-slot {
+  margin-top: 10px;
+}
+
+.dialogue-choice-btn {
+  display: inline-block;
+  padding: 8px 18px;
+  background: rgba(14, 18, 28, 0.95);
+  border: 1px solid rgba(220, 50, 70, 0.7);
+  color: #ffcad0;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(220, 50, 70, 0.35);
+  transition: all 0.3s ease;
+}
+
+.dialogue-choice-btn:hover, .dialogue-choice-btn:active {
+  background: rgba(180, 20, 40, 0.9);
+  color: #ffffff;
+  border-color: #ff5566;
+  box-shadow: 0 0 20px rgba(220, 50, 70, 0.75);
+  transform: scale(1.04);
+}
+
+/* ==========================================================================
+   Reusable Horror Flash Style
+   Pure black background, dark blood-red distressed typography, subtle flicker
+   ========================================================================== */
+.horror-flash-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 180;
+  background: #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.horror-flash-overlay.active {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+/* Subtle scratch/film flicker overlay */
+.horror-flash-flicker-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, rgba(30, 2, 4, 0.35) 0%, rgba(0, 0, 0, 0.96) 100%);
+  opacity: 0.85;
+  animation: horrorFilmFlicker 0.16s infinite alternate ease-in-out;
+}
+
+@keyframes horrorFilmFlicker {
+  0% { opacity: 0.75; transform: scale(1); filter: contrast(1); }
+  50% { opacity: 0.9; transform: scale(1.002); filter: contrast(1.15); }
+  100% { opacity: 0.72; transform: scale(0.998); filter: contrast(0.95); }
+}
+
+.horror-flash-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  max-width: 330px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Dark blood-red distressed typography */
+.horror-flash-line {
+  font-family: 'Cinzel', serif;
+  font-size: 19px;
+  font-weight: 900;
+  letter-spacing: 3.5px;
+  line-height: 1.35;
+  text-transform: uppercase;
+  color: #9e141e;
+  text-shadow: 0 0 14px rgba(158, 20, 30, 0.8), 0 0 2px rgba(255, 40, 50, 0.4);
+  opacity: 0;
+  transform: scale(0.96) translateY(4px);
+  filter: blur(2px);
+  transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.45s ease;
+}
+
+.horror-flash-line.revealed {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  filter: blur(0px);
+  animation: textDistressJitter 3.5s infinite alternate ease-in-out;
+}
+
+@keyframes textDistressJitter {
+  0%, 100% { transform: translateY(0); text-shadow: 0 0 14px rgba(158, 20, 30, 0.8); }
+  30% { transform: translateY(-0.5px) skewX(0.4deg); }
+  70% { transform: translateY(0.5px) skewX(-0.4deg); text-shadow: 0 0 20px rgba(180, 20, 30, 0.95), -1px 0 1px rgba(255, 50, 60, 0.5); }
+}
+
+/* Screen horror shake when woman screams */
+.screen-horror-shake {
+  animation: horrorShakeAnim 0.75s cubic-bezier(0.36, 0.07, 0.19, 0.97) both !important;
+}
+
+@keyframes horrorShakeAnim {
+  10%, 90% { transform: translate3d(-4px, 1px, 0); }
+  20%, 80% { transform: translate3d(5px, -3px, 0); }
+  30%, 50%, 70% { transform: translate3d(-6px, 3px, 0); }
+  40%, 60% { transform: translate3d(6px, -2px, 0); }
+}
+
+/* Distort/flicker woman silhouette */
+.silhouette-glitch {
+  animation: silhouetteGlitchAnim 0.75s infinite steps(2) !important;
+}
+
+@keyframes silhouetteGlitchAnim {
+  0% { transform: translate(210px, 310px) skewX(0deg); opacity: 1; filter: drop-shadow(0 0 8px #ff0022); }
+  25% { transform: translate(215px, 308px) skewX(8deg); opacity: 0.6; filter: invert(0.6) blur(2px); }
+  50% { transform: translate(207px, 312px) skewX(-8deg); opacity: 0.9; filter: drop-shadow(-4px 0 12px #9e141e); }
+  75% { transform: translate(213px, 309px) skewX(4deg); opacity: 0.4; }
+  100% { transform: translate(210px, 310px) skewX(0deg); opacity: 1; }
+}
+
+/* Window light turned off in Red House after knock */
+.window-light-off rect[fill="#ffb443"],
+.window-light-off rect[fill="#ff8c1a"],
+.window-light-off path[fill="#fff3cf"] {
+  fill: #0d080c !important;
+  opacity: 0.9 !important;
+  filter: none !important;
+  transition: fill 0.8s ease;
+}
+
+.window-light-off .shadow-pass-curtain {
+  display: none !important;
+}
+
+/* Well consequence: darker opening and subtle blood mark / lingering fog */
+.well-consequence .well-void {
+  fill: #000000 !important;
+  stroke: #5a080f !important;
+  stroke-width: 1.5px !important;
+}
+
+.well-consequence #well-blood-mark {
+  opacity: 0.85 !important;
+  transition: opacity 1.2s ease;
+}
+
+.well-consequence #well-lingering-mist {
+  opacity: 0.55 !important;
+  transition: opacity 1.5s ease;
+}
+
+/* Banyan consequence: subtle lingering wind/fog */
+.banyan-consequence #banyan-lingering-fog {
+  opacity: 0.65 !important;
+  transition: opacity 1.5s ease;
+}
+
+/* ========================================================
+   NEW VILLAGE EXPANSION SCENES STYLES & ANIMATIONS
+   ======================================================== */
+
+/* Village Square: Subtle ambient window lights & lantern flicker */
+.theme-night .sq-lit-window {
+  animation: sqWindowFlicker 6s ease-in-out infinite alternate;
+}
+
+@keyframes sqWindowFlicker {
+  0% { opacity: 0.55; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.6; }
+}
+
+/* Abandoned House: Upstairs window lights up, silhouette crosses, then gone */
+.theme-night .upstairs-window-light {
+  animation: upstairsWindowLightUp 10s ease-in-out forwards;
+}
+
+@keyframes upstairsWindowLightUp {
+  0% { opacity: 0; }
+  15% { opacity: 0.75; }
+  75% { opacity: 0.75; }
+  90% { opacity: 0.3; }
+  100% { opacity: 0; }
+}
+
+.theme-night .upstairs-silhouette-walker {
+  animation: silhouetteCrossWindow 7s ease-in-out forwards;
+  animation-delay: 1.5s;
+}
+
+@keyframes silhouetteCrossWindow {
+  0% { transform: translateX(-35px); opacity: 0; }
+  20% { opacity: 0.85; }
+  50% { transform: translateX(25px); opacity: 0.85; }
+  80% { transform: translateX(65px); opacity: 0.6; }
+  100% { transform: translateX(75px); opacity: 0; }
+}
+
+/* Old School: Swing moves very slowly by itself at night */
+.theme-night .school-swing-anim {
+  transform-origin: 5px 0px;
+  animation: schoolSwingNight 5s ease-in-out infinite alternate;
+}
+
+@keyframes schoolSwingNight {
+  0% { transform: rotate(-5deg); }
+  50% { transform: rotate(1deg); }
+  100% { transform: rotate(5deg); }
+}
+
+/* Small Shrine: Incense smoke curls & diya flame flicker */
+.incense-smoke-anim {
+  transform-origin: 6px 3px;
+  animation: incenseSmokeDrift 4s ease-in-out infinite;
+}
+
+@keyframes incenseSmokeDrift {
+  0% { transform: translateY(0) scaleX(1); opacity: 0.75; }
+  50% { transform: translateY(-8px) scaleX(1.15) rotate(2deg); opacity: 0.55; }
+  100% { transform: translateY(-16px) scaleX(1.3) rotate(-2deg); opacity: 0.1; }
+}
+
+.shrine-flame-flicker {
+  transform-origin: 12px 14px;
+  animation: shrineDiyaFlicker 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes shrineDiyaFlicker {
+  0% { transform: scale(0.95) rotate(-1deg); }
+  50% { transform: scale(1.05) rotate(1.5deg); }
+  100% { transform: scale(0.98) rotate(0deg); }
+}
+
+/* ==========================================================================
+   UNPREDICTABLE HORROR OVERLAYS & STATE MODIFIERS
+   ========================================================================== */
+
+/* Quick Blood-Red Flash Overlay (Warning Sign) */
+.red-flash-overlay {
+  position: absolute;
+  inset: 0;
+  background: #7a0c0c;
+  z-index: 95;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.08s ease;
+}
+
+.red-flash-overlay.active {
+  opacity: 0.92;
+}
+
+/* Quick Black Flash Overlay (Cart, Blackboard, Flowers) */
+.quick-black-overlay {
+  position: absolute;
+  inset: 0;
+  background: #000000;
+  z-index: 95;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.06s ease;
+}
+
+.quick-black-overlay.active {
+  opacity: 1;
+}
+
+/* Abandoned House: Window completely dark after ghost face */
+.window-darkened rect,
+.window-darkened polygon,
+.window-darkened circle {
+  fill: #030406 !important;
+  opacity: 0.96 !important;
+  transition: fill 0.35s ease;
+}
+
+/* Old School Blackboard Dynamic States */
+.blackboard-cleared {
+  opacity: 0 !important;
+  transition: opacity 0.25s ease;
+}
+
+.chalk-text-reveal {
+  opacity: 1 !important;
+  transition: opacity 0.15s ease;
+}
+
+/* Small Shrine: Flame Tall & Extinguished */
+.flame-flare-tall {
+  transform: scaleY(3.6) scaleX(1.3) translateY(-14px) !important;
+  filter: drop-shadow(0 0 16px #ff8800) drop-shadow(0 0 28px #ff4400) !important;
+  transition: transform 0.35s cubic-bezier(0.1, 0.9, 0.2, 1), filter 0.35s ease;
+}
+
+.flame-extinguished {
+  opacity: 0 !important;
+  transform: scale(0.2) !important;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+/* Small Shrine: Flowers Blood Dark */
+.flowers-blood-dark {
+  fill: #3b0505 !important;
+  stroke: #1a0000 !important;
+  transition: fill 1.2s ease, stroke 1.2s ease;
+}
+
+/* Second Note: Bloody Handprint & Horror Warning */
+.bloody-handprint-overlay {
+  position: absolute;
+  top: 36%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(10deg) scale(0.8);
+  width: 140px;
+  height: 160px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
+}
+
+.bloody-handprint-overlay.revealed {
+  opacity: 0.92;
+  transform: translate(-50%, -50%) rotate(10deg) scale(1);
+}
+
+.parchment-horror-warning-text {
+  font-family: 'Cinzel', serif;
+  font-size: 14.5px;
+  font-weight: 900;
+  color: #9e141e;
+  letter-spacing: 2.2px;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(158, 20, 30, 0.8);
+  margin-top: 14px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.parchment-horror-warning-text.revealed {
+  opacity: 1;
+}
+
+/* Rare Event: Fire Rain Overlay */
+.fire-rain-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.4s ease;
+}
+
+.fire-rain-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.fire-rain-sky-tint {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 20%, rgba(138, 14, 14, 0.7) 0%, rgba(40, 3, 3, 0.88) 70%, rgba(10, 0, 2, 0.96) 100%);
+  mix-blend-mode: multiply;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+.fire-rain-overlay.active .fire-rain-sky-tint {
+  opacity: 1;
+}
+
+.fire-rain-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.fire-rain-text-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 24px;
+  z-index: 5;
+  text-align: center;
+}
+
+.fire-rain-line {
+  font-family: 'Cinzel', serif;
+  font-size: 19px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: #ff9e42;
+  text-shadow: 0 0 14px rgba(255, 80, 0, 0.9), 0 0 4px #ffffff;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fire-rain-line.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   FINAL STORY ARC OVERLAYS (Scene 17 & Scene 19)
+   ========================================================================== */
+
+/* Scene 17: Road Figure Horror Blackout Overlay */
+.road-blackout-overlay {
+  position: absolute;
+  inset: 0;
+  background: #000000;
+  z-index: 92;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.75s ease;
+}
+
+.road-blackout-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.road-blackout-content {
+  max-width: 320px;
+  text-align: center;
+  padding: 24px;
+}
+
+.road-horror-line {
+  font-family: 'Cinzel', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #c42b2b;
+  text-shadow: 0 0 16px rgba(196, 43, 43, 0.75);
+  margin-bottom: 1.2rem;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.road-horror-line.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.road-horror-turn-off {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #ff3b30;
+  text-shadow: 0 0 20px rgba(255, 59, 48, 0.9);
+  letter-spacing: 0.22em;
+}
+
+.road-horror-twist {
+  color: #f2e8dc;
+  font-size: 1.05rem;
+  text-shadow: 0 0 14px rgba(242, 232, 220, 0.5);
+  letter-spacing: 0.12em;
+}
+
+/* Scene 19: Ending Cinematic Overlay */
+.ending-cinematic-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(14, 20, 36, 0.35) 0%, rgba(3, 5, 10, 0.94) 80%);
+  z-index: 85;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.8s ease;
+}
+
+.ending-cinematic-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ending-content-card {
+  text-align: center;
+  padding: 2.2rem 1.6rem;
+  max-width: 350px;
+  background: rgba(10, 15, 26, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(196, 154, 69, 0.25);
+  border-radius: 8px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8);
+}
+
+.ending-village-title {
+  font-family: 'Cinzel Decorative', 'Cinzel', serif;
+  font-size: 2.1rem;
+  font-weight: 900;
+  letter-spacing: 0.28em;
+  color: #ffffff;
+  margin-bottom: 0.6rem;
+  text-shadow: 0 0 24px rgba(255, 180, 67, 0.6);
+}
+
+.ending-crease-rule {
+  width: 70px;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, #c49a45, transparent);
+  margin: 0 auto 1.4rem auto;
+}
+
+.ending-line {
+  font-family: 'Cinzel', serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: #cdd6e4;
+  margin-bottom: 0.75rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.ending-line.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ending-verdict {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #ffaa33;
+  letter-spacing: 0.18em;
+  text-shadow: 0 0 16px rgba(255, 170, 51, 0.7);
+  margin-top: 1.2rem;
+}
+
+.ending-verdict-sub {
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: #c42b2b;
+  letter-spacing: 0.32em;
+  text-shadow: 0 0 24px rgba(196, 43, 43, 0.9);
+  margin-top: 0.4rem;
+}
+
+.ending-replay-btn {
+  margin-top: 1.6rem;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.ending-replay-btn.revealed {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+
+
+
+
