@@ -2,55 +2,213 @@
  * illustrations.js
  * "The Village That Remembers" - Vector Scene Illustrator
  * 
- * Generates layered, cinematic SVG illustrations for:
- * - Opening: The Bottle in Grass
- * - SCENE 01: Village Entrance
- * - SCENE 02: Old Tea Stall
- * - SCENE 03: Village Well
- * - SCENE 04: Temple Road
- * 
- * Supports smooth Day/Night CSS transitions, animated silhouettes, 
- * glowing windows, swaying temple bell, and atmospheric particle layers.
+ * Cinematic Illustrated Realism:
+ * - Authentic Indian rural architecture, textured walls, aged plaster, weathered wood, clay roof tiles
+ * - Volumetric sunlight & moonlight, natural shadows, atmospheric depth, layered compositions
+ * - Upgraded recognizable human ghost apparitions with hollow eyes and authentic attire
+ * - Smooth Day/Night CSS transitions, animated silhouettes, glowing windows
  */
 
 const SceneIllustrations = {
-  // Common atmospheric sky, celestial bodies, and environmental effects
+  // Shared atmospheric sky, celestial bodies, volumetric lighting, and texture patterns
   getAtmosphericSky(sceneId) {
-    return `
-      <!-- Sky Gradients -->
+    return (function getAtmosphericSky(sceneId) {
+  return `
+      <!-- Sky Gradients, Texture Patterns, & Atmospheric Filters -->
       <defs>
+        <!-- Dynamic Sky Gradients -->
         <linearGradient id="sky-day-${sceneId}" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#fae3c6" />
-          <stop offset="35%" stop-color="#f2c89d" />
-          <stop offset="70%" stop-color="#e2ab7a" />
-          <stop offset="100%" stop-color="#c98a58" />
+          <stop offset="0%" stop-color="#fae5cc" />
+          <stop offset="35%" stop-color="#f4cca4" />
+          <stop offset="70%" stop-color="#e3ae81" />
+          <stop offset="100%" stop-color="#ca8e5e" />
         </linearGradient>
         <linearGradient id="sky-night-${sceneId}" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#080a14" />
-          <stop offset="40%" stop-color="#101526" />
-          <stop offset="75%" stop-color="#181d33" />
-          <stop offset="100%" stop-color="#1f1a29" />
+          <stop offset="0%" stop-color="#050711" />
+          <stop offset="38%" stop-color="#0c1122" />
+          <stop offset="72%" stop-color="#141a2e" />
+          <stop offset="100%" stop-color="#1a1826" />
         </linearGradient>
 
+        <!-- Architectural Material Gradients -->
+        <linearGradient id="sandstone-day" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#dfc5a2" />
+          <stop offset="50%" stop-color="#caa57c" />
+          <stop offset="100%" stop-color="#b0885c" />
+        </linearGradient>
+        <linearGradient id="sandstone-night" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#242c40" />
+          <stop offset="60%" stop-color="#181e2e" />
+          <stop offset="100%" stop-color="#10141f" />
+        </linearGradient>
+        <linearGradient id="sandstone-highlight" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#f4e0c3" />
+          <stop offset="50%" stop-color="#dfc5a2" />
+          <stop offset="100%" stop-color="#caa57c" />
+        </linearGradient>
+
+        <linearGradient id="plaster-cream-day" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#f2e8d8" />
+          <stop offset="60%" stop-color="#e5d5be" />
+          <stop offset="100%" stop-color="#cfbda1" />
+        </linearGradient>
+        <linearGradient id="plaster-cream-night" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#2a3042" />
+          <stop offset="60%" stop-color="#1b202e" />
+          <stop offset="100%" stop-color="#121622" />
+        </linearGradient>
+
+        <linearGradient id="ground-dirt-day" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#c99f74" />
+          <stop offset="40%" stop-color="#b88b5d" />
+          <stop offset="85%" stop-color="#996e43" />
+          <stop offset="100%" stop-color="#7d5530" />
+        </linearGradient>
+        <linearGradient id="ground-dirt-night" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#1c2233" />
+          <stop offset="50%" stop-color="#141824" />
+          <stop offset="100%" stop-color="#0a0d14" />
+        </linearGradient>
+
+        <!-- Ground Cast Shadow Gradients -->
+        <linearGradient id="ground-shadow-day" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#3b2413" stop-opacity="0.38" />
+          <stop offset="65%" stop-color="#3b2413" stop-opacity="0.18" />
+          <stop offset="100%" stop-color="#3b2413" stop-opacity="0.0" />
+        </linearGradient>
+        <linearGradient id="ground-shadow-night" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#050810" stop-opacity="0.55" />
+          <stop offset="65%" stop-color="#050810" stop-opacity="0.25" />
+          <stop offset="100%" stop-color="#050810" stop-opacity="0.0" />
+        </linearGradient>
+
+        <!-- Celestial Glow Gradients -->
         <linearGradient id="sun-glow" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#fffdf5" stop-opacity="0.95" />
-          <stop offset="40%" stop-color="#fedaa2" stop-opacity="0.6" />
+          <stop offset="0%" stop-color="#fffef7" stop-opacity="0.95" />
+          <stop offset="35%" stop-color="#fedaa2" stop-opacity="0.75" />
+          <stop offset="70%" stop-color="#f39c59" stop-opacity="0.3" />
           <stop offset="100%" stop-color="#f39c59" stop-opacity="0" />
         </linearGradient>
         <linearGradient id="moon-glow" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
-          <stop offset="45%" stop-color="#cbe3fb" stop-opacity="0.5" />
+          <stop offset="40%" stop-color="#d4e8fc" stop-opacity="0.6" />
+          <stop offset="75%" stop-color="#55759e" stop-opacity="0.25" />
           <stop offset="100%" stop-color="#55759e" stop-opacity="0" />
         </linearGradient>
 
-        <filter id="glow-blur" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="4" result="blur" />
+        <!-- Volumetric Sunbeams -->
+        <linearGradient id="volumetric-sunbeam" x1="30%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#fff8e7" stop-opacity="0.28" />
+          <stop offset="45%" stop-color="#fedca8" stop-opacity="0.14" />
+          <stop offset="100%" stop-color="#f39c59" stop-opacity="0" />
+        </linearGradient>
+        <!-- Volumetric Moonbeams -->
+        <linearGradient id="volumetric-moonbeam" x1="20%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#cbe2fc" stop-opacity="0.22" />
+          <stop offset="50%" stop-color="#7da8d8" stop-opacity="0.08" />
+          <stop offset="100%" stop-color="#2a3d5e" stop-opacity="0" />
+        </linearGradient>
+
+        <!-- Filters -->
+        <filter id="glow-blur" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="4.5" result="blur" />
           <feComposite in="SourceGraphic" in2="blur" operator="over" />
         </filter>
+
+        <filter id="ghost-haze" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="3.5" result="blur" />
+          <feColorMatrix in="blur" type="matrix" values="0.7 0.2 0.1 0 0.1  0.2 0.7 0.2 0 0.15  0.2 0.3 0.9 0 0.3  0 0 0 0.88 0" result="spectral" />
+          <feMerge>
+            <feMergeNode in="spectral" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+
+        <filter id="lantern-glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="8" result="blur" />
+          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+
+        <!-- Terracotta Clay Roof Tiles Pattern (Khaprail) -->
+        <pattern id="pat-khaprail" width="18" height="10" patternUnits="userSpaceOnUse">
+          <rect width="18" height="10" fill="#914324" />
+          <!-- Overlapping barrel curves with highlights -->
+          <path d="M0 0 C4.5 3.5, 13.5 3.5, 18 0 L18 4 C13.5 7.5, 4.5 7.5, 0 4 Z" fill="#b35832" />
+          <path d="M1 0.5 C5 3, 13 3, 17 0.5" stroke="#d4794e" stroke-width="0.8" fill="none" opacity="0.6" />
+          <line x1="0" y1="9.5" x2="18" y2="9.5" stroke="#52200d" stroke-width="1.2" opacity="0.7" />
+          <line x1="9" y1="0" x2="9" y2="10" stroke="#52200d" stroke-width="0.8" opacity="0.35" />
+        </pattern>
+
+        <pattern id="pat-khaprail-night" width="18" height="10" patternUnits="userSpaceOnUse">
+          <rect width="18" height="10" fill="#18131d" />
+          <path d="M0 0 C4.5 3.5, 13.5 3.5, 18 0 L18 4 C13.5 7.5, 4.5 7.5, 0 4 Z" fill="#241d2c" />
+          <path d="M1 0.5 C5 3, 13 3, 17 0.5" stroke="#41354e" stroke-width="0.8" fill="none" opacity="0.4" />
+          <line x1="0" y1="9.5" x2="18" y2="9.5" stroke="#0e0a12" stroke-width="1.2" opacity="0.8" />
+          <line x1="9" y1="0" x2="9" y2="10" stroke="#0e0a12" stroke-width="0.8" opacity="0.5" />
+        </pattern>
+
+        <!-- Weathered Indian Kiln Brick Pattern -->
+        <pattern id="pat-brick" width="28" height="14" patternUnits="userSpaceOnUse">
+          <rect width="28" height="14" fill="#6e2d17" />
+          <!-- Staggered Courses -->
+          <rect x="1" y="1" width="26" height="5.5" rx="0.5" fill="#9e472a" stroke="#59200f" stroke-width="0.6" />
+          <rect x="-13" y="7.5" width="26" height="5.5" rx="0.5" fill="#8f3c20" stroke="#59200f" stroke-width="0.6" />
+          <rect x="15" y="7.5" width="26" height="5.5" rx="0.5" fill="#9e472a" stroke="#59200f" stroke-width="0.6" />
+          <!-- Mortar Lines -->
+          <line x1="0" y1="6.8" x2="28" y2="6.8" stroke="#d5c8b7" stroke-width="0.9" opacity="0.5" />
+          <line x1="0" y1="13.8" x2="28" y2="13.8" stroke="#d5c8b7" stroke-width="0.9" opacity="0.5" />
+        </pattern>
+
+        <pattern id="pat-brick-night" width="28" height="14" patternUnits="userSpaceOnUse">
+          <rect width="28" height="14" fill="#141822" />
+          <rect x="1" y="1" width="26" height="5.5" rx="0.5" fill="#1d2332" stroke="#0e111a" stroke-width="0.6" />
+          <rect x="-13" y="7.5" width="26" height="5.5" rx="0.5" fill="#191f2c" stroke="#0e111a" stroke-width="0.6" />
+          <rect x="15" y="7.5" width="26" height="5.5" rx="0.5" fill="#1d2332" stroke="#0e111a" stroke-width="0.6" />
+          <line x1="0" y1="6.8" x2="28" y2="6.8" stroke="#2a3348" stroke-width="0.8" opacity="0.4" />
+          <line x1="0" y1="13.8" x2="28" y2="13.8" stroke="#2a3348" stroke-width="0.8" opacity="0.4" />
+        </pattern>
+
+        <!-- Weathered Wood Grain Pattern -->
+        <pattern id="pat-wood" width="14" height="48" patternUnits="userSpaceOnUse">
+          <rect width="14" height="48" fill="#4d321d" />
+          <line x1="2.5" y1="0" x2="2.5" y2="48" stroke="#362212" stroke-width="1.2" opacity="0.75" />
+          <line x1="6.5" y1="0" x2="6.5" y2="48" stroke="#63442a" stroke-width="0.9" opacity="0.6" />
+          <line x1="10" y1="0" x2="10" y2="48" stroke="#362212" stroke-width="1.2" opacity="0.7" />
+          <ellipse cx="6" cy="24" rx="2" ry="4.5" fill="#2b1a0c" />
+        </pattern>
+
+        <pattern id="pat-wood-night" width="14" height="48" patternUnits="userSpaceOnUse">
+          <rect width="14" height="48" fill="#151720" />
+          <line x1="2.5" y1="0" x2="2.5" y2="48" stroke="#0b0c12" stroke-width="1.2" opacity="0.75" />
+          <line x1="6.5" y1="0" x2="6.5" y2="48" stroke="#242734" stroke-width="0.9" opacity="0.6" />
+          <line x1="10" y1="0" x2="10" y2="48" stroke="#0b0c12" stroke-width="1.2" opacity="0.7" />
+          <ellipse cx="6" cy="24" rx="2" ry="4.5" fill="#090a0f" />
+        </pattern>
+
+        <!-- Flagstone / Cobblestone Pavement Pattern -->
+        <pattern id="pat-cobbles" width="36" height="24" patternUnits="userSpaceOnUse">
+          <rect width="36" height="24" fill="#a4825d" />
+          <!-- Flagstones with rounded corners and highlights -->
+          <rect x="1" y="1" width="16" height="10" rx="2" fill="#ba9770" stroke="#785a3a" stroke-width="0.7" />
+          <rect x="19" y="1" width="16" height="10" rx="2" fill="#b08c65" stroke="#785a3a" stroke-width="0.7" />
+          <rect x="-8" y="13" width="16" height="10" rx="2" fill="#b08c65" stroke="#785a3a" stroke-width="0.7" />
+          <rect x="10" y="13" width="16" height="10" rx="2" fill="#c29f78" stroke="#785a3a" stroke-width="0.7" />
+          <rect x="28" y="13" width="16" height="10" rx="2" fill="#b5916a" stroke="#785a3a" stroke-width="0.7" />
+        </pattern>
+
+        <pattern id="pat-cobbles-night" width="36" height="24" patternUnits="userSpaceOnUse">
+          <rect width="36" height="24" fill="#131722" />
+          <rect x="1" y="1" width="16" height="10" rx="2" fill="#1b2130" stroke="#0b0d14" stroke-width="0.7" />
+          <rect x="19" y="1" width="16" height="10" rx="2" fill="#171d2b" stroke="#0b0d14" stroke-width="0.7" />
+          <rect x="-8" y="13" width="16" height="10" rx="2" fill="#171d2b" stroke="#0b0d14" stroke-width="0.7" />
+          <rect x="10" y="13" width="16" height="10" rx="2" fill="#202738" stroke="#0b0d14" stroke-width="0.7" />
+          <rect x="28" y="13" width="16" height="10" rx="2" fill="#19202e" stroke="#0b0d14" stroke-width="0.7" />
+        </pattern>
+
         <linearGradient id="fog-sweep-grad" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stop-color="#1e2c40" stop-opacity="0" />
-          <stop offset="25%" stop-color="#3d5678" stop-opacity="0.75" />
-          <stop offset="75%" stop-color="#3d5678" stop-opacity="0.75" />
+          <stop offset="25%" stop-color="#3d5678" stop-opacity="0.8" />
+          <stop offset="75%" stop-color="#3d5678" stop-opacity="0.8" />
           <stop offset="100%" stop-color="#1e2c40" stop-opacity="0" />
         </linearGradient>
       </defs>
@@ -59,24 +217,48 @@ const SceneIllustrations = {
       <rect class="sky-bg sky-day" width="100%" height="100%" fill="url(#sky-day-${sceneId})" />
       <rect class="sky-bg sky-night" width="100%" height="100%" fill="url(#sky-night-${sceneId})" />
 
+      <!-- Distant Aravalli Mountain Ridge (Deep atmospheric horizon layer) -->
+      <g class="distant-mountain-backdrop">
+        <path class="day-only" fill="#b88a65" opacity="0.45" d="M0 320 Q60 270 140 295 T290 280 T390 300 L390 480 L0 480 Z" />
+        <path class="day-only" fill="#9e714e" opacity="0.6" d="M0 340 Q90 310 190 330 T360 315 T390 335 L390 500 L0 500 Z" />
+        <path class="night-only" fill="#0d1322" opacity="0.7" d="M0 320 Q60 270 140 295 T290 280 T390 300 L390 480 L0 480 Z" />
+        <path class="night-only" fill="#090d18" opacity="0.85" d="M0 340 Q90 310 190 330 T360 315 T390 335 L390 500 L0 500 Z" />
+        
+        <!-- Distant Rural Telegraph / Power Line on Horizon -->
+        <g opacity="0.35" class="distant-wire-line">
+          <line x1="45" y1="300" x2="45" y2="330" stroke="#241710" stroke-width="1.2" />
+          <line x1="40" y1="305" x2="50" y2="305" stroke="#241710" stroke-width="0.8" />
+          <line x1="210" y1="305" x2="210" y2="335" stroke="#241710" stroke-width="1.2" />
+          <line x1="205" y1="310" x2="215" y2="310" stroke="#241710" stroke-width="0.8" />
+          <line x1="365" y1="295" x2="365" y2="325" stroke="#241710" stroke-width="1.2" />
+          <line x1="360" y1="300" x2="370" y2="300" stroke="#241710" stroke-width="0.8" />
+          <path d="M45 305 Q125 320 210 310 Q285 318 365 300" fill="none" stroke="#241710" stroke-width="0.7" />
+        </g>
+      </g>
+
       <!-- Celestial Bodies & Atmosphere (DAY) -->
       <g class="celestial-day day-only">
-        <!-- Warm Radiant Sun -->
-        <circle cx="76%" cy="17%" r="48" fill="url(#sun-glow)" filter="url(#glow-blur)" />
-        <circle cx="76%" cy="17%" r="22" fill="#fffaf0" />
+        <!-- Warm Radiant Sun with layered bloom -->
+        <circle cx="76%" cy="17%" r="65" fill="url(#sun-glow)" opacity="0.6" filter="url(#glow-blur)" />
+        <circle cx="76%" cy="17%" r="38" fill="url(#sun-glow)" />
+        <circle cx="76%" cy="17%" r="20" fill="#fffef7" />
         
-        <!-- Soft Golden Sunbeams -->
-        <polygon points="304,120 0,650 90,650" fill="#fff7e2" opacity="0.09" />
-        <polygon points="304,120 130,700 250,700" fill="#fff7e2" opacity="0.06" />
+        <!-- Multi-shaft Volumetric Golden Sunbeams -->
+        <g class="volumetric-ray-group">
+          <polygon points="296,140 0,650 110,650" fill="url(#volumetric-sunbeam)" opacity="0.7" />
+          <polygon points="296,140 120,720 250,720" fill="url(#volumetric-sunbeam)" opacity="0.5" />
+          <polygon points="296,140 270,740 390,740" fill="url(#volumetric-sunbeam)" opacity="0.35" />
+        </g>
 
         <!-- Soaring Silhouetted Birds in Distance -->
         <g opacity="0.55" fill="#4d301b">
           <path d="M90 120 Q96 112 102 120 Q108 112 114 120 Q106 117 102 123 Q98 117 90 120 Z" class="flutter-bird-1" />
           <path d="M125 105 Q130 98 135 105 Q140 98 145 105 Q138 102 135 107 Q132 102 125 105 Z" class="flutter-bird-2" />
           <path d="M150 135 Q154 129 158 135 Q162 129 166 135 Q160 133 158 137 Q156 133 150 135 Z" />
+          <path d="M210 115 Q214 110 218 115 Q222 110 226 115 Q221 113 218 117 Q215 113 210 115 Z" opacity="0.4" />
         </g>
 
-        <!-- Floating Golden Dust Motes -->
+        <!-- Floating Golden Dust Motes drifting in sunlight rays -->
         <circle cx="180" cy="380" r="1.5" fill="#fff7d6" opacity="0.6" class="floating-dust-1" />
         <circle cx="240" cy="450" r="2" fill="#fff7d6" opacity="0.5" class="floating-dust-2" />
         <circle cx="110" cy="520" r="1.5" fill="#fff7d6" opacity="0.6" class="floating-dust-3" />
@@ -85,2329 +267,3531 @@ const SceneIllustrations = {
 
       <!-- Celestial Bodies & Atmosphere (NIGHT) -->
       <g class="celestial-night night-only">
-        <!-- Cold Silver Moon with Crescent Shadow -->
-        <circle cx="24%" cy="16%" r="50" fill="url(#moon-glow)" filter="url(#glow-blur)" />
-        <circle cx="24%" cy="16%" r="21" fill="#f0f6ff" />
-        <circle cx="28%" cy="13%" r="19" fill="url(#sky-night-${sceneId})" />
+        <!-- Pale Moon with silver atmospheric aura -->
+        <circle cx="24%" cy="15%" r="48" fill="url(#moon-glow)" opacity="0.4" filter="url(#glow-blur)" />
+        <circle cx="24%" cy="15%" r="22" fill="#eff5fc" />
+        <circle cx="27%" cy="13%" r="20" fill="#0c1122" />
         
-        <!-- Night Stars -->
-        <circle cx="14%" cy="8%" r="1.6" fill="#fff" opacity="0.8" class="twinkle-fast" />
-        <circle cx="44%" cy="11%" r="1.2" fill="#d9e8ff" opacity="0.6" class="twinkle-slow" />
-        <circle cx="64%" cy="6%" r="1.8" fill="#fff" opacity="0.85" class="twinkle-fast" />
-        <circle cx="82%" cy="13%" r="1.3" fill="#cbe2ff" opacity="0.7" class="twinkle-slow" />
-        <circle cx="91%" cy="21%" r="1.4" fill="#fff" opacity="0.75" class="twinkle-fast" />
-        <circle cx="36%" cy="24%" r="1.1" fill="#fff" opacity="0.5" />
-        <circle cx="56%" cy="19%" r="1.3" fill="#d0e4ff" opacity="0.65" />
+        <!-- Stars across the night sky -->
+        <g fill="#eff6ff" opacity="0.8">
+          <circle cx="45%" cy="8%" r="1.2" class="twinkle-slow" />
+          <circle cx="65%" cy="12%" r="1.5" class="twinkle-fast" />
+          <circle cx="82%" cy="6%" r="1" />
+          <circle cx="90%" cy="18%" r="1.3" class="twinkle-slow" />
+          <circle cx="12%" cy="22%" r="1.4" class="twinkle-fast" />
+          <circle cx="55%" cy="19%" r="1" />
+          <circle cx="38%" cy="25%" r="1.2" class="twinkle-slow" />
+          <circle cx="75%" cy="26%" r="1.5" />
+        </g>
 
-        <!-- Wandering Fireflies -->
-        <circle cx="120" cy="460" r="2.5" fill="#d8ff7a" opacity="0.7" class="twinkle-slow" filter="url(#glow-blur)" />
-        <circle cx="270" cy="510" r="2.8" fill="#d8ff7a" opacity="0.75" class="twinkle-fast" filter="url(#glow-blur)" />
-        <circle cx="190" cy="390" r="2.2" fill="#d8ff7a" opacity="0.65" class="twinkle-slow" filter="url(#glow-blur)" />
+        <!-- Subtle Volumetric Moonbeams -->
+        <polygon points="94,125 0,650 90,650" fill="url(#volumetric-moonbeam)" opacity="0.45" />
+        <polygon points="94,125 100,700 220,700" fill="url(#volumetric-moonbeam)" opacity="0.3" />
 
-        <!-- Drifting Cold Violet Mist Layer -->
-        <ellipse cx="200" cy="480" rx="230" ry="35" fill="#1e2538" opacity="0.3" class="fog-drift" />
+        <!-- Ground Night Haze / Eerie Mist Ribbon -->
+        <rect x="0" y="520" width="390" height="90" fill="url(#fog-sweep-grad)" opacity="0.35" />
       </g>
-    `;
+  `;
+})(sceneId);
   },
 
   // 1. OPENING: The Bottle in Grass
   renderBottleScene(isSecondPlaythrough = false) {
-    const bottleTransform = isSecondPlaythrough 
-      ? 'translate(135, 420) scale(1.25) rotate(-3)' 
-      : 'translate(140, 520) rotate(-15)';
-    const stonePedestal = isSecondPlaythrough ? `
-      <!-- Weathered Stone Threshold in Foreground (Second Playthrough) -->
-      <g id="bottle-stone-pedestal">
-        <polygon points="105,530 285,520 305,570 85,580" fill="#0c1117" stroke="#253545" stroke-width="1.8" />
-        <polygon points="85,580 305,570 295,610 75,620" fill="#070a0e" />
-        <line x1="120" y1="535" x2="270" y2="526" stroke="#486580" stroke-width="1" opacity="0.6" />
+    return (function renderBottleScene(isSecondPlaythrough = false) {
+  const bottleTransform = isSecondPlaythrough 
+    ? 'translate(135, 480) scale(1.25) rotate(-3)' 
+    : 'translate(140, 580) rotate(-15)';
+  const stonePedestal = isSecondPlaythrough ? `
+    <!-- Weathered Sandstone Threshold in Foreground (Second Playthrough) -->
+    <g id="bottle-stone-pedestal">
+      <polygon points="100,588 290,578 310,630 80,640" fill="#0d1218" stroke="#253545" stroke-width="1.8" />
+      <polygon points="80,640 310,630 300,672 70,682" fill="#070a0e" />
+      <line x1="115" y1="594" x2="275" y2="585" stroke="#486580" stroke-width="1.2" opacity="0.65" />
+      <path d="M140 592 L152 608 L148 625" stroke="#182330" stroke-width="1.4" fill="none" />
+      <path d="M240 588 L232 605 L236 628" stroke="#182330" stroke-width="1.4" fill="none" />
+    </g>
+  ` : '';
+
+  return `
+    <svg viewBox="0 0 390 844" class="scene-illustration bottle-hero-svg" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="sky-bottle-dark" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#020407" />
+          <stop offset="38%" stop-color="#070b15" />
+          <stop offset="72%" stop-color="#0e1520" />
+          <stop offset="100%" stop-color="#09100d" />
+        </linearGradient>
+        <filter id="glow-blur-bottle" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="3.5" result="blur" />
+          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+        <linearGradient id="glass-specular-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8" />
+          <stop offset="30%" stop-color="#80d8e8" stop-opacity="0.4" />
+          <stop offset="100%" stop-color="#1c3038" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+
+      <!-- Nocturnal Sky Background -->
+      <rect width="100%" height="100%" fill="url(#sky-bottle-dark)" />
+
+      <!-- Faint Twinkling Night Stars -->
+      <circle cx="18%" cy="10%" r="1.4" fill="#ffffff" opacity="0.75" class="twinkle-fast" />
+      <circle cx="46%" cy="16%" r="1.2" fill="#cbe3ff" opacity="0.55" class="twinkle-slow" />
+      <circle cx="76%" cy="9%" r="1.6" fill="#ffffff" opacity="0.8" class="twinkle-fast" />
+      <circle cx="86%" cy="22%" r="1.1" fill="#ffffff" opacity="0.45" />
+      <circle cx="30%" cy="26%" r="1.0" fill="#ffffff" opacity="0.35" />
+      <circle cx="62%" cy="19%" r="1.3" fill="#d9ebfc" opacity="0.6" class="twinkle-slow" />
+
+      <!-- Crescent Moon Shrouded in Twilight Haze -->
+      <circle cx="78%" cy="13%" r="38" fill="#88afdb" opacity="0.12" filter="url(#glow-blur-bottle)" />
+      <circle cx="78%" cy="13%" r="16" fill="#eaf4fe" opacity="0.7" />
+      <circle cx="81%" cy="11%" r="15" fill="#070b15" />
+
+      <!-- Floating Fireflies with soft ambient glow -->
+      <circle cx="80" cy="620" r="2.8" fill="#e8ff70" opacity="0.85" class="twinkle-slow" filter="url(#glow-blur-bottle)" />
+      <circle cx="315" cy="570" r="3.2" fill="#e8ff70" opacity="0.8" class="twinkle-fast" filter="url(#glow-blur-bottle)" />
+      <circle cx="120" cy="520" r="2.2" fill="#e8ff70" opacity="0.7" class="twinkle-slow" filter="url(#glow-blur-bottle)" />
+      <circle cx="280" cy="670" r="2.6" fill="#e8ff70" opacity="0.75" class="twinkle-fast" filter="url(#glow-blur-bottle)" />
+      <circle cx="190" cy="545" r="2.0" fill="#e8ff70" opacity="0.6" class="twinkle-fast" filter="url(#glow-blur-bottle)" />
+      
+      <!-- Distant Silhouetted Aravalli Ridges & Kaldhara Skyline -->
+      <path fill="#05070e" d="M0 480 Q90 430 200 460 T390 450 L390 844 L0 844 Z" opacity="0.9" />
+      <path fill="#04060b" d="M0 530 Q140 495 260 535 T390 520 L390 844 L0 844 Z" />
+
+      <!-- Foreground Earth Mound with Dry Soil Fissures -->
+      <path fill="#030507" d="M-20 590 Q120 560 220 600 T410 580 L410 844 L-20 844 Z" />
+      <path d="M60 620 Q90 635 120 628 M250 610 Q280 625 310 620" stroke="#0e141a" stroke-width="1.8" fill="none" opacity="0.7" />
+
+      ${stonePedestal}
+
+      <!-- Background Swaying Grass Blades -->
+      <g fill="#08100a" class="grass-sway-back">
+        <path class="sway-blade-1" d="M40 700 Q45 580 65 525 Q55 580 50 700 Z" />
+        <path class="sway-blade-2" d="M70 710 Q85 595 110 555 Q95 610 85 710 Z" />
+        <path class="sway-blade-3" d="M305 710 Q285 585 255 535 Q280 590 315 710 Z" />
+        <path class="sway-blade-1" d="M340 720 Q335 605 315 565 Q330 620 350 720 Z" />
+        <path class="sway-blade-2" d="M15 710 Q25 610 35 560 Q20 620 10 710 Z" />
       </g>
-    ` : '';
-    return `
-      <svg viewBox="0 0 400 700" class="scene-svg bottle-hero-svg" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="sky-bottle-dark" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#030408" />
-            <stop offset="40%" stop-color="#080c16" />
-            <stop offset="75%" stop-color="#0f1520" />
-            <stop offset="100%" stop-color="#0b110e" />
-          </linearGradient>
-          <filter id="glow-blur-bottle" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="3.5" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
-          </filter>
-        </defs>
 
-        <!-- Almost-Dark Sky Background -->
-        <rect width="100%" height="100%" fill="url(#sky-bottle-dark)" />
+      <!-- The Ancient Glass Bottle (Interactive Hero) -->
+      <g id="interactive-bottle-group" class="interactive-bottle-hero" transform="${bottleTransform}">
+        <!-- Ambient Radial Glow around Glass -->
+        <ellipse cx="60" cy="20" rx="95" ry="48" fill="#7acbd8" opacity="0.14" class="bottle-glow" />
 
-        <!-- Distant Faint Stars in the Dark Sky -->
-        <circle cx="18%" cy="10%" r="1.4" fill="#ffffff" opacity="0.7" class="twinkle-fast" />
-        <circle cx="46%" cy="16%" r="1.2" fill="#cbe3ff" opacity="0.5" class="twinkle-slow" />
-        <circle cx="76%" cy="9%" r="1.6" fill="#ffffff" opacity="0.75" class="twinkle-fast" />
-        <circle cx="86%" cy="22%" r="1.1" fill="#ffffff" opacity="0.45" />
-        <circle cx="30%" cy="26%" r="1.0" fill="#ffffff" opacity="0.35" />
+        <!-- Cast Ground Shadow -->
+        <ellipse cx="60" cy="42" rx="76" ry="18" fill="#010204" opacity="0.85" />
 
-        <!-- Distant Crescent Moon shrouded in twilight haze -->
-        <circle cx="78%" cy="13%" r="32" fill="#88afdb" opacity="0.1" filter="url(#glow-blur-bottle)" />
-        <circle cx="78%" cy="13%" r="15" fill="#d9ebfc" opacity="0.6" />
-        <circle cx="81%" cy="11%" r="14" fill="#080c16" />
+        <!-- Outer Glass Body (Thick vintage hand-blown glass) -->
+        <path d="M10 15 C10 -2, 30 -6, 45 4 L105 9 C126 11, 137 24, 137 38 C137 53, 126 64, 105 67 L45 70 C28 80, 10 74, 10 55 Z" 
+              fill="#182c33" opacity="0.8" stroke="#68b9c7" stroke-width="2.4" />
 
-        <!-- Floating Fireflies drifting near the ground -->
-        <circle cx="80" cy="560" r="2.8" fill="#e8ff70" opacity="0.8" class="twinkle-slow" filter="url(#glow-blur-bottle)" />
-        <circle cx="315" cy="510" r="3.2" fill="#e8ff70" opacity="0.75" class="twinkle-fast" filter="url(#glow-blur-bottle)" />
-        <circle cx="120" cy="460" r="2.2" fill="#e8ff70" opacity="0.65" class="twinkle-slow" filter="url(#glow-blur-bottle)" />
-        <circle cx="280" cy="610" r="2.6" fill="#e8ff70" opacity="0.7" class="twinkle-fast" filter="url(#glow-blur-bottle)" />
+        <!-- Glass Inner Refraction & Caustics -->
+        <path d="M15 25 C15 13, 32 8, 48 16 L100 20 C118 22, 129 31, 129 40 C129 49, 118 56, 100 58 L48 60 C32 66, 15 56, 15 42 Z" 
+              fill="#0d1d21" opacity="0.9" />
         
-        <!-- Distant Silhouetted Hills -->
-        <path fill="#060810" d="M0 450 Q90 400 200 430 T400 420 L400 700 L0 700 Z" />
-        
-        <!-- Midground Overgrown Ridge -->
-        <path fill="#05070c" d="M0 490 Q140 460 260 500 T400 485 L400 700 L0 700 Z" />
-
-        <!-- Foreground Ground Mound -->
-        <path fill="#040608" d="M-20 550 Q120 520 220 560 T420 540 L420 720 L-20 720 Z" />
-
-        ${stonePedestal}
-
-        <!-- Background Tall Grass Blades (Swaying with CSS) -->
-        <g fill="#09120a" class="grass-sway-back">
-          <path class="sway-blade-1" d="M40 640 Q45 520 65 465 Q55 520 50 640 Z" />
-          <path class="sway-blade-2" d="M70 650 Q85 535 110 495 Q95 550 85 650 Z" />
-          <path class="sway-blade-3" d="M305 650 Q285 525 255 475 Q280 530 315 650 Z" />
-          <path class="sway-blade-1" d="M340 660 Q335 545 315 505 Q330 560 350 660 Z" />
+        <!-- Rolled Paper Inside the Bottle (With animation hook) -->
+        <g id="bottle-scroll-inside" class="rolled-scroll-inside">
+          <path d="M32 29 C32 23, 38 21, 44 23 L96 27 C102 28, 104 35, 104 41 C104 47, 100 51, 94 50 L42 45 C36 44, 32 37, 32 29 Z" 
+                fill="#f0d5a8" stroke="#8b5a2b" stroke-width="1.3" />
+          <!-- Crimson Sealing Ribbon & Wax Seal -->
+          <path d="M68 25 L66 49" stroke="#9e1620" stroke-width="3.2" />
+          <circle cx="67" cy="37" r="5" fill="#750c14" stroke="#4a050b" stroke-width="1" />
+          <circle cx="67" cy="37" r="2.2" fill="#9e1620" />
+          <!-- Scroll Rolled Spirals -->
+          <ellipse cx="36" cy="34" rx="4.5" ry="9.5" fill="#dbb77d" stroke="#6e451c" stroke-width="1.1" />
+          <ellipse cx="98" cy="39" rx="4" ry="8.5" fill="#dbb77d" stroke="#6e451c" stroke-width="1.1" />
+          <!-- Faint handwriting lines on scroll -->
+          <line x1="45" y1="30" x2="60" y2="31" stroke="#5a3d1c" stroke-width="0.8" opacity="0.6" />
+          <line x1="74" y1="33" x2="90" y2="34" stroke="#5a3d1c" stroke-width="0.8" opacity="0.6" />
         </g>
 
-        <!-- The Ancient Glass Bottle -->
-        <g id="interactive-bottle-group" class="interactive-bottle-hero" transform="${bottleTransform}">
-          <!-- Ambient Glow around Glass -->
-          <ellipse cx="60" cy="20" rx="85" ry="42" fill="#7acbd8" opacity="0.12" class="bottle-glow" />
+        <!-- Bottle Neck & Rim Lip -->
+        <path d="M10 25 L-12 28 C-16 29, -19 36, -19 42 C-19 48, -16 54, -12 55 L10 58" 
+              fill="#223b42" stroke="#68b9c7" stroke-width="2.4" />
+        <ellipse cx="-16" cy="41.5" rx="4.5" ry="11.5" fill="#112328" stroke="#7acbd8" stroke-width="2.2" />
 
-          <!-- Cast Ground Shadow -->
-          <ellipse cx="60" cy="42" rx="72" ry="16" fill="#020305" opacity="0.75" />
+        <!-- Weathered Cork Stopper (Animated pop-off) -->
+        <path id="bottle-cork-stopper" class="bottle-cork" d="M-17 32 L-29 34 C-33 35, -33 46, -29 47 L-17 49 Z" fill="#997547" stroke="#523d21" stroke-width="1.6" />
 
-          <!-- Outer Glass Body -->
-          <path d="M10 15 C10 0, 30 -5, 45 5 L105 10 C125 12, 135 25, 135 38 C135 52, 125 62, 105 65 L45 68 C30 78, 10 72, 10 55 Z" 
-                fill="#1c3038" opacity="0.75" stroke="#68b9c7" stroke-width="2.2" />
+        <!-- Glass Specular Highlight Streaks -->
+        <path d="M22 17 L106 21" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" opacity="0.65" />
+        <path d="M30 24 L96 27" stroke="#8ce2f0" stroke-width="1.2" stroke-linecap="round" opacity="0.45" />
+        <ellipse cx="112" cy="38" rx="4" ry="8" fill="#ffffff" opacity="0.25" />
+      </g>
 
-          <!-- Glass Inner Depth -->
-          <path d="M15 25 C15 15, 32 10, 48 18 L100 22 C118 24, 128 32, 128 40 C128 48, 118 54, 100 56 L48 58 C32 64, 15 55, 15 42 Z" 
-                fill="#0f2126" opacity="0.85" />
-          
-          <!-- Rolled Paper Inside the Bottle (With animation hook) -->
-          <g id="bottle-scroll-inside" class="rolled-scroll-inside">
-            <path d="M32 30 C32 24, 38 22, 44 24 L96 28 C102 29, 104 36, 104 42 C104 48, 100 52, 94 51 L42 46 C36 45, 32 38, 32 30 Z" 
-                  fill="#eed2a4" stroke="#8b5a2b" stroke-width="1.2" />
-            <!-- Red Sealing Cord -->
-            <path d="M68 26 L66 50" stroke="#a31924" stroke-width="3" />
-            <circle cx="67" cy="38" r="4.5" fill="#750c14" />
-            <!-- Scroll Rolled Edges -->
-            <ellipse cx="36" cy="35" rx="4" ry="9" fill="#d9b67c" stroke="#6e451c" stroke-width="1" />
-            <ellipse cx="98" cy="40" rx="3.5" ry="8" fill="#d9b67c" stroke="#6e451c" stroke-width="1" />
-          </g>
+      <!-- Foreground Wild Grass Clusters Framing the Base -->
+      <g fill="#050b06" class="grass-sway-front">
+        <path class="sway-blade-2" d="M100 844 Q120 735 135 685 Q125 745 115 844 Z" />
+        <path class="sway-blade-1" d="M130 844 Q150 715 185 670 Q160 730 145 844 Z" />
+        <path class="sway-blade-3" d="M220 844 Q240 755 270 695 Q245 765 235 844 Z" />
+        <path class="sway-blade-2" d="M260 844 Q280 705 310 655 Q285 720 275 844 Z" />
+        <path class="sway-blade-1" d="M310 844 Q330 740 355 700 Q340 765 330 844 Z" />
+      </g>
 
-          <!-- Bottle Neck & Mouth -->
-          <path d="M10 25 L-12 28 C-16 29, -18 36, -18 42 C-18 48, -16 54, -12 55 L10 58" 
-                fill="#243f47" stroke="#68b9c7" stroke-width="2.2" />
-          <ellipse cx="-16" cy="41.5" rx="4" ry="11" fill="#13272c" stroke="#7acbd8" stroke-width="2" />
-
-          <!-- Weathered Cork Stopper (Animated pop-off) -->
-          <path id="bottle-cork-stopper" class="bottle-cork" d="M-17 33 L-28 35 C-32 36, -32 46, -28 47 L-17 49 Z" fill="#9c7a4c" stroke="#523d21" stroke-width="1.5" />
-
-          <!-- Glass Specular Highlight Reflection -->
-          <path d="M22 18 L104 22" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" opacity="0.6" />
-          <path d="M30 25 L95 28" stroke="#ffffff" stroke-width="1" stroke-linecap="round" opacity="0.35" />
-        </g>
-
-        <!-- Foreground Wild Grass Covering Bottle Base -->
-        <g fill="#070e08" class="grass-sway-front">
-          <path class="sway-blade-2" d="M100 700 Q120 595 135 545 Q125 605 115 700 Z" />
-          <path class="sway-blade-1" d="M130 700 Q150 575 185 530 Q160 590 145 700 Z" />
-          <path class="sway-blade-3" d="M220 700 Q240 615 270 555 Q245 625 235 700 Z" />
-          <path class="sway-blade-2" d="M260 700 Q280 565 310 515 Q285 580 275 700 Z" />
-        </g>
-
-        <!-- Pulsing Tap Prompt -->
-        <g id="tap-bottle-beacon" transform="translate(195, 545)" class="tap-hint-beacon">
-          <circle cx="0" cy="0" r="32" fill="none" stroke="#f6d365" stroke-width="2" opacity="0.8" class="pulse-ring" />
-          <circle cx="0" cy="0" r="12" fill="#f6d365" opacity="0.85" class="pulse-dot" />
-          <text x="0" y="52" text-anchor="middle" fill="#fae6be" font-size="12" letter-spacing="3" font-family="'Cinzel', serif" font-weight="700">TAP THE BOTTLE</text>
-        </g>
-      </svg>
-    `;
+      <!-- Pulsing Tap Prompt Beacon -->
+      <g id="tap-bottle-beacon" transform="translate(195, 605)" class="tap-hint-beacon">
+        <circle cx="0" cy="0" r="32" fill="none" stroke="#f6d365" stroke-width="2" opacity="0.8" class="pulse-ring" />
+        <circle cx="0" cy="0" r="12" fill="#f6d365" opacity="0.85" class="pulse-dot" />
+        <text x="0" y="52" text-anchor="middle" fill="#fae6be" font-size="12" letter-spacing="3" font-family="'Cinzel', serif" font-weight="700">TAP THE BOTTLE</text>
+      </g>
+    </svg>
+  `;
+})(isSecondPlaythrough);
   },
 
   // 2. SCENE 01: Village Entrance
   renderEntranceScene() {
-    return `
-      <svg viewBox="0 0 400 700" class="scene-svg" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        ${this.getAtmosphericSky('entrance')}
+    return (function renderEntranceScene() {
+  return `
+    <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
+      ${this.getAtmosphericSky('entrance')}
 
-        <!-- Distant Dry Fields & Aravalli Ridges -->
-        <path d="M0 430 Q100 395 200 415 T400 405 L400 460 L0 460 Z" class="landscape-fill" opacity="0.7" />
-        <path d="M0 445 Q130 420 260 440 T400 430 L400 480 L0 480 Z" class="ridge-fill" opacity="0.8" />
+      <!-- Distant Village Ruins & Temple Shikhara on Horizon -->
+      <g class="distant-village-layer">
+        <path class="day-only" fill="#9e714e" opacity="0.65" d="M0 450 Q90 420 190 440 T390 430 L390 490 L0 490 Z" />
+        <path class="night-only" fill="#0c121e" opacity="0.8" d="M0 450 Q90 420 190 440 T390 430 L390 490 L0 490 Z" />
+        
+        <!-- Distant Shikhara Spire in vanishing point -->
+        <polygon points="195,410 198,445 192,445" fill="#593b22" class="day-only" opacity="0.6" />
+        <polygon points="195,410 198,445 192,445" fill="#080c14" class="night-only" opacity="0.7" />
+      </g>
 
-        <!-- Distant Temple Spire Silhouette on Horizon -->
-        <g class="distant-temple-silhouette" transform="translate(200, 375)">
-          <polygon points="0,40 -6,40 -1,15 -1,0 1,0 1,15 6,40" fill="#382619" />
-          <line x1="0" y1="0" x2="0" y2="-6" stroke="#c99738" stroke-width="1.5" />
-          <circle cx="0" cy="-6" r="1.5" fill="#c99738" />
+      <!-- Dusty Receding Road with Stone Edge Curbs -->
+      <g id="entrance-road-bed">
+        <!-- Dirt Road Ground Base -->
+        <polygon points="155,445 235,445 375,844 15,844" fill="url(#ground-dirt-day)" class="day-only" />
+        <polygon points="155,445 235,445 375,844 15,844" fill="url(#ground-dirt-night)" class="night-only" />
+
+        <!-- Weathered Flagstone Pavement Center Track -->
+        <polygon points="172,445 218,445 295,844 95,844" fill="url(#pat-cobbles)" class="day-only" opacity="0.85" />
+        <polygon points="172,445 218,445 295,844 95,844" fill="url(#pat-cobbles-night)" class="night-only" opacity="0.75" />
+
+        <!-- Bullock Cart Wheel Ruts in Dust -->
+        <path d="M178 445 Q184 620 135 844" stroke="#684729" stroke-width="3" fill="none" opacity="0.4" stroke-dasharray="14 12" class="day-only" />
+        <path d="M212 445 Q216 620 255 844" stroke="#684729" stroke-width="3" fill="none" opacity="0.4" stroke-dasharray="16 10" class="day-only" />
+        <path d="M178 445 Q184 620 135 844" stroke="#0a0f18" stroke-width="3" fill="none" opacity="0.6" stroke-dasharray="14 12" class="night-only" />
+        <path d="M212 445 Q216 620 255 844" stroke="#0a0f18" stroke-width="3" fill="none" opacity="0.6" stroke-dasharray="16 10" class="night-only" />
+
+        <!-- Scattered Roadside Stones & Gravel -->
+        <g class="day-only" fill="#755234" opacity="0.75">
+          <ellipse cx="110" cy="720" rx="5" ry="3" />
+          <ellipse cx="125" cy="735" rx="3.5" ry="2" />
+          <ellipse cx="285" cy="690" rx="6" ry="3.5" />
+          <ellipse cx="300" cy="705" rx="4" ry="2.2" />
+          <ellipse cx="185" cy="540" rx="3" ry="1.8" />
         </g>
-
-        <!-- Central Dusty Pathway stretching into the village -->
-        <polygon class="dirt-road" points="160,410 240,410 375,700 25,700" />
-        <path d="M190 410 Q195 530 175 700" stroke="#795535" stroke-width="2" opacity="0.25" stroke-dasharray="10 15" />
-        <path d="M210 410 Q215 530 235 700" stroke="#795535" stroke-width="2" opacity="0.25" stroke-dasharray="8 12" />
-
-        <!-- Village Houses Flanking the Path (Left and Right) -->
-        <!-- Left Village House Haveli Wall -->
-        <g class="village-house-left" transform="translate(0, 240)">
-          <!-- Whitewash/Earthen Wall -->
-          <polygon points="0,150 90,130 90,260 0,280" class="haveli-wall" />
-          <!-- Earthen Brick Exposure Patch -->
-          <path d="M15 160 Q35 150 45 170 Q35 190 10 180 Z" class="brick-patch" />
-          <!-- Wooden Roof Eaves & Clay Tiles -->
-          <polygon points="-10,150 98,128 92,118 -10,140" class="wood-eaves" />
-          <!-- Wooden Window Grate -->
-          <rect x="25" y="195" width="30" height="35" rx="2" class="window-frame" />
-          <rect x="28" y="198" width="24" height="29" fill="#0d0e14" />
-          <line x1="40" y1="198" x2="40" y2="227" stroke="#482e1c" stroke-width="2" />
-          <!-- Small Clay Pot at Corner -->
-          <ellipse cx="78" cy="256" rx="8" ry="4" fill="#000" opacity="0.3" />
-          <ellipse cx="78" cy="250" rx="7" ry="6" fill="#8f492b" stroke="#522310" stroke-width="1.2" />
+        <g class="night-only" fill="#0d111a" opacity="0.8">
+          <ellipse cx="110" cy="720" rx="5" ry="3" />
+          <ellipse cx="125" cy="735" rx="3.5" ry="2" />
+          <ellipse cx="285" cy="690" rx="6" ry="3.5" />
+          <ellipse cx="300" cy="705" rx="4" ry="2.2" />
+          <ellipse cx="185" cy="540" rx="3" ry="1.8" />
         </g>
+      </g>
 
-        <!-- Right Village House Haveli Wall -->
-        <g class="village-house-right" transform="translate(310, 250)">
-          <!-- Mud/Brick Wall -->
-          <polygon points="0,125 90,145 90,270 0,250" class="haveli-wall" />
-          <!-- Brick Exposure -->
-          <path d="M40 160 Q70 150 80 180 Q60 200 35 190 Z" class="brick-patch" />
-          <!-- Eaves -->
-          <polygon points="-5,123 100,143 100,133 -5,113" class="wood-eaves" />
+      <!-- Flanking Left Abandoned Haveli Wall -->
+      <g class="village-house-left" transform="translate(0, 260)">
+        <!-- Plaster Wall Base -->
+        <polygon points="0,170 95,145 95,340 0,360" fill="url(#plaster-cream-day)" class="day-only" />
+        <polygon points="0,170 95,145 95,340 0,360" fill="url(#plaster-cream-night)" class="night-only" />
+        
+        <!-- Large Exposed Brick Patch Beneath Peeling Lime Plaster -->
+        <polygon points="8,180 65,168 58,230 4,235" fill="url(#pat-brick)" class="day-only" />
+        <polygon points="8,180 65,168 58,230 4,235" fill="url(#pat-brick-night)" class="night-only" />
+        <!-- Plaster ragged tear borders -->
+        <path d="M8 180 Q35 165 65 168 Q58 230 4 235 Z" stroke="#85684a" stroke-width="1.8" fill="none" opacity="0.6" class="day-only" />
+        <path d="M8 180 Q35 165 65 168 Q58 230 4 235 Z" stroke="#121622" stroke-width="1.8" fill="none" opacity="0.7" class="night-only" />
+
+        <!-- Tiled Eaves with Terracotta Khaprail Pattern -->
+        <polygon points="-10,170 102,143 98,126 -10,154" fill="url(#pat-khaprail)" class="day-only" />
+        <polygon points="-10,170 102,143 98,126 -10,154" fill="url(#pat-khaprail-night)" class="night-only" />
+        <!-- Eave Shadow Cast -->
+        <polygon points="0,170 95,145 95,162 0,188" fill="#4d321c" opacity="0.35" class="day-only" />
+        <polygon points="0,170 95,145 95,162 0,188" fill="#080a10" opacity="0.6" class="night-only" />
+
+        <!-- Ground Floor Barred Window -->
+        <rect x="22" y="240" width="34" height="42" rx="3" fill="#3b2413" class="day-only" />
+        <rect x="22" y="240" width="34" height="42" rx="3" fill="#090d14" class="night-only" />
+        <rect x="25" y="243" width="28" height="36" rx="2" fill="#140b05" class="day-only" />
+        <rect x="25" y="243" width="28" height="36" rx="2" fill="#05070a" class="night-only" />
+        <!-- Iron Bars -->
+        <line x1="32" y1="243" x2="32" y2="279" stroke="#684729" stroke-width="1.8" class="day-only" />
+        <line x1="39" y1="243" x2="39" y2="279" stroke="#684729" stroke-width="1.8" class="day-only" />
+        <line x1="46" y1="243" x2="46" y2="279" stroke="#684729" stroke-width="1.8" class="day-only" />
+        <line x1="32" y1="243" x2="32" y2="279" stroke="#222838" stroke-width="1.8" class="night-only" />
+        <line x1="39" y1="243" x2="39" y2="279" stroke="#222838" stroke-width="1.8" class="night-only" />
+        <line x1="46" y1="243" x2="46" y2="279" stroke="#222838" stroke-width="1.8" class="night-only" />
+
+        <!-- Weathered Terracotta Water Pot (Matka) on Stoop -->
+        <ellipse cx="78" cy="336" rx="10" ry="5" fill="#000" opacity="0.3" class="day-only" />
+        <ellipse cx="78" cy="328" rx="8" ry="7" fill="#8f492b" stroke="#522310" stroke-width="1.2" class="day-only" />
+        <ellipse cx="78" cy="322" rx="4.5" ry="1.8" fill="#522310" class="day-only" />
+        <ellipse cx="78" cy="336" rx="10" ry="5" fill="#000" opacity="0.5" class="night-only" />
+        <ellipse cx="78" cy="328" rx="8" ry="7" fill="#2d1c24" stroke="#120c10" stroke-width="1.2" class="night-only" />
+        <ellipse cx="78" cy="322" rx="4.5" ry="1.8" fill="#120c10" class="night-only" />
+      </g>
+
+      <!-- Flanking Right Abandoned Haveli Wall -->
+      <g class="village-house-right" transform="translate(295, 270)">
+        <polygon points="0,140 95,160 95,350 0,330" fill="url(#plaster-cream-day)" class="day-only" />
+        <polygon points="0,140 95,160 95,350 0,330" fill="url(#plaster-cream-night)" class="night-only" />
+        <!-- Exposed Brick Patch -->
+        <polygon points="25,175 75,168 80,225 30,230" fill="url(#pat-brick)" class="day-only" />
+        <polygon points="25,175 75,168 80,225 30,230" fill="url(#pat-brick-night)" class="night-only" />
+        <!-- Tiled Eaves -->
+        <polygon points="-5,138 105,158 105,142 -5,122" fill="url(#pat-khaprail)" class="day-only" />
+        <polygon points="-5,138 105,158 105,142 -5,122" fill="url(#pat-khaprail-night)" class="night-only" />
+      </g>
+
+      <!-- Overarching Ancient Peepal Tree Foliage & Gnarled Boughs -->
+      <g class="entrance-overhanging-tree">
+        <!-- Main Gnarled Branch arching from left -->
+        <path d="M-10 240 Q40 180 85 150 Q140 120 220 110" stroke="#362215" stroke-width="22" fill="none" stroke-linecap="round" class="day-only" />
+        <path d="M-10 240 Q40 180 85 150 Q140 120 220 110" stroke="#0f1118" stroke-width="22" fill="none" stroke-linecap="round" class="night-only" />
+        <path d="M85 150 Q130 90 260 70" stroke="#2d1c11" stroke-width="12" fill="none" stroke-linecap="round" class="day-only" />
+        <path d="M85 150 Q130 90 260 70" stroke="#0a0c12" stroke-width="12" fill="none" stroke-linecap="round" class="night-only" />
+        <!-- Hanging Aerial Tendrils -->
+        <path d="M60 170 Q55 270 50 360" stroke="#362215" stroke-width="3" fill="none" opacity="0.8" class="day-only" />
+        <path d="M120 140 Q125 240 120 320" stroke="#362215" stroke-width="2.5" fill="none" opacity="0.75" class="day-only" />
+        <path d="M60 170 Q55 270 50 360" stroke="#12151e" stroke-width="3" fill="none" opacity="0.8" class="night-only" />
+        <path d="M120 140 Q125 240 120 320" stroke="#12151e" stroke-width="2.5" fill="none" opacity="0.75" class="night-only" />
+        
+        <!-- Dense Layered Foliage Canopy -->
+        <g class="day-only">
+          <ellipse cx="60" cy="110" rx="90" ry="70" fill="#243820" />
+          <ellipse cx="160" cy="80" rx="100" ry="65" fill="#2c4427" />
+          <ellipse cx="270" cy="95" rx="80" ry="60" fill="#365430" />
+          <!-- Sunlit Top Leaves -->
+          <ellipse cx="140" cy="55" rx="75" ry="45" fill="#476b3f" opacity="0.85" />
+          <ellipse cx="240" cy="65" rx="65" ry="40" fill="#527d49" opacity="0.75" />
         </g>
-
-        <!-- Large Mature Peepal / Banyan Tree Canopy Arching Overhead -->
-        <g class="mature-tree-canopy">
-          <!-- Gnarled Trunk on Left behind arch -->
-          <path d="M25 430 Q35 280 60 200 Q75 160 90 140" stroke="#3d2a1b" stroke-width="18" fill="none" stroke-linecap="round" />
-          <path d="M60 200 Q120 150 200 130" stroke="#322215" stroke-width="10" fill="none" stroke-linecap="round" />
-          <!-- Foliage Canopy -->
-          <path d="M-20 170 C-30 80, 60 40, 150 60 C230 40, 320 80, 310 160 C300 210, 240 220, 200 200 C150 220, 50 220, 10 190 Z" 
-                class="banyan-canopy" />
-          <circle cx="80" cy="110" r="75" class="banyan-canopy-lobe" />
-          <circle cx="190" cy="90" r="85" class="banyan-canopy-lobe" />
+        <g class="night-only">
+          <ellipse cx="60" cy="110" rx="90" ry="70" fill="#0b130e" />
+          <ellipse cx="160" cy="80" rx="100" ry="65" fill="#0e1711" />
+          <ellipse cx="270" cy="95" rx="80" ry="60" fill="#121d15" />
         </g>
+      </g>
 
-        <!-- The Weathered Stone Gate of Kaldhara -->
-        <g class="ancient-archway">
-          <!-- Left Stone Pillar -->
-          <rect x="70" y="190" width="44" height="290" class="stone-pillar" />
-          <rect x="65" y="180" width="54" height="15" class="stone-cap" />
-          <rect x="62" y="475" width="60" height="18" class="stone-base" />
-          <line x1="82" y1="210" x2="82" y2="455" stroke="#000" opacity="0.2" stroke-width="2" />
-          <path d="M78 260 L92 280 L88 310" stroke="#000" opacity="0.4" stroke-width="2" fill="none" />
+      <!-- THE MONUMENTAL STONE GATEWAY OF KALDHARA -->
+      <g id="kaldhara-border-gateway">
+        <!-- Cast Gateway Shadow across Road (DAY & NIGHT) -->
+        <polygon points="65,580 325,580 380,680 10,680" fill="url(#ground-shadow-day)" class="day-only" />
+        <polygon points="65,580 325,580 380,680 10,680" fill="url(#ground-shadow-night)" class="night-only" />
 
-          <!-- Right Stone Pillar -->
-          <rect x="286" y="190" width="44" height="290" class="stone-pillar" />
-          <rect x="281" y="180" width="54" height="15" class="stone-cap" />
-          <rect x="278" y="475" width="60" height="18" class="stone-base" />
-          <path d="M315 240 L302 270 L310 320" stroke="#000" opacity="0.4" stroke-width="2" fill="none" />
+        <!-- Left Sandstone Ashlar Pillar -->
+        <rect x="68" y="210" width="46" height="370" fill="url(#sandstone-day)" stroke="#684729" stroke-width="2" class="day-only" />
+        <rect x="68" y="210" width="46" height="370" fill="url(#sandstone-night)" stroke="#121622" stroke-width="2" class="night-only" />
+        <!-- Pillar Mouldings & Joints -->
+        <rect x="62" y="198" width="58" height="16" rx="2" fill="url(#sandstone-highlight)" class="day-only" />
+        <rect x="62" y="198" width="58" height="16" rx="2" fill="#2d3750" class="night-only" />
+        <rect x="60" y="570" width="62" height="20" rx="2" fill="url(#sandstone-day)" class="day-only" />
+        <rect x="60" y="570" width="62" height="20" rx="2" fill="#181e2a" class="night-only" />
+        <!-- Masonry Course Lines & Weathering Cracks -->
+        <line x1="68" y1="300" x2="114" y2="300" stroke="#52351c" stroke-width="1.5" opacity="0.5" class="day-only" />
+        <line x1="68" y1="390" x2="114" y2="390" stroke="#52351c" stroke-width="1.5" opacity="0.5" class="day-only" />
+        <line x1="68" y1="480" x2="114" y2="480" stroke="#52351c" stroke-width="1.5" opacity="0.5" class="day-only" />
+        <line x1="68" y1="300" x2="114" y2="300" stroke="#0d1017" stroke-width="1.5" opacity="0.7" class="night-only" />
+        <line x1="68" y1="390" x2="114" y2="390" stroke="#0d1017" stroke-width="1.5" opacity="0.7" class="night-only" />
+        <line x1="68" y1="480" x2="114" y2="480" stroke="#0d1017" stroke-width="1.5" opacity="0.7" class="night-only" />
+        <path d="M78 320 L88 345 L84 370" stroke="#3d2613" stroke-width="1.8" fill="none" opacity="0.6" class="day-only" />
+        <path d="M78 320 L88 345 L84 370" stroke="#0a0d14" stroke-width="1.8" fill="none" opacity="0.8" class="night-only" />
 
-          <!-- Arch Beam -->
-          <path d="M60 180 L340 180 L325 135 Q200 110 75 135 Z" class="stone-arch" />
-          <!-- Plaque -->
-          <rect x="120" y="138" width="160" height="32" rx="4" class="stone-plaque" />
-          <text x="200" y="160" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="16" letter-spacing="4" class="arch-inscription">KALDHARA</text>
-          <text x="200" y="169" text-anchor="middle" font-family="'Cinzel', serif" font-size="8" letter-spacing="2" opacity="0.6" class="arch-inscription">1978</text>
-          
-          <!-- Hanging Saffron Cloth Fluttering in Wind -->
-          <g id="hotspot-hanging-cloth" class="interactive-object" transform="translate(142, 180)">
-            <path d="M0 0 Q4 35 -3 70 Q0 35 4 0" fill="#d97724" class="flutter-slow" />
-            <path d="M6 0 Q10 25 4 50 Q7 25 10 0" fill="#f59e0b" opacity="0.75" class="flutter-slow" />
-          </g>
+        <!-- Right Sandstone Ashlar Pillar -->
+        <rect x="276" y="210" width="46" height="370" fill="url(#sandstone-day)" stroke="#684729" stroke-width="2" class="day-only" />
+        <rect x="276" y="210" width="46" height="370" fill="url(#sandstone-night)" stroke="#121622" stroke-width="2" class="night-only" />
+        <rect x="270" y="198" width="58" height="16" rx="2" fill="url(#sandstone-highlight)" class="day-only" />
+        <rect x="270" y="198" width="58" height="16" rx="2" fill="#2d3750" class="night-only" />
+        <rect x="268" y="570" width="62" height="20" rx="2" fill="url(#sandstone-day)" class="day-only" />
+        <rect x="268" y="570" width="62" height="20" rx="2" fill="#181e2a" class="night-only" />
+        <line x1="276" y1="300" x2="322" y2="300" stroke="#52351c" stroke-width="1.5" opacity="0.5" class="day-only" />
+        <line x1="276" y1="390" x2="322" y2="390" stroke="#52351c" stroke-width="1.5" opacity="0.5" class="day-only" />
+        <line x1="276" y1="480" x2="322" y2="480" stroke="#52351c" stroke-width="1.5" opacity="0.5" class="day-only" />
+        <line x1="276" y1="300" x2="322" y2="300" stroke="#0d1017" stroke-width="1.5" opacity="0.7" class="night-only" />
+        <line x1="276" y1="390" x2="322" y2="390" stroke="#0d1017" stroke-width="1.5" opacity="0.7" class="night-only" />
+        <line x1="276" y1="480" x2="322" y2="480" stroke="#0d1017" stroke-width="1.5" opacity="0.7" class="night-only" />
+
+        <!-- Massive Carved Sandstone Arch Lintel -->
+        <polygon points="52,204 338,204 328,140 62,140" fill="url(#sandstone-day)" stroke="#684729" stroke-width="2.5" class="day-only" />
+        <polygon points="52,204 338,204 328,140 62,140" fill="url(#sandstone-night)" stroke="#121622" stroke-width="2.5" class="night-only" />
+        <!-- Cornice Projection -->
+        <polygon points="46,144 344,144 340,132 50,132" fill="url(#sandstone-highlight)" stroke="#52351c" stroke-width="1.5" class="day-only" />
+        <polygon points="46,144 344,144 340,132 50,132" fill="#2d3750" stroke="#0d1017" stroke-width="1.5" class="night-only" />
+
+        <!-- Carved Inscribed Tablet: KALDHARA 1978 -->
+        <rect x="95" y="152" width="200" height="42" rx="4" fill="#3b2413" stroke="#856038" stroke-width="1.5" class="day-only" />
+        <rect x="95" y="152" width="200" height="42" rx="4" fill="#090d14" stroke="#253245" stroke-width="1.5" class="night-only" />
+        <text x="195" y="174" text-anchor="middle" font-family="'Cinzel', serif" font-size="14" font-weight="700" letter-spacing="3" fill="#e8d5b5" class="day-only">KALDHARA</text>
+        <text x="195" y="188" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="10" font-weight="600" letter-spacing="2" fill="#caa57c" class="day-only">1978 • कुलधरा</text>
+        <text x="195" y="174" text-anchor="middle" font-family="'Cinzel', serif" font-size="14" font-weight="700" letter-spacing="3" fill="#8da4c4" class="night-only">KALDHARA</text>
+        <text x="195" y="188" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="10" font-weight="600" letter-spacing="2" fill="#5a6e88" class="night-only">1978 • कुलधरा</text>
+
+        <!-- HOTSPOT 3: TORN HANGING FABRIC (#hotspot-hanging-cloth) @ x=48%, y=28% (187.2, 236.3) -->
+        <g id="hotspot-hanging-cloth" class="interactive-object hanging-cloth-assembly" transform="translate(187, 204)">
+          <!-- Iron Wall Hook Ring -->
+          <circle cx="0" cy="0" r="3" fill="#1f140c" />
+          <!-- Tattered Cloth Ribbon hanging down and fluttering -->
+          <path d="M-2 0 Q-8 30 6 60 Q-4 90 2 120 L-6 125 Q-14 85 -2 55 Q-16 25 -4 0 Z" fill="#c7422b" opacity="0.9" class="day-only flutter-slow" />
+          <path d="M-2 0 Q-8 30 6 60 Q-4 90 2 120 L-6 125 Q-14 85 -2 55 Q-16 25 -4 0 Z" fill="#6e1f26" opacity="0.85" class="night-only flutter-slow" />
+          <line x1="0" y1="75" x2="8" y2="105" stroke="#e0654c" stroke-width="1.5" class="day-only flutter-slow" />
+          <line x1="0" y1="75" x2="8" y2="105" stroke="#94313b" stroke-width="1.5" class="night-only flutter-slow" />
         </g>
+      </g>
 
-        <!-- Left Foreground: Cracked Boundary Milestone -->
-        <g id="hotspot-stone-marker" class="interactive-object" transform="translate(72, 470)">
-          <ellipse cx="28" cy="112" rx="26" ry="8" fill="#000" opacity="0.35" />
-          <path d="M0 45 C0 20, 15 0, 30 0 C45 0, 60 20, 60 45 L60 110 L0 110 Z" class="milestone-stone" />
-          <text x="30" y="46" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="10.5" letter-spacing="1" fill="#442a15">KALDHARA</text>
-          <text x="30" y="58" text-anchor="middle" font-family="'Cinzel', serif" font-size="8" letter-spacing="1" fill="#442a15">1978</text>
-          <!-- Scratched marks -->
-          <line x1="12" y1="70" x2="48" y2="70" stroke="#772b22" stroke-width="3.5" />
-          <line x1="10" y1="78" x2="50" y2="78" stroke="#772b22" stroke-width="2.5" />
+      <!-- HOTSPOT 1: BOUNDARY MILESTONE (#hotspot-stone-marker) @ x=22%, y=68% (85.8, 573.9) -->
+      <g id="hotspot-stone-marker" class="interactive-object boundary-milestone-assembly" transform="translate(86, 574)">
+        <!-- Ground Ellipse Shadow -->
+        <ellipse cx="0" cy="46" rx="26" ry="10" fill="#000" opacity="0.4" class="day-only" />
+        <ellipse cx="0" cy="46" rx="26" ry="10" fill="#000" opacity="0.75" class="night-only" />
+        <!-- Rounded Sandstone Milestone Body -->
+        <path d="M-22 45 L-22 -15 C-22 -35, 22 -35, 22 -15 L22 45 Z" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="2" class="day-only" />
+        <path d="M-22 45 L-22 -15 C-22 -35, 22 -35, 22 -15 L22 45 Z" fill="url(#sandstone-night)" stroke="#121622" stroke-width="2" class="night-only" />
+        <!-- Top Half Painted Mustard Yellow (Traditional Indian Highway Style) -->
+        <path d="M-20 -5 C-20 -32, 20 -32, 20 -5 L20 12 L-20 12 Z" fill="#d99f36" opacity="0.85" class="day-only" />
+        <path d="M-20 -5 C-20 -32, 20 -32, 20 -5 L20 12 L-20 12 Z" fill="#5c441a" opacity="0.75" class="night-only" />
+        <!-- Chiseled Text -->
+        <text x="0" y="-8" text-anchor="middle" font-family="'Cinzel', serif" font-size="7.5" font-weight="700" fill="#241407" class="day-only">KALDHARA</text>
+        <text x="0" y="3" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="6.5" font-weight="600" fill="#241407" class="day-only">1978</text>
+        <text x="0" y="24" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="8.5" font-weight="700" fill="#422915" class="day-only">0 KM</text>
+        <text x="0" y="-8" text-anchor="middle" font-family="'Cinzel', serif" font-size="7.5" font-weight="700" fill="#c2d5ee" class="night-only">KALDHARA</text>
+        <text x="0" y="3" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="6.5" font-weight="600" fill="#8ca5c4" class="night-only">1978</text>
+        <text x="0" y="24" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="8.5" font-weight="700" fill="#8ca5c4" class="night-only">0 KM</text>
+        <!-- NIGHT Claw Scratch Marks -->
+        <g class="night-only" opacity="0.9">
+          <path d="M-14 -20 L-6 -5 M-10 -22 L-2 -7 M-6 -21 L2 -6" stroke="#991b1b" stroke-width="1.8" stroke-linecap="round" />
         </g>
+      </g>
 
-        <!-- Right Foreground: Vintage Roadster Bicycle Leaning Against Wall -->
-        <g id="hotspot-abandoned-cycle" class="interactive-object" transform="translate(265, 490) rotate(6)">
-          <ellipse cx="65" cy="98" rx="60" ry="12" fill="#000" opacity="0.4" />
-          <!-- Wheels -->
-          <circle cx="28" cy="68" r="28" stroke="#4a3728" stroke-width="3" fill="none" />
-          <circle cx="102" cy="63" r="28" stroke="#4a3728" stroke-width="3" fill="none" />
+      <!-- HOTSPOT 2: ABANDONED RUSTY ROADSTER BICYCLE (#hotspot-abandoned-cycle) @ x=76%, y=74% (296.4, 624.6) -->
+      <g id="hotspot-abandoned-cycle" class="interactive-object rusty-bicycle-assembly" transform="translate(296, 625)">
+        <!-- Ground Cast Shadow -->
+        <ellipse cx="-15" cy="46" rx="48" ry="12" fill="#000" opacity="0.4" class="day-only" />
+        <ellipse cx="-15" cy="46" rx="48" ry="12" fill="#000" opacity="0.75" class="night-only" />
+
+        <!-- Rear Wheel (Left) with Rim, Hub, and Spokes -->
+        <g transform="translate(-46, 18)">
+          <circle cx="0" cy="0" r="28" fill="none" stroke="#523924" stroke-width="3" class="day-only" />
+          <circle cx="0" cy="0" r="28" fill="none" stroke="#121620" stroke-width="3" class="night-only" />
+          <circle cx="0" cy="0" r="25" fill="none" stroke="#7a5435" stroke-width="1.2" class="day-only" />
+          <circle cx="0" cy="0" r="25" fill="none" stroke="#222a3a" stroke-width="1.2" class="night-only" />
           <!-- Spokes -->
-          <line x1="28" y1="40" x2="28" y2="96" stroke="#3b2b1f" stroke-width="1.2" />
-          <line x1="0" y1="68" x2="56" y2="68" stroke="#3b2b1f" stroke-width="1.2" />
-          <line x1="102" y1="35" x2="102" y2="91" stroke="#3b2b1f" stroke-width="1.2" />
-          <line x1="74" y1="63" x2="130" y2="63" stroke="#3b2b1f" stroke-width="1.2" />
-          <!-- Frame -->
-          <path d="M28 68 L62 68 L96 40 L52 40 Z" stroke="#684a32" stroke-width="3.5" fill="none" />
-          <line x1="62" y1="68" x2="52" y2="40" stroke="#684a32" stroke-width="3" />
-          <line x1="52" y1="40" x2="50" y2="28" stroke="#684a32" stroke-width="3" />
-          <path d="M96 40 L92 26 L82 24 M92 26 L102 24" stroke="#523924" stroke-width="3" fill="none" />
-          <ellipse cx="48" cy="26" rx="8" ry="3.5" fill="#2d1b10" />
+          <line x1="-25" y1="0" x2="25" y2="0" stroke="#7a5435" stroke-width="0.8" opacity="0.6" class="day-only" />
+          <line x1="0" y1="-25" x2="0" y2="25" stroke="#7a5435" stroke-width="0.8" opacity="0.6" class="day-only" />
+          <line x1="-18" y1="-18" x2="18" y2="18" stroke="#7a5435" stroke-width="0.8" opacity="0.6" class="day-only" />
+          <line x1="-18" y1="18" x2="18" y2="-18" stroke="#7a5435" stroke-width="0.8" opacity="0.6" class="day-only" />
+          <circle cx="0" cy="0" r="4" fill="#3b2413" class="day-only" />
+          <circle cx="0" cy="0" r="4" fill="#0b0e14" class="night-only" />
         </g>
 
-        <!-- Supernatural Night Silhouette at the Threshold -->
-        <g class="night-only entrance-apparition">
-          <ellipse cx="204" cy="415" rx="16" ry="5" fill="#000" opacity="0.75" />
-          <path d="M198 415 Q195 375 201 355 Q205 345 207 355 Q211 375 208 415 Z" fill="#090b14" opacity="0.85" />
-          <circle cx="204" cy="345" r="4.5" fill="#090b14" opacity="0.85" />
+        <!-- Front Wheel (Right) -->
+        <g transform="translate(22, 18)">
+          <circle cx="0" cy="0" r="28" fill="none" stroke="#523924" stroke-width="3" class="day-only" />
+          <circle cx="0" cy="0" r="28" fill="none" stroke="#121620" stroke-width="3" class="night-only" />
+          <circle cx="0" cy="0" r="25" fill="none" stroke="#7a5435" stroke-width="1.2" class="day-only" />
+          <circle cx="0" cy="0" r="25" fill="none" stroke="#222a3a" stroke-width="1.2" class="night-only" />
+          <line x1="-25" y1="0" x2="25" y2="0" stroke="#7a5435" stroke-width="0.8" opacity="0.6" class="day-only" />
+          <line x1="0" y1="-25" x2="0" y2="25" stroke="#7a5435" stroke-width="0.8" opacity="0.6" class="day-only" />
+          <line x1="-18" y1="-18" x2="18" y2="18" stroke="#7a5435" stroke-width="0.8" opacity="0.6" class="day-only" />
+          <line x1="-18" y1="18" x2="18" y2="-18" stroke="#7a5435" stroke-width="0.8" opacity="0.6" class="day-only" />
+          <circle cx="0" cy="0" r="4" fill="#3b2413" class="day-only" />
+          <circle cx="0" cy="0" r="4" fill="#0b0e14" class="night-only" />
         </g>
-      </svg>
-    `;
+
+        <!-- Classic Indian Roadster Diamond Frame & Chainstay -->
+        <!-- Rear stays to bottom bracket -->
+        <line x1="-46" y1="18" x2="-14" y2="18" stroke="#5a381f" stroke-width="2.5" class="day-only" />
+        <line x1="-46" y1="18" x2="-22" y2="-4" stroke="#5a381f" stroke-width="2.5" class="day-only" />
+        <!-- Seat tube -->
+        <line x1="-14" y1="18" x2="-22" y2="-12" stroke="#6b4427" stroke-width="3" class="day-only" />
+        <!-- Top tube -->
+        <line x1="-22" y1="-4" x2="10" y2="-4" stroke="#6b4427" stroke-width="3" class="day-only" />
+        <!-- Down tube -->
+        <line x1="-14" y1="18" x2="10" y2="-4" stroke="#6b4427" stroke-width="3" class="day-only" />
+        <!-- Front fork -->
+        <line x1="10" y1="-4" x2="22" y2="18" stroke="#5a381f" stroke-width="2.5" class="day-only" />
+        <line x1="10" y1="-4" x2="12" y2="-18" stroke="#6b4427" stroke-width="3" class="day-only" />
+
+        <!-- NIGHT Roadster Frame Lines -->
+        <line x1="-46" y1="18" x2="-14" y2="18" stroke="#161c28" stroke-width="2.5" class="night-only" />
+        <line x1="-46" y1="18" x2="-22" y2="-4" stroke="#161c28" stroke-width="2.5" class="night-only" />
+        <line x1="-14" y1="18" x2="-22" y2="-12" stroke="#1b2333" stroke-width="3" class="night-only" />
+        <line x1="-22" y1="-4" x2="10" y2="-4" stroke="#1b2333" stroke-width="3" class="night-only" />
+        <line x1="-14" y1="18" x2="10" y2="-4" stroke="#1b2333" stroke-width="3" class="night-only" />
+        <line x1="10" y1="-4" x2="22" y2="18" stroke="#161c28" stroke-width="2.5" class="night-only" />
+        <line x1="10" y1="-4" x2="12" y2="-18" stroke="#1b2333" stroke-width="3" class="night-only" />
+
+        <!-- Handlebars with Swept-Back Grips & Bell -->
+        <path d="M4 -18 Q12 -22 18 -16" stroke="#8a6341" stroke-width="2.5" fill="none" class="day-only" />
+        <path d="M4 -18 Q12 -22 18 -16" stroke="#252f42" stroke-width="2.5" fill="none" class="night-only" />
+        <circle cx="16" cy="-21" r="2.5" fill="#a47a3e" class="day-only" />
+        <circle cx="16" cy="-21" r="2.5" fill="#3d4960" class="night-only" />
+
+        <!-- Weathered Leather Saddle (Brooks Style) -->
+        <path d="M-30 -14 C-26 -16, -16 -16, -14 -12 C-16 -10, -28 -10, -30 -14 Z" fill="#2e190d" class="day-only" />
+        <path d="M-30 -14 C-26 -16, -16 -16, -14 -12 C-16 -10, -28 -10, -30 -14 Z" fill="#0a0d13" class="night-only" />
+
+        <!-- Chain Ring & Pedals -->
+        <circle cx="-14" cy="18" r="7" fill="none" stroke="#4a2e19" stroke-width="1.8" class="day-only" />
+        <line x1="-14" y1="18" x2="-8" y2="25" stroke="#4a2e19" stroke-width="2" class="day-only" />
+        <line x1="-14" y1="18" x2="-8" y2="25" stroke="#121620" stroke-width="2" class="night-only" />
+
+        <!-- Rear Luggage Carrier Rack -->
+        <line x1="-42" y1="-4" x2="-22" y2="-4" stroke="#5a381f" stroke-width="2" class="day-only" />
+        <line x1="-42" y1="-4" x2="-46" y2="18" stroke="#5a381f" stroke-width="1.5" class="day-only" />
+        <line x1="-42" y1="-4" x2="-22" y2="-4" stroke="#161c28" stroke-width="2" class="night-only" />
+        <line x1="-42" y1="-4" x2="-46" y2="18" stroke="#161c28" stroke-width="1.5" class="night-only" />
+      </g>
+    </svg>
+  `;
+}).call(this);
   },
 
   // 3. SCENE 02: Old Tea Stall
   renderTeaStallScene() {
-    return `
-      <svg viewBox="0 0 400 700" class="scene-svg" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        ${this.getAtmosphericSky('teastall')}
+    return (function renderTeaStallScene() {
+  return `
+    <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
+      ${this.getAtmosphericSky('teastall')}
 
-        <!-- Distant Village Roofs -->
-        <polygon points="0,430 80,400 170,435 0,445" class="distant-roofs" />
-        <polygon points="260,425 340,395 400,420 400,440 260,440" class="distant-roofs" />
+      <!-- Distant Desert Horizon & Low Sandstone Ruins -->
+      <g class="distant-landscape">
+        <path class="day-only" fill="#9e714e" opacity="0.65" d="M0 450 Q110 425 210 440 T390 435 L390 510 L0 510 Z" />
+        <path class="night-only" fill="#0d121e" opacity="0.8" d="M0 450 Q110 425 210 440 T390 435 L390 510 L0 510 Z" />
+        <!-- Low ruined haveli boundary wall in midground -->
+        <polygon points="0,480 390,470 390,520 0,530" fill="url(#sandstone-day)" opacity="0.75" class="day-only" />
+        <polygon points="0,480 390,470 390,520 0,530" fill="url(#sandstone-night)" opacity="0.85" class="night-only" />
+      </g>
 
-        <!-- Ground & Dusty Yard -->
-        <rect x="0" y="430" width="400" height="270" class="dirt-road" />
+      <!-- Dusty Crossroads Ground -->
+      <g id="teastall-ground">
+        <rect x="0" y="500" width="390" height="344" fill="url(#ground-dirt-day)" class="day-only" />
+        <rect x="0" y="500" width="390" height="344" fill="url(#ground-dirt-night)" class="night-only" />
+        <!-- Flagstone patches around shack -->
+        <polygon points="20,530 180,520 220,620 40,640" fill="url(#pat-cobbles)" class="day-only" opacity="0.6" />
+        <polygon points="20,530 180,520 220,620 40,640" fill="url(#pat-cobbles-night)" class="night-only" opacity="0.6" />
+      </g>
 
-        <!-- The Weathered Wooden Tea Stall -->
-        <g class="chai-stall" transform="translate(20, 210)">
-          <!-- Main Wooden Counter & Wall Backing -->
-          <rect x="20" y="170" width="220" height="150" class="wood-dark" />
-          <line x1="20" y1="210" x2="240" y2="210" stroke="#000" opacity="0.3" stroke-width="2" />
-          <line x1="20" y1="260" x2="240" y2="260" stroke="#000" opacity="0.3" stroke-width="2" />
+      <!-- THE OLD TEA SHACK STRUCTURE (Tapri) -->
+      <g id="tea-shack-assembly" transform="translate(10, 240)">
+        <!-- Shack Rear Wall (Dark weathered timber planks) -->
+        <polygon points="30,170 280,140 280,420 30,440" fill="#3b2615" class="day-only" />
+        <polygon points="30,170 280,140 280,420 30,440" fill="#0d1017" class="night-only" />
+        <polygon points="35,175 275,145 275,415 35,435" fill="url(#pat-wood)" class="day-only" opacity="0.8" />
+        <polygon points="35,175 275,145 275,415 35,435" fill="url(#pat-wood-night)" class="night-only" opacity="0.8" />
 
-          <!-- Overhanging Corrugated Tin Roof -->
-          <g id="hotspot-tin-roof" class="interactive-object">
-            <polygon points="5,150 260,110 275,175 10,185" class="tin-roof" />
-            <line x1="30" y1="147" x2="33" y2="183" stroke="#222" opacity="0.4" stroke-width="2" />
-            <line x1="75" y1="140" x2="78" y2="181" stroke="#222" opacity="0.4" stroke-width="2" />
-            <line x1="125" y1="132" x2="128" y2="178" stroke="#222" opacity="0.4" stroke-width="2" />
-            <line x1="180" y1="123" x2="183" y2="175" stroke="#222" opacity="0.4" stroke-width="2" />
-            <line x1="230" y1="115" x2="233" y2="172" stroke="#222" opacity="0.4" stroke-width="2" />
+        <!-- Supporting Wooden Posts -->
+        <rect x="25" y="150" width="14" height="300" fill="#4d321d" stroke="#2a180c" stroke-width="1.8" class="day-only" />
+        <rect x="25" y="150" width="14" height="300" fill="#141722" stroke="#0a0c12" stroke-width="1.8" class="night-only" />
+        <rect x="270" y="125" width="14" height="325" fill="#4d321d" stroke="#2a180c" stroke-width="1.8" class="day-only" />
+        <rect x="270" y="125" width="14" height="325" fill="#141722" stroke="#0a0c12" stroke-width="1.8" class="night-only" />
+
+        <!-- Weathered Corrugated Rusted Tin Roof -->
+        <polygon points="10,165 305,120 325,175 0,225" fill="#755a43" class="day-only" />
+        <polygon points="10,165 305,120 325,175 0,225" fill="#191c28" class="night-only" />
+        <!-- Corrugated Ridges -->
+        <line x1="45" y1="160" x2="35" y2="220" stroke="#4a3423" stroke-width="2.5" class="day-only" />
+        <line x1="95" y1="152" x2="85" y2="212" stroke="#4a3423" stroke-width="2.5" class="day-only" />
+        <line x1="145" y1="145" x2="135" y2="205" stroke="#4a3423" stroke-width="2.5" class="day-only" />
+        <line x1="195" y1="137" x2="185" y2="197" stroke="#4a3423" stroke-width="2.5" class="day-only" />
+        <line x1="245" y1="130" x2="235" y2="190" stroke="#4a3423" stroke-width="2.5" class="day-only" />
+        <line x1="45" y1="160" x2="35" y2="220" stroke="#0e1017" stroke-width="2.5" class="night-only" />
+        <line x1="95" y1="152" x2="85" y2="212" stroke="#0e1017" stroke-width="2.5" class="night-only" />
+        <line x1="145" y1="145" x2="135" y2="205" stroke="#0e1017" stroke-width="2.5" class="night-only" />
+        <line x1="195" y1="137" x2="185" y2="197" stroke="#0e1017" stroke-width="2.5" class="night-only" />
+        <line x1="245" y1="130" x2="235" y2="190" stroke="#0e1017" stroke-width="2.5" class="night-only" />
+        <!-- Rust Oxidation Patches on Tin -->
+        <path d="M50 170 Q75 160 100 175 Q85 195 55 190 Z" fill="#9e472a" opacity="0.6" class="day-only" />
+        <path d="M170 145 Q210 140 230 155 Q210 170 175 165 Z" fill="#9e472a" opacity="0.5" class="day-only" />
+        <!-- Roof Shadow Cast onto Shack -->
+        <polygon points="10,215 315,168 315,200 10,245" fill="#1f140a" opacity="0.45" class="day-only" />
+        <polygon points="10,215 315,168 315,200 10,245" fill="#05070a" opacity="0.7" class="night-only" />
+
+        <!-- HOTSPOT 3: WOODEN COUNTER (#hotspot-tea-counter) @ x=24%, y=54% (93.6, 455.8) -->
+        <g id="hotspot-tea-counter" class="interactive-object tea-counter-assembly" transform="translate(85, 215)">
+          <!-- Counter Top Slab -->
+          <polygon points="-55,0 185,-22 180,18 -60,40" fill="#5c3c22" stroke="#36200f" stroke-width="2" class="day-only" />
+          <polygon points="-55,0 185,-22 180,18 -60,40" fill="#191c28" stroke="#0c0e14" stroke-width="2" class="night-only" />
+          <!-- Planks Beneath Counter -->
+          <polygon points="-60,40 180,18 178,160 -62,175" fill="url(#pat-wood)" stroke="#2b1a0d" stroke-width="1.8" class="day-only" />
+          <polygon points="-60,40 180,18 178,160 -62,175" fill="url(#pat-wood-night)" stroke="#0a0c12" stroke-width="1.8" class="night-only" />
+
+          <!-- Hanging Wooden Painted Signboard: "KALDHARA CHAI" -->
+          <g transform="translate(60, -45)">
+            <rect x="-65" y="0" width="130" height="34" rx="3" fill="#e8d5b5" stroke="#684729" stroke-width="1.5" class="day-only" />
+            <rect x="-65" y="0" width="130" height="34" rx="3" fill="#1e2434" stroke="#2d374d" stroke-width="1.5" class="night-only" />
+            <text x="0" y="16" text-anchor="middle" font-family="'Cinzel', serif" font-size="9" font-weight="700" letter-spacing="1.5" fill="#3b2413" class="day-only">CHAI STALL</text>
+            <text x="0" y="28" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="8" font-weight="600" fill="#684729" class="day-only">कल्डहारा चाय</text>
+            <text x="0" y="16" text-anchor="middle" font-family="'Cinzel', serif" font-size="9" font-weight="700" letter-spacing="1.5" fill="#8da4c4" class="night-only">CHAI STALL</text>
+            <text x="0" y="28" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="8" font-weight="600" fill="#5a6e88" class="night-only">कल्डहारा चाय</text>
+            <!-- Hanging wires -->
+            <line x1="-50" y1="0" x2="-50" y2="-20" stroke="#3b2413" stroke-width="1.2" class="day-only" />
+            <line x1="50" y1="0" x2="50" y2="-25" stroke="#3b2413" stroke-width="1.2" class="day-only" />
+            <line x1="-50" y1="0" x2="-50" y2="-20" stroke="#0a0c12" stroke-width="1.2" class="night-only" />
+            <line x1="50" y1="0" x2="50" y2="-25" stroke="#0a0c12" stroke-width="1.2" class="night-only" />
           </g>
 
-          <!-- Wooden Support Posts -->
-          <rect x="18" y="160" width="12" height="230" class="wood-post" />
-          <rect x="235" y="150" width="12" height="240" class="wood-post" />
-
-          <!-- Hand-painted Wooden Board: 'CHAI' -->
-          <rect x="65" y="172" width="110" height="28" rx="3" class="wood-sign" />
-          <text x="120" y="191" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="14" letter-spacing="3" fill="#2d1206">CHAI STALL</text>
-
-          <!-- Hearth Stove & Brass Kettle -->
-          <g transform="translate(45, 175)">
-            <path d="M0 65 Q25 45 50 65 L50 85 L0 85 Z" class="mud-stove" />
-            <!-- Brass Kettle -->
-            <ellipse cx="25" cy="52" rx="17" ry="14" class="brass-kettle" />
-            <path d="M12 40 L38 40 L34 32 L16 32 Z" class="brass-kettle-lid" />
-            <circle cx="25" cy="30" r="3" fill="#cf9340" />
-            <path d="M10 50 Q-4 44 4 34" stroke="#87581f" stroke-width="4.5" fill="none" stroke-linecap="round" />
-            <path d="M14 36 C10 14, 40 14, 36 36" stroke="#42290d" stroke-width="3" fill="none" />
-            <!-- Night Steam Wisp -->
-            <path class="night-only wisp-steam" d="M3 32 Q-8 15 2 0 T-2 -25" stroke="#d5e8f5" stroke-width="2.5" fill="none" opacity="0.6" />
-          </g>
-
-          <!-- Metal Tea Glass on Counter -->
-          <g id="hotspot-metal-glass" class="interactive-object" transform="translate(130, 222)">
-            <ellipse cx="14" cy="28" rx="12" ry="4" fill="#000" opacity="0.3" />
-            <!-- Fluted Steel Chai Glass -->
-            <path d="M6 8 L22 8 L19 28 L9 28 Z" fill="#b0bec5" stroke="#455a64" stroke-width="1.2" />
-            <ellipse cx="14" cy="8" rx="8" ry="2.5" fill="#78909c" />
-            <!-- Tea Liquid Inside -->
-            <ellipse cx="14" cy="11" rx="7" ry="2" fill="#5d4037" />
-            <!-- Fluting Glass Ridges -->
-            <line x1="11" y1="12" x2="11" y2="26" stroke="#cfd8dc" stroke-width="1" />
-            <line x1="17" y1="12" x2="17" y2="26" stroke="#cfd8dc" stroke-width="1" />
-            <!-- Night: Warm Steam rising from the glass -->
-            <path class="night-only wisp-steam" d="M14 6 Q10 -5 16 -16" stroke="#d5e8f5" stroke-width="1.8" fill="none" opacity="0.65" />
+          <!-- Galvanized Wire Caddy with Ribbed Chai Glasses -->
+          <g transform="translate(100, -8)">
+            <!-- Wire Carrier -->
+            <rect x="-18" y="0" width="36" height="18" fill="none" stroke="#687588" stroke-width="1.4" rx="2" class="day-only" />
+            <rect x="-18" y="0" width="36" height="18" fill="none" stroke="#2a3342" stroke-width="1.4" rx="2" class="night-only" />
+            <!-- Chai Glass 1 -->
+            <polygon points="-14,-14 -6,-14 -7,2 -13,2" fill="#d4e8fc" opacity="0.65" stroke="#7aa5d2" stroke-width="0.8" class="day-only" />
+            <polygon points="-14,-14 -6,-14 -7,2 -13,2" fill="#1c2838" opacity="0.75" stroke="#3d5675" stroke-width="0.8" class="night-only" />
+            <!-- Chai Glass 2 (Half full with cold dark tea) -->
+            <polygon points="4,-14 12,-14 11,2 5,2" fill="#d4e8fc" opacity="0.65" stroke="#7aa5d2" stroke-width="0.8" class="day-only" />
+            <polygon points="4,-14 12,-14 11,2 5,2" fill="#1c2838" opacity="0.75" stroke="#3d5675" stroke-width="0.8" class="night-only" />
+            <polygon points="5,-5 11,-5 10.5,1.5 5.5,1.5" fill="#8f451b" opacity="0.8" class="day-only" />
+            <polygon points="5,-5 11,-5 10.5,1.5 5.5,1.5" fill="#3d1808" opacity="0.8" class="night-only" />
           </g>
         </g>
 
-        <!-- The Weathered Wooden Chair & NIGHT SILHOUETTE -->
-        <g id="hotspot-tea-chair" class="interactive-object" transform="translate(230, 360)">
-          <!-- Chair Shadow -->
-          <ellipse cx="50" cy="180" rx="42" ry="16" fill="#000" opacity="0.45" />
+        <!-- HOTSPOT 2: COLD BRASS TEA KETTLE (#hotspot-tea-kettle) @ x=42%, y=65% (163.8, 548.6) -->
+        <g id="hotspot-tea-kettle" class="interactive-object tea-kettle-assembly" transform="translate(155, 308)">
+          <!-- Blackened Mud Stove (Chulha) base -->
+          <ellipse cx="0" cy="18" rx="28" ry="10" fill="#241710" class="day-only" />
+          <ellipse cx="0" cy="18" rx="28" ry="10" fill="#080a0f" class="night-only" />
+          <path d="M-22 18 C-22 6, 22 6, 22 18 L18 24 L-18 24 Z" fill="#180e0a" class="day-only" />
+          <path d="M-22 18 C-22 6, 22 6, 22 18 L18 24 L-18 24 Z" fill="#05060a" class="night-only" />
 
-          <!-- DAY: The Empty Wooden Chair -->
-          <g class="chair-structure">
-            <line x1="25" y1="60" x2="25" y2="175" stroke="#5a3d28" stroke-width="6" stroke-linecap="round" />
-            <line x1="65" y1="60" x2="65" y2="175" stroke="#5a3d28" stroke-width="6" stroke-linecap="round" />
-            <rect x="22" y="68" width="46" height="10" rx="2" fill="#755034" />
-            <rect x="22" y="88" width="46" height="10" rx="2" fill="#755034" />
-            <polygon points="15,115 75,115 85,130 5,130" fill="#8c6140" stroke="#482e1c" stroke-width="2" />
-            <line x1="8" y1="130" x2="6" y2="185" stroke="#5a3d28" stroke-width="6" stroke-linecap="round" />
-            <line x1="82" y1="130" x2="84" y2="185" stroke="#5a3d28" stroke-width="6" stroke-linecap="round" />
-            <line x1="12" y1="155" x2="78" y2="155" stroke="#482e1c" stroke-width="3" />
-          </g>
-
-          <!-- NIGHT ONLY: Subtle, Ambiguous Sitting Silhouette -->
-          <g class="night-only customer-silhouette">
-            <!-- Shadow Aura -->
-            <ellipse cx="48" cy="115" rx="35" ry="55" fill="#07080e" opacity="0.65" filter="url(#glow-blur)" />
-            <!-- Torso Sitting Upright -->
-            <path d="M22 135 C15 110, 18 85, 32 78 C38 75, 58 75, 64 78 C78 85, 81 110, 74 135 Z" fill="#040509" />
-            <!-- Head & Draped Shawl/Turban -->
-            <circle cx="48" cy="52" r="18" fill="#040509" />
-            <path d="M30 50 Q48 30 66 50 Q60 38 48 38 Q36 38 30 50 Z" fill="#0c0e18" />
-            <!-- Eyes reflecting faint moonlight -->
-            <circle cx="43" cy="52" r="1.4" fill="#9dbbdc" opacity="0.75" class="twinkle-slow" />
-            <circle cx="53" cy="52" r="1.4" fill="#9dbbdc" opacity="0.75" class="twinkle-slow" />
-            <!-- Draped knees resting toward table -->
-            <path d="M12 132 C10 155, 30 160, 48 160 C66 160, 86 155, 84 132 Z" fill="#030407" />
-          </g>
+          <!-- Beaten Brass Chai Kettle (Kitli) -->
+          <!-- Cast Kettle Shadow -->
+          <ellipse cx="2" cy="12" rx="20" ry="7" fill="#000" opacity="0.45" class="day-only" />
+          <ellipse cx="2" cy="12" rx="20" ry="7" fill="#000" opacity="0.75" class="night-only" />
+          <!-- Bulbous Brass Body with Hammered Surface Gradient -->
+          <ellipse cx="0" cy="0" rx="20" ry="14" fill="#c99738" stroke="#7a5518" stroke-width="1.8" class="day-only" />
+          <ellipse cx="0" cy="0" rx="20" ry="14" fill="#3d3018" stroke="#1c160b" stroke-width="1.8" class="night-only" />
+          <!-- Brass Specular Highlight -->
+          <ellipse cx="-4" cy="-4" rx="14" ry="7" fill="#fedca8" opacity="0.55" class="day-only" />
+          <ellipse cx="-4" cy="-4" rx="14" ry="7" fill="#6d7f99" opacity="0.35" class="night-only" />
+          <!-- Blackened Sooty Base -->
+          <path d="M-18 5 C-10 12, 10 12, 18 5 L16 12 L-16 12 Z" fill="#1f140c" opacity="0.75" class="day-only" />
+          <path d="M-18 5 C-10 12, 10 12, 18 5 L16 12 L-16 12 Z" fill="#090b10" opacity="0.85" class="night-only" />
+          <!-- Curved Kettle Spout -->
+          <path d="M-18 -2 C-26 -6, -28 -18, -24 -24 L-20 -23 C-22 -18, -20 -8, -14 2 Z" fill="#bfa042" stroke="#7a5518" stroke-width="1.2" class="day-only" />
+          <path d="M-18 -2 C-26 -6, -28 -18, -24 -24 L-20 -23 C-22 -18, -20 -8, -14 2 Z" fill="#362b16" stroke="#1c160b" stroke-width="1.2" class="night-only" />
+          <!-- Kettle Lid & Finial Knob -->
+          <ellipse cx="0" cy="-13" rx="11" ry="4" fill="#d9ad48" stroke="#7a5518" stroke-width="1.2" class="day-only" />
+          <circle cx="0" cy="-16" r="3" fill="#fadc7a" stroke="#7a5518" stroke-width="1" class="day-only" />
+          <ellipse cx="0" cy="-13" rx="11" ry="4" fill="#44361b" stroke="#1c160b" stroke-width="1.2" class="night-only" />
+          <circle cx="0" cy="-16" r="3" fill="#68562d" stroke="#1c160b" stroke-width="1" class="night-only" />
+          <!-- Arched Wire Bail Handle -->
+          <path d="M-18 -6 C-22 -30, 22 -30, 18 -6" fill="none" stroke="#4a341e" stroke-width="2.5" class="day-only" />
+          <path d="M-18 -6 C-22 -30, 22 -30, 18 -6" fill="none" stroke="#121622" stroke-width="2.5" class="night-only" />
+          <!-- Wooden Grip on Handle -->
+          <rect x="-8" y="-28" width="16" height="5" rx="2" fill="#2d1c11" class="day-only" />
+          <rect x="-8" y="-28" width="16" height="5" rx="2" fill="#0c0e14" class="night-only" />
         </g>
-      </svg>
-    `;
+      </g>
+
+      <!-- HOTSPOT 1: EMPTY RICKETY WOODEN CHAIR (#hotspot-tea-chair) @ x=64%, y=62% (249.6, 523.3) -->
+      <g id="hotspot-tea-chair" class="interactive-object tea-chair-assembly" transform="translate(250, 523)">
+        <!-- Ground Cast Shadow -->
+        <ellipse cx="0" cy="58" rx="28" ry="10" fill="#000" opacity="0.35" class="day-only" />
+        <ellipse cx="0" cy="58" rx="28" ry="10" fill="#000" opacity="0.75" class="night-only" />
+
+        <!-- 4 Weathered Wooden Legs with Cross Stretchers -->
+        <!-- Back Left Leg -->
+        <line x1="-16" y1="8" x2="-20" y2="52" stroke="#4a321e" stroke-width="3" class="day-only" />
+        <!-- Back Right Leg -->
+        <line x1="16" y1="6" x2="14" y2="50" stroke="#4a321e" stroke-width="3" class="day-only" />
+        <!-- Front Left Leg -->
+        <line x1="-22" y1="18" x2="-26" y2="58" stroke="#5c3f27" stroke-width="3.5" class="day-only" />
+        <!-- Front Right Leg -->
+        <line x1="22" y1="16" x2="20" y2="56" stroke="#5c3f27" stroke-width="3.5" class="day-only" />
+
+        <!-- NIGHT Legs -->
+        <line x1="-16" y1="8" x2="-20" y2="52" stroke="#141722" stroke-width="3" class="night-only" />
+        <line x1="16" y1="6" x2="14" y2="50" stroke="#141722" stroke-width="3" class="night-only" />
+        <line x1="-22" y1="18" x2="-26" y2="58" stroke="#181c28" stroke-width="3.5" class="night-only" />
+        <line x1="22" y1="16" x2="20" y2="56" stroke="#181c28" stroke-width="3.5" class="night-only" />
+
+        <!-- Lower Cross Stretcher Rails -->
+        <line x1="-24" y1="42" x2="18" y2="40" stroke="#3b2413" stroke-width="2" class="day-only" />
+        <line x1="-24" y1="42" x2="18" y2="40" stroke="#0e1017" stroke-width="2" class="night-only" />
+
+        <!-- Chair Seat (Slanted perspective, faded peeling teal paint) -->
+        <polygon points="-24,18 24,14 18,-4 -18,-2" fill="#4d787a" stroke="#2e4d4e" stroke-width="1.8" class="day-only" />
+        <polygon points="-24,18 24,14 18,-4 -18,-2" fill="#1b2a2e" stroke="#0e171a" stroke-width="1.8" class="night-only" />
+        <!-- Chipped Paint exposing bare grey wood -->
+        <polygon points="-12,6 8,4 4,-1 -8,0" fill="#7a6248" opacity="0.65" class="day-only" />
+        <polygon points="-12,6 8,4 4,-1 -8,0" fill="#25211c" opacity="0.75" class="night-only" />
+
+        <!-- Chair Backrest Uprights & Slats -->
+        <line x1="-16" y1="-2" x2="-14" y2="-45" stroke="#5c3f27" stroke-width="3" class="day-only" />
+        <line x1="16" y1="-4" x2="14" y2="-48" stroke="#5c3f27" stroke-width="3" class="day-only" />
+        <line x1="-16" y1="-2" x2="-14" y2="-45" stroke="#181c28" stroke-width="3" class="night-only" />
+        <line x1="16" y1="-4" x2="14" y2="-48" stroke="#181c28" stroke-width="3" class="night-only" />
+        <!-- Top Crest Rail -->
+        <rect x="-18" y="-50" width="34" height="7" rx="1.5" fill="#4d787a" stroke="#2e4d4e" stroke-width="1.2" class="day-only" />
+        <rect x="-18" y="-50" width="34" height="7" rx="1.5" fill="#1b2a2e" stroke="#0e171a" stroke-width="1.2" class="night-only" />
+        <!-- Horizontal Mid-Slat -->
+        <line x1="-15" y1="-26" x2="15" y2="-28" stroke="#3b2413" stroke-width="2.5" class="day-only" />
+        <line x1="-15" y1="-26" x2="15" y2="-28" stroke="#0e1017" stroke-width="2.5" class="night-only" />
+      </g>
+    </svg>
+  `;
+}).call(this);
   },
 
   // 4. SCENE 03: Village Well
   renderWellScene() {
-    return `
-      <svg viewBox="0 0 400 700" class="scene-svg" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        ${this.getAtmosphericSky('well')}
+    return (function renderWellScene() {
+  return `
+    <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
+      ${this.getAtmosphericSky('well')}
 
-        <!-- Distant Ruined Courtyard Walls -->
-        <polygon points="0,410 110,380 210,400 320,375 400,400 400,430 0,430" class="distant-roofs" />
-        <rect x="0" y="420" width="400" height="280" class="dirt-road" />
+      <!-- Distant Ruined Havelis & Courtyard Wall Backdrop -->
+      <g class="distant-landscape">
+        <path class="day-only" fill="#9e714e" opacity="0.65" d="M0 430 Q100 405 200 420 T390 415 L390 490 L0 490 Z" />
+        <path class="night-only" fill="#0c121e" opacity="0.8" d="M0 430 Q100 405 200 420 T390 415 L390 490 L0 490 Z" />
+        <!-- Ancient stone boundary wall behind well -->
+        <polygon points="0,460 390,450 390,520 0,530" fill="url(#sandstone-day)" opacity="0.85" class="day-only" />
+        <polygon points="0,460 390,450 390,520 0,530" fill="url(#sandstone-night)" opacity="0.9" class="night-only" />
+        <!-- Broken wall battlements (Kanguras) -->
+        <polygon points="40,460 60,442 80,460" fill="url(#sandstone-highlight)" class="day-only" />
+        <polygon points="120,458 140,440 160,458" fill="url(#sandstone-highlight)" class="day-only" />
+        <polygon points="280,454 300,436 320,454" fill="url(#sandstone-highlight)" class="day-only" />
+        <polygon points="40,460 60,442 80,460" fill="#2d3750" class="night-only" />
+        <polygon points="120,458 140,440 160,458" fill="#2d3750" class="night-only" />
+        <polygon points="280,454 300,436 320,454" fill="#2d3750" class="night-only" />
+      </g>
 
-        <!-- Cracked Earth Patterns Around the Well -->
-        <g stroke="#3a2717" stroke-width="1.5" opacity="0.35" fill="none">
-          <path d="M60 520 L90 540 L80 570 M90 540 L130 545" />
-          <path d="M300 530 L320 560 L350 575 M320 560 L310 595" />
-          <path d="M170 630 L200 655 L240 650 M200 655 L190 685" />
-        </g>
+      <!-- Courtyard Flagstone Ground Platform -->
+      <g id="well-courtyard-ground">
+        <rect x="0" y="500" width="390" height="344" fill="url(#ground-dirt-day)" class="day-only" />
+        <rect x="0" y="500" width="390" height="344" fill="url(#ground-dirt-night)" class="night-only" />
 
-        <!-- The Ancient Stone Village Well -->
-        <g class="village-well" transform="translate(85, 230)">
-          <!-- Wooden Pulley Gallows Frame -->
-          <rect x="25" y="60" width="16" height="250" class="wood-dark" />
-          <rect x="19" y="50" width="28" height="14" class="wood-post" />
-          <rect x="190" y="60" width="16" height="250" class="wood-dark" />
-          <rect x="184" y="50" width="28" height="14" class="wood-post" />
-          <polygon points="10,50 220,50 225,74 5,74" class="wood-post" />
+        <!-- Circular Stone Paving Apron around Well -->
+        <ellipse cx="195" cy="620" rx="170" ry="85" fill="url(#pat-cobbles)" class="day-only" opacity="0.75" />
+        <ellipse cx="195" cy="620" rx="170" ry="85" fill="url(#pat-cobbles-night)" class="night-only" opacity="0.75" />
+        <!-- Wet Stone Spill Stains around Curb -->
+        <ellipse cx="195" cy="610" rx="110" ry="45" fill="#4d3522" opacity="0.35" class="day-only" />
+        <ellipse cx="195" cy="610" rx="110" ry="45" fill="#060910" opacity="0.65" class="night-only" />
+      </g>
 
-          <!-- Center Wooden Pulley Wheel -->
-          <circle cx="115" cy="85" r="18" fill="#4a301c" stroke="#241407" stroke-width="3" />
-          <circle cx="115" cy="85" r="5" fill="#150a03" />
+      <!-- THE ANCIENT STONE WELL STRUCTURE -->
+      <g id="ancient-well-complex" transform="translate(195, 490)">
+        <!-- Massive Cast Ground Shadow -->
+        <ellipse cx="0" cy="95" rx="125" ry="38" fill="#000" opacity="0.4" class="day-only" />
+        <ellipse cx="0" cy="95" rx="125" ry="38" fill="#000" opacity="0.8" class="night-only" />
 
-          <!-- Hemp Rope -->
-          <g id="hotspot-well-rope" class="interactive-object">
-            <line x1="104" y1="85" x2="104" y2="245" stroke="#baa177" stroke-width="4.5" stroke-dasharray="6 3" />
-            <line x1="126" y1="85" x2="135" y2="140" stroke="#baa177" stroke-width="3.5" />
-          </g>
+        <!-- Timber Pulley Superstructure (Charkhi Frame) -->
+        <g id="well-pulley-rig" transform="translate(0, -170)">
+          <!-- Left Stone Pier Pillar -->
+          <rect x="-85" y="40" width="16" height="150" fill="url(#sandstone-day)" stroke="#5c3f27" stroke-width="1.8" class="day-only" />
+          <rect x="-85" y="40" width="16" height="150" fill="url(#sandstone-night)" stroke="#121622" stroke-width="1.8" class="night-only" />
+          <!-- Right Stone Pier Pillar -->
+          <rect x="69" y="40" width="16" height="150" fill="url(#sandstone-day)" stroke="#5c3f27" stroke-width="1.8" class="day-only" />
+          <rect x="69" y="40" width="16" height="150" fill="url(#sandstone-night)" stroke="#121622" stroke-width="1.8" class="night-only" />
 
-          <!-- Circular Stone Well Parapet -->
-          <g id="hotspot-well-rim" class="interactive-object">
-            <ellipse cx="115" cy="310" rx="100" ry="38" fill="#000" opacity="0.45" />
+          <!-- Heavy Horizontal Wooden Crossbeam -->
+          <rect x="-95" y="32" width="190" height="18" rx="2" fill="#4d321d" stroke="#2a180c" stroke-width="2" class="day-only" />
+          <rect x="-95" y="32" width="190" height="18" rx="2" fill="#141722" stroke="#0a0c12" stroke-width="2" class="night-only" />
+          <rect x="-92" y="34" width="184" height="14" fill="url(#pat-wood)" class="day-only" opacity="0.85" />
+          <rect x="-92" y="34" width="184" height="14" fill="url(#pat-wood-night)" class="night-only" opacity="0.85" />
 
-            <!-- Well Stone Wall Body -->
-            <path d="M15 220 C15 270, 215 270, 215 220 L215 295 C215 345, 15 345, 15 295 Z" class="stone-well-wall" />
-            
-            <!-- Stone Block Joints -->
-            <path d="M35 250 C70 265, 160 265, 195 250" stroke="#000" opacity="0.3" stroke-width="2" fill="none" />
-            <path d="M25 285 C70 305, 160 305, 205 285" stroke="#000" opacity="0.3" stroke-width="2" fill="none" />
-            <line x1="85" y1="225" x2="85" y2="255" stroke="#000" opacity="0.25" stroke-width="2" />
-            <line x1="145" y1="225" x2="145" y2="255" stroke="#000" opacity="0.25" stroke-width="2" />
-
-            <!-- Rim Lip -->
-            <ellipse cx="115" cy="220" rx="100" ry="32" class="stone-well-rim" />
-
-            <!-- Bottomless Dark Void -->
-            <ellipse cx="115" cy="220" rx="84" ry="24" class="well-void" />
-            
-            <!-- Deep Water Creepy Reflection (Subtle pale gaze looking upward from inside) -->
-            <g id="well-deep-reflection" class="well-subtle-reflection" opacity="0">
-              <ellipse cx="115" cy="220" rx="74" ry="21" fill="#040912" />
-              <!-- Face silhouette looking up from water depths -->
-              <ellipse cx="115" cy="219" rx="20" ry="12" fill="#1b2838" opacity="0.7" filter="url(#glow-blur)" />
-              <ellipse cx="115" cy="217" rx="14" ry="9" fill="#2a3d52" opacity="0.6" />
-              <!-- Two faint pale eyes staring upward through murky depth -->
-              <circle cx="108" cy="216" r="2.2" fill="#9ec5e8" opacity="0.85" />
-              <circle cx="122" cy="216" r="2.2" fill="#9ec5e8" opacity="0.85" />
-              <circle cx="108" cy="216" r="1.1" fill="#040912" />
-              <circle cx="122" cy="216" r="1.1" fill="#040912" />
-              <!-- Cold parted mouth -->
-              <ellipse cx="115" cy="223" rx="5" ry="2.2" fill="#09131c" stroke="#486985" stroke-width="0.8" />
-              <!-- Water ripple rings distorting reflection -->
-              <ellipse cx="115" cy="220" rx="34" ry="9" stroke="#486d91" stroke-width="1.2" fill="none" opacity="0.45" />
-              <ellipse cx="115" cy="220" rx="52" ry="14" stroke="#365370" stroke-width="1" fill="none" opacity="0.3" />
-            </g>
-
-            <!-- Night Water Reflection -->
-            <ellipse cx="115" cy="224" rx="30" ry="8" fill="#4d6f8a" opacity="0.25" class="night-only well-reflection" />
-
-            <!-- Subtle consequence: Dark blood mark on rim -->
-            <g id="well-blood-mark" opacity="0">
-              <path d="M140 226 Q142 245 139 255" stroke="#75060d" stroke-width="3" stroke-linecap="round" fill="none" />
-              <circle cx="139" cy="256" r="2.5" fill="#540409" />
-              <path d="M90 224 Q88 238 91 248" stroke="#75060d" stroke-width="2.5" stroke-linecap="round" fill="none" />
-            </g>
-
-            <!-- Subtle consequence: Lingering cold fog above opening -->
-            <ellipse id="well-lingering-mist" cx="115" cy="216" rx="60" ry="18" fill="#1b2a3a" opacity="0" class="fog-drift" filter="url(#glow-blur)" />
+          <!-- Central Iron Pulley Sheave (Charkhi) -->
+          <g transform="translate(0, 48)">
+            <!-- Iron Hanger Stems -->
+            <line x1="-12" y1="-8" x2="-12" y2="12" stroke="#241710" stroke-width="3" class="day-only" />
+            <line x1="12" y1="-8" x2="12" y2="12" stroke="#241710" stroke-width="3" class="day-only" />
+            <line x1="-12" y1="-8" x2="-12" y2="12" stroke="#080a10" stroke-width="3" class="night-only" />
+            <line x1="12" y1="-8" x2="12" y2="12" stroke="#080a10" stroke-width="3" class="night-only" />
+            <!-- Pulley Wheel -->
+            <circle cx="0" cy="12" r="14" fill="#3b2615" stroke="#1f1208" stroke-width="2.5" class="day-only" />
+            <circle cx="0" cy="12" r="14" fill="#121520" stroke="#06080e" stroke-width="2.5" class="night-only" />
+            <circle cx="0" cy="12" r="4" fill="#684729" class="day-only" />
+            <circle cx="0" cy="12" r="4" fill="#242c3d" class="night-only" />
           </g>
         </g>
 
-        <!-- Weathered Red Inscription: 'DO NOT USE' -->
-        <g id="hotspot-well-warning" class="interactive-object" transform="translate(130, 485)">
-          <rect x="-10" y="-12" width="105" height="24" rx="3" fill="#2b1a13" stroke="#543725" stroke-width="1.2" opacity="0.85" />
-          <text x="42" y="4" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="11" letter-spacing="2" fill="#c42828">DO NOT USE</text>
+        <!-- HOTSPOT 3: FRAYED HEMP ROPE (#hotspot-well-rope) @ x=44%, y=38% (171.6, 320.7) -->
+        <g id="hotspot-well-rope" class="interactive-object well-rope-assembly" transform="translate(-23, -110)">
+          <!-- Coarse Hemp Rope hanging from Pulley down into Abyss -->
+          <path d="M23 0 Q20 80 18 160 Q17 210 16 270" stroke="#8a6845" stroke-width="5" fill="none" stroke-linecap="round" class="day-only" />
+          <path d="M23 0 Q20 80 18 160 Q17 210 16 270" stroke="#2a3242" stroke-width="5" fill="none" stroke-linecap="round" class="night-only" />
+          <!-- Rope fiber twist details -->
+          <path d="M22 10 Q24 75 19 150" stroke="#bda07b" stroke-width="1.8" fill="none" opacity="0.6" stroke-dasharray="4 3" class="day-only" />
+          <path d="M22 10 Q24 75 19 150" stroke="#485a75" stroke-width="1.8" fill="none" opacity="0.6" stroke-dasharray="4 3" class="night-only" />
+          <!-- Frayed loose hemp fibers hanging at bottom -->
+          <path d="M16 250 L10 268 M17 255 L22 272 M15 258 L14 275" stroke="#8a6845" stroke-width="1.5" class="day-only" />
+          <path d="M16 250 L10 268 M17 255 L22 272 M15 258 L14 275" stroke="#2a3242" stroke-width="1.5" class="night-only" />
         </g>
 
-        <!-- NIGHT ONLY: Faint Shadowy Silhouette Standing Beside the Well -->
-        <g class="night-only well-apparition" transform="translate(60, 360)">
+        <!-- HOTSPOT 1: MASSIVE CIRCULAR WELL CURB (#hotspot-well-rim, #hotspot-well-stone) @ x=50%, y=58% (195, 489.5) -->
+        <g id="hotspot-well-rim" class="interactive-object well-rim-assembly">
+          <g id="hotspot-well-stone">
+            <!-- Outer Stone Well Cylinder Wall -->
+            <path d="M-92 0 C-92 48, 92 48, 92 0 L92 78 C92 126, -92 126, -92 78 Z" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="2.5" class="day-only" />
+            <path d="M-92 0 C-92 48, 92 48, 92 0 L92 78 C92 126, -92 126, -92 78 Z" fill="url(#sandstone-night)" stroke="#121622" stroke-width="2.5" class="night-only" />
+            <!-- Vertical Stone Joint Chisel Lines -->
+            <line x1="-50" y1="22" x2="-50" y2="100" stroke="#3b2413" stroke-width="1.5" opacity="0.4" class="day-only" />
+            <line x1="0" y1="26" x2="0" y2="105" stroke="#3b2413" stroke-width="1.5" opacity="0.4" class="day-only" />
+            <line x1="50" y1="22" x2="50" y2="100" stroke="#3b2413" stroke-width="1.5" opacity="0.4" class="day-only" />
+            <line x1="-50" y1="22" x2="-50" y2="100" stroke="#0a0d14" stroke-width="1.5" opacity="0.6" class="night-only" />
+            <line x1="0" y1="26" x2="0" y2="105" stroke="#0a0d14" stroke-width="1.5" opacity="0.6" class="night-only" />
+            <line x1="50" y1="22" x2="50" y2="100" stroke="#0a0d14" stroke-width="1.5" opacity="0.6" class="night-only" />
+
+            <!-- Stone Lip Rim (Top Ellipse) -->
+            <ellipse cx="0" cy="0" rx="92" ry="38" fill="url(#sandstone-highlight)" stroke="#52351c" stroke-width="2.5" class="day-only" />
+            <ellipse cx="0" cy="0" rx="92" ry="38" fill="#2d3750" stroke="#121622" stroke-width="2.5" class="night-only" />
+
+            <!-- Rope-Worn Grooves in Stone Rim Lip -->
+            <g class="day-only" stroke="#3b2413" stroke-width="1.8" fill="none">
+              <path d="M-15 36 Q-12 39 -8 37" />
+              <path d="M12 37 Q16 40 20 38" />
+              <path d="M-28 32 Q-24 36 -20 34" />
+            </g>
+            <g class="night-only" stroke="#0a0d14" stroke-width="1.8" fill="none">
+              <path d="M-15 36 Q-12 39 -8 37" />
+              <path d="M12 37 Q16 40 20 38" />
+              <path d="M-28 32 Q-24 36 -20 34" />
+            </g>
+
+            <!-- Bottomless Pitch Black Interior Mouth -->
+            <ellipse cx="0" cy="0" rx="74" ry="28" fill="#040608" stroke="#120c06" stroke-width="2" />
+
+            <!-- Deep Water Subtle Reflection / Face Silhouette (.well-subtle-reflection) -->
+            <g class="well-subtle-reflection" opacity="0">
+              <!-- Water Ripple Rings -->
+              <ellipse cx="0" cy="4" rx="42" ry="14" fill="none" stroke="#25425c" stroke-width="1.2" opacity="0.75" />
+              <ellipse cx="0" cy="4" rx="25" ry="8" fill="none" stroke="#3d668f" stroke-width="0.9" opacity="0.6" />
+              <!-- Haunting Upward Pale Face Silhouette in Dark Water -->
+              <g transform="translate(0, 4) scale(0.65)" filter="url(#ghost-haze)">
+                <ellipse cx="0" cy="0" rx="14" ry="18" fill="#6ba4d6" opacity="0.75" />
+                <ellipse cx="-5" cy="-2" rx="3" ry="4" fill="#040608" />
+                <ellipse cx="5" cy="-2" rx="3" ry="4" fill="#040608" />
+                <ellipse cx="0" cy="8" rx="4" ry="6" fill="#040608" />
+              </g>
+            </g>
+
+            <!-- Horror Consequence: Dark Blood Mark creeping down stone (#well-blood-mark) -->
+            <path id="well-blood-mark" d="M-8 37 Q-6 60 -10 90 Q-7 115 -8 135 L-4 135 Q-2 110 -4 65 Q-2 40 -4 37 Z" 
+                  fill="#780d12" opacity="0" filter="url(#glow-blur)" />
+
+            <!-- Horror Consequence: Lingering Eerie Mist (#well-lingering-mist) -->
+            <g id="well-lingering-mist" opacity="0">
+              <ellipse cx="0" cy="-6" rx="68" ry="24" fill="url(#fog-sweep-grad)" opacity="0.8" filter="url(#glow-blur)" />
+              <ellipse cx="0" cy="-24" rx="55" ry="20" fill="url(#fog-sweep-grad)" opacity="0.6" filter="url(#glow-blur)" />
+            </g>
+          </g>
+        </g>
+
+        <!-- DENTED TARNISHED BRASS WATER BUCKET (#hotspot-well-bucket) Resting on Apron -->
+        <g id="hotspot-well-bucket" class="interactive-object well-bucket-assembly" transform="translate(68, 68)">
           <!-- Ground Shadow -->
-          <ellipse cx="38" cy="175" rx="26" ry="10" fill="#000" opacity="0.7" />
-          <!-- Leaning Silhouette Body -->
-          <path d="M18 170 C15 120, 22 70, 32 45 C38 42, 48 42, 54 48 C64 80, 58 130, 56 170 Z" fill="#06070d" />
-          <!-- Hooded Cloak -->
-          <path d="M26 44 C26 22, 50 18, 54 36 C56 50, 48 64, 34 60 Z" fill="#090c14" />
-          <!-- Arm Reaching Toward Well Rim -->
-          <path d="M46 72 Q68 95 82 105" stroke="#06070d" stroke-width="6.5" stroke-linecap="round" fill="none" />
-          <path d="M82 105 L88 107 M82 107 L87 111" stroke="#8da8c7" stroke-width="1.8" stroke-linecap="round" />
-          <ellipse cx="38" cy="90" rx="35" ry="75" fill="#405575" opacity="0.15" filter="url(#glow-blur)" />
+          <ellipse cx="0" cy="18" rx="18" ry="7" fill="#000" opacity="0.45" class="day-only" />
+          <ellipse cx="0" cy="18" rx="18" ry="7" fill="#000" opacity="0.8" class="night-only" />
+          <!-- Tilted Brass Bucket Body with Dent in Rim -->
+          <polygon points="-14,14 14,14 18,-14 -18,-14" fill="#a87f34" stroke="#684c17" stroke-width="1.4" class="day-only" />
+          <polygon points="-14,14 14,14 18,-14 -18,-14" fill="#362914" stroke="#120e06" stroke-width="1.4" class="night-only" />
+          <!-- Metallic Specular Highlight -->
+          <line x1="-8" y1="-12" x2="-6" y2="12" stroke="#e8c77d" stroke-width="2" opacity="0.6" class="day-only" />
+          <line x1="-8" y1="-12" x2="-6" y2="12" stroke="#6b7c99" stroke-width="2" opacity="0.4" class="night-only" />
+          <!-- Bucket Rim Ellipse -->
+          <ellipse cx="0" cy="-14" rx="18" ry="6" fill="#8f6b28" stroke="#684c17" stroke-width="1.2" class="day-only" />
+          <ellipse cx="0" cy="-14" rx="18" ry="6" fill="#241b0b" stroke="#120e06" stroke-width="1.2" class="night-only" />
+          <!-- Wire Handle laying on ground -->
+          <path d="M-18 -14 C-26 5, -8 18, 0 18" fill="none" stroke="#3b2413" stroke-width="1.5" class="day-only" />
+          <path d="M-18 -14 C-26 5, -8 18, 0 18" fill="none" stroke="#0e1017" stroke-width="1.5" class="night-only" />
         </g>
-      </svg>
-    `;
+      </g>
+
+      <!-- HOTSPOT 2: CARVED STONE WARNING TABLET (#hotspot-well-warning) @ x=32%, y=72% (124.8, 607.7) -->
+      <g id="hotspot-well-warning" class="interactive-object well-warning-assembly" transform="translate(125, 608)">
+        <!-- Cast Shadow -->
+        <ellipse cx="0" cy="38" rx="26" ry="9" fill="#000" opacity="0.4" class="day-only" />
+        <ellipse cx="0" cy="38" rx="26" ry="9" fill="#000" opacity="0.75" class="night-only" />
+        <!-- Weathered Slanted Slab leaning against curb -->
+        <polygon points="-22,35 22,32 18,-25 -26,-22" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="1.8" class="day-only" />
+        <polygon points="-22,35 22,32 18,-25 -26,-22" fill="url(#sandstone-night)" stroke="#121622" stroke-width="1.8" class="night-only" />
+        <!-- Warning Inscription -->
+        <text x="-2" y="-4" text-anchor="middle" font-family="'Cinzel', serif" font-size="6.5" font-weight="700" letter-spacing="1" fill="#7a1818" class="day-only">DO NOT DRINK</text>
+        <text x="-2" y="8" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="7.5" font-weight="600" fill="#3b2413" class="day-only">पानी मत पियो</text>
+        <text x="-2" y="20" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="6.5" font-weight="600" fill="#684729" class="day-only">1978</text>
+        <text x="-2" y="-4" text-anchor="middle" font-family="'Cinzel', serif" font-size="6.5" font-weight="700" letter-spacing="1" fill="#c43b3b" class="night-only">DO NOT DRINK</text>
+        <text x="-2" y="8" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="7.5" font-weight="600" fill="#7d95b5" class="night-only">पानी मत पियो</text>
+        <text x="-2" y="20" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="6.5" font-weight="600" fill="#5a6e88" class="night-only">1978</text>
+        <!-- Weathering Chipped Edge -->
+        <path d="M18 -25 L12 -18 L16 -12" stroke="#3b2413" stroke-width="1.2" fill="none" class="day-only" />
+        <path d="M18 -25 L12 -18 L16 -12" stroke="#0a0d14" stroke-width="1.2" fill="none" class="night-only" />
+      </g>
+    </svg>
+  `;
+}).call(this);
   },
 
   // 5. SCENE 04: Temple Road
   renderTempleScene() {
-    return `
-      <svg viewBox="0 0 400 700" class="scene-svg" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        ${this.getAtmosphericSky('temple')}
+    return (function renderTempleScene() {
+  return `
+    <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
+      ${this.getAtmosphericSky('temple')}
 
-        <!-- Stone Temple Platform & Ground -->
-        <rect x="0" y="440" width="400" height="260" class="dirt-road" />
+      <!-- Distant Rolling Desert Ridge Backdrop -->
+      <g class="distant-landscape">
+        <path class="day-only" fill="#9e714e" opacity="0.65" d="M0 450 Q100 425 200 440 T390 435 L390 510 L0 510 Z" />
+        <path class="night-only" fill="#0c121e" opacity="0.8" d="M0 450 Q100 425 200 440 T390 435 L390 510 L0 510 Z" />
+      </g>
 
-        <!-- Ancient Mandir Structure -->
-        <g class="temple-complex" transform="translate(50, 95)">
-          <!-- Temple Spire (Shikhara) -->
-          <path d="M90 145 Q150 10 150 0 Q150 10 210 145 Z" class="temple-stone-spire" />
-          <circle cx="150" cy="-6" r="6" fill="#c99738" stroke="#684a14" stroke-width="1.5" />
-          <line x1="150" y1="-6" x2="150" y2="-22" stroke="#c99738" stroke-width="2.5" />
-          <path d="M144 -16 Q150 -12 156 -16" stroke="#c99738" stroke-width="2" fill="none" />
-          <line x1="120" y1="50" x2="180" y2="50" stroke="#000" opacity="0.3" stroke-width="3" />
-          <line x1="105" y1="90" x2="195" y2="90" stroke="#000" opacity="0.3" stroke-width="3" />
+      <!-- Sacred Bel / Peepal Tree Overhanging Temple Shikhara (#hotspot-temple-tree) -->
+      <g id="hotspot-temple-tree" class="interactive-object temple-tree-canopy">
+        <!-- Gnarled Trunk on Right behind shrine -->
+        <path d="M370 480 Q340 320 310 240 Q280 180 230 150" stroke="#382417" stroke-width="22" fill="none" stroke-linecap="round" class="day-only" />
+        <path d="M370 480 Q340 320 310 240 Q280 180 230 150" stroke="#0e1118" stroke-width="22" fill="none" stroke-linecap="round" class="night-only" />
+        <path d="M310 240 Q240 210 160 200" stroke="#2b1a0f" stroke-width="12" fill="none" stroke-linecap="round" class="day-only" />
+        <path d="M310 240 Q240 210 160 200" stroke="#080a0f" stroke-width="12" fill="none" stroke-linecap="round" class="night-only" />
+        
+        <!-- Sacred Red Threads Tied Around Branches -->
+        <path d="M260 170 Q265 178 270 172" stroke="#d92b2b" stroke-width="3" fill="none" class="day-only" />
+        <path d="M260 170 Q265 178 270 172" stroke="#751616" stroke-width="3" fill="none" class="night-only" />
+        <line x1="270" y1="172" x2="276" y2="195" stroke="#d92b2b" stroke-width="2" class="day-only flutter-slow" />
+        <line x1="270" y1="172" x2="276" y2="195" stroke="#751616" stroke-width="2" class="night-only flutter-slow" />
 
-          <!-- Temple Roof Lintel -->
-          <rect x="40" y="145" width="220" height="25" class="temple-lintel" />
-          <polygon points="30,170 270,170 255,185 45,185" class="temple-stone-dark" />
+        <!-- Foliage Canopy -->
+        <g class="day-only">
+          <ellipse cx="280" cy="140" rx="85" ry="60" fill="#243820" />
+          <ellipse cx="190" cy="120" rx="90" ry="55" fill="#2d4627" />
+          <ellipse cx="320" cy="180" rx="65" ry="50" fill="#385731" />
+          <!-- Sunlit highlights -->
+          <ellipse cx="210" cy="100" rx="60" ry="38" fill="#4a7342" opacity="0.85" />
+        </g>
+        <g class="night-only">
+          <ellipse cx="280" cy="140" rx="85" ry="60" fill="#0b130e" />
+          <ellipse cx="190" cy="120" rx="90" ry="55" fill="#0e1711" />
+          <ellipse cx="320" cy="180" rx="65" ry="50" fill="#121d15" />
+        </g>
+      </g>
 
-          <!-- Carved Stone Pillars -->
-          <rect x="52" y="185" width="18" height="195" class="temple-pillar" />
-          <rect x="48" y="181" width="26" height="8" class="stone-cap" />
-          <rect x="48" y="372" width="26" height="8" class="stone-base" />
-          <rect x="96" y="185" width="16" height="195" class="temple-pillar" />
-          <rect x="188" y="185" width="16" height="195" class="temple-pillar" />
-          <rect x="230" y="185" width="18" height="195" class="temple-pillar" />
-          <rect x="226" y="181" width="26" height="8" class="stone-cap" />
-          <rect x="226" y="372" width="26" height="8" class="stone-base" />
+      <!-- THE ANCIENT STONE SHIVA TEMPLE (MANDIR) -->
+      <g id="shiva-temple-complex" transform="translate(195, 120)">
+        <!-- Distant Temple Shikhara Superstructure (Tower) -->
+        <g id="temple-shikhara" transform="translate(0, 40)">
+          <!-- Tier 1 Base -->
+          <polygon points="-58,180 58,180 52,130 -52,130" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="2" class="day-only" />
+          <polygon points="-58,180 58,180 52,130 -52,130" fill="url(#sandstone-night)" stroke="#121622" stroke-width="2" class="night-only" />
+          <!-- Tier 2 -->
+          <polygon points="-50,130 50,130 42,80 -42,80" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="2" class="day-only" />
+          <polygon points="-50,130 50,130 42,80 -42,80" fill="url(#sandstone-night)" stroke="#121622" stroke-width="2" class="night-only" />
+          <!-- Tier 3 -->
+          <polygon points="-40,80 40,80 30,30 -30,30" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="2" class="day-only" />
+          <polygon points="-40,80 40,80 30,30 -30,30" fill="url(#sandstone-night)" stroke="#121622" stroke-width="2" class="night-only" />
+          <!-- Tier 4 Spire Tip -->
+          <polygon points="-28,30 28,30 0,-30" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="2" class="day-only" />
+          <polygon points="-28,30 28,30 0,-30" fill="url(#sandstone-night)" stroke="#121622" stroke-width="2" class="night-only" />
+          
+          <!-- Carved Ridge Niches (Rathas) -->
+          <line x1="-18" y1="180" x2="-8" y2="-10" stroke="#3b2413" stroke-width="1.8" class="day-only" />
+          <line x1="18" y1="180" x2="8" y2="-10" stroke="#3b2413" stroke-width="1.8" class="day-only" />
+          <line x1="-18" y1="180" x2="-8" y2="-10" stroke="#0a0d14" stroke-width="1.8" class="night-only" />
+          <line x1="18" y1="180" x2="8" y2="-10" stroke="#0a0d14" stroke-width="1.8" class="night-only" />
 
-          <!-- Dark Inner Sanctum -->
-          <rect x="110" y="185" width="80" height="195" fill="#08070b" />
-          <path d="M110 230 Q150 190 190 230 L190 380 L110 380 Z" fill="#030205" />
-          <ellipse cx="150" cy="340" rx="16" ry="7" fill="#1a1820" />
-          <path d="M142 340 L142 305 Q150 295 158 305 L158 340 Z" fill="#14121a" stroke="#000" stroke-width="1.5" />
+          <!-- Ribbed Stone Amalaka Disk Crown -->
+          <ellipse cx="0" cy="-32" rx="16" ry="7" fill="url(#sandstone-highlight)" stroke="#52351c" stroke-width="1.8" class="day-only" />
+          <ellipse cx="0" cy="-32" rx="16" ry="7" fill="#2d3750" stroke="#121622" stroke-width="1.8" class="night-only" />
+          <!-- Polished Brass Kalash Finial Pot & Trident Tip (Trishul) -->
+          <ellipse cx="0" cy="-42" rx="7" ry="6" fill="#d99f36" stroke="#7a5518" stroke-width="1.2" class="day-only" />
+          <ellipse cx="0" cy="-42" rx="7" ry="6" fill="#423317" stroke="#1c160b" stroke-width="1.2" class="night-only" />
+          <line x1="0" y1="-48" x2="0" y2="-62" stroke="#d99f36" stroke-width="2.5" class="day-only" />
+          <line x1="0" y1="-48" x2="0" y2="-62" stroke="#423317" stroke-width="2.5" class="night-only" />
+          <!-- Trident prongs -->
+          <path d="M-6 -58 Q0 -62 0 -54 Q0 -62 6 -58" fill="none" stroke="#d99f36" stroke-width="2" class="day-only" />
+          <path d="M-6 -58 Q0 -62 0 -54 Q0 -62 6 -58" fill="none" stroke="#423317" stroke-width="2" class="night-only" />
+        </g>
 
-          <!-- DAY: Garland of Marigolds on Idol -->
-          <path class="day-only" d="M141 315 Q150 326 159 315" stroke="#f59e0b" stroke-width="3" fill="none" opacity="0.8" />
+        <!-- Temple Pillared Mandapa Portico -->
+        <g id="temple-mandapa" transform="translate(0, 220)">
+          <!-- Portico Roof Eaves Lintel -->
+          <rect x="-105" y="0" width="210" height="24" rx="2" fill="url(#sandstone-highlight)" stroke="#52351c" stroke-width="2.5" class="day-only" />
+          <rect x="-105" y="0" width="210" height="24" rx="2" fill="#2d3750" stroke="#121622" stroke-width="2.5" class="night-only" />
+          <!-- Carved Lotus Flower Relief Medallions on Lintel -->
+          <circle cx="-50" cy="12" r="5" fill="#3b2413" opacity="0.4" class="day-only" />
+          <circle cx="0" cy="12" r="6" fill="#3b2413" opacity="0.4" class="day-only" />
+          <circle cx="50" cy="12" r="5" fill="#3b2413" opacity="0.4" class="day-only" />
+          <circle cx="-50" cy="12" r="5" fill="#0a0d14" opacity="0.6" class="night-only" />
+          <circle cx="0" cy="12" r="6" fill="#0a0d14" opacity="0.6" class="night-only" />
+          <circle cx="50" cy="12" r="5" fill="#0a0d14" opacity="0.6" class="night-only" />
 
-          <!-- NIGHT: Eerie Spectral Sanctum Glow -->
-          <ellipse cx="150" cy="315" rx="35" ry="50" fill="#30507a" opacity="0.3" filter="url(#glow-blur)" class="night-only sanctum-pulse" />
+          <!-- Dark Inner Sanctum Recess (Garbhagriha) -->
+          <rect x="-55" y="24" width="110" height="195" fill="#06090e" stroke="#16120b" stroke-width="2" />
 
-          <!-- The Hanging Brass Temple Bell (Interactive Hotspot) -->
-          <g id="hotspot-temple-bell" class="interactive-object temple-bell-rig" transform="translate(150, 180)">
-            <line x1="0" y1="0" x2="0" y2="40" stroke="#483824" stroke-width="3.5" stroke-dasharray="5 2" />
-            
-            <g class="bell-clapper-group">
-              <circle cx="0" cy="42" r="4.5" fill="#a67b2d" stroke="#50370d" stroke-width="1.5" />
-              <path d="M-8 48 C-8 44, 8 44, 8 48 C9 58, 16 68, 20 74 L-20 74 C-16 68, -9 58, -8 48 Z" class="brass-bell-body" />
-              <ellipse cx="0" cy="74" rx="20" ry="5.5" class="brass-bell-rim" />
-              <line x1="0" y1="65" x2="0" y2="84" stroke="#402e12" stroke-width="2.5" />
-              <circle cx="0" cy="85" r="4" fill="#6d4d19" />
-              <ellipse cx="0" cy="74" rx="26" ry="8" fill="none" stroke="#688cb0" stroke-width="1" opacity="0.4" class="night-only" />
-            </g>
+          <!-- Silhouetted Black Stone Shiva Lingam on Yoni Base Inside Sanctum -->
+          <g transform="translate(0, 155)">
+            <!-- Sanctum Deep Ambience Glow -->
+            <ellipse cx="0" cy="15" rx="35" ry="16" fill="#141a28" opacity="0.6" />
+            <!-- Yoni Pitha Base -->
+            <ellipse cx="0" cy="20" rx="30" ry="12" fill="#181d29" stroke="#0a0c12" stroke-width="1.8" />
+            <path d="M-22 18 L-38 24 L-28 28 L-15 22 Z" fill="#141822" stroke="#0a0c12" stroke-width="1.2" />
+            <!-- Shiva Lingam Cylinder Stone with rounded dome tip -->
+            <path d="M-12 18 L-12 -6 C-12 -22, 12 -22, 12 -6 L12 18 Z" fill="#1a1e2b" stroke="#0a0c12" stroke-width="1.8" />
+            <!-- Three Horizontal Sacred Ash Stripes (Tripundra) & Red Vermilion Dot -->
+            <line x1="-7" y1="-8" x2="7" y2="-8" stroke="#d5c8b7" stroke-width="1.2" opacity="0.65" />
+            <line x1="-7" y1="-5" x2="7" y2="-5" stroke="#d5c8b7" stroke-width="1.2" opacity="0.65" />
+            <line x1="-7" y1="-2" x2="7" y2="-2" stroke="#d5c8b7" stroke-width="1.2" opacity="0.65" />
+            <circle cx="0" cy="-5" r="1.5" fill="#cf232b" opacity="0.8" />
           </g>
 
-          <!-- Carved Stone Warning Plaque Beside Steps -->
-          <g id="hotspot-temple-warning" class="interactive-object" transform="translate(25, 345)">
-            <rect x="0" y="0" width="80" height="32" rx="3" fill="#251b14" stroke="#4a3522" stroke-width="1.2" />
-            <text x="40" y="14" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="6.5" letter-spacing="0.8" fill="#e89e3a">DO NOT RING</text>
-            <text x="40" y="24" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="6.5" letter-spacing="0.8" fill="#e89e3a">AFTER SUNSET</text>
-          </g>
+          <!-- Outer Sandstone Pillars Supporting Portico (4 Fluted Pillars) -->
+          <!-- Pillar 1 (Leftmost) -->
+          <rect x="-92" y="24" width="22" height="195" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="2" class="day-only" />
+          <rect x="-92" y="24" width="22" height="195" fill="url(#sandstone-night)" stroke="#121622" stroke-width="2" class="night-only" />
+          <!-- Pillar Capital & Base -->
+          <rect x="-96" y="24" width="30" height="10" rx="2" fill="url(#sandstone-highlight)" class="day-only" />
+          <rect x="-96" y="210" width="30" height="10" rx="2" fill="url(#sandstone-day)" class="day-only" />
+          <rect x="-96" y="24" width="30" height="10" rx="2" fill="#2d3750" class="night-only" />
+          <rect x="-96" y="210" width="30" height="10" rx="2" fill="#181e2a" class="night-only" />
 
-          <!-- Temple Stone Steps with Scattered Marigold Petals -->
-          <g id="hotspot-temple-steps" class="interactive-object">
-            <polygon points="20,380 280,380 295,410 5,410" class="temple-step-1" />
-            <polygon points="5,410 295,410 310,440 -10,440" class="temple-step-2" />
-            <polygon points="-10,440 310,440 325,475 -25,475" class="temple-step-3" />
+          <!-- Pillar 2 (Rightmost) -->
+          <rect x="70" y="24" width="22" height="195" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="2" class="day-only" />
+          <rect x="70" y="24" width="22" height="195" fill="url(#sandstone-night)" stroke="#121622" stroke-width="2" class="night-only" />
+          <rect x="66" y="24" width="30" height="10" rx="2" fill="url(#sandstone-highlight)" class="day-only" />
+          <rect x="66" y="210" width="30" height="10" rx="2" fill="url(#sandstone-day)" class="day-only" />
+          <rect x="66" y="24" width="30" height="10" rx="2" fill="#2d3750" class="night-only" />
+          <rect x="66" y="210" width="30" height="10" rx="2" fill="#181e2a" class="night-only" />
 
-            <!-- DAY: Orange and Yellow Marigold Petals -->
-            <g class="day-only marigold-petals">
-              <ellipse cx="85" cy="425" rx="3" ry="2" fill="#f59e0b" transform="rotate(20, 85, 425)" />
-              <ellipse cx="92" cy="428" rx="2.5" ry="1.8" fill="#fbbf24" />
-              <ellipse cx="145" cy="395" rx="3" ry="2" fill="#f59e0b" transform="rotate(-15, 145, 395)" />
-              <ellipse cx="175" cy="455" rx="3.5" ry="2" fill="#d97706" transform="rotate(40, 175, 455)" />
-              <ellipse cx="182" cy="458" rx="2.5" ry="1.8" fill="#fbbf24" />
-              <ellipse cx="220" cy="425" rx="3" ry="2" fill="#f59e0b" />
+          <!-- Inner Left Pillar Frame -->
+          <rect x="-62" y="24" width="12" height="195" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="1.5" class="day-only" />
+          <rect x="-62" y="24" width="12" height="195" fill="url(#sandstone-night)" stroke="#121622" stroke-width="1.5" class="night-only" />
+          <!-- Inner Right Pillar Frame -->
+          <rect x="50" y="24" width="12" height="195" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="1.5" class="day-only" />
+          <rect x="50" y="24" width="12" height="195" fill="url(#sandstone-night)" stroke="#121622" stroke-width="1.5" class="night-only" />
+
+          <!-- HOTSPOT 1: HEAVY CAST BRASS TEMPLE BELL (#hotspot-temple-bell) inside .temple-bell-rig @ x=50%, y=34% (195, 287) -->
+          <g class="temple-bell-rig" transform="translate(0, 24)">
+            <!-- Forged Iron Hanging Chain -->
+            <line x1="0" y1="0" x2="0" y2="40" stroke="#241710" stroke-width="3.5" class="day-only" />
+            <line x1="0" y1="0" x2="0" y2="40" stroke="#0a0d14" stroke-width="3.5" class="night-only" />
+            <ellipse cx="0" cy="10" rx="2.5" ry="4" fill="none" stroke="#684729" stroke-width="1.5" class="day-only" />
+            <ellipse cx="0" cy="22" rx="2.5" ry="4" fill="none" stroke="#684729" stroke-width="1.5" class="day-only" />
+            <ellipse cx="0" cy="34" rx="2.5" ry="4" fill="none" stroke="#684729" stroke-width="1.5" class="day-only" />
+            <ellipse cx="0" cy="10" rx="2.5" ry="4" fill="none" stroke="#252f42" stroke-width="1.5" class="night-only" />
+            <ellipse cx="0" cy="22" rx="2.5" ry="4" fill="none" stroke="#252f42" stroke-width="1.5" class="night-only" />
+            <ellipse cx="0" cy="34" rx="2.5" ry="4" fill="none" stroke="#252f42" stroke-width="1.5" class="night-only" />
+
+            <!-- The Interactive Brass Bell Body (#hotspot-temple-bell) -->
+            <g id="hotspot-temple-bell" class="interactive-object bell-object" transform="translate(0, 42)">
+              <!-- Bell Crown Loop -->
+              <ellipse cx="0" cy="2" rx="6" ry="5" fill="none" stroke="#7a5518" stroke-width="2.5" class="day-only" />
+              <ellipse cx="0" cy="2" rx="6" ry="5" fill="none" stroke="#1c160b" stroke-width="2.5" class="night-only" />
+              <!-- Flared Cast Brass Body -->
+              <path d="M-8 8 C-12 18, -24 38, -26 48 L26 48 C24 38, 12 18, 8 8 Z" fill="#d4a342" stroke="#7a5518" stroke-width="2" class="day-only" />
+              <path d="M-8 8 C-12 18, -24 38, -26 48 L26 48 C24 38, 12 18, 8 8 Z" fill="#4a3b1a" stroke="#1c160b" stroke-width="2" class="night-only" />
+              <!-- Bell Lip Moulding Band -->
+              <ellipse cx="0" cy="48" rx="26" ry="7" fill="#bfa042" stroke="#7a5518" stroke-width="2" class="day-only" />
+              <ellipse cx="0" cy="48" rx="26" ry="7" fill="#362c16" stroke="#1c160b" stroke-width="2" class="night-only" />
+              <!-- Specular Brass Highlight -->
+              <path d="M-5 12 C-7 22, -14 36, -16 46" stroke="#fef0ca" stroke-width="3" fill="none" opacity="0.65" class="day-only" />
+              <path d="M-5 12 C-7 22, -14 36, -16 46" stroke="#7a8da8" stroke-width="2.5" fill="none" opacity="0.45" class="night-only" />
+              <!-- Brass Clapper hanging below rim -->
+              <line x1="0" y1="46" x2="0" y2="62" stroke="#7a5518" stroke-width="3" class="day-only" />
+              <circle cx="0" cy="62" r="5" fill="#c99738" stroke="#7a5518" stroke-width="1.8" class="day-only" />
+              <line x1="0" y1="46" x2="0" y2="62" stroke="#1c160b" stroke-width="3" class="night-only" />
+              <circle cx="0" cy="62" r="5" fill="#423418" stroke="#1c160b" stroke-width="1.8" class="night-only" />
             </g>
-
-            <!-- NIGHT: Petals turned black & Footprints -->
-            <g class="night-only footprints-etch" opacity="0.6" fill="#30415a">
-              <ellipse cx="140" cy="455" rx="4" ry="7" transform="rotate(-5, 140, 455)" />
-              <ellipse cx="160" cy="425" rx="4" ry="7" transform="rotate(5, 160, 425)" />
-              <ellipse cx="145" cy="395" rx="4" ry="7" transform="rotate(-3, 145, 395)" />
-            </g>
-          </g>
-
-          <!-- Temple Step Diya (Brass Oil Lamp on Step 1) -->
-          <g id="temple-step-diya" transform="translate(68, 392)">
-            <ellipse cx="8" cy="10" rx="9" ry="3.5" fill="#a87c32" stroke="#523910" stroke-width="0.8" />
-            <!-- Diya Flame & Glow -->
-            <g class="diya-flame-group">
-              <ellipse cx="8" cy="4" rx="10" ry="10" fill="#f59e0b" opacity="0.45" filter="url(#glow-blur)" />
-              <path d="M5 9 Q8 0 8 -2 Q8 0 11 9 Z" fill="#fff7d6" />
-              <circle cx="8" cy="5" r="1.8" fill="#f59e0b" />
-            </g>
-            <!-- Extinguished Smoke Wisp (Shown when diya is extinguished) -->
-            <path class="diya-smoke-wisp" d="M8 6 Q5 -4 10 -14 T6 -26" stroke="#90a4ae" stroke-width="1.2" fill="none" opacity="0" />
           </g>
         </g>
-      </svg>
-    `;
+
+        <!-- HOTSPOT 3: STEPPED STONE PLINTH (JAGATI) (#hotspot-temple-steps) @ x=68%, y=76% (265.2, 641.4) -->
+        <g id="hotspot-temple-steps" class="interactive-object temple-steps-assembly" transform="translate(0, 440)">
+          <!-- Tier 1 Top Landing -->
+          <polygon points="-135,0 135,0 150,30 -150,30" fill="url(#sandstone-highlight)" stroke="#52351c" stroke-width="2" class="day-only" />
+          <polygon points="-135,0 135,0 150,30 -150,30" fill="#2d3750" stroke="#121622" stroke-width="2" class="night-only" />
+          <polygon points="-150,30 150,30 150,48 -150,48" fill="url(#sandstone-day)" class="day-only" />
+          <polygon points="-150,30 150,30 150,48 -150,48" fill="#181e2a" class="night-only" />
+
+          <!-- Tier 2 Middle Step -->
+          <polygon points="-150,48 150,48 165,78 -165,78" fill="url(#sandstone-highlight)" stroke="#52351c" stroke-width="2" class="day-only" />
+          <polygon points="-150,48 150,48 165,78 -165,78" fill="#283248" stroke="#121622" stroke-width="2" class="night-only" />
+          <polygon points="-165,78 165,78 165,96 -165,96" fill="url(#sandstone-day)" class="day-only" />
+          <polygon points="-165,78 165,78 165,96 -165,96" fill="#141924" class="night-only" />
+
+          <!-- Tier 3 Broad Bottom Step -->
+          <polygon points="-165,96 165,96 185,130 -185,130" fill="url(#sandstone-highlight)" stroke="#52351c" stroke-width="2" class="day-only" />
+          <polygon points="-165,96 165,96 185,130 -185,130" fill="#222b3d" stroke="#121622" stroke-width="2" class="night-only" />
+          <polygon points="-185,130 185,130 185,160 -185,160" fill="url(#sandstone-day)" class="day-only" />
+          <polygon points="-185,130 185,130 185,160 -185,160" fill="#10141d" class="night-only" />
+
+          <!-- Scattered Orange Marigold Petals on Steps -->
+          <g class="day-only">
+            <ellipse cx="40" cy="18" rx="4" ry="2.2" fill="#f59e0b" />
+            <ellipse cx="48" cy="22" rx="3.5" ry="2" fill="#fbbf24" />
+            <ellipse cx="-70" cy="65" rx="4" ry="2.5" fill="#f59e0b" />
+            <ellipse cx="80" cy="115" rx="4.5" ry="2.5" fill="#ea580c" />
+            <ellipse cx="90" cy="120" rx="3.8" ry="2.2" fill="#f59e0b" />
+          </g>
+          <g class="night-only" opacity="0.6">
+            <ellipse cx="40" cy="18" rx="4" ry="2.2" fill="#7a4f06" />
+            <ellipse cx="48" cy="22" rx="3.5" ry="2" fill="#523504" />
+            <ellipse cx="-70" cy="65" rx="4" ry="2.5" fill="#7a4f06" />
+            <ellipse cx="80" cy="115" rx="4.5" ry="2.5" fill="#5c2004" />
+            <ellipse cx="90" cy="120" rx="3.8" ry="2.2" fill="#7a4f06" />
+          </g>
+
+          <!-- BURNING CLAY DIYA LAMP (#temple-step-diya) on Lower Step -->
+          <g id="temple-step-diya" class="temple-diya-assembly" transform="translate(-45, 60)">
+            <!-- Terracotta Diya Pinch Saucer -->
+            <ellipse cx="0" cy="6" rx="12" ry="5.5" fill="#8a4422" stroke="#52240f" stroke-width="1.2" class="day-only" />
+            <ellipse cx="0" cy="6" rx="12" ry="5.5" fill="#2d170d" stroke="#120803" stroke-width="1.2" class="night-only" />
+            <!-- Diya Oil Pool -->
+            <ellipse cx="0" cy="5" rx="8" ry="3" fill="#c97a2c" opacity="0.8" class="day-only" />
+            <ellipse cx="0" cy="5" rx="8" ry="3" fill="#4d2c0e" opacity="0.8" class="night-only" />
+
+            <!-- Flickering Golden Diya Flame (.diya-flame-group) -->
+            <g class="diya-flame-group">
+              <!-- Radial Golden Light Pool onto Stone -->
+              <ellipse cx="0" cy="6" rx="32" ry="14" fill="#ffb443" opacity="0.25" filter="url(#glow-blur)" />
+              <ellipse cx="0" cy="6" rx="18" ry="8" fill="#ffdd78" opacity="0.4" />
+              <!-- Flame Outer Core -->
+              <path d="M0 -18 C4 -10, 6 -2, 0 3 C-6 -2, -4 -10, 0 -18 Z" fill="#ff9100" opacity="0.9" />
+              <!-- Flame Inner White-Hot Core -->
+              <path d="M0 -14 C2.5 -8, 3.5 -2, 0 2 C-3.5 -2, -2.5 -8, 0 -14 Z" fill="#fffbe8" />
+            </g>
+
+            <!-- Extinguished Smoke Wisp (.diya-smoke-wisp) -->
+            <path class="diya-smoke-wisp" d="M0 -6 Q-8 -25 4 -45 T-6 -70" fill="none" stroke="#d5c8b7" stroke-width="2" opacity="0" stroke-linecap="round" />
+          </g>
+        </g>
+      </g>
+
+      <!-- HOTSPOT 2: CARVED TEMPLE WARNING SLAB (#hotspot-temple-warning) @ x=28%, y=62% (109.2, 523.3) -->
+      <g id="hotspot-temple-warning" class="interactive-object temple-warning-assembly" transform="translate(110, 523)">
+        <!-- Cast Shadow -->
+        <ellipse cx="0" cy="38" rx="26" ry="9" fill="#000" opacity="0.4" class="day-only" />
+        <ellipse cx="0" cy="38" rx="26" ry="9" fill="#000" opacity="0.75" class="night-only" />
+        <!-- Weathered Sandstone Inscription Slab -->
+        <polygon points="-26,34 26,30 22,-28 -28,-24" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="2" class="day-only" />
+        <polygon points="-26,34 26,30 22,-28 -28,-24" fill="url(#sandstone-night)" stroke="#121622" stroke-width="2" class="night-only" />
+        <!-- Chiseled Hindi & English Warning -->
+        <text x="0" y="-8" text-anchor="middle" font-family="'Cinzel', serif" font-size="5.8" font-weight="700" letter-spacing="1" fill="#7a1818" class="day-only">DO NOT RING</text>
+        <text x="0" y="2" text-anchor="middle" font-family="'Cinzel', serif" font-size="5.5" font-weight="700" letter-spacing="1" fill="#7a1818" class="day-only">AFTER SUNSET</text>
+        <text x="0" y="14" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="6.8" font-weight="600" fill="#3b2413" class="day-only">सूर्यास्त के बाद</text>
+        <text x="0" y="24" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="6.8" font-weight="600" fill="#3b2413" class="day-only">घंटी न बजाएं</text>
+
+        <text x="0" y="-8" text-anchor="middle" font-family="'Cinzel', serif" font-size="5.8" font-weight="700" letter-spacing="1" fill="#c43b3b" class="night-only">DO NOT RING</text>
+        <text x="0" y="2" text-anchor="middle" font-family="'Cinzel', serif" font-size="5.5" font-weight="700" letter-spacing="1" fill="#c43b3b" class="night-only">AFTER SUNSET</text>
+        <text x="0" y="14" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="6.8" font-weight="600" fill="#7d95b5" class="night-only">सूर्यास्त के बाद</text>
+        <text x="0" y="24" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="6.8" font-weight="600" fill="#7d95b5" class="night-only">घंटी न बजाएं</text>
+      </g>
+    </svg>
+  `;
+}).call(this);
   },
 
   // 6. SCENE 05: The Red House
   renderRedHouseScene() {
-    return `
-      <svg viewBox="0 0 400 700" class="scene-svg" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        ${this.getAtmosphericSky('redhouse')}
+    return (function renderRedHouseScene() {
+  return `
+    <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
+      ${this.getAtmosphericSky('redhouse')}
 
-        <!-- Ground Courtyard & Dirt Verge -->
-        <rect x="0" y="470" width="400" height="230" class="dirt-road" />
-        <path d="M-20 540 Q150 510 420 535 L420 700 L-20 700 Z" class="ground-fill" opacity="0.45" />
+      <!-- Distant Village Roofs & Desert Horizon -->
+      <g class="distant-landscape">
+        <path class="day-only" fill="#9e714e" opacity="0.65" d="M0 450 Q100 420 200 440 T390 430 L390 510 L0 510 Z" />
+        <path class="night-only" fill="#0c121e" opacity="0.8" d="M0 450 Q100 420 200 440 T390 430 L390 510 L0 510 Z" />
+      </g>
 
-        <!-- Distant silhouetted roofs & trees behind house -->
-        <path d="M0 470 L40 430 L80 470 L280 470 L330 420 L400 470 Z" class="distant-roofs" />
-        <ellipse cx="40" cy="410" rx="35" ry="50" class="bush-dark" />
-        <ellipse cx="360" cy="420" rx="45" ry="60" class="bush-dark" />
+      <!-- Dusty Compound Courtyard Ground -->
+      <g id="redhouse-ground">
+        <rect x="0" y="500" width="390" height="344" fill="url(#ground-dirt-day)" class="day-only" />
+        <rect x="0" y="500" width="390" height="344" fill="url(#ground-dirt-night)" class="night-only" />
 
-        <!-- The Crooked Haveli (Old Red House Structure) -->
-        <g class="haveli-structure" transform="translate(45, 120)">
-          <!-- Main Haveli Cream Walls (Slightly crooked angle) -->
-          <polygon points="10,400 0,110 300,95 310,400" class="haveli-wall" />
+        <!-- Weathered Flagstone Apron at Doorway -->
+        <polygon points="40,540 350,520 370,680 20,710" fill="url(#pat-cobbles)" class="day-only" opacity="0.85" />
+        <polygon points="40,540 350,520 370,680 20,710" fill="url(#pat-cobbles-night)" class="night-only" opacity="0.8" />
+      </g>
 
-          <!-- Overhanging Carved Wooden Eaves / Cornice -->
-          <polygon points="-15,115 315,100 320,80 -20,95" class="wood-eaves" />
-          <!-- Eave decorative brackets -->
-          <line x1="20" y1="110" x2="20" y2="135" stroke="#3b2413" stroke-width="3" />
-          <line x1="90" y1="105" x2="90" y2="130" stroke="#3b2413" stroke-width="3" />
-          <line x1="160" y1="102" x2="160" y2="128" stroke="#3b2413" stroke-width="3" />
-          <line x1="230" y1="98" x2="230" y2="124" stroke="#3b2413" stroke-width="3" />
-          <line x1="290" y1="95" x2="290" y2="120" stroke="#3b2413" stroke-width="3" />
+      <!-- THE CROOKED HAVELI (OLD RED HOUSE STRUCTURE) -->
+      <g class="haveli-structure" transform="translate(35, 140)">
+        <!-- Deep Ambient Ground Shadow Cast by Haveli -->
+        <polygon points="0,480 320,460 350,530 -20,550" fill="#000" opacity="0.35" class="day-only" />
+        <polygon points="0,480 320,460 350,530 -20,550" fill="#000" opacity="0.75" class="night-only" />
 
-          <!-- Cracked Plaster Patches exposing terracotta bricks -->
-          <g class="cracked-brick-patches">
-            <!-- Left upper patch -->
-            <polygon points="35,145 65,140 70,175 40,180" class="brick-patch" />
-            <line x1="36" y1="156" x2="68" y2="152" stroke="#522115" stroke-width="1" />
-            <line x1="38" y1="168" x2="69" y2="165" stroke="#522115" stroke-width="1" />
-            <!-- Right lower patch -->
-            <polygon points="245,260 285,255 290,300 250,305" class="brick-patch" />
-            <line x1="247" y1="275" x2="288" y2="270" stroke="#522115" stroke-width="1" />
-            <line x1="248" y1="290" x2="289" y2="285" stroke="#522115" stroke-width="1" />
-            <!-- Plaster fracture lines -->
-            <path d="M70 175 L85 205 L80 230" stroke="#4d3a2b" stroke-width="1.2" fill="none" opacity="0.6" />
-            <path d="M245 260 L230 240 L215 250" stroke="#4d3a2b" stroke-width="1.2" fill="none" opacity="0.6" />
+        <!-- Main Haveli Facade (Slight unsettling settlement tilt) -->
+        <polygon points="0,470 5,60 315,45 320,450" fill="url(#plaster-cream-day)" stroke="#523924" stroke-width="2" class="day-only" />
+        <polygon points="0,470 5,60 315,45 320,450" fill="url(#plaster-cream-night)" stroke="#121622" stroke-width="2" class="night-only" />
+
+        <!-- Large Exposed Brick Patches where Lime Plaster has Sloughed Off -->
+        <!-- Upper Left Brick Exposure -->
+        <polygon points="25,95 85,90 92,150 30,158" fill="url(#pat-brick)" class="day-only" />
+        <polygon points="25,95 85,90 92,150 30,158" fill="url(#pat-brick-night)" class="night-only" />
+        <path d="M25 95 Q55 85 85 90 Q92 150 30 158 Z" stroke="#7a5535" stroke-width="1.8" fill="none" opacity="0.65" class="day-only" />
+        <path d="M25 95 Q55 85 85 90 Q92 150 30 158 Z" stroke="#1c2436" stroke-width="1.8" fill="none" opacity="0.75" class="night-only" />
+
+        <!-- Lower Right Brick Exposure -->
+        <polygon points="230,280 295,270 300,360 235,370" fill="url(#pat-brick)" class="day-only" />
+        <polygon points="230,280 295,270 300,360 235,370" fill="url(#pat-brick-night)" class="night-only" />
+        <path d="M230 280 Q265 265 295 270 Q300 360 235 370 Z" stroke="#7a5535" stroke-width="1.8" fill="none" opacity="0.65" class="day-only" />
+        <path d="M230 280 Q265 265 295 270 Q300 360 235 370 Z" stroke="#1c2436" stroke-width="1.8" fill="none" opacity="0.75" class="night-only" />
+
+        <!-- Overhanging Wooden Roof Eaves with Terracotta Khaprail Tiles -->
+        <polygon points="-15,70 335,50 330,30 -20,50" fill="url(#pat-khaprail)" class="day-only" />
+        <polygon points="-15,70 335,50 330,30 -20,50" fill="url(#pat-khaprail-night)" class="night-only" />
+        <!-- Eave Decorative Wooden Brackets (Todis) -->
+        <g stroke="#3b2413" stroke-width="3.5" class="day-only">
+          <line x1="15" y1="65" x2="15" y2="88" />
+          <line x1="85" y1="60" x2="85" y2="83" />
+          <line x1="160" y1="56" x2="160" y2="79" />
+          <line x1="235" y1="52" x2="235" y2="75" />
+          <line x1="305" y1="48" x2="305" y2="71" />
+        </g>
+        <g stroke="#0f121a" stroke-width="3.5" class="night-only">
+          <line x1="15" y1="65" x2="15" y2="88" />
+          <line x1="85" y1="60" x2="85" y2="83" />
+          <line x1="160" y1="56" x2="160" y2="79" />
+          <line x1="235" y1="52" x2="235" y2="75" />
+          <line x1="305" y1="48" x2="305" y2="71" />
+        </g>
+
+        <!-- Upper Floor Carved Jharokha Balcony on Right -->
+        <g transform="translate(225, 95)">
+          <!-- Balcony Corbel Base -->
+          <polygon points="0,50 70,45 80,75 -10,80" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="1.8" class="day-only" />
+          <polygon points="0,50 70,45 80,75 -10,80" fill="url(#sandstone-night)" stroke="#121622" stroke-width="1.8" class="night-only" />
+          <!-- Balcony Parapet Screen (Jali) -->
+          <rect x="-8" y="10" width="86" height="42" fill="url(#sandstone-highlight)" stroke="#52351c" stroke-width="1.5" class="day-only" />
+          <rect x="-8" y="10" width="86" height="42" fill="#2d3750" stroke="#121622" stroke-width="1.5" class="night-only" />
+          <!-- Jali Lattice Openings -->
+          <circle cx="12" cy="30" r="5" fill="#3b2413" class="day-only" />
+          <circle cx="35" cy="30" r="5" fill="#3b2413" class="day-only" />
+          <circle cx="58" cy="30" r="5" fill="#3b2413" class="day-only" />
+          <circle cx="12" cy="30" r="5" fill="#090d14" class="night-only" />
+          <circle cx="35" cy="30" r="5" fill="#090d14" class="night-only" />
+          <circle cx="58" cy="30" r="5" fill="#090d14" class="night-only" />
+        </g>
+
+        <!-- HOTSPOT 3: UPPER CURTAINED WINDOW (#hotspot-red-house-window) @ x=26%, y=44% (101.4, 371.4) -->
+        <g id="hotspot-red-house-window" class="interactive-object red-house-window-assembly" transform="translate(66, 175)">
+          <!-- Stone Lintel & Moulding Frame -->
+          <rect x="-6" y="-6" width="82" height="102" rx="3" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="2" class="day-only" />
+          <rect x="-6" y="-6" width="82" height="102" rx="3" fill="url(#sandstone-night)" stroke="#121622" stroke-width="2" class="night-only" />
+          <!-- Dark Window Opening -->
+          <rect x="0" y="0" width="70" height="90" fill="#080a0f" />
+
+          <!-- DAY: Sun-bleached Linen Curtains (Twitching slightly) -->
+          <g class="day-only">
+            <!-- Left Curtain -->
+            <path class="curtain-twitch-day" d="M2 2 Q22 45 14 88 L34 88 Q28 40 38 2 Z" fill="#cfbca6" opacity="0.85" />
+            <!-- Right Curtain -->
+            <path d="M68 2 Q48 45 56 88 L36 88 Q42 40 32 2 Z" fill="#bfa892" opacity="0.75" />
+            <!-- Iron Window Grille -->
+            <line x1="23" y1="0" x2="23" y2="90" stroke="#4a2e19" stroke-width="2" />
+            <line x1="47" y1="0" x2="47" y2="90" stroke="#4a2e19" stroke-width="2" />
+            <line x1="0" y1="45" x2="70" y2="45" stroke="#4a2e19" stroke-width="2" />
           </g>
 
-          <!-- Upper Barred Window (Interactive Hotspot) -->
-          <g id="hotspot-red-house-window" class="interactive-object window-assembly" transform="translate(115, 130)">
-            <!-- Outer Window Stone Lintel & Frame -->
-            <rect x="0" y="0" width="80" height="95" rx="3" class="window-frame" />
-            <rect x="6" y="6" width="68" height="83" fill="#131016" />
-
-            <!-- DAY: Linen Curtains (Twitching slightly) -->
-            <g class="day-only">
-              <path class="curtain-twitch-day" d="M8 8 Q24 50 18 85 L35 85 Q30 40 40 8 Z" fill="#bfa58a" opacity="0.85" />
-              <path d="M72 8 Q56 50 62 85 L45 85 Q50 40 40 8 Z" fill="#b09579" opacity="0.75" />
-            </g>
-
-            <!-- NIGHT: Amber Illuminated Window + Moving Silhouette Shadow -->
-            <g class="night-only">
-              <!-- Warm Amber Lantern Glow inside the Room -->
-              <rect x="8" y="8" width="64" height="79" fill="#ffb443" opacity="0.85" />
-              <rect x="8" y="8" width="64" height="79" fill="#ff8c1a" opacity="0.5" filter="url(#glow-blur)" />
-              <!-- Backlit Fabric Texture -->
-              <path d="M8 8 Q25 45 18 87 L35 87 Q30 40 40 8 Z" fill="#fff3cf" opacity="0.55" />
-              <path d="M72 8 Q55 45 62 87 L45 87 Q50 40 40 8 Z" fill="#fff3cf" opacity="0.55" />
-              
-              <!-- Subtle Passing Silhouette Moving Across the Curtain -->
-              <g class="shadow-pass-curtain">
-                <ellipse cx="40" cy="38" rx="14" ry="17" fill="#1a0c0a" opacity="0.9" />
-                <path d="M22 87 C22 55, 30 52, 40 52 C50 52, 58 55, 58 87 Z" fill="#1a0c0a" opacity="0.9" />
-              </g>
-            </g>
-
-            <!-- Iron Window Bars -->
-            <line x1="22" y1="4" x2="22" y2="91" stroke="#2b1c12" stroke-width="2.5" />
-            <line x1="40" y1="4" x2="40" y2="91" stroke="#2b1c12" stroke-width="2.5" />
-            <line x1="58" y1="4" x2="58" y2="91" stroke="#2b1c12" stroke-width="2.5" />
-            <line x1="4" y1="48" x2="76" y2="48" stroke="#2b1c12" stroke-width="2.5" />
-          </g>
-
-          <!-- Narrow Ground Veranda with Weathered Pillars -->
-          <polygon points="-5,270 305,260 310,278 -5,288" class="wood-eaves" />
-          <rect x="15" y="280" width="16" height="120" class="veranda-pillar" />
-          <rect x="270" y="275" width="16" height="125" class="veranda-pillar" />
-
-          <!-- Overgrown Creepers Clinging to the Wall -->
-          <g class="overgrown-creeper foliage-dark" opacity="0.75">
-            <path d="M10 400 Q20 340 12 300 Q8 260 25 240 Q18 200 28 170" stroke="#2a3a1f" stroke-width="3" fill="none" />
-            <circle cx="15" cy="330" r="4" fill="#3b4d2c" />
-            <circle cx="22" cy="275" r="5" fill="#3b4d2c" />
-            <circle cx="25" cy="210" r="4.5" fill="#3b4d2c" />
-          </g>
-
-          <!-- Old Hanging Veranda Lantern -->
-          <g class="hanging-lantern" transform="translate(65, 275)">
-            <line x1="0" y1="0" x2="0" y2="28" stroke="#2b1c12" stroke-width="2" />
-            <rect x="-8" y="28" width="16" height="5" class="lantern-metal" />
-            <polygon points="-8,33 8,33 6,55 -6,55" fill="#e8d8be" opacity="0.3" stroke="#2b1c12" stroke-width="1.5" />
-            <polygon points="-7,55 7,55 9,60 -9,60" class="lantern-metal" />
-            <!-- NIGHT: Dim Flickering Amber Flame -->
-            <ellipse cx="0" cy="44" rx="4" ry="7" fill="#ff9922" class="night-only lantern-flicker-flame" filter="url(#glow-blur)" />
-            <circle cx="0" cy="44" r="1.8" fill="#fff5d6" class="night-only" />
-          </g>
-
-          <!-- Veranda Steps -->
-          <polygon points="45,395 255,395 265,410 35,410" class="stone-base" />
-          <polygon points="35,410 265,410 275,425 25,425" class="stone-cap" />
-
-          <!-- THE RED WOODEN DOOR (Interactive Hotspot) -->
-          <g id="hotspot-red-door" class="interactive-object red-door-assembly" transform="translate(95, 265)">
-            <!-- Door Stone Lintel & Dark Recess -->
-            <rect x="0" y="0" width="110" height="135" rx="3" fill="#140608" stroke="#33181b" stroke-width="2.5" />
-            <!-- Interior Deep Darkness Void (Revealed when door opens ajar) -->
-            <rect id="red-door-interior-gap" x="50" y="6" width="12" height="123" fill="#000000" opacity="0" />
-
-            <!-- Left Door Leaf -->
-            <g id="red-door-left-leaf" class="door-leaf-group">
-              <rect x="6" y="6" width="47" height="123" class="red-door-leaf" />
-              <rect x="11" y="14" width="37" height="28" class="door-panel" />
-              <rect x="11" y="48" width="37" height="34" class="door-panel" />
-              <rect x="11" y="88" width="37" height="34" class="door-panel" />
-            </g>
-
-            <!-- Right Door Leaf -->
-            <g id="red-door-right-leaf" class="door-leaf-group">
-              <rect x="57" y="6" width="47" height="123" class="red-door-leaf" />
-              <rect x="62" y="14" width="37" height="28" class="door-panel" />
-              <rect x="62" y="48" width="37" height="34" class="door-panel" />
-              <rect x="62" y="88" width="37" height="34" class="door-panel" />
-            </g>
-
-            <!-- Center Seam & Iron Lock Plates -->
-            <line id="red-door-seam" x1="55" y1="6" x2="55" y2="129" stroke="#1d0407" stroke-width="2.5" />
-            <g id="red-door-handle" class="door-handle-group">
-              <circle cx="51" cy="72" r="4" fill="#2b1a0d" stroke="#54371a" stroke-width="1.2" />
-              <circle cx="59" cy="72" r="4" fill="#2b1a0d" stroke="#54371a" stroke-width="1.2" />
-              <rect x="49" y="70" width="12" height="4" fill="#110705" />
-            </g>
-
-            <!-- Creeping Shadow Underneath Door (Tapped knock horror) -->
-            <ellipse id="red-door-under-shadow" cx="55" cy="132" rx="46" ry="4" fill="#000000" opacity="0" />
-
-            <!-- Weathered Red Carved Marking: 'DO NOT KNOCK' (Interactive Hotspot) -->
-            <g id="hotspot-red-door-warning" class="interactive-object" transform="translate(-50, 48)">
-              <rect x="0" y="0" width="44" height="22" rx="2" fill="#241410" stroke="#48291f" stroke-width="1.2" />
-              <text x="22" y="10" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="4.8" letter-spacing="0.5" fill="#c42828">DO NOT</text>
-              <text x="22" y="18" text-anchor="middle" font-family="'Cinzel', serif" font-weight="700" font-size="4.8" letter-spacing="0.5" fill="#c42828">KNOCK</text>
-            </g>
-
-            <!-- NIGHT ONLY: Blood/Moisture seep lines beneath door -->
-            <g class="night-only" opacity="0.75">
-              <path d="M55 129 L55 138" stroke="#75060d" stroke-width="2.5" stroke-linecap="round" />
-              <circle cx="55" cy="140" r="2.5" fill="#540409" />
-              <path d="M25 129 L25 135" stroke="#75060d" stroke-width="2" stroke-linecap="round" />
-            </g>
+          <!-- NIGHT: Amber Illuminated Window + Moving Silhouette Shadow -->
+          <g class="night-only">
+            <!-- Warm Amber Lantern Light from inside -->
+            <rect x="2" y="2" width="66" height="86" fill="#ffb443" opacity="0.9" />
+            <rect x="2" y="2" width="66" height="86" fill="#ff8c1a" opacity="0.5" filter="url(#glow-blur)" />
+            <!-- Silhouette of a Figure Passing Behind the Curtain -->
+            <path class="curtain-twitch-day" d="M15 88 C12 60, 20 40, 32 25 C45 40, 52 60, 48 88 Z" fill="#1f1105" opacity="0.85" />
+            <circle cx="34" cy="20" r="10" fill="#1f1105" opacity="0.85" />
+            <!-- Window Bars -->
+            <line x1="23" y1="0" x2="23" y2="90" stroke="#221307" stroke-width="2.5" />
+            <line x1="47" y1="0" x2="47" y2="90" stroke="#221307" stroke-width="2.5" />
+            <line x1="0" y1="45" x2="70" y2="45" stroke="#221307" stroke-width="2.5" />
           </g>
         </g>
-      </svg>
-    `;
+
+        <!-- THE MONUMENTAL RED DOOR ASSEMBLY (#hotspot-red-door) @ x=50%, y=60% (195, 506.4) -->
+        <g id="hotspot-red-door" class="interactive-object red-door-assembly" transform="translate(160, 310)">
+          <!-- Heavy Sandstone Chaokhat (Door Frame) -->
+          <rect x="-56" y="-12" width="112" height="172" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="2.5" class="day-only" />
+          <rect x="-56" y="-12" width="112" height="172" fill="url(#sandstone-night)" stroke="#121622" stroke-width="2.5" class="night-only" />
+          <!-- Carved Lotus Rosette on Lintel -->
+          <circle cx="0" cy="-2" r="5" fill="#3b2413" opacity="0.5" class="day-only" />
+          <circle cx="0" cy="-2" r="5" fill="#090d14" opacity="0.7" class="night-only" />
+
+          <!-- Pitch Black Interior Void Revealed when Door Opens (#red-door-interior-gap) -->
+          <rect id="red-door-interior-gap" x="-46" y="0" width="92" height="158" fill="#000000" opacity="0" />
+
+          <!-- Left Swinging Door Leaf (#red-door-left-leaf) -->
+          <g id="red-door-left-leaf">
+            <rect x="-46" y="0" width="46" height="158" fill="#8f1a1e" stroke="#4a070a" stroke-width="2" class="day-only" />
+            <rect x="-46" y="0" width="46" height="158" fill="#3b080a" stroke="#1a0203" stroke-width="2" class="night-only" />
+            <!-- Carved Recessed Door Panels -->
+            <rect x="-40" y="8" width="34" height="40" fill="#a82328" stroke="#3b0507" stroke-width="1.2" class="day-only" />
+            <rect x="-40" y="56" width="34" height="42" fill="#a82328" stroke="#3b0507" stroke-width="1.2" class="day-only" />
+            <rect x="-40" y="106" width="34" height="44" fill="#a82328" stroke="#3b0507" stroke-width="1.2" class="day-only" />
+            <rect x="-40" y="8" width="34" height="40" fill="#4a0b0d" stroke="#120102" stroke-width="1.2" class="night-only" />
+            <rect x="-40" y="56" width="34" height="42" fill="#4a0b0d" stroke="#120102" stroke-width="1.2" class="night-only" />
+            <rect x="-40" y="106" width="34" height="44" fill="#4a0b0d" stroke="#120102" stroke-width="1.2" class="night-only" />
+            <!-- Decorative Brass Boss Studs (Gul-Mekh) -->
+            <circle cx="-23" cy="28" r="3" fill="#d99f36" stroke="#7a5518" stroke-width="0.8" class="day-only" />
+            <circle cx="-23" cy="77" r="3" fill="#d99f36" stroke="#7a5518" stroke-width="0.8" class="day-only" />
+            <circle cx="-23" cy="128" r="3" fill="#d99f36" stroke="#7a5518" stroke-width="0.8" class="day-only" />
+            <circle cx="-23" cy="28" r="3" fill="#423317" stroke="#1c160b" stroke-width="0.8" class="night-only" />
+            <circle cx="-23" cy="77" r="3" fill="#423317" stroke="#1c160b" stroke-width="0.8" class="night-only" />
+            <circle cx="-23" cy="128" r="3" fill="#423317" stroke="#1c160b" stroke-width="0.8" class="night-only" />
+            <!-- Forged Iron Strap Hinges -->
+            <rect x="-46" y="20" width="16" height="5" fill="#241710" class="day-only" />
+            <rect x="-46" y="125" width="16" height="5" fill="#241710" class="day-only" />
+            <rect x="-46" y="20" width="16" height="5" fill="#080a0f" class="night-only" />
+            <rect x="-46" y="125" width="16" height="5" fill="#080a0f" class="night-only" />
+          </g>
+
+          <!-- Right Door Leaf -->
+          <g id="red-door-right-leaf">
+            <rect x="0" y="0" width="46" height="158" fill="#82161a" stroke="#4a070a" stroke-width="2" class="day-only" />
+            <rect x="0" y="0" width="46" height="158" fill="#330608" stroke="#1a0203" stroke-width="2" class="night-only" />
+            <!-- Recessed Panels -->
+            <rect x="6" y="8" width="34" height="40" fill="#9e1e23" stroke="#3b0507" stroke-width="1.2" class="day-only" />
+            <rect x="6" y="56" width="34" height="42" fill="#9e1e23" stroke="#3b0507" stroke-width="1.2" class="day-only" />
+            <rect x="6" y="106" width="34" height="44" fill="#9e1e23" stroke="#3b0507" stroke-width="1.2" class="day-only" />
+            <rect x="6" y="8" width="34" height="40" fill="#42090b" stroke="#120102" stroke-width="1.2" class="night-only" />
+            <rect x="6" y="56" width="34" height="42" fill="#42090b" stroke="#120102" stroke-width="1.2" class="night-only" />
+            <rect x="6" y="106" width="34" height="44" fill="#42090b" stroke="#120102" stroke-width="1.2" class="night-only" />
+            <!-- Brass Studs -->
+            <circle cx="23" cy="28" r="3" fill="#d99f36" stroke="#7a5518" stroke-width="0.8" class="day-only" />
+            <circle cx="23" cy="77" r="3" fill="#d99f36" stroke="#7a5518" stroke-width="0.8" class="day-only" />
+            <circle cx="23" cy="128" r="3" fill="#d99f36" stroke="#7a5518" stroke-width="0.8" class="day-only" />
+            <circle cx="23" cy="28" r="3" fill="#423317" stroke="#1c160b" stroke-width="0.8" class="night-only" />
+            <circle cx="23" cy="77" r="3" fill="#423317" stroke="#1c160b" stroke-width="0.8" class="night-only" />
+            <circle cx="23" cy="128" r="3" fill="#423317" stroke="#1c160b" stroke-width="0.8" class="night-only" />
+          </g>
+
+          <!-- Center Seam (#red-door-seam) -->
+          <line id="red-door-seam" x1="0" y1="0" x2="0" y2="158" stroke="#240305" stroke-width="2.5" />
+
+          <!-- Heavy Brass Ring Door Handle (#red-door-handle) -->
+          <g id="red-door-handle" transform="translate(0, 80)">
+            <circle cx="-5" cy="0" r="5" fill="#bfa042" stroke="#7a5518" stroke-width="1.5" class="day-only" />
+            <circle cx="-5" cy="0" r="5" fill="#362c16" stroke="#1c160b" stroke-width="1.5" class="night-only" />
+            <!-- Hanging Ring -->
+            <ellipse cx="-5" cy="8" rx="6" ry="9" fill="none" stroke="#d4a342" stroke-width="2.5" class="day-only" />
+            <ellipse cx="-5" cy="8" rx="6" ry="9" fill="none" stroke="#4a3b1a" stroke-width="2.5" class="night-only" />
+          </g>
+
+          <!-- Horror: Dark Creeping Mist Beneath Threshold (#red-door-under-shadow) -->
+          <ellipse id="red-door-under-shadow" cx="0" cy="160" rx="55" ry="14" fill="#000000" opacity="0.3" filter="url(#glow-blur)" />
+        </g>
+
+        <!-- BROKEN TERRACOTTA MATKA ON STOOP (#hotspot-red-house-pot) -->
+        <g id="hotspot-red-house-pot" class="interactive-object broken-pot-assembly" transform="translate(230, 470)">
+          <!-- Ground Shadow -->
+          <ellipse cx="0" cy="10" rx="18" ry="7" fill="#000" opacity="0.4" class="day-only" />
+          <ellipse cx="0" cy="10" rx="18" ry="7" fill="#000" opacity="0.75" class="night-only" />
+          <!-- Shattered Pot Shards -->
+          <path d="M-12 6 C-14 -4, -6 -12, 2 -8 C4 -2, 2 8, -12 6 Z" fill="#9e4b2d" stroke="#522312" stroke-width="1.2" class="day-only" />
+          <path d="M-12 6 C-14 -4, -6 -12, 2 -8 C4 -2, 2 8, -12 6 Z" fill="#2d1710" stroke="#120805" stroke-width="1.2" class="night-only" />
+          <!-- Loose Shards -->
+          <polygon points="6,2 14,-2 12,8" fill="#8f4024" class="day-only" />
+          <polygon points="4,9 9,14 2,12" fill="#8f4024" class="day-only" />
+          <polygon points="6,2 14,-2 12,8" fill="#24130c" class="night-only" />
+          <polygon points="4,9 9,14 2,12" fill="#24130c" class="night-only" />
+        </g>
+
+        <!-- HOTSPOT 2: CARVED WARNING ON DOOR JAMB (#hotspot-red-house-warning) @ x=68%, y=50% (265.2, 422) -->
+        <g id="hotspot-red-house-warning" class="interactive-object red-house-warning-assembly" transform="translate(230, 275)">
+          <rect x="-8" y="-12" width="70" height="34" rx="3" fill="#3b2413" stroke="#684729" stroke-width="1.2" class="day-only" />
+          <rect x="-8" y="-12" width="70" height="34" rx="3" fill="#0d111a" stroke="#1e2638" stroke-width="1.2" class="night-only" />
+          <text x="27" y="2" text-anchor="middle" font-family="'Cinzel', serif" font-size="6.5" font-weight="700" letter-spacing="1" fill="#c72e2e" class="day-only">DO NOT KNOCK</text>
+          <text x="27" y="14" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="7.5" font-weight="600" fill="#caa57c" class="day-only">खटखटाना मत</text>
+          <text x="27" y="2" text-anchor="middle" font-family="'Cinzel', serif" font-size="6.5" font-weight="700" letter-spacing="1" fill="#e04848" class="night-only">DO NOT KNOCK</text>
+          <text x="27" y="14" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="7.5" font-weight="600" fill="#7d95b5" class="night-only">खटखटाना मत</text>
+        </g>
+      </g>
+    </svg>
+  `;
+}).call(this);
   },
 
   // 7. SCENE 06: The Banyan Tree
   renderBanyanScene() {
-    return `
-      <svg viewBox="0 0 400 700" class="scene-svg" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        ${this.getAtmosphericSky('banyan')}
+    return (function renderBanyanScene() {
+  return `
+    <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
+      ${this.getAtmosphericSky('banyan')}
+
+      <!-- Distant Desert Horizon Ridge -->
+      <g class="distant-landscape">
+        <path class="day-only" fill="#9e714e" opacity="0.65" d="M0 460 Q100 435 200 450 T390 445 L390 520 L0 520 Z" />
+        <path class="night-only" fill="#0c121e" opacity="0.8" d="M0 460 Q100 435 200 450 T390 445 L390 520 L0 520 Z" />
+      </g>
+
+      <!-- Dusty Crossroads Ground Plane -->
+      <g id="banyan-ground">
+        <rect x="0" y="500" width="390" height="344" fill="url(#ground-dirt-day)" class="day-only" />
+        <rect x="0" y="500" width="390" height="344" fill="url(#ground-dirt-night)" class="night-only" />
 
         <!-- Dirt Road Path on the Right -->
-        <rect x="0" y="470" width="400" height="230" class="dirt-road" />
-        <path d="M120 700 L240 470 L350 470 L400 700 Z" class="path-fill" opacity="0.6" />
+        <path d="M140 844 L250 510 L370 510 L390 844 Z" fill="url(#pat-cobbles)" class="day-only" opacity="0.45" />
+        <path d="M140 844 L250 510 L370 510 L390 844 Z" fill="url(#pat-cobbles-night)" class="night-only" opacity="0.5" />
+      </g>
 
-        <!-- Distant Ridge & Horizon Trees -->
-        <path d="M0 480 Q100 450 200 465 T400 460 L400 500 L0 500 Z" class="ridge-fill" opacity="0.4" />
+      <!-- THE ANCIENT BANYAN TREE COMPLEX (Vat Vriksh) -->
+      <g id="banyan-tree-complex" transform="translate(10, 40)">
+        <!-- Colossal Layered Foliage Canopy Arching Across the Sky -->
+        <g class="banyan-canopy-group">
+          <!-- Back Canopy Mass (Dark Deep Understory) -->
+          <ellipse cx="140" cy="170" rx="165" ry="95" fill="#1b2a1a" class="day-only" />
+          <ellipse cx="260" cy="155" rx="145" ry="85" fill="#20331e" class="day-only" />
+          <ellipse cx="60" cy="200" rx="115" ry="75" fill="#1b2a1a" class="day-only" />
+          <ellipse cx="320" cy="210" rx="95" ry="65" fill="#20331e" class="day-only" />
 
-        <!-- THE ANCIENT BANYAN TREE -->
-        <g class="banyan-tree-complex" transform="translate(10, 40)">
-          <!-- Vast Layered Foliage Canopy (Covering upper half) -->
-          <g class="banyan-canopy-group">
-            <ellipse cx="140" cy="150" rx="160" ry="90" class="banyan-canopy" />
-            <ellipse cx="260" cy="140" rx="140" ry="80" class="banyan-canopy-lobe" />
-            <ellipse cx="60" cy="180" rx="110" ry="70" class="banyan-canopy-lobe" />
-            <ellipse cx="320" cy="190" rx="90" ry="60" class="banyan-canopy" />
-            <ellipse cx="180" cy="100" rx="130" ry="65" class="banyan-canopy-lobe" />
+          <ellipse cx="140" cy="170" rx="165" ry="95" fill="#080e0a" class="night-only" />
+          <ellipse cx="260" cy="155" rx="145" ry="85" fill="#0b130e" class="night-only" />
+          <ellipse cx="60" cy="200" rx="115" ry="75" fill="#080e0a" class="night-only" />
+          <ellipse cx="320" cy="210" rx="95" ry="65" fill="#0b130e" class="night-only" />
 
-            <!-- DAY: Sunlight Filtering Through Leaves -->
-            <g class="day-only" opacity="0.22" fill="#fff7d6">
-              <polygon points="120,110 50,490 90,490" />
-              <polygon points="200,100 230,490 280,490" />
-            </g>
-          </g>
+          <!-- Mid Canopy Mass (Lush Olive/Moss Tones) -->
+          <ellipse cx="180" cy="120" rx="135" ry="70" fill="#294026" class="day-only" />
+          <ellipse cx="110" cy="150" rx="110" ry="65" fill="#314c2d" class="day-only" />
+          <ellipse cx="230" cy="140" rx="120" ry="65" fill="#314c2d" class="day-only" />
 
-          <!-- Thick Muscular Twisted Trunk System (Interactive Hotspot) -->
-          <g id="hotspot-banyan-roots" class="interactive-object banyan-trunk-assembly">
-            <!-- Central Trunk -->
-            <path d="M100 230 C90 290, 80 370, 40 480 L180 480 C155 380, 140 290, 130 230 Z" class="banyan-trunk" />
-            <!-- Spreading Surface Roots crawling across the ground -->
-            <path d="M60 460 Q30 475 5 490" stroke="#3b2413" stroke-width="12" stroke-linecap="round" fill="none" />
-            <path d="M90 470 Q110 495 130 520" stroke="#3b2413" stroke-width="14" stroke-linecap="round" fill="none" />
-            <path d="M140 465 Q180 480 230 495" stroke="#3b2413" stroke-width="11" stroke-linecap="round" fill="none" />
-            <path d="M160 475 Q210 515 250 535" stroke="#3b2413" stroke-width="8" stroke-linecap="round" fill="none" />
-            <path d="M40 480 Q15 510 -10 525" stroke="#3b2413" stroke-width="9" stroke-linecap="round" fill="none" />
+          <ellipse cx="180" cy="120" rx="135" ry="70" fill="#0f1a14" class="night-only" />
+          <ellipse cx="110" cy="150" rx="110" ry="65" fill="#122018" class="night-only" />
+          <ellipse cx="230" cy="140" rx="120" ry="65" fill="#122018" class="night-only" />
 
-            <!-- Bark Crevices & Knots -->
-            <path d="M95 280 Q105 340 85 410" stroke="#1d1108" stroke-width="3" fill="none" opacity="0.75" />
-            <path d="M125 290 Q115 360 135 430" stroke="#1d1108" stroke-width="3.5" fill="none" opacity="0.75" />
-            <ellipse cx="108" cy="365" rx="7" ry="14" fill="#180e07" />
-          </g>
+          <!-- Foreground Sunlit Leaves (Golden-green tips catching sunlight) -->
+          <ellipse cx="150" cy="95" rx="95" ry="48" fill="#46693e" opacity="0.85" class="day-only" />
+          <ellipse cx="240" cy="115" rx="85" ry="42" fill="#527d49" opacity="0.75" class="day-only" />
+          <ellipse cx="75" cy="130" rx="70" ry="38" fill="#46693e" opacity="0.8" class="day-only" />
 
-          <!-- Hanging Aerial Roots Dropping from Upper Canopy -->
-          <g class="hanging-aerial-roots">
-            <path class="aerial-root aerial-root-sway" d="M40 180 Q35 310 32 460" />
-            <path class="aerial-root aerial-root-sway-slow" d="M75 190 Q70 330 68 470" />
-            <path class="aerial-root aerial-root-sway" d="M175 190 Q180 320 185 460" />
-            <path class="aerial-root aerial-root-sway-slow" d="M225 180 Q220 310 218 450" />
-            <path class="aerial-root aerial-root-sway" d="M275 195 Q278 300 282 430" />
-            <path class="aerial-root aerial-root-sway-slow" d="M315 210 Q312 320 310 440" />
-          </g>
+          <!-- Moonlit Silvery Edge Sheen (NIGHT) -->
+          <ellipse cx="150" cy="95" rx="95" ry="48" fill="#2d4240" opacity="0.35" class="night-only" />
+          <ellipse cx="240" cy="115" rx="85" ry="42" fill="#2d4240" opacity="0.3" class="night-only" />
+        </g>
 
-          <!-- Village Roadside Shrine Nestled at Trunk Base -->
-          <g class="tree-shrine-cluster" transform="translate(60, 445)">
-            <!-- Smooth River Stones with Orange Sindoor Vermilion -->
-            <ellipse cx="15" cy="22" rx="14" ry="11" class="banyan-shrine-stone" />
-            <ellipse cx="15" cy="18" rx="6" ry="4" class="sindoor-smear" />
-            <ellipse cx="38" cy="25" rx="18" ry="13" class="banyan-shrine-stone" />
-            <ellipse cx="38" cy="20" rx="8" ry="5.5" class="sindoor-smear" />
-            <ellipse cx="62" cy="22" rx="13" ry="10" class="banyan-shrine-stone" />
-            <ellipse cx="62" cy="19" rx="5.5" ry="4" class="sindoor-smear" />
+        <!-- Thick Horizontal Spreading Boughs Weaving Through Canopy -->
+        <g class="banyan-horizontal-boughs">
+          <path d="M90 280 Q130 200 240 180 Q310 180 370 210" stroke="#3b2413" stroke-width="26" fill="none" stroke-linecap="round" class="day-only" />
+          <path d="M70 290 Q30 220 -20 200" stroke="#3b2413" stroke-width="18" fill="none" stroke-linecap="round" class="day-only" />
+          <path d="M90 280 Q130 200 240 180 Q310 180 370 210" stroke="#121620" stroke-width="26" fill="none" stroke-linecap="round" class="night-only" />
+          <path d="M70 290 Q30 220 -20 200" stroke="#121620" stroke-width="18" fill="none" stroke-linecap="round" class="night-only" />
+        </g>
 
-            <!-- Scattered Dried Marigold Petals -->
-            <g class="day-only">
-              <ellipse cx="28" cy="30" rx="3.5" ry="2" fill="#f59e0b" />
-              <ellipse cx="48" cy="32" rx="3" ry="1.8" fill="#fbbf24" />
-              <ellipse cx="55" cy="29" rx="3.2" ry="2" fill="#d97706" />
-            </g>
-          </g>
+        <!-- HOTSPOT 1: MASSIVE GNARLED TRUNK & BUTTRESS ROOTS (#hotspot-banyan-roots) @ x=20%, y=68% (78, 573.9) -->
+        <g id="hotspot-banyan-roots" class="interactive-object banyan-trunk-assembly">
+          <!-- Cast Tree Shadow onto Ground -->
+          <ellipse cx="110" cy="510" rx="140" ry="42" fill="#000" opacity="0.35" class="day-only" />
+          <ellipse cx="110" cy="510" rx="140" ry="42" fill="#000" opacity="0.75" class="night-only" />
 
-          <!-- Sacred Red Threads Tied Around Aerial Roots (Interactive Hotspot) -->
-          <g id="hotspot-banyan-threads" class="interactive-object sacred-threads-assembly">
-            <path d="M68 310 Q73 314 78 310" stroke="#cf232b" stroke-width="3" fill="none" />
-            <path d="M67 318 Q73 322 79 318" stroke="#e0363e" stroke-width="2" fill="none" />
-            <path d="M178 325 Q184 329 190 325" stroke="#cf232b" stroke-width="3" fill="none" />
-            <path d="M177 333 Q183 337 189 333" stroke="#e0363e" stroke-width="2" fill="none" />
-            <!-- Fluttering thread tails -->
-            <line x1="78" y1="312" x2="84" y2="330" stroke="#cf232b" stroke-width="1.8" class="flutter-slow" />
-            <line x1="189" y1="327" x2="195" y2="344" stroke="#cf232b" stroke-width="1.8" class="flutter-slow" />
-          </g>
+          <!-- Main Muscular Braided Trunk with deep bark crevices -->
+          <path d="M95 240 C85 310, 70 410, 20 520 L195 520 C165 410, 145 310, 135 240 Z" fill="#4d321d" stroke="#2b1a0d" stroke-width="2.5" class="day-only" />
+          <path d="M95 240 C85 310, 70 410, 20 520 L195 520 C165 410, 145 310, 135 240 Z" fill="#151722" stroke="#090a0f" stroke-width="2.5" class="night-only" />
 
-          <!-- NIGHT ONLY: THE WOMAN SILHOUETTE POINTING TOWARD THE ROAD -->
-          <g id="hotspot-banyan-figure" class="night-only banyan-woman-silhouette" transform="translate(210, 310)">
-            <!-- Ground Cold Shadow -->
-            <ellipse cx="22" cy="142" rx="20" ry="8" fill="#000" opacity="0.8" />
-            <!-- Soft Violet Apparition Aura -->
-            <ellipse cx="24" cy="75" rx="30" ry="68" fill="#354d70" opacity="0.22" filter="url(#glow-blur)" />
+          <!-- Intertwined Fused Trunk Ribbons & Deep Fissures -->
+          <path d="M85 270 Q95 380 65 480" stroke="#2b1a0d" stroke-width="6" fill="none" class="day-only" />
+          <path d="M115 260 Q105 370 120 490" stroke="#2b1a0d" stroke-width="7" fill="none" class="day-only" />
+          <path d="M140 280 Q130 390 160 500" stroke="#2b1a0d" stroke-width="5" fill="none" class="day-only" />
+          <path d="M85 270 Q95 380 65 480" stroke="#090a0f" stroke-width="6" fill="none" class="night-only" />
+          <path d="M115 260 Q105 370 120 490" stroke="#090a0f" stroke-width="7" fill="none" class="night-only" />
+          <path d="M140 280 Q130 390 160 500" stroke="#090a0f" stroke-width="5" fill="none" class="night-only" />
 
-            <!-- Female Silhouette Body (Traditional Sari / Pallu Draped Over Head) -->
-            <!-- Facing right / three-quarters back, NOT facing user! -->
-            <!-- Flowing draped sari skirt -->
-            <path d="M12 140 C10 100, 14 70, 22 50 C26 48, 34 48, 38 52 C44 75, 42 105, 36 140 Z" fill="#06080e" />
-            <!-- Draped head veil (Pallu covering head, looking away to the right) -->
-            <path d="M18 50 C18 30, 26 22, 34 22 C42 22, 44 32, 42 46 C38 54, 30 54, 18 50 Z" fill="#090d16" />
+          <!-- Dark Ancient Hollow (Khokal) in Central Trunk -->
+          <ellipse cx="102" cy="380" rx="9" ry="20" fill="#140b05" stroke="#2b1a0d" stroke-width="2" class="day-only" />
+          <ellipse cx="102" cy="380" rx="9" ry="20" fill="#040608" stroke="#090a0f" stroke-width="2" class="night-only" />
 
-            <!-- Right Arm Raised & Pointing Toward the Empty Road -->
-            <path d="M34 52 Q52 46 72 44" stroke="#06080e" stroke-width="5" stroke-linecap="round" fill="none" />
-            <!-- Pointing finger extending toward right edge of frame -->
-            <line x1="72" y1="44" x2="80" y2="43" stroke="#06080e" stroke-width="2.8" stroke-linecap="round" />
-            <line x1="72" y1="44" x2="80" y2="43" stroke="#8faecf" stroke-width="1.2" stroke-linecap="round" opacity="0.5" />
+          <!-- Massive Sprawling Surface Buttress Roots Crawling Across Earth -->
+          <!-- Root 1 (Crawling far left) -->
+          <path d="M50 495 Q15 515 -25 530" stroke="#3b2413" stroke-width="16" stroke-linecap="round" fill="none" class="day-only" />
+          <path d="M50 495 Q15 515 -25 530" stroke="#10131d" stroke-width="16" stroke-linecap="round" fill="none" class="night-only" />
+          <!-- Root 2 (Center forward) -->
+          <path d="M85 505 Q105 535 125 565" stroke="#3b2413" stroke-width="18" stroke-linecap="round" fill="none" class="day-only" />
+          <path d="M85 505 Q105 535 125 565" stroke="#10131d" stroke-width="18" stroke-linecap="round" fill="none" class="night-only" />
+          <!-- Root 3 (Rightward anchor) -->
+          <path d="M150 500 Q195 520 250 540" stroke="#3b2413" stroke-width="15" stroke-linecap="round" fill="none" class="day-only" />
+          <path d="M150 500 Q195 520 250 540" stroke="#10131d" stroke-width="15" stroke-linecap="round" fill="none" class="night-only" />
+          <!-- Root 4 (Far right curling root) -->
+          <path d="M175 510 Q225 550 280 575" stroke="#3b2413" stroke-width="11" stroke-linecap="round" fill="none" class="day-only" />
+          <path d="M175 510 Q225 550 280 575" stroke="#10131d" stroke-width="11" stroke-linecap="round" fill="none" class="night-only" />
+        </g>
 
-            <!-- Faint mist swirling around feet -->
-            <ellipse cx="24" cy="142" rx="36" ry="10" fill="#253245" opacity="0.35" class="fog-drift" />
+        <!-- Hanging Aerial Prop Roots (Dahri Curtain) Dropping from Boughs -->
+        <g class="hanging-aerial-roots">
+          <!-- Root 1 (Leftmost thick prop) -->
+          <path class="aerial-root aerial-root-sway" d="M35 190 Q30 330 26 490" stroke="#4a321e" stroke-width="4.5" fill="none" stroke-linecap="round" class="day-only" />
+          <path class="aerial-root aerial-root-sway" d="M35 190 Q30 330 26 490" stroke="#141824" stroke-width="4.5" fill="none" stroke-linecap="round" class="night-only" />
+          <!-- Root 2 -->
+          <path class="aerial-root aerial-root-sway-slow" d="M72 200 Q66 345 62 495" stroke="#4a321e" stroke-width="4" fill="none" stroke-linecap="round" class="day-only" />
+          <path class="aerial-root aerial-root-sway-slow" d="M72 200 Q66 345 62 495" stroke="#141824" stroke-width="4" fill="none" stroke-linecap="round" class="night-only" />
+          <!-- Root 3 (Mid right) -->
+          <path class="aerial-root aerial-root-sway" d="M175 200 Q182 340 188 480" stroke="#4a321e" stroke-width="4.5" fill="none" stroke-linecap="round" class="day-only" />
+          <path class="aerial-root aerial-root-sway" d="M175 200 Q182 340 188 480" stroke="#141824" stroke-width="4.5" fill="none" stroke-linecap="round" class="night-only" />
+          <!-- Root 4 -->
+          <path class="aerial-root aerial-root-sway-slow" d="M225 190 Q220 330 216 470" stroke="#4a321e" stroke-width="4" fill="none" stroke-linecap="round" class="day-only" />
+          <path class="aerial-root aerial-root-sway-slow" d="M225 190 Q220 330 216 470" stroke="#141824" stroke-width="4" fill="none" stroke-linecap="round" class="night-only" />
+          <!-- Root 5 (Far right) -->
+          <path class="aerial-root aerial-root-sway" d="M285 205 Q288 320 292 450" stroke="#4a321e" stroke-width="3.5" fill="none" stroke-linecap="round" class="day-only" />
+          <path class="aerial-root aerial-root-sway" d="M285 205 Q288 320 292 450" stroke="#141824" stroke-width="3.5" fill="none" stroke-linecap="round" class="night-only" />
+          <!-- Root 6 -->
+          <path class="aerial-root aerial-root-sway-slow" d="M330 220 Q325 335 320 460" stroke="#4a321e" stroke-width="3.5" fill="none" stroke-linecap="round" class="day-only" />
+          <path class="aerial-root aerial-root-sway-slow" d="M330 220 Q325 335 320 460" stroke="#141824" stroke-width="3.5" fill="none" stroke-linecap="round" class="night-only" />
+        </g>
+
+        <!-- Roadside Tree Shrine at Base of Trunk -->
+        <g class="tree-shrine-cluster" transform="translate(55, 475)">
+          <!-- Smooth Black River Stones (Saligram/Lingam stones) smeared with Orange Sindoor -->
+          <ellipse cx="16" cy="24" rx="15" ry="12" fill="#2d261e" stroke="#14100b" stroke-width="1.2" class="day-only" />
+          <ellipse cx="16" cy="20" rx="8" ry="6" fill="#e03e1b" opacity="0.9" class="day-only" />
+          <ellipse cx="40" cy="28" rx="20" ry="14" fill="#2d261e" stroke="#14100b" stroke-width="1.2" class="day-only" />
+          <ellipse cx="40" cy="22" rx="10" ry="7.5" fill="#e03e1b" opacity="0.9" class="day-only" />
+          <ellipse cx="66" cy="25" rx="14" ry="11" fill="#2d261e" stroke="#14100b" stroke-width="1.2" class="day-only" />
+          <ellipse cx="66" cy="21" rx="7" ry="5" fill="#e03e1b" opacity="0.9" class="day-only" />
+
+          <!-- NIGHT Shrine Stones -->
+          <ellipse cx="16" cy="24" rx="15" ry="12" fill="#12151e" stroke="#06070a" stroke-width="1.2" class="night-only" />
+          <ellipse cx="16" cy="20" rx="8" ry="6" fill="#6e1a0b" opacity="0.8" class="night-only" />
+          <ellipse cx="40" cy="28" rx="20" ry="14" fill="#12151e" stroke="#06070a" stroke-width="1.2" class="night-only" />
+          <ellipse cx="40" cy="22" rx="10" ry="7.5" fill="#6e1a0b" opacity="0.8" class="night-only" />
+          <ellipse cx="66" cy="25" rx="14" ry="11" fill="#12151e" stroke="#06070a" stroke-width="1.2" class="night-only" />
+          <ellipse cx="66" cy="21" rx="7" ry="5" fill="#6e1a0b" opacity="0.8" class="night-only" />
+
+          <!-- Scattered Dried Marigold Petals (Genda) -->
+          <g class="day-only">
+            <ellipse cx="28" cy="33" rx="4" ry="2.2" fill="#f59e0b" />
+            <ellipse cx="50" cy="35" rx="3.5" ry="2" fill="#fbbf24" />
+            <ellipse cx="58" cy="32" rx="3.8" ry="2.2" fill="#d97706" />
           </g>
         </g>
 
-        <!-- NIGHT ONLY: Passing Fog Sweep (Reveals the distant silhouette) -->
-        <g id="banyan-fog-sweep-layer" class="night-only fog-sweep-overlay" opacity="0" pointer-events="none">
-          <rect x="-100" y="240" width="600" height="320" fill="url(#fog-sweep-grad)" />
+        <!-- HOTSPOT 3: SACRED RED & YELLOW THREADS (#hotspot-banyan-threads) @ x=28%, y=44% (109.2, 371.4) -->
+        <g id="hotspot-banyan-threads" class="interactive-object sacred-threads-assembly" transform="translate(62, 330)">
+          <!-- Knotted Sacred Red & Gold Thread Bands (Mauli) wound around root -->
+          <path d="M-4 0 Q3 5 10 0" stroke="#cf232b" stroke-width="4" fill="none" class="day-only" />
+          <path d="M-5 8 Q3 13 11 8" stroke="#eab308" stroke-width="3" fill="none" class="day-only" />
+          <path d="M-4 16 Q3 21 10 16" stroke="#cf232b" stroke-width="4" fill="none" class="day-only" />
+          <path d="M-4 0 Q3 5 10 0" stroke="#75151a" stroke-width="4" fill="none" class="night-only" />
+          <path d="M-5 8 Q3 13 11 8" stroke="#785908" stroke-width="3" fill="none" class="night-only" />
+          <path d="M-4 16 Q3 21 10 16" stroke="#75151a" stroke-width="4" fill="none" class="night-only" />
+          <!-- Fluttering thread tails -->
+          <line x1="10" y1="2" x2="18" y2="24" stroke="#cf232b" stroke-width="2" class="day-only flutter-slow" />
+          <line x1="11" y1="10" x2="16" y2="30" stroke="#eab308" stroke-width="1.8" class="day-only flutter-slow" />
+          <line x1="10" y1="2" x2="18" y2="24" stroke="#75151a" stroke-width="2" class="night-only flutter-slow" />
+          <line x1="11" y1="10" x2="16" y2="30" stroke="#785908" stroke-width="1.8" class="night-only flutter-slow" />
         </g>
 
-        <!-- Subtle consequence: Lingering cold wind & ground fog after the scream -->
-        <g id="banyan-lingering-fog" opacity="0" pointer-events="none">
-          <ellipse cx="230" cy="460" rx="140" ry="24" fill="#202e40" class="fog-drift" opacity="0.6" filter="url(#glow-blur)" />
-          <ellipse cx="140" cy="480" rx="120" ry="20" fill="#182433" class="fog-drift" opacity="0.5" filter="url(#glow-blur)" />
+        <!-- HORROR 4 (CRITICAL): THE BANYAN TREE WOMAN APPARITION (#hotspot-banyan-figure) @ x=58%, y=54% (226.2, 455.8) -->
+        <!-- UPGRADED: Realistic old woman form, worn saree with draped pallu, messy grey/white hair, hollow gaunt face, bony pointing arm, ethereal mist -->
+        <g id="hotspot-banyan-figure" class="night-only banyan-woman-silhouette" transform="translate(216, 320)" filter="url(#ghost-haze)">
+          <!-- Ground Cold Shadow & Supernatural Swirling Mist -->
+          <ellipse cx="28" cy="180" rx="36" ry="12" fill="#000" opacity="0.85" />
+          <!-- Soft Ethereal Spectral Aura (Moonlit Cyan/Violet) -->
+          <ellipse cx="28" cy="90" rx="46" ry="95" fill="#4d6f9c" opacity="0.35" filter="url(#glow-blur)" />
+
+          <!-- Realistic Old Woman Silhouette Form in Worn Traditional Indian Cotton Saree -->
+          <!-- Flowing Draped Cotton Saree (Spectral Pale Grey/Ash White with ragged torn hem) -->
+          <path d="M12 178 C8 135, 14 90, 24 62 C28 58, 38 58, 44 64 C50 90, 48 135, 42 178 Z" fill="#cbd5e1" opacity="0.92" stroke="#475569" stroke-width="1.5" />
+          <!-- Saree Pleat Shadows (Deep vertical folds) -->
+          <path d="M22 80 Q18 130 16 178" stroke="#475569" stroke-width="2.5" fill="none" opacity="0.8" />
+          <path d="M30 76 Q28 128 28 178" stroke="#475569" stroke-width="2.5" fill="none" opacity="0.8" />
+          <path d="M38 82 Q36 130 36 178" stroke="#475569" stroke-width="2.5" fill="none" opacity="0.8" />
+          <!-- Frayed, Ragged, Torn Saree Hem trailing onto ground -->
+          <path d="M10 178 L14 184 L18 176 L22 186 L26 177 L30 185 L34 176 L38 184 L42 177 L46 182" stroke="#64748b" stroke-width="1.8" fill="none" />
+
+          <!-- Upper Torso & Blouse Under Drape -->
+          <path d="M20 62 C20 48, 40 48, 42 62 Z" fill="#64748b" opacity="0.9" />
+
+          <!-- Saree Pallu Draped Over Head (Stooped elderly posture, head tilted forward) -->
+          <path d="M16 48 C12 28, 22 12, 34 12 C46 12, 54 28, 50 50 C44 48, 24 46, 16 48 Z" fill="#e2e8f0" stroke="#475569" stroke-width="1.5" />
+
+          <!-- Wisps of Stringy, Messy Grey/White Hair Escaping the Pallu in the Cold Wind -->
+          <path d="M18 28 Q10 24 4 32 M16 34 Q8 32 2 40 M20 40 Q12 42 6 50" stroke="#f1f5f9" stroke-width="1.4" fill="none" opacity="0.85" />
+
+          <!-- GAUNT, HOLLOW SKELETAL VISAGE (Partially shadowed beneath pallu) -->
+          <g transform="translate(24, 20)">
+            <!-- Face Outline (Sunken, emaciated aged jawline) -->
+            <path d="M4 6 C4 18, 8 26, 14 26 C20 26, 22 18, 22 6 Z" fill="#94a3b8" />
+            <!-- Deep Sunken Eye Sockets (Dark hollow voids with cold glint) -->
+            <ellipse cx="8" cy="11" rx="2.8" ry="3.5" fill="#090d14" />
+            <circle cx="8" cy="10" r="0.8" fill="#e0f2fe" opacity="0.9" />
+            <ellipse cx="17" cy="11" rx="2.8" ry="3.5" fill="#090d14" />
+            <circle cx="17" cy="10" r="0.8" fill="#e0f2fe" opacity="0.9" />
+            <!-- Gaunt Sunken Cheekbones Shadows -->
+            <path d="M5 16 Q8 20 6 23 M20 16 Q17 20 19 23" stroke="#334155" stroke-width="1.2" fill="none" />
+            <!-- Parted Lips / Agonized Hollow Mouth -->
+            <ellipse cx="13" cy="22" rx="2.8" ry="3.5" fill="#090d14" />
+          </g>
+
+          <!-- BONY POINTING ARM & SKELETAL EXTENDED FINGERS (Pointing toward Road/Temple) -->
+          <g class="banyan-woman-arm" transform="translate(42, 60)">
+            <!-- Bony Forearm reaching outward to the right -->
+            <path d="M0 6 Q20 2 40 -8" stroke="#cbd5e1" stroke-width="4.5" fill="none" stroke-linecap="round" />
+            <path d="M0 6 Q20 2 40 -8" stroke="#475569" stroke-width="1.5" fill="none" />
+            <!-- Skeletal Elongated Pointing Hand & Index Finger -->
+            <path d="M40 -8 L54 -14" stroke="#e2e8f0" stroke-width="2.5" stroke-linecap="round" />
+            <!-- Curled other fingers -->
+            <path d="M42 -7 L47 -9 M41 -5 L46 -7 M40 -3 L45 -5" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" />
+            <!-- Spectral Vapor Trail trailing off fingers -->
+            <path d="M54 -14 Q65 -18 78 -16" stroke="#93c5fd" stroke-width="1.8" fill="none" opacity="0.6" filter="url(#glow-blur)" />
+          </g>
         </g>
-      </svg>
-    `;
+
+        <!-- EERIE MIST RIBBONS & FOG SWEEP ANIMATION LAYERS -->
+        <!-- Lingering Ground Fog (#banyan-lingering-fog) -->
+        <g id="banyan-lingering-fog" class="night-only" opacity="0.55">
+          <ellipse cx="195" cy="510" rx="180" ry="35" fill="url(#fog-sweep-grad)" filter="url(#glow-blur)" />
+          <ellipse cx="230" cy="490" rx="140" ry="25" fill="url(#fog-sweep-grad)" filter="url(#glow-blur)" />
+        </g>
+
+        <!-- Dynamic Fog Sweep Overlay on Entrance (#banyan-fog-sweep-layer) -->
+        <rect id="banyan-fog-sweep-layer" x="-50" y="320" width="480" height="240" fill="url(#fog-sweep-grad)" opacity="0" filter="url(#glow-blur)" pointer-events="none" />
+      </g>
+    </svg>
+  `;
+}).call(this);
   },
 
   // 8. SCENE 07: The Empty Road
   renderEmptyRoadScene() {
-    return `
-      <svg viewBox="0 0 400 700" class="scene-svg" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        ${this.getAtmosphericSky('emptyroad')}
+    return (function renderEmptyRoadScene() {
+  return `
+    <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
+      ${this.getAtmosphericSky('emptyroad')}
 
-        <!-- Rolling Countryside Plains & Fields -->
-        <rect x="0" y="320" width="400" height="380" class="countryside-field" />
+      <!-- Distant Aravalli Mountain Backdrop with atmospheric aerial perspective -->
+      <g class="distant-landscape">
+        <path class="day-only" fill="#9e714e" opacity="0.65" d="M0 410 Q90 375 190 395 T390 385 L390 480 L0 480 Z" />
+        <path class="night-only" fill="#0c121e" opacity="0.8" d="M0 410 Q90 375 190 395 T390 385 L390 480 L0 480 Z" />
+      </g>
 
-        <!-- Distant Desolate Hills at Horizon -->
-        <path d="M0 340 Q80 300 180 325 T380 315 L400 330 L400 360 L0 360 Z" class="horizon-hill" opacity="0.65" />
-        <path d="M40 335 Q140 295 240 315 T400 305 L400 350 L0 350 Z" class="horizon-hill" opacity="0.45" />
+      <!-- HOTSPOT 3: DISTANT KALDHARA RUINS PANORAMA (#hotspot-road-village-view) @ x=22%, y=52% (85.8, 438.9) -->
+      <g id="hotspot-road-village-view" class="interactive-object village-panorama-assembly" transform="translate(86, 410)">
+        <!-- Distant Skyline of Ruined Havelis, Watchtowers & Chhatris -->
+        <!-- Watchtower -->
+        <polygon points="-50,30 -42,30 -44,-8 -48,-8" fill="#5c3f27" class="day-only" />
+        <polygon points="-50,30 -42,30 -44,-8 -48,-8" fill="#121622" class="night-only" />
+        <!-- Chhatri Dome Pavilions -->
+        <path d="M-36 10 C-36 2, -24 2, -24 10 L-22 30 L-38 30 Z" fill="#684729" class="day-only" />
+        <path d="M-36 10 C-36 2, -24 2, -24 10 L-22 30 L-38 30 Z" fill="#151b2a" class="night-only" />
+        <path d="M-12 12 C-12 5, -2 5, -2 12 L0 30 L-14 30 Z" fill="#684729" class="day-only" />
+        <path d="M-12 12 C-12 5, -2 5, -2 12 L0 30 L-14 30 Z" fill="#151b2a" class="night-only" />
+        <!-- Cluster of Haveli Walls -->
+        <polygon points="5,30 35,24 35,6 5,10" fill="#7a5535" class="day-only" />
+        <polygon points="5,30 35,24 35,6 5,10" fill="#182030" class="night-only" />
+        <!-- Distant Temple Shikhara Spire -->
+        <polygon points="20,6 23,30 17,30" fill="#4d321d" class="day-only" />
+        <polygon points="20,6 23,30 17,30" fill="#0d1017" class="night-only" />
+        <!-- Distant Telegraph Poles & Sagging Wires -->
+        <line x1="-65" y1="15" x2="-65" y2="35" stroke="#3b2413" stroke-width="1.2" class="day-only" />
+        <line x1="45" y1="18" x2="45" y2="38" stroke="#3b2413" stroke-width="1.2" class="day-only" />
+        <path d="M-65 20 Q-10 26 45 22" stroke="#3b2413" stroke-width="0.7" fill="none" class="day-only" />
+        <line x1="-65" y1="15" x2="-65" y2="35" stroke="#0a0d14" stroke-width="1.2" class="night-only" />
+        <line x1="45" y1="18" x2="45" y2="38" stroke="#0a0d14" stroke-width="1.2" class="night-only" />
+        <path d="M-65 20 Q-10 26 45 22" stroke="#0a0d14" stroke-width="0.7" fill="none" class="night-only" />
+      </g>
 
-        <!-- Long Dusty Countryside Road (Perspective into the Horizon) (Interactive Hotspot) -->
-        <g id="hotspot-empty-road-path" class="interactive-object empty-road-perspective">
-          <polygon points="195,330 205,330 380,700 20,700" class="dirt-road" />
-          <!-- Road wheel ruts / cart tracks -->
-          <line x1="198" y1="330" x2="140" y2="700" stroke="#7d5939" stroke-width="2.5" opacity="0.55" />
-          <line x1="202" y1="330" x2="260" y2="700" stroke="#7d5939" stroke-width="2.5" opacity="0.55" />
+      <!-- Desert Wasteland Flanking Grounds -->
+      <g id="desert-plains">
+        <polygon points="0,440 390,440 390,844 0,844" fill="url(#ground-dirt-day)" class="day-only" />
+        <polygon points="0,440 390,440 390,844 0,844" fill="url(#ground-dirt-night)" class="night-only" />
+      </g>
+
+      <!-- HOTSPOT 1: THE EMPTY DUSTY ROAD (#hotspot-empty-road-path) @ x=50%, y=65% (195, 548.6) -->
+      <g id="hotspot-empty-road-path" class="interactive-object empty-road-path-assembly">
+        <!-- Deep Perspective Receding Dirt Track -->
+        <polygon points="185,440 205,440 340,844 40,844" fill="#b08658" class="day-only" />
+        <polygon points="185,440 205,440 340,844 40,844" fill="#151b28" class="night-only" />
+        <!-- Cobble & Flagstone remnants embedded in dust -->
+        <polygon points="188,440 202,440 300,844 80,844" fill="url(#pat-cobbles)" class="day-only" opacity="0.65" />
+        <polygon points="188,440 202,440 300,844 80,844" fill="url(#pat-cobbles-night)" class="night-only" opacity="0.6" />
+
+        <!-- Deep Wheel Ruts Winding to Horizon -->
+        <path d="M192 440 Q188 600 130 844" stroke="#684729" stroke-width="3" fill="none" opacity="0.4" stroke-dasharray="14 10" class="day-only" />
+        <path d="M198 440 Q202 600 240 844" stroke="#684729" stroke-width="3" fill="none" opacity="0.4" stroke-dasharray="16 12" class="day-only" />
+        <path d="M192 440 Q188 600 130 844" stroke="#080b10" stroke-width="3" fill="none" opacity="0.7" stroke-dasharray="14 10" class="night-only" />
+        <path d="M198 440 Q202 600 240 844" stroke="#080b10" stroke-width="3" fill="none" opacity="0.7" stroke-dasharray="16 12" class="night-only" />
+
+        <!-- Roadside Boundary Stones / Broken Masonry Blocks -->
+        <polygon points="60,620 90,610 95,650 65,660" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="1.8" class="day-only" />
+        <polygon points="60,620 90,610 95,650 65,660" fill="url(#sandstone-night)" stroke="#121622" stroke-width="1.8" class="night-only" />
+        <polygon points="310,590 335,582 340,620 315,628" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="1.8" class="day-only" />
+        <polygon points="310,590 335,582 340,620 315,628" fill="url(#sandstone-night)" stroke="#121622" stroke-width="1.8" class="night-only" />
+      </g>
+
+      <!-- HOTSPOT 2: CROOKED ANCIENT ACACIA TREE (#hotspot-road-tree) @ x=72%, y=48% (280.8, 405.1) -->
+      <g id="hotspot-road-tree" class="interactive-object acacia-tree-assembly" transform="translate(280, 390)">
+        <!-- Ground Cast Shadow -->
+        <ellipse cx="-20" cy="110" rx="65" ry="22" fill="#000" opacity="0.35" class="day-only" />
+        <ellipse cx="-20" cy="110" rx="65" ry="22" fill="#000" opacity="0.75" class="night-only" />
+
+        <!-- Crooked, Twisted Trunk (Babool Tree) -->
+        <path d="M0 110 Q-15 50 -8 0 Q-2 -50 25 -95" stroke="#3b2413" stroke-width="14" fill="none" stroke-linecap="round" class="day-only" />
+        <path d="M0 110 Q-15 50 -8 0 Q-2 -50 25 -95" stroke="#12151e" stroke-width="14" fill="none" stroke-linecap="round" class="night-only" />
+        <!-- Main Branch System -->
+        <path d="M-8 0 Q-45 -30 -75 -40" stroke="#3b2413" stroke-width="8" fill="none" stroke-linecap="round" class="day-only" />
+        <path d="M-8 0 Q-45 -30 -75 -40" stroke="#12151e" stroke-width="8" fill="none" stroke-linecap="round" class="night-only" />
+        <path d="M12 -65 Q45 -85 70 -80" stroke="#3b2413" stroke-width="6" fill="none" stroke-linecap="round" class="day-only" />
+        <path d="M12 -65 Q45 -85 70 -80" stroke="#12151e" stroke-width="6" fill="none" stroke-linecap="round" class="night-only" />
+
+        <!-- Thorny Acacia Twigs -->
+        <g stroke="#2b1a0d" stroke-width="2" fill="none" class="day-only">
+          <line x1="-75" y1="-40" x2="-95" y2="-55" />
+          <line x1="-55" y1="-35" x2="-65" y2="-60" />
+          <line x1="25" y1="-95" x2="35" y2="-120" />
+          <line x1="15" y1="-85" x2="0" y2="-110" />
+          <line x1="70" y1="-80" x2="95" y2="-90" />
+        </g>
+        <g stroke="#0a0c12" stroke-width="2" fill="none" class="night-only">
+          <line x1="-75" y1="-40" x2="-95" y2="-55" />
+          <line x1="-55" y1="-35" x2="-65" y2="-60" />
+          <line x1="25" y1="-95" x2="35" y2="-120" />
+          <line x1="15" y1="-85" x2="0" y2="-110" />
+          <line x1="70" y1="-80" x2="95" y2="-90" />
         </g>
 
-        <!-- Solitary Crooked Acacia Tree on Right Verge (Interactive Hotspot) -->
-        <g id="hotspot-road-tree" class="interactive-object crooked-acacia" transform="translate(275, 255)">
-          <path d="M30 180 Q35 120 20 80 Q10 50 35 20" stroke="#3d2816" stroke-width="9" stroke-linecap="round" fill="none" />
-          <path d="M22 75 Q45 60 65 50" stroke="#3d2816" stroke-width="5" stroke-linecap="round" fill="none" />
-          <path d="M15 55 Q-5 40 -15 35" stroke="#3d2816" stroke-width="4" stroke-linecap="round" fill="none" />
-          <!-- Feathery Acacia Foliage -->
-          <ellipse cx="38" cy="20" rx="35" ry="18" class="acacia-foliage" />
-          <ellipse cx="65" cy="45" rx="24" ry="14" class="acacia-foliage" />
-          <ellipse cx="-12" cy="35" rx="20" ry="12" class="acacia-foliage" />
+        <!-- Sparse Feathery Acacia Leaf Clusters -->
+        <g class="day-only">
+          <ellipse cx="-75" cy="-45" rx="35" ry="18" fill="#3b522b" />
+          <ellipse cx="25" cy="-100" rx="40" ry="20" fill="#466333" />
+          <ellipse cx="65" cy="-85" rx="30" ry="15" fill="#3b522b" />
+          <ellipse cx="-20" cy="-65" rx="35" ry="18" fill="#466333" />
         </g>
-
-        <!-- Distant Kaldhara Village View: Still Visible Behind User (Interactive Hotspot) -->
-        <g id="hotspot-road-village-view" class="interactive-object distant-kaldhara-view" transform="translate(25, 275)">
-          <!-- Distant settlement silhouettes -->
-          <path d="M0 55 L15 42 L30 55 L50 55 L65 38 L80 55 Z" class="distant-roofs" />
-          <!-- Temple Shikhara silhouette -->
-          <polygon points="40,32 44,55 36,55" class="distant-roofs" />
-          
-          <!-- NIGHT ONLY: Warm flickering lights refusing to get farther away! -->
-          <g class="night-only">
-            <circle cx="15" cy="48" r="2.5" fill="#ffb443" filter="url(#glow-blur)" />
-            <circle cx="15" cy="48" r="1.2" fill="#fff7d6" />
-            <circle cx="68" cy="46" r="2.5" fill="#ffb443" filter="url(#glow-blur)" />
-            <circle cx="68" cy="46" r="1.2" fill="#fff7d6" />
-            <circle cx="40" cy="42" r="2" fill="#ff9922" filter="url(#glow-blur)" />
-          </g>
+        <g class="night-only">
+          <ellipse cx="-75" cy="-45" rx="35" ry="18" fill="#0d140e" />
+          <ellipse cx="25" cy="-100" rx="40" ry="20" fill="#101812" />
+          <ellipse cx="65" cy="-85" rx="30" ry="15" fill="#0d140e" />
+          <ellipse cx="-20" cy="-65" rx="35" ry="18" fill="#101812" />
         </g>
-
-        <!-- NIGHT ONLY: Dense Creeping Mist Across the Road -->
-        <g class="night-only road-fog-layer">
-          <ellipse cx="200" cy="410" rx="190" ry="35" fill="#1b2133" opacity="0.5" class="road-fog-drift" />
-          <ellipse cx="180" cy="530" rx="240" ry="45" fill="#141824" opacity="0.55" class="road-fog-drift" />
-        </g>
-      </svg>
-    `;
+      </g>
+    </svg>
+  `;
+}).call(this);
   },
 
-  // 5. SCENE 05: Village Square
+  // 9. SCENE 08: Village Square
   renderVillageSquareScene() {
-    return `
-      <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
-        ${this.getAtmosphericSky('village-square')}
+    return (function renderVillageSquareScene() {
+  return `
+    <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
+      ${this.getAtmosphericSky('villagesquare')}
 
-        <!-- Distant Ridge & Back Havelis -->
-        <g class="distant-landscape">
-          <polygon points="0,320 80,300 190,315 310,295 390,318 390,380 0,380" fill="#a87d55" class="day-only" opacity="0.4" />
-          <polygon points="0,320 80,300 190,315 310,295 390,318 390,380 0,380" fill="#0d1424" class="night-only" opacity="0.6" />
-        </g>
+      <!-- Distant Village Roofs Beyond Square -->
+      <g class="distant-landscape">
+        <path class="day-only" fill="#9e714e" opacity="0.65" d="M0 410 Q100 380 200 400 T390 390 L390 470 L0 470 Z" />
+        <path class="night-only" fill="#0c121e" opacity="0.8" d="M0 410 Q100 380 200 400 T390 390 L390 470 L0 470 Z" />
+      </g>
 
-        <!-- Surrounding Old Village Houses Framing the Square -->
-        <g id="village-square-houses">
-          <!-- Left Haveli (2 storeys) -->
-          <polygon points="0,210 140,195 140,540 0,560" fill="#cc9f70" class="day-only" />
-          <polygon points="0,210 140,195 140,540 0,560" fill="#151b2a" class="night-only" />
-          <polygon points="0,205 145,190 142,202 0,218" fill="#7d5939" class="day-only" />
-          <polygon points="0,205 145,190 142,202 0,218" fill="#0b0f19" class="night-only" />
+      <!-- Dusty Village Square Central Ground (Chauk) -->
+      <g id="square-ground">
+        <rect x="0" y="470" width="390" height="374" fill="url(#ground-dirt-day)" class="day-only" />
+        <rect x="0" y="470" width="390" height="374" fill="url(#ground-dirt-night)" class="night-only" />
 
-          <!-- Left Upper Window / Jharokha -->
-          <rect x="25" y="240" width="38" height="52" rx="4" fill="#5c4028" class="day-only" />
-          <rect x="25" y="240" width="38" height="52" rx="4" fill="#090d15" class="night-only" />
-          <!-- NIGHT: Faint warm amber glow in window -->
-          <rect x="27" y="242" width="34" height="48" rx="3" fill="#e89838" opacity="0.75" filter="url(#glow-blur)" class="sq-lit-window night-only" />
-          <line x1="44" y1="240" x2="44" y2="292" stroke="#2b1a0d" stroke-width="2" />
-          <line x1="25" y1="266" x2="63" y2="266" stroke="#2b1a0d" stroke-width="2" />
+        <!-- Weathered Flagstone Center Pavement -->
+        <ellipse cx="195" cy="640" rx="175" ry="110" fill="url(#pat-cobbles)" class="day-only" opacity="0.75" />
+        <ellipse cx="195" cy="640" rx="175" ry="110" fill="url(#pat-cobbles-night)" class="night-only" opacity="0.75" />
+      </g>
 
-          <!-- Center-Right Haveli Facade -->
-          <polygon points="250,180 390,165 390,520 250,535" fill="#ba8c60" class="day-only" />
-          <polygon points="250,180 390,165 390,520 250,535" fill="#121824" class="night-only" />
-          <polygon points="245,175 390,160 390,172 245,186" fill="#69482d" class="day-only" />
-          <polygon points="245,175 390,160 390,172 245,186" fill="#080c14" class="night-only" />
+      <!-- SURROUNDING OLD MERCHANT HAVELIS FRAMING THE SQUARE -->
+      <g id="village-square-houses">
+        <!-- Connecting Rear Archway in Center Background -->
+        <g id="rear-archway-assembly" transform="translate(195, 290)">
+          <!-- Archway Sandstone Portal -->
+          <path d="M-60 170 L-60 60 C-60 0, 60 0, 60 60 L60 170 Z" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="2" class="day-only" />
+          <path d="M-60 170 L-60 60 C-60 0, 60 0, 60 60 L60 170 Z" fill="url(#sandstone-night)" stroke="#121622" stroke-width="2" class="night-only" />
+          <!-- Dark Recessed Alleyway Opening -->
+          <path d="M-44 170 L-44 75 C-44 25, 44 25, 44 75 L44 170 Z" fill="#140c06" class="day-only" />
+          <path d="M-44 170 L-44 75 C-44 25, 44 25, 44 75 L44 170 Z" fill="#040608" class="night-only" />
 
-          <!-- Right Upper Window 1 -->
-          <rect x="280" y="225" width="34" height="46" rx="3" fill="#4d321d" class="day-only" />
-          <rect x="280" y="225" width="34" height="46" rx="3" fill="#080b12" class="night-only" />
-          <!-- NIGHT: Faint warm curtain glow -->
-          <rect x="282" y="227" width="30" height="42" rx="2" fill="#d9822b" opacity="0.65" filter="url(#glow-blur)" class="sq-lit-window night-only" />
-          <line x1="297" y1="225" x2="297" y2="271" stroke="#26170c" stroke-width="1.8" />
-
-          <!-- Right Upper Window 2 -->
-          <rect x="335" y="220" width="34" height="46" rx="3" fill="#4d321d" class="day-only" />
-          <rect x="335" y="220" width="34" height="46" rx="3" fill="#080b12" class="night-only" />
-          <!-- NIGHT: Subtle light -->
-          <rect x="337" y="222" width="30" height="42" rx="2" fill="#c47123" opacity="0.55" filter="url(#glow-blur)" class="sq-lit-window night-only" />
-
-          <!-- Rear Village Arch Connecting Houses -->
-          <path d="M140 330 C170 300, 220 300, 250 330 L250 510 L140 510 Z" fill="#9e734c" class="day-only" />
-          <path d="M140 330 C170 300, 220 300, 250 330 L250 510 L140 510 Z" fill="#0e1420" class="night-only" />
-          <path d="M160 360 C175 340, 215 340, 230 360 L230 510 L160 510 Z" fill="#422e1e" class="day-only" />
-          <path d="M160 360 C175 340, 215 340, 230 360 L230 510 L160 510 Z" fill="#06090f" class="night-only" />
-
-          <!-- Ghost Runner across Background Arch (Notice Board Horror Interaction) -->
-          <g id="square-running-ghost" class="square-runner-ghost" opacity="0">
-            <ellipse cx="20" cy="410" rx="14" ry="18" fill="#182333" opacity="0.85" filter="url(#glow-blur)" />
-            <path d="M6 425 C2 410, 38 410, 34 425 L38 490 L2 490 Z" fill="#0d1522" opacity="0.85" />
-            <path d="M-8 435 Q20 415 48 440" stroke="#182333" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.75" />
-          </g>
-        </g>
-
-        <!-- Hanging Clothesline across square (#hotspot-hanging-clothes) -->
-        <g id="hotspot-hanging-clothes" class="interactive-object" style="cursor: pointer;">
-          <!-- Coir Line -->
-          <path d="M80 320 Q200 355 310 325" stroke="#4a3625" stroke-width="1.6" fill="none" />
-          <!-- Hanging Kurta (Left) -->
-          <polygon points="120,332 155,335 158,385 118,382" fill="#d9cbba" opacity="0.9" />
-          <!-- Hanging Saffron Fabric (Middle) -->
-          <polygon points="180,342 225,344 228,405 178,400" fill="#c26330" opacity="0.85" />
-          <!-- Hanging Child's Frock (Right) -->
-          <polygon points="250,338 278,337 282,375 248,373" fill="#8ca0ba" opacity="0.85" />
-        </g>
-
-        <!-- Wall Lanterns with Night Flicker Glow -->
-        <g class="square-lanterns">
-          <rect x="136" y="325" width="8" height="14" rx="2" fill="#302216" />
-          <circle cx="140" cy="332" r="3" fill="#ffbd59" class="night-only" filter="url(#glow-blur)" />
-          <circle cx="140" cy="332" r="14" fill="#ffbd59" opacity="0.25" class="night-only" filter="url(#glow-blur)" />
-
-          <rect x="252" y="315" width="8" height="14" rx="2" fill="#302216" />
-          <circle cx="256" cy="322" r="3" fill="#ffbd59" class="night-only" filter="url(#glow-blur)" />
-          <circle cx="256" cy="322" r="14" fill="#ffbd59" opacity="0.25" class="night-only" filter="url(#glow-blur)" />
-        </g>
-
-        <!-- Dusty Square Ground -->
-        <polygon points="0,500 390,480 390,844 0,844" fill="#d1a579" class="day-only" />
-        <polygon points="0,500 390,480 390,844 0,844" fill="#141926" class="night-only" />
-
-        <!-- Ground Cracks & Soil Texture -->
-        <path d="M60 580 L110 600 L140 595 L180 620" stroke="#a67950" stroke-width="1.4" fill="none" class="day-only" />
-        <path d="M220 560 L260 580 L310 575" stroke="#a67950" stroke-width="1.2" fill="none" class="day-only" />
-        <path d="M60 580 L110 600 L140 595 L180 620" stroke="#0a0d14" stroke-width="1.4" fill="none" class="night-only" />
-
-        <!-- Old Wooden Benches near Wall -->
-        <g class="wooden-bench" transform="translate(290, 520)">
-          <rect x="0" y="0" width="70" height="10" rx="2" fill="#54371f" />
-          <rect x="6" y="10" width="8" height="25" fill="#3b2413" />
-          <rect x="56" y="10" width="8" height="25" fill="#3b2413" />
-        </g>
-
-        <!-- Abandoned Bullock Cart (#hotspot-square-cart) -->
-        <g id="hotspot-square-cart" class="interactive-object" style="cursor: pointer;" transform="translate(40, 510)">
-          <!-- Inner Mover Group for Rolling Motion -->
-          <g id="square-cart-mover">
-            <!-- Cast Shadow -->
-            <ellipse cx="60" cy="95" rx="65" ry="18" fill="#000" opacity="0.35" class="day-only" />
-            <ellipse cx="60" cy="95" rx="65" ry="18" fill="#000" opacity="0.65" class="night-only" />
-
-            <!-- Cart Bed & Side Planks -->
-            <polygon points="15,40 105,30 115,58 12,65" fill="#5e3e23" />
-            <polygon points="12,65 115,58 112,62 10,69" fill="#3b2413" />
-
-            <!-- Grain Sacks Loaded in Cart -->
-            <ellipse cx="40" cy="35" rx="20" ry="14" fill="#a89278" />
-            <ellipse cx="75" cy="30" rx="22" ry="15" fill="#9e876d" />
-            <ellipse cx="58" cy="22" rx="18" ry="12" fill="#b09b82" />
-
-            <!-- Large Spoked Wooden Wheel -->
-            <g id="square-cart-wheel">
-              <circle cx="48" cy="72" r="32" fill="none" stroke="#3b2413" stroke-width="5" />
-              <circle cx="48" cy="72" r="8" fill="#29180c" />
-              <line x1="48" y1="40" x2="48" y2="104" stroke="#3b2413" stroke-width="3" />
-              <line x1="16" y1="72" x2="80" y2="72" stroke="#3b2413" stroke-width="3" />
-              <line x1="25" y1="49" x2="71" y2="95" stroke="#3b2413" stroke-width="2.5" />
-              <line x1="25" y1="95" x2="71" y2="49" stroke="#3b2413" stroke-width="2.5" />
+          <!-- UPGRADED RUNNING GHOST APPARITION ACROSS ARCHWAY (#square-running-ghost) -->
+          <!-- Dynamic sprinting human figure leaning forward at 45°, trailing tattered clothes, motion blur trail -->
+          <g id="square-running-ghost" class="square-runner-ghost" opacity="0" filter="url(#ghost-haze)" transform="translate(-180, 70)">
+            <!-- Motion Blur Echo 1 (Far behind) -->
+            <g opacity="0.25" transform="translate(-30, 0)">
+              <polygon points="10,45 18,30 26,45" fill="#93c5fd" />
+              <circle cx="28" cy="18" r="7" fill="#93c5fd" />
+              <line x1="28" y1="25" x2="38" y2="45" stroke="#93c5fd" stroke-width="4" />
             </g>
-
-            <!-- Front Yoke Shaft Left Resting on Earth -->
-            <line x1="105" y1="35" x2="135" y2="75" stroke="#5e3e23" stroke-width="6" />
+            <!-- Motion Blur Echo 2 -->
+            <g opacity="0.45" transform="translate(-15, 0)">
+              <polygon points="10,45 18,30 26,45" fill="#bfdbfe" />
+              <circle cx="28" cy="18" r="7" fill="#bfdbfe" />
+              <line x1="28" y1="25" x2="38" y2="45" stroke="#bfdbfe" stroke-width="4" />
+            </g>
+            <!-- Main Sprinting Figure Body -->
+            <g>
+              <!-- Leaning Torso & Tattered Dhoti/Kurta Streaming Behind -->
+              <path d="M12 48 L-8 38 L4 28 L24 22 L38 32 L32 50 Z" fill="#e2e8f0" stroke="#64748b" stroke-width="1.2" />
+              <path d="M-8 38 L-22 36 L-10 46 Z" fill="#cbd5e1" opacity="0.8" />
+              <!-- Pumping Running Legs -->
+              <!-- Front Leg Reaching Out -->
+              <path d="M28 48 L46 64 L58 60" stroke="#cbd5e1" stroke-width="4.5" fill="none" stroke-linecap="round" />
+              <!-- Back Leg Kicking High -->
+              <path d="M18 48 L4 65 L-12 55" stroke="#cbd5e1" stroke-width="4.5" fill="none" stroke-linecap="round" />
+              <!-- Forward Angled Head & Agonized Pale Visage -->
+              <circle cx="36" cy="18" r="8" fill="#e2e8f0" stroke="#64748b" stroke-width="1" />
+              <!-- Terrified Eye & Open Scream Mouth looking back -->
+              <ellipse cx="33" cy="17" rx="1.8" ry="2.2" fill="#090d14" />
+              <circle cx="33" cy="16" r="0.6" fill="#fff" />
+              <ellipse cx="31" cy="22" rx="2" ry="2.5" fill="#090d14" />
+              <!-- Wild streaming hair -->
+              <path d="M30 12 Q20 8 10 14 M28 16 Q18 14 8 22" stroke="#475569" stroke-width="2" fill="none" />
+              <!-- Pumping Arms -->
+              <path d="M26 26 L12 36 L6 28" stroke="#cbd5e1" stroke-width="3.5" fill="none" stroke-linecap="round" />
+              <path d="M32 26 L48 24 L56 36" stroke="#cbd5e1" stroke-width="3.5" fill="none" stroke-linecap="round" />
+            </g>
           </g>
         </g>
 
-        <!-- Everyday Abandoned Objects -->
-        <g class="abandoned-objects">
-          <!-- Clay Matka Pot -->
-          <ellipse cx="270" cy="620" rx="14" ry="16" fill="#8f4a2b" class="day-only" />
-          <ellipse cx="270" cy="620" rx="14" ry="16" fill="#1b120f" class="night-only" />
-          <ellipse cx="270" cy="607" rx="7" ry="2.5" fill="#69331b" />
-          <!-- Fallen Broom -->
-          <line x1="230" y1="640" x2="255" y2="655" stroke="#6e583c" stroke-width="3" />
-          <polygon points="255,655 268,665 262,670 250,658" fill="#a1845c" />
+        <!-- Left Haveli Facade (2 Storeys) -->
+        <g id="left-haveli" transform="translate(0, 160)">
+          <!-- Main Wall with aged plaster & brick exposure -->
+          <polygon points="0,70 145,50 145,410 0,430" fill="url(#plaster-cream-day)" stroke="#523924" stroke-width="2" class="day-only" />
+          <polygon points="0,70 145,50 145,410 0,430" fill="url(#plaster-cream-night)" stroke="#121622" stroke-width="2" class="night-only" />
+          <polygon points="15,100 80,90 85,160 20,170" fill="url(#pat-brick)" class="day-only" />
+          <polygon points="15,100 80,90 85,160 20,170" fill="url(#pat-brick-night)" class="night-only" />
+          <!-- Tiled Eaves -->
+          <polygon points="-5,68 152,48 148,32 -8,48" fill="url(#pat-khaprail)" class="day-only" />
+          <polygon points="-5,68 152,48 148,32 -8,48" fill="url(#pat-khaprail-night)" class="night-only" />
+
+          <!-- Upper Floor Jharokha Window with Night Light (.sq-lit-window) -->
+          <g transform="translate(35, 110)">
+            <rect x="0" y="0" width="46" height="62" rx="3" fill="#3b2413" class="day-only" />
+            <rect x="0" y="0" width="46" height="62" rx="3" fill="#090d14" class="night-only" />
+            <!-- NIGHT Faint Amber Lit Window -->
+            <rect x="3" y="3" width="40" height="56" rx="2" fill="#ffb443" opacity="0.85" filter="url(#glow-blur)" class="sq-lit-window night-only" />
+            <!-- Window Frame & Grille -->
+            <line x1="23" y1="0" x2="23" y2="62" stroke="#221307" stroke-width="2" />
+            <line x1="0" y1="31" x2="46" y2="31" stroke="#221307" stroke-width="2" />
+          </g>
+
+          <!-- Lower Floor Arched Doorway -->
+          <path d="M40 370 L40 250 C40 215, 110 215, 110 250 L110 370 Z" fill="#241407" class="day-only" />
+          <path d="M40 370 L40 250 C40 215, 110 215, 110 250 L110 370 Z" fill="#05070a" class="night-only" />
         </g>
 
-        <!-- OLD NOTICE BOARD (Hero Interactive Object #hotspot-notice-board) -->
-        <g id="hotspot-notice-board" class="interactive-object" style="cursor: pointer;" transform="translate(170, 480)">
-          <!-- Cast Shadow -->
-          <ellipse cx="30" cy="185" rx="35" ry="10" fill="#000" opacity="0.35" class="day-only" />
-          <ellipse cx="30" cy="185" rx="35" ry="10" fill="#000" opacity="0.65" class="night-only" />
+        <!-- Right Haveli Facade (2 Storeys) -->
+        <g id="right-haveli" transform="translate(245, 150)">
+          <polygon points="0,55 145,35 145,420 0,405" fill="url(#plaster-cream-day)" stroke="#523924" stroke-width="2" class="day-only" />
+          <polygon points="0,55 145,35 145,420 0,405" fill="url(#plaster-cream-night)" stroke="#121622" stroke-width="2" class="night-only" />
+          <polygon points="35,100 105,90 110,165 40,175" fill="url(#pat-brick)" class="day-only" />
+          <polygon points="35,100 105,90 110,165 40,175" fill="url(#pat-brick-night)" class="night-only" />
+          <!-- Tiled Eaves -->
+          <polygon points="-8,52 152,32 148,16 -12,32" fill="url(#pat-khaprail)" class="day-only" />
+          <polygon points="-8,52 152,32 148,16 -12,32" fill="url(#pat-khaprail-night)" class="night-only" />
 
-          <!-- Heavy Timber Posts -->
-          <rect x="22" y="50" width="12" height="135" fill="#422916" />
-          <rect x="24" y="50" width="3" height="135" fill="#633e22" />
-
-          <!-- Wooden Board Panel -->
-          <rect x="-35" y="10" width="125" height="90" rx="4" fill="#54371f" stroke="#2e1b0c" stroke-width="2.5" />
-          <!-- Board Grain Lines -->
-          <line x1="-32" y1="38" x2="88" y2="38" stroke="#3d2613" stroke-width="1.5" />
-          <line x1="-32" y1="66" x2="88" y2="66" stroke="#3d2613" stroke-width="1.5" />
-
-          <!-- 1. Top Paper Notice: "ALL RESIDENTS MUST LEAVE BEFORE SUNSET" -->
-          <polygon points="-28,16 42,14 40,42 -30,44" fill="#faeed7" stroke="#b59f7d" stroke-width="0.8" />
-          <circle cx="6" cy="17" r="1.5" fill="#24150b" />
-          <text x="6" y="27" font-family="'Cinzel', serif" font-size="4.5" font-weight="700" fill="#591212" text-anchor="middle">ALL RESIDENTS</text>
-          <text x="6" y="34" font-family="'Cinzel', serif" font-size="3.6" font-weight="600" fill="#1f1610" text-anchor="middle">MUST LEAVE BEFORE SUNSET</text>
-
-          <!-- 2. Middle Notice: "DO NOT RETURN UNTIL FURTHER NOTICE" -->
-          <polygon points="12,42 82,40 80,68 10,70" fill="#f0dfc2" stroke="#b59f7d" stroke-width="0.8" />
-          <circle cx="46" cy="43" r="1.5" fill="#24150b" />
-          <text x="46" y="53" font-family="'Cinzel', serif" font-size="3.8" font-weight="600" fill="#3b2b1d" text-anchor="middle">DO NOT RETURN</text>
-          <text x="46" y="60" font-family="'Cinzel', serif" font-size="3.2" font-weight="500" fill="#543d29" text-anchor="middle">UNTIL FURTHER NOTICE</text>
-
-          <!-- 3. Torn Final Notice: "...THE VILLAGE IS NOT EMPTY" -->
-          <polygon points="-25,48 5,47 2,88 -18,86 -22,78" fill="#e8cfb0" stroke="#9e7b57" stroke-width="0.8" />
-          <circle cx="-10" cy="50" r="1.5" fill="#24150b" />
-          <text x="-9" y="62" font-family="'Cinzel', serif" font-size="3.8" font-weight="700" fill="#7a1414" text-anchor="middle">...THE VILLAGE</text>
-          <text x="-9" y="70" font-family="'Cinzel', serif" font-size="3.8" font-weight="700" fill="#7a1414" text-anchor="middle">IS NOT EMPTY.</text>
-
-          <!-- Beacon Halo -->
-          <ellipse cx="28" cy="55" rx="35" ry="25" fill="#fedaa2" opacity="0.25" class="day-only" filter="url(#glow-blur)" />
-          <ellipse cx="28" cy="55" rx="35" ry="25" fill="#7bb5e8" opacity="0.35" class="night-only" filter="url(#glow-blur)" />
+          <!-- Upper Floor Windows (With Night Glow) -->
+          <!-- Window 1 -->
+          <g transform="translate(25, 95)">
+            <rect x="0" y="0" width="38" height="52" rx="3" fill="#3b2413" class="day-only" />
+            <rect x="0" y="0" width="38" height="52" rx="3" fill="#090d14" class="night-only" />
+            <rect x="3" y="3" width="32" height="46" rx="2" fill="#ffb443" opacity="0.8" filter="url(#glow-blur)" class="sq-lit-window night-only" />
+            <line x1="19" y1="0" x2="19" y2="52" stroke="#221307" stroke-width="1.8" />
+          </g>
+          <!-- Window 2 -->
+          <g transform="translate(85, 88)">
+            <rect x="0" y="0" width="38" height="52" rx="3" fill="#3b2413" class="day-only" />
+            <rect x="0" y="0" width="38" height="52" rx="3" fill="#090d14" class="night-only" />
+            <rect x="3" y="3" width="32" height="46" rx="2" fill="#ff9a2b" opacity="0.7" filter="url(#glow-blur)" class="sq-lit-window night-only" />
+            <line x1="19" y1="0" x2="19" y2="52" stroke="#221307" stroke-width="1.8" />
+          </g>
         </g>
-      </svg>
-    `;
+      </g>
+
+      <!-- HOTSPOT 3: HANGING CLOTHES ON LINE (#hotspot-hanging-clothes) @ x=78%, y=38% (304.2, 320.7) -->
+      <g id="hotspot-hanging-clothes" class="interactive-object hanging-clothes-assembly" transform="translate(210, 290)">
+        <!-- Sagging Rope Clothesline Strung Between Havelis -->
+        <path d="M-80 15 Q30 35 150 15" fill="none" stroke="#523924" stroke-width="1.8" class="day-only" />
+        <path d="M-80 15 Q30 35 150 15" fill="none" stroke="#121622" stroke-width="1.8" class="night-only" />
+        <!-- Garment 1: Faded White Cotton Kurta -->
+        <g transform="translate(-15, 26)">
+          <polygon points="-14,0 14,0 18,52 -18,52" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1" opacity="0.9" class="day-only flutter-slow" />
+          <polygon points="-14,0 14,0 18,52 -18,52" fill="#334155" stroke="#1e293b" stroke-width="1" opacity="0.85" class="night-only flutter-slow" />
+        </g>
+        <!-- Garment 2: Ochre Dhoti -->
+        <g transform="translate(35, 28)">
+          <polygon points="-16,0 16,0 14,64 -14,64" fill="#d99f36" stroke="#946518" stroke-width="1" opacity="0.85" class="day-only flutter-slow" />
+          <polygon points="-16,0 16,0 14,64 -14,64" fill="#52380d" stroke="#261a06" stroke-width="1" opacity="0.8" class="night-only flutter-slow" />
+        </g>
+        <!-- Garment 3: Indigo Dupatta -->
+        <g transform="translate(85, 22)">
+          <polygon points="-12,0 12,0 10,58 -10,58" fill="#475569" stroke="#1e293b" stroke-width="1" opacity="0.85" class="day-only flutter-slow" />
+          <polygon points="-12,0 12,0 10,58 -10,58" fill="#1e293b" stroke="#0f172a" stroke-width="1" opacity="0.8" class="night-only flutter-slow" />
+        </g>
+      </g>
+
+      <!-- WEATHERED STONE BENCH BENEATH WALL (#hotspot-square-bench) -->
+      <g id="hotspot-square-bench" class="interactive-object square-bench-assembly" transform="translate(290, 560)">
+        <!-- Ground Shadow -->
+        <ellipse cx="0" cy="38" rx="36" ry="10" fill="#000" opacity="0.35" class="day-only" />
+        <ellipse cx="0" cy="38" rx="36" ry="10" fill="#000" opacity="0.75" class="night-only" />
+        <!-- Sandstone Bench Slab -->
+        <polygon points="-35,8 35,5 30,-4 -40,-2" fill="url(#sandstone-highlight)" stroke="#52351c" stroke-width="1.8" class="day-only" />
+        <polygon points="-35,8 35,5 30,-4 -40,-2" fill="#2d3750" stroke="#121622" stroke-width="1.8" class="night-only" />
+        <!-- Left Pier Support -->
+        <rect x="-30" y="8" width="14" height="28" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="1.5" class="day-only" />
+        <rect x="-30" y="8" width="14" height="28" fill="url(#sandstone-night)" stroke="#121622" stroke-width="1.5" class="night-only" />
+        <!-- Right Pier Support -->
+        <rect x="18" y="6" width="14" height="28" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="1.5" class="day-only" />
+        <rect x="18" y="6" width="14" height="28" fill="url(#sandstone-night)" stroke="#121622" stroke-width="1.5" class="night-only" />
+      </g>
+
+      <!-- HOTSPOT 2: ABANDONED WOODEN BULLOCK CART (#hotspot-square-cart) @ x=24%, y=70% (93.6, 590.8) -->
+      <g id="hotspot-square-cart" class="interactive-object bullock-cart-assembly" transform="translate(94, 591)">
+        <!-- Ground Cast Shadow -->
+        <ellipse cx="0" cy="46" rx="55" ry="16" fill="#000" opacity="0.4" class="day-only" />
+        <ellipse cx="0" cy="46" rx="55" ry="16" fill="#000" opacity="0.8" class="night-only" />
+
+        <!-- Massive Wooden Spoked Wheel (Left/Foreground Wheel) -->
+        <g id="cart-wheel-fg" transform="translate(-15, 20)">
+          <!-- Iron-Rimmed Outer Rim -->
+          <circle cx="0" cy="0" r="34" fill="none" stroke="#3b2413" stroke-width="4.5" class="day-only" />
+          <circle cx="0" cy="0" r="34" fill="none" stroke="#0e1017" stroke-width="4.5" class="night-only" />
+          <circle cx="0" cy="0" r="31" fill="none" stroke="#7a5435" stroke-width="2" class="day-only" />
+          <circle cx="0" cy="0" r="31" fill="none" stroke="#222838" stroke-width="2" class="night-only" />
+          <!-- Heavy Timber Spokes (12 Spokes) -->
+          <g stroke="#5c3f27" stroke-width="2.5" class="day-only">
+            <line x1="-31" y1="0" x2="31" y2="0" />
+            <line x1="0" y1="-31" x2="0" y2="31" />
+            <line x1="-22" y1="-22" x2="22" y2="22" />
+            <line x1="-22" y1="22" x2="22" y2="-22" />
+            <line x1="-29" y1="-11" x2="29" y2="11" />
+            <line x1="-11" y1="-29" x2="11" y2="29" />
+          </g>
+          <g stroke="#161c28" stroke-width="2.5" class="night-only">
+            <line x1="-31" y1="0" x2="31" y2="0" />
+            <line x1="0" y1="-31" x2="0" y2="31" />
+            <line x1="-22" y1="-22" x2="22" y2="22" />
+            <line x1="-22" y1="22" x2="22" y2="-22" />
+            <line x1="-29" y1="-11" x2="29" y2="11" />
+            <line x1="-11" y1="-29" x2="11" y2="29" />
+          </g>
+          <!-- Heavy Carved Wooden Hub (Naaf) with Iron Linchpin -->
+          <circle cx="0" cy="0" r="8" fill="#4a2e19" stroke="#24140a" stroke-width="2" class="day-only" />
+          <circle cx="0" cy="0" r="8" fill="#121622" stroke="#080a0f" stroke-width="2" class="night-only" />
+          <circle cx="0" cy="0" r="3" fill="#8f6336" class="day-only" />
+          <circle cx="0" cy="0" r="3" fill="#2d374d" class="night-only" />
+        </g>
+
+        <!-- Cart Slanted Timber Cargo Bed -->
+        <polygon points="-45,-12 35,-22 45,5 -38,15" fill="#5c3f27" stroke="#362212" stroke-width="2" class="day-only" />
+        <polygon points="-45,-12 35,-22 45,5 -38,15" fill="#161c28" stroke="#0b0e14" stroke-width="2" class="night-only" />
+        <polygon points="-43,-10 33,-20 43,3 -36,13" fill="url(#pat-wood)" class="day-only" opacity="0.85" />
+        <polygon points="-43,-10 33,-20 43,3 -36,13" fill="url(#pat-wood-night)" class="night-only" opacity="0.85" />
+
+        <!-- Sacks of Grain / Straw Cargo rotting in cart -->
+        <ellipse cx="-15" cy="-14" rx="20" ry="14" fill="#a48057" stroke="#684f33" stroke-width="1.2" class="day-only" />
+        <ellipse cx="12" cy="-18" rx="18" ry="12" fill="#947147" stroke="#684f33" stroke-width="1.2" class="day-only" />
+        <ellipse cx="-15" cy="-14" rx="20" ry="14" fill="#252b3a" stroke="#121620" stroke-width="1.2" class="night-only" />
+        <ellipse cx="12" cy="-18" rx="18" ry="12" fill="#1f2533" stroke="#121620" stroke-width="1.2" class="night-only" />
+
+        <!-- Long Wooden Yoke Pole (Jua) resting on ground -->
+        <line x1="25" y1="2" x2="75" y2="44" stroke="#4d321d" stroke-width="4.5" stroke-linecap="round" class="day-only" />
+        <line x1="25" y1="2" x2="75" y2="44" stroke="#141722" stroke-width="4.5" stroke-linecap="round" class="night-only" />
+      </g>
+
+      <!-- HOTSPOT 1: THE OLD NOTICE BOARD (#hotspot-notice-board, #hotspot-square-notice) @ x=50%, y=64% (195, 540.2) -->
+      <g id="hotspot-notice-board" class="interactive-object square-notice-assembly" transform="translate(195, 540)">
+        <g id="hotspot-square-notice">
+          <!-- Cast Ground Shadow -->
+          <ellipse cx="0" cy="115" rx="55" ry="14" fill="#000" opacity="0.4" class="day-only" />
+          <ellipse cx="0" cy="115" rx="55" ry="14" fill="#000" opacity="0.75" class="night-only" />
+
+          <!-- Two Heavy Timber Support Posts -->
+          <rect x="-38" y="20" width="10" height="98" fill="#4a301a" stroke="#2b1a0d" stroke-width="1.5" class="day-only" />
+          <rect x="28" y="20" width="10" height="98" fill="#4a301a" stroke="#2b1a0d" stroke-width="1.5" class="day-only" />
+          <rect x="-38" y="20" width="10" height="98" fill="#141722" stroke="#0a0c12" stroke-width="1.5" class="night-only" />
+          <rect x="28" y="20" width="10" height="98" fill="#141722" stroke="#0a0c12" stroke-width="1.5" class="night-only" />
+
+          <!-- Heavy Wooden Board Frame -->
+          <rect x="-56" y="-55" width="112" height="85" rx="3" fill="#3b2413" stroke="#221307" stroke-width="2.5" class="day-only" />
+          <rect x="-56" y="-55" width="112" height="85" rx="3" fill="#0d111a" stroke="#06080e" stroke-width="2.5" class="night-only" />
+          <!-- Inner Cork/Board Surface -->
+          <rect x="-50" y="-49" width="100" height="73" fill="#684729" class="day-only" />
+          <rect x="-50" y="-49" width="100" height="73" fill="#181e2b" class="night-only" />
+
+          <!-- NOTICE 1: Yellowed Official Decree (Top Left) -->
+          <g transform="translate(-42, -42)">
+            <polygon points="0,0 48,-2 46,38 -2,36" fill="#fef3c7" stroke="#92400e" stroke-width="0.8" class="day-only" />
+            <polygon points="0,0 48,-2 46,38 -2,36" fill="#332d1e" stroke="#544426" stroke-width="0.8" class="night-only" />
+            <circle cx="2" cy="3" r="1.5" fill="#78350f" class="day-only" />
+            <text x="23" y="10" text-anchor="middle" font-family="'Cinzel', serif" font-size="3.8" font-weight="700" fill="#78350f" class="day-only">ALL RESIDENTS</text>
+            <text x="23" y="16" text-anchor="middle" font-family="'Cinzel', serif" font-size="3.5" font-weight="700" fill="#78350f" class="day-only">MUST LEAVE</text>
+            <text x="23" y="23" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="4" font-weight="600" fill="#92400e" class="day-only">BEFORE SUNSET</text>
+            <text x="23" y="30" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="3.2" font-weight="600" fill="#b45309" class="day-only">ORDER • 1978</text>
+
+            <text x="23" y="10" text-anchor="middle" font-family="'Cinzel', serif" font-size="3.8" font-weight="700" fill="#cbd5e1" class="night-only">ALL RESIDENTS</text>
+            <text x="23" y="16" text-anchor="middle" font-family="'Cinzel', serif" font-size="3.5" font-weight="700" fill="#cbd5e1" class="night-only">MUST LEAVE</text>
+            <text x="23" y="23" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="4" font-weight="600" fill="#94a3b8" class="night-only">BEFORE SUNSET</text>
+            <text x="23" y="30" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="3.2" font-weight="600" fill="#64748b" class="night-only">ORDER • 1978</text>
+          </g>
+
+          <!-- NOTICE 2: Faded Notice (Top Right) -->
+          <g transform="translate(10, -40)">
+            <polygon points="0,0 36,-1 34,34 -2,32" fill="#fee2e2" stroke="#b91c1c" stroke-width="0.8" class="day-only" />
+            <polygon points="0,0 36,-1 34,34 -2,32" fill="#2d1a1c" stroke="#54282b" stroke-width="0.8" class="night-only" />
+            <circle cx="2" cy="3" r="1.5" fill="#991b1b" class="day-only" />
+            <text x="17" y="12" text-anchor="middle" font-family="'Cinzel', serif" font-size="3.2" font-weight="700" fill="#991b1b" class="day-only">DO NOT RETURN</text>
+            <text x="17" y="20" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="3.2" font-weight="600" fill="#b91c1c" class="day-only">UNTIL FURTHER</text>
+            <text x="17" y="26" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="3.2" font-weight="600" fill="#b91c1c" class="day-only">NOTICE</text>
+
+            <text x="17" y="12" text-anchor="middle" font-family="'Cinzel', serif" font-size="3.2" font-weight="700" fill="#fca5a5" class="night-only">DO NOT RETURN</text>
+            <text x="17" y="20" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="3.2" font-weight="600" fill="#f87171" class="night-only">UNTIL FURTHER</text>
+            <text x="17" y="26" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="3.2" font-weight="600" fill="#f87171" class="night-only">NOTICE</text>
+          </g>
+
+          <!-- NOTICE 3: Torn Final Notice (Bottom Center) -->
+          <g transform="translate(-20, -2)">
+            <!-- Torn, ragged parchment scrap -->
+            <polygon points="0,0 45,0 42,22 35,18 28,24 18,17 8,23 -2,18" fill="#fef9c3" stroke="#854d0e" stroke-width="0.8" class="day-only" />
+            <polygon points="0,0 45,0 42,22 35,18 28,24 18,17 8,23 -2,18" fill="#292716" stroke="#4a441e" stroke-width="0.8" class="night-only" />
+            <text x="21" y="9" text-anchor="middle" font-family="'Caveat', cursive" font-size="5" font-weight="700" fill="#713f12" class="day-only">...THE VILLAGE</text>
+            <text x="21" y="16" text-anchor="middle" font-family="'Caveat', cursive" font-size="5" font-weight="700" fill="#dc2626" class="day-only">IS NOT EMPTY.</text>
+
+            <text x="21" y="9" text-anchor="middle" font-family="'Caveat', cursive" font-size="5" font-weight="700" fill="#fde047" class="night-only">...THE VILLAGE</text>
+            <text x="21" y="16" text-anchor="middle" font-family="'Caveat', cursive" font-size="5" font-weight="700" fill="#ef4444" class="night-only">IS NOT EMPTY.</text>
+          </g>
+        </g>
+      </g>
+    </svg>
+  `;
+}).call(this);
   },
 
-  // 6. SCENE 06: The Abandoned House
+  // 10. SCENE 09: The Abandoned House
   renderAbandonedHouseScene() {
-    return `
-      <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
-        ${this.getAtmosphericSky('abandoned-house')}
+    return (function renderAbandonedHouseScene() {
+  return `
+    <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
+      ${this.getAtmosphericSky('abandonedhouse')}
 
-        <!-- Ground Baseline -->
-        <polygon points="0,520 390,500 390,844 0,844" fill="#c99e71" class="day-only" />
-        <polygon points="0,520 390,500 390,844 0,844" fill="#131722" class="night-only" />
+      <!-- Distant Village Rooflines Backdrop -->
+      <g class="distant-landscape">
+        <path class="day-only" fill="#9e714e" opacity="0.65" d="M0 430 Q100 405 200 420 T390 415 L390 490 L0 490 Z" />
+        <path class="night-only" fill="#0c121e" opacity="0.8" d="M0 430 Q100 405 200 420 T390 415 L390 490 L0 490 Z" />
+      </g>
 
-        <!-- 2-Storey Abandoned House Facade -->
-        <g id="abandoned-house-facade">
-          <!-- House Walls (Aged Faded Blue/Cream) -->
-          <polygon points="20,160 370,140 370,580 20,600" fill="#8fa6b8" class="day-only" />
-          <polygon points="20,160 370,140 370,580 20,600" fill="#141c27" class="night-only" />
+      <!-- Veranda Stone Courtyard Ground -->
+      <g id="abandoned-house-ground">
+        <rect x="0" y="500" width="390" height="344" fill="url(#ground-dirt-day)" class="day-only" />
+        <rect x="0" y="500" width="390" height="344" fill="url(#ground-dirt-night)" class="night-only" />
 
-          <!-- Wall Plaster Cracks & Patches -->
-          <path d="M80 220 L110 260 L95 290" stroke="#688094" stroke-width="1.8" fill="none" class="day-only" />
-          <path d="M280 210 L310 240 L300 280" stroke="#688094" stroke-width="1.8" fill="none" class="day-only" />
+        <!-- Weathered Veranda Flagstone Floor -->
+        <polygon points="10,530 380,510 390,844 0,844" fill="url(#pat-cobbles)" class="day-only" opacity="0.85" />
+        <polygon points="10,530 380,510 390,844 0,844" fill="url(#pat-cobbles-night)" class="night-only" opacity="0.85" />
+      </g>
 
-          <!-- Eaves / Terracotta Tiles -->
-          <polygon points="10,155 380,135 375,170 15,190" fill="#9e512d" class="day-only" />
-          <polygon points="10,155 380,135 375,170 15,190" fill="#24140e" class="night-only" />
+      <!-- THE ABANDONED HOUSE FACADE & VERANDA -->
+      <g class="abandoned-house-facade" transform="translate(15, 120)">
+        <!-- Main Wall with Cracked Plaster -->
+        <polygon points="0,420 0,60 360,40 360,400" fill="url(#plaster-cream-day)" stroke="#523924" stroke-width="2" class="day-only" />
+        <polygon points="0,420 0,60 360,40 360,400" fill="url(#plaster-cream-night)" stroke="#121622" stroke-width="2" class="night-only" />
+        <!-- Exposed Brickwork Patches -->
+        <polygon points="15,90 75,80 80,140 20,150" fill="url(#pat-brick)" class="day-only" />
+        <polygon points="15,90 75,80 80,140 20,150" fill="url(#pat-brick-night)" class="night-only" />
+        <polygon points="265,240 335,230 340,310 270,320" fill="url(#pat-brick)" class="day-only" />
+        <polygon points="265,240 335,230 340,310 270,320" fill="url(#pat-brick-night)" class="night-only" />
 
-          <!-- UPSTAIRS WINDOW (Subtle Night Light & Silhouette) -->
-          <g id="upstairs-window-unit" transform="translate(145, 200)">
-            <!-- Window Frame -->
-            <rect x="0" y="0" width="85" height="105" rx="4" fill="#3b2b1d" />
-            <!-- Interior Glass Pane (Day: dark dusty glass) -->
-            <rect x="5" y="5" width="75" height="95" rx="2" fill="#241a12" class="day-only" />
-            <!-- Interior Glass Pane (Night: initially dark, then lights up) -->
-            <rect id="upstairs-window-glass" x="5" y="5" width="75" height="95" rx="2" fill="#0d1117" class="night-only" />
-            <!-- Upstairs Window Light (Warm Amber) -->
-            <rect id="upstairs-window-light" class="upstairs-window-light night-only" x="5" y="5" width="75" height="95" rx="2" fill="#e09436" opacity="0" filter="url(#glow-blur)" />
+        <!-- Tiled Eaves Roof -->
+        <polygon points="-10,65 370,45 365,25 -15,45" fill="url(#pat-khaprail)" class="day-only" />
+        <polygon points="-10,65 370,45 365,25 -15,45" fill="url(#pat-khaprail-night)" class="night-only" />
 
-            <!-- Upstairs Silhouette Walker (Night: briefly crosses window and vanishes) -->
-            <g id="upstairs-silhouette" class="upstairs-silhouette-walker night-only" opacity="0">
-              <!-- Head -->
-              <circle cx="25" cy="40" r="10" fill="#080a0f" />
-              <!-- Shoulders & Torso -->
-              <path d="M12 55 C12 48, 38 48, 38 55 L42 98 L8 98 Z" fill="#080a0f" />
-            </g>
+        <!-- Upstairs Window with Night Silhouette Passing By -->
+        <g id="upstairs-window-group" transform="translate(260, 75)">
+          <rect x="0" y="0" width="48" height="62" rx="3" fill="#3b2413" class="day-only" />
+          <rect x="0" y="0" width="48" height="62" rx="3" fill="#090d14" class="night-only" />
+          <!-- NIGHT: Light that turns on with shadow crossing -->
+          <rect x="3" y="3" width="42" height="56" rx="2" fill="#ffb443" opacity="0.85" filter="url(#glow-blur)" class="sq-lit-window night-only" />
+          <!-- Silhouette crossing upstairs window -->
+          <ellipse cx="24" cy="22" rx="7" ry="8" fill="#140b05" class="night-only flutter-slow" />
+          <path d="M12 56 C12 36, 36 36, 36 56 Z" fill="#140b05" class="night-only flutter-slow" />
+          <!-- Window Grille -->
+          <line x1="24" y1="0" x2="24" y2="62" stroke="#221307" stroke-width="2" />
+          <line x1="0" y1="31" x2="48" y2="31" stroke="#221307" stroke-width="2" />
+        </g>
 
-            <!-- Window Grille Bars -->
-            <line x1="29" y1="5" x2="29" y2="100" stroke="#3b2b1d" stroke-width="3" />
-            <line x1="56" y1="5" x2="56" y2="100" stroke="#3b2b1d" stroke-width="3" />
-            <line x1="5" y1="52" x2="80" y2="52" stroke="#3b2b1d" stroke-width="3" />
+        <!-- Veranda Wooden Support Pillars (Carved Rajasthani Capitals) -->
+        <!-- Left Pillar -->
+        <rect x="18" y="160" width="16" height="260" fill="#4d321d" stroke="#2a180c" stroke-width="1.8" class="day-only" />
+        <rect x="18" y="160" width="16" height="260" fill="#141722" stroke="#0a0c12" stroke-width="1.8" class="night-only" />
+        <polygon points="10,160 42,160 36,175 16,175" fill="#5c3f27" class="day-only" />
+        <polygon points="10,160 42,160 36,175 16,175" fill="#181e2a" class="night-only" />
+        <!-- Right Pillar -->
+        <rect x="325" y="150" width="16" height="260" fill="#4d321d" stroke="#2a180c" stroke-width="1.8" class="day-only" />
+        <rect x="325" y="150" width="16" height="260" fill="#141722" stroke="#0a0c12" stroke-width="1.8" class="night-only" />
+        <polygon points="317,150 349,150 343,165 323,165" fill="#5c3f27" class="day-only" />
+        <polygon points="317,150 349,150 343,165 323,165" fill="#181e2a" class="night-only" />
+
+        <!-- HOTSPOT 1: GROUND FLOOR VERANDA WINDOW (#hotspot-house-window) @ x=50%, y=38% (195, 320.7) -->
+        <g id="hotspot-house-window" class="interactive-object house-window-assembly" transform="translate(180, 200)">
+          <!-- Sandstone Window Frame -->
+          <rect x="-60" y="-12" width="120" height="135" rx="3" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="2.5" class="day-only" />
+          <rect x="-60" y="-12" width="120" height="135" rx="3" fill="url(#sandstone-night)" stroke="#121622" stroke-width="2.5" class="night-only" />
+          <!-- Dark Interior Behind Glass Panes -->
+          <rect x="-52" y="0" width="104" height="118" fill="#0d1118" />
+
+          <!-- Dusty Furniture & Shelves Visible Through Window Glass (DAY) -->
+          <g class="day-only" opacity="0.6">
+            <rect x="-42" y="55" width="45" height="40" fill="#241710" />
+            <line x1="-48" y1="35" x2="38" y2="35" stroke="#3b2413" stroke-width="3" />
+            <rect x="-25" y="18" width="12" height="17" fill="#8f6338" />
+            <rect x="8" y="22" width="16" height="13" fill="#684729" />
           </g>
 
-          <!-- Veranda Mid-Floor Roofline -->
-          <polygon points="15,350 375,330 370,365 10,385" fill="#784024" class="day-only" />
-          <polygon points="15,350 375,330 370,365 10,385" fill="#1b0e08" class="night-only" />
-
-          <!-- Veranda (Otla) Elevated Platform -->
-          <polygon points="30,480 360,460 360,600 30,620" fill="#b0855b" class="day-only" />
-          <polygon points="30,480 360,460 360,600 30,620" fill="#181c28" class="night-only" />
-          <!-- Veranda Steps -->
-          <polygon points="120,605 270,595 275,640 115,650" fill="#916a44" class="day-only" />
-          <polygon points="120,605 270,595 275,640 115,650" fill="#10141c" class="night-only" />
-
-          <!-- Veranda Carved Wooden Pillars -->
-          <rect x="50" y="375" width="14" height="185" fill="#52351f" />
-          <rect x="325" y="355" width="14" height="185" fill="#52351f" />
-          <rect x="195" y="365" width="14" height="185" fill="#52351f" />
-
-          <!-- Open Veranda Front Door (Door Left Wide Open into Darkness) -->
-          <g id="abandoned-front-door" transform="translate(70, 390)">
-            <!-- Dark Interior Doorway Void -->
-            <rect x="0" y="0" width="65" height="140" fill="#0d0906" />
-            <!-- Open Door Timber Slab Standing Ajar -->
-            <polygon points="0,0 22,8 22,148 0,140" fill="#693b1d" stroke="#3b200e" stroke-width="2" />
-            <!-- Door Handle -->
-            <circle cx="16" cy="78" r="2.8" fill="#c7974a" />
+          <!-- HORROR 3: SHOCKING GHOST FACE SILHOUETTE BEHIND GLASS (#window-ghost-face) -->
+          <g id="window-ghost-face" opacity="0" filter="url(#ghost-haze)" transform="translate(0, 48)">
+            <!-- Cold Blue Ethereal Bloom -->
+            <ellipse cx="0" cy="0" rx="36" ry="42" fill="#7ba5db" opacity="0.45" filter="url(#glow-blur)" />
+            <!-- Pale Terrifying Visage -->
+            <path d="M-22 -8 C-22 22, -12 36, 0 36 C12 36, 22 22, 22 -8 C22 -32, -22 -32, -22 -8 Z" fill="#e2e8f0" stroke="#64748b" stroke-width="1.8" />
+            <!-- Wide Unblinking Black Eye Sockets Staring Through Glass -->
+            <ellipse cx="-10" cy="-6" rx="5.5" ry="6.5" fill="#040608" />
+            <circle cx="-10" cy="-7" r="1.5" fill="#ffffff" />
+            <ellipse cx="10" cy="-6" rx="5.5" ry="6.5" fill="#040608" />
+            <circle cx="10" cy="-7" r="1.5" fill="#ffffff" />
+            <!-- Agonized Gaping Black Scream Mouth -->
+            <ellipse cx="0" cy="18" rx="7" ry="12" fill="#040608" />
+            <!-- Ghostly wisps of hair pressed to glass -->
+            <path d="M-20 -25 Q-32 0 -22 25 M20 -25 Q32 0 22 25" stroke="#94a3b8" stroke-width="2.5" fill="none" opacity="0.75" />
           </g>
 
-          <!-- WIDE BARRED WINDOW WITH DUSTY INTERIOR VIEW (#hotspot-house-window) -->
-          <g id="hotspot-house-window" class="interactive-object" style="cursor: pointer;" transform="translate(155, 390)">
-            <!-- Outer Window Frame -->
-            <rect x="0" y="0" width="150" height="105" rx="4" fill="#472e1c" stroke="#2b1a0d" stroke-width="2.5" />
-            <!-- Dusty Glass Pane -->
-            <rect x="6" y="6" width="138" height="93" fill="#1f1813" />
+          <!-- Wooden Window Mullions & Transoms -->
+          <line x1="0" y1="0" x2="0" y2="118" stroke="#3b2413" stroke-width="3" class="day-only" />
+          <line x1="-52" y1="59" x2="52" y2="59" stroke="#3b2413" stroke-width="3" class="day-only" />
+          <line x1="0" y1="0" x2="0" y2="118" stroke="#121622" stroke-width="3" class="night-only" />
+          <line x1="-52" y1="59" x2="52" y2="59" stroke="#121622" stroke-width="3" class="night-only" />
+          <!-- Diagonal Glass Sheen Highlights -->
+          <line x1="-40" y1="10" x2="-10" y2="50" stroke="#fff" stroke-width="1.5" opacity="0.25" />
+          <line x1="10" y1="10" x2="40" y2="50" stroke="#fff" stroke-width="1.5" opacity="0.25" />
+        </g>
 
-            <!-- Visible Interior: Family Photographs on Wall -->
-            <rect x="18" y="16" width="22" height="28" fill="#806245" stroke="#422f1d" stroke-width="1.2" />
-            <rect x="21" y="19" width="16" height="22" fill="#c4b097" opacity="0.6" />
-            <circle cx="29" cy="28" r="4" fill="#5e4934" />
-
-            <rect x="46" y="14" width="26" height="32" fill="#806245" stroke="#422f1d" stroke-width="1.2" />
-            <rect x="49" y="17" width="20" height="26" fill="#c4b097" opacity="0.6" />
-            <!-- Two Figures in Frame -->
-            <circle cx="56" cy="27" r="3.5" fill="#5e4934" />
-            <circle cx="63" cy="29" r="3" fill="#5e4934" />
-
-            <!-- Dining Table Visible Inside -->
-            <polygon points="15,75 135,70 130,95 20,98" fill="#362314" />
-            <!-- Brass Pitcher / Tumbler Left on Table -->
-            <polygon points="85,62 95,62 97,76 83,76" fill="#bfa054" />
-
-            <!-- Ghost Face / Silhouette Flashing behind glass (Horror Interaction) -->
-            <g id="window-ghost-face" class="ghost-face-silhouette" opacity="0">
-              <ellipse cx="75" cy="50" rx="30" ry="38" fill="#040608" />
-              <ellipse cx="75" cy="48" rx="26" ry="34" fill="#d2d6dc" opacity="0.75" filter="url(#glow-blur)" />
-              <!-- Hollow sunken eyes and gaping mouth -->
-              <ellipse cx="64" cy="42" rx="4.5" ry="6.5" fill="#040608" />
-              <ellipse cx="86" cy="42" rx="4.5" ry="6.5" fill="#040608" />
-              <ellipse cx="75" cy="64" rx="7" ry="12" fill="#040608" />
-            </g>
-
-            <!-- Heavy Wooden Grille Bars -->
-            <line x1="38" y1="6" x2="38" y2="99" stroke="#3b2516" stroke-width="3" />
-            <line x1="75" y1="6" x2="75" y2="99" stroke="#3b2516" stroke-width="3" />
-            <line x1="112" y1="6" x2="112" y2="99" stroke="#3b2516" stroke-width="3" />
-            <line x1="6" y1="52" x2="144" y2="52" stroke="#3b2516" stroke-width="3" />
-
-            <!-- Beacon Glow -->
-            <ellipse cx="75" cy="52" rx="40" ry="25" fill="#fedaa2" opacity="0.25" class="day-only" filter="url(#glow-blur)" />
-            <ellipse cx="75" cy="52" rx="40" ry="25" fill="#7bb5e8" opacity="0.35" class="night-only" filter="url(#glow-blur)" />
-          </g>
-
-          <!-- Old Wooden Chair on Veranda (#hotspot-veranda-chair) -->
-          <g id="hotspot-veranda-chair" class="interactive-object" style="cursor: pointer;" transform="translate(265, 485)">
-            <!-- Cane Armchair -->
-            <polygon points="10,0 48,0 45,45 12,45" fill="#755030" stroke="#4a301a" stroke-width="1.8" />
-            <rect x="5" y="40" width="48" height="8" rx="2" fill="#5c3c21" />
-            <!-- Legs -->
-            <line x1="10" y1="48" x2="8" y2="82" stroke="#4a301a" stroke-width="3.5" />
-            <line x1="48" y1="48" x2="50" y2="82" stroke="#4a301a" stroke-width="3.5" />
-          </g>
-
-          <!-- Children's Wooden Toy Left on Veranda Floor (#hotspot-children-toy) -->
-          <g id="hotspot-children-toy" class="interactive-object" style="cursor: pointer;" transform="translate(85, 595)">
-            <!-- Inner Mover Group for Toy Movement and Vanishing -->
-            <g id="toy-cart-mover">
-              <!-- Toy Cart Body -->
-              <rect x="0" y="8" width="38" height="16" rx="2" fill="#ad723b" stroke="#6e431e" stroke-width="1.5" />
-              <!-- Pull String Dropped on Floor -->
-              <path d="M0 16 Q-12 24 -18 32" stroke="#523318" stroke-width="1.5" fill="none" />
-              <!-- Painted Red Wheels -->
-              <circle cx="8" cy="24" r="7" fill="#b02c2c" stroke="#5e1212" stroke-width="1.8" />
-              <circle cx="30" cy="24" r="7" fill="#b02c2c" stroke="#5e1212" stroke-width="1.8" />
-              <circle cx="8" cy="24" r="2" fill="#ffdd99" />
-              <circle cx="30" cy="24" r="2" fill="#ffdd99" />
-            </g>
+        <!-- HOTSPOT 3: VINTAGE FRAMED FAMILY PHOTOGRAPH ON WALL (#hotspot-family-photo) @ x=72%, y=56% (280.8, 472.6) -->
+        <g id="hotspot-family-photo" class="interactive-object family-photo-assembly" transform="translate(265, 350)">
+          <!-- Cast Shadow -->
+          <polygon points="-2,2 48,0 46,60 -4,62" fill="#000" opacity="0.35" class="day-only" />
+          <polygon points="-2,2 48,0 46,60 -4,62" fill="#000" opacity="0.7" class="night-only" />
+          <!-- Weathered Dark Teak Frame (Tilted slightly on nail) -->
+          <rect x="0" y="0" width="46" height="58" rx="2" fill="#3b2413" stroke="#221307" stroke-width="2" transform="rotate(-3)" class="day-only" />
+          <rect x="0" y="0" width="46" height="58" rx="2" fill="#12151e" stroke="#080a0f" stroke-width="2" transform="rotate(-3)" class="night-only" />
+          <!-- Sepia Faded 1970s Family Portrait -->
+          <g transform="rotate(-3)">
+            <rect x="4" y="4" width="38" height="50" fill="#d9c7af" class="day-only" />
+            <rect x="4" y="4" width="38" height="50" fill="#2d2822" class="night-only" />
+            <!-- Silhouetted Family of 4 Standing Stiffly -->
+            <!-- Father -->
+            <ellipse cx="14" cy="18" rx="3.5" ry="4" fill="#523924" class="day-only" />
+            <polygon points="9,22 19,22 21,48 7,48" fill="#523924" class="day-only" />
+            <ellipse cx="14" cy="18" rx="3.5" ry="4" fill="#161310" class="night-only" />
+            <polygon points="9,22 19,22 21,48 7,48" fill="#161310" class="night-only" />
+            <!-- Mother in Saree -->
+            <ellipse cx="28" cy="20" rx="3.5" ry="4" fill="#684729" class="day-only" />
+            <polygon points="23,24 33,24 35,48 21,48" fill="#684729" class="day-only" />
+            <ellipse cx="28" cy="20" rx="3.5" ry="4" fill="#1c1814" class="night-only" />
+            <polygon points="23,24 33,24 35,48 21,48" fill="#1c1814" class="night-only" />
+            <!-- Two Small Children Standing in Front -->
+            <ellipse cx="16" cy="30" rx="2.5" ry="3" fill="#3b2413" class="day-only" />
+            <polygon points="12,33 20,33 21,48 11,48" fill="#3b2413" class="day-only" />
+            <ellipse cx="25" cy="31" rx="2.5" ry="3" fill="#3b2413" class="day-only" />
+            <polygon points="21,34 29,34 30,48 20,48" fill="#3b2413" class="day-only" />
+            <ellipse cx="16" cy="30" rx="2.5" ry="3" fill="#0d0b08" class="night-only" />
+            <polygon points="12,33 20,33 21,48 11,48" fill="#0d0b08" class="night-only" />
+            <ellipse cx="25" cy="31" rx="2.5" ry="3" fill="#0d0b08" class="night-only" />
+            <polygon points="21,34 29,34 30,48 20,48" fill="#0d0b08" class="night-only" />
+            <!-- Cracked Glass Diagonal Fracture across photo -->
+            <line x1="4" y1="12" x2="38" y2="46" stroke="#fff" stroke-width="1.2" opacity="0.6" />
           </g>
         </g>
-      </svg>
-    `;
+
+        <!-- OLD WOODEN ARMCHAIR ON VERANDA (#hotspot-house-chair) -->
+        <g id="hotspot-house-chair" class="interactive-object house-chair-assembly" transform="translate(65, 410)">
+          <!-- Ground Cast Shadow -->
+          <ellipse cx="0" cy="55" rx="32" ry="11" fill="#000" opacity="0.35" class="day-only" />
+          <ellipse cx="0" cy="55" rx="32" ry="11" fill="#000" opacity="0.75" class="night-only" />
+          <!-- Chair Legs -->
+          <line x1="-18" y1="15" x2="-22" y2="52" stroke="#523924" stroke-width="3.5" class="day-only" />
+          <line x1="18" y1="12" x2="16" y2="50" stroke="#523924" stroke-width="3.5" class="day-only" />
+          <line x1="-18" y1="15" x2="-22" y2="52" stroke="#161c28" stroke-width="3.5" class="night-only" />
+          <line x1="18" y1="12" x2="16" y2="50" stroke="#161c28" stroke-width="3.5" class="night-only" />
+          <!-- Woven Cane Seat Platter -->
+          <polygon points="-24,15 24,10 18,-6 -18,-4" fill="#a48259" stroke="#684e2f" stroke-width="2" class="day-only" />
+          <polygon points="-24,15 24,10 18,-6 -18,-4" fill="#25241f" stroke="#12120f" stroke-width="2" class="night-only" />
+          <!-- Curved Wooden Armrests -->
+          <path d="M-22 12 Q-25 -8 -15 -18" stroke="#684729" stroke-width="3" fill="none" class="day-only" />
+          <path d="M22 8 Q25 -10 15 -20" stroke="#684729" stroke-width="3" fill="none" class="day-only" />
+          <path d="M-22 12 Q-25 -8 -15 -18" stroke="#181e2b" stroke-width="3" fill="none" class="night-only" />
+          <path d="M22 8 Q25 -10 15 -20" stroke="#181e2b" stroke-width="3" fill="none" class="night-only" />
+          <!-- High Slatted Backrest -->
+          <line x1="-15" y1="-4" x2="-12" y2="-52" stroke="#523924" stroke-width="3" class="day-only" />
+          <line x1="15" y1="-6" x2="12" y2="-55" stroke="#523924" stroke-width="3" class="day-only" />
+          <line x1="-15" y1="-4" x2="-12" y2="-52" stroke="#161c28" stroke-width="3" class="night-only" />
+          <line x1="15" y1="-6" x2="12" y2="-55" stroke="#161c28" stroke-width="3" class="night-only" />
+          <rect x="-16" y="-56" width="30" height="7" rx="2" fill="#684729" class="day-only" />
+          <rect x="-16" y="-56" width="30" height="7" rx="2" fill="#181e2b" class="night-only" />
+        </g>
+      </g>
+
+      <!-- HOTSPOT 2: ABANDONED CHILD'S WOODEN PULL-TOY (#hotspot-children-toy, #toy-cart-mover) @ x=28%, y=74% (109.2, 624.6) -->
+      <g id="toy-cart-mover" transform="translate(109, 625)">
+        <g id="hotspot-children-toy" class="interactive-object child-toy-assembly">
+          <!-- Cast Ground Shadow -->
+          <ellipse cx="0" cy="18" rx="22" ry="7" fill="#000" opacity="0.35" class="day-only" />
+          <ellipse cx="0" cy="18" rx="22" ry="7" fill="#000" opacity="0.75" class="night-only" />
+
+          <!-- Wooden Toy Cart Body (Carved Little Bullock Cart) -->
+          <polygon points="-16,4 16,0 14,-14 -14,-12" fill="#cf3b2b" stroke="#781d13" stroke-width="1.2" class="day-only" />
+          <polygon points="-16,4 16,0 14,-14 -14,-12" fill="#4d140e" stroke="#240704" stroke-width="1.2" class="night-only" />
+
+          <!-- Wooden Spool Wheels -->
+          <circle cx="-12" cy="10" r="7" fill="#d99f36" stroke="#7a5518" stroke-width="1" class="day-only" />
+          <circle cx="12" cy="8" r="7" fill="#d99f36" stroke="#7a5518" stroke-width="1" class="day-only" />
+          <circle cx="-12" cy="10" r="7" fill="#4a3713" stroke="#1e1607" stroke-width="1" class="night-only" />
+          <circle cx="12" cy="8" r="7" fill="#4a3713" stroke="#1e1607" stroke-width="1" class="night-only" />
+          <circle cx="-12" cy="10" r="2" fill="#3b2413" class="day-only" />
+          <circle cx="12" cy="8" r="2" fill="#3b2413" class="day-only" />
+          <circle cx="-12" cy="10" r="2" fill="#0e0a05" class="night-only" />
+          <circle cx="12" cy="8" r="2" fill="#0e0a05" class="night-only" />
+
+          <!-- Coiled Pull-String Trailing on Ground -->
+          <path d="M16 2 Q32 12 45 4 Q55 18 68 8" stroke="#d5c8b7" stroke-width="1.2" fill="none" class="day-only" />
+          <path d="M16 2 Q32 12 45 4 Q55 18 68 8" stroke="#48566a" stroke-width="1.2" fill="none" class="night-only" />
+        </g>
+      </g>
+    </svg>
+  `;
+}).call(this);
   },
 
-  // 7. SCENE 07: The Old School
+  // 11. SCENE 10: The Old School
   renderOldSchoolScene() {
-    return `
-      <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
-        ${this.getAtmosphericSky('old-school')}
+    return (function renderOldSchoolScene() {
+  return `
+    <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
+      ${this.getAtmosphericSky('oldschool')}
 
-        <!-- Dusty Courtyard Ground -->
-        <polygon points="0,480 390,460 390,844 0,844" fill="#c79c6d" class="day-only" />
-        <polygon points="0,480 390,460 390,844 0,844" fill="#121724" class="night-only" />
+      <!-- Distant Village Backdrop -->
+      <g class="distant-landscape">
+        <path class="day-only" fill="#9e714e" opacity="0.65" d="M0 430 Q100 405 200 420 T390 415 L390 490 L0 490 Z" />
+        <path class="night-only" fill="#0c121e" opacity="0.8" d="M0 430 Q100 405 200 420 T390 415 L390 490 L0 490 Z" />
+      </g>
 
-        <!-- School Building Facade -->
-        <g id="school-building">
-          <polygon points="10,240 280,225 280,520 10,540" fill="#ded4c3" class="day-only" />
-          <polygon points="10,240 280,225 280,520 10,540" fill="#161c28" class="night-only" />
+      <!-- Dusty School Courtyard Ground -->
+      <g id="school-ground">
+        <rect x="0" y="500" width="390" height="344" fill="url(#ground-dirt-day)" class="day-only" />
+        <rect x="0" y="500" width="390" height="344" fill="url(#ground-dirt-night)" class="night-only" />
+        <ellipse cx="195" cy="650" rx="180" ry="110" fill="url(#pat-cobbles)" class="day-only" opacity="0.65" />
+        <ellipse cx="195" cy="650" rx="180" ry="110" fill="url(#pat-cobbles-night)" class="night-only" opacity="0.65" />
+      </g>
 
-          <!-- Terracotta Tiled Roof -->
-          <polygon points="0,230 290,215 285,255 5,270" fill="#9e4e2b" class="day-only" />
-          <polygon points="0,230 290,215 285,255 5,270" fill="#24120a" class="night-only" />
+      <!-- Courtyard Peepal Tree with Branch Supporting the Old Swing -->
+      <g id="school-tree-branch" transform="translate(300, 260)">
+        <path d="M120 180 Q80 80 20 40 Q-40 20 -120 25" stroke="#3b2413" stroke-width="20" fill="none" stroke-linecap="round" class="day-only" />
+        <path d="M120 180 Q80 80 20 40 Q-40 20 -120 25" stroke="#121622" stroke-width="20" fill="none" stroke-linecap="round" class="night-only" />
+        <!-- Foliage cluster -->
+        <ellipse cx="30" cy="15" rx="75" ry="45" fill="#2d4427" class="day-only" />
+        <ellipse cx="30" cy="15" rx="75" ry="45" fill="#0e1711" class="night-only" />
+      </g>
 
-          <!-- Devanagari School Header Plaque -->
-          <rect x="50" y="275" width="165" height="24" rx="3" fill="#b5a794" class="day-only" />
-          <rect x="50" y="275" width="165" height="24" rx="3" fill="#202738" class="night-only" />
-          <text x="132" y="291" font-family="'Cinzel', serif" font-size="9" font-weight="700" fill="#3b2b1d" text-anchor="middle" class="day-only">KALDHARA VIDYALAYA • 1978</text>
-          <text x="132" y="291" font-family="'Cinzel', serif" font-size="9" font-weight="700" fill="#8ca5cf" text-anchor="middle" class="night-only">KALDHARA VIDYALAYA • 1978</text>
+      <!-- HOTSPOT 2: THE OLD CHILDREN'S SWING (#hotspot-school-swing, #school-swing-rig) @ x=78%, y=62% (304.2, 523.3) -->
+      <g id="school-swing-rig" class="school-swing-rig-anim" transform="translate(304, 305)">
+        <g id="hotspot-school-swing" class="interactive-object school-swing-assembly">
+          <!-- Two Long Ropes Hanging Down from Tree Branch -->
+          <line x1="-14" y1="0" x2="-14" y2="215" stroke="#7a5535" stroke-width="2.5" class="day-only" />
+          <line x1="14" y1="0" x2="14" y2="215" stroke="#7a5535" stroke-width="2.5" class="day-only" />
+          <line x1="-14" y1="0" x2="-14" y2="215" stroke="#222a3a" stroke-width="2.5" class="night-only" />
+          <line x1="14" y1="0" x2="14" y2="215" stroke="#222a3a" stroke-width="2.5" class="night-only" />
 
-          <!-- Veranda Corridor Opening -->
-          <path d="M40 330 C75 310, 190 310, 225 330 L225 510 L40 510 Z" fill="#3b2c1f" class="day-only" />
-          <path d="M40 330 C75 310, 190 310, 225 330 L225 510 L40 510 Z" fill="#090d14" class="night-only" />
-
-          <!-- Ghost silhouette running past doorway (School Blackboard Horror Interaction) -->
-          <g id="school-doorway-runner" class="doorway-ghost-runner" opacity="0">
-            <ellipse cx="130" cy="405" rx="16" ry="20" fill="#040608" />
-            <path d="M112 422 C112 400, 148 400, 148 422 L152 495 L108 495 Z" fill="#040608" />
-            <path d="M100 435 Q130 415 160 440" stroke="#040608" stroke-width="4.5" stroke-linecap="round" fill="none" />
-          </g>
-
-          <!-- BLACKBOARD ON VERANDA WALL (#hotspot-school-blackboard) -->
-          <g id="hotspot-school-blackboard" class="interactive-object" style="cursor: pointer;" transform="translate(60, 340)">
-            <!-- Heavy Wooden Blackboard Frame -->
-            <rect x="0" y="0" width="150" height="95" rx="3" fill="#523824" stroke="#2e1d11" stroke-width="2.5" />
-            <!-- Slate Blackboard Surface -->
-            <rect x="6" y="6" width="138" height="83" rx="1.5" fill="#212925" />
-
-            <!-- Original 1978 Chalk Writing -->
-            <g id="blackboard-original-text">
-              <text x="75" y="36" font-family="'Cinzel', serif" font-size="7.5" font-weight="700" fill="#dedede" text-anchor="middle">CLASS DISMISSED</text>
-              <text x="75" y="48" font-family="'Cinzel', serif" font-size="6.5" font-weight="600" fill="#b0b0b0" text-anchor="middle">— 1978 —</text>
-              <!-- Scratched Chalk Line Below -->
-              <line x1="25" y1="56" x2="125" y2="56" stroke="#808080" stroke-width="1" stroke-dasharray="3,2" />
-              <!-- Newer Uneven Chalk Handwriting -->
-              <text x="75" y="74" font-family="'Cinzel', serif" font-size="6.5" font-weight="700" fill="#d42626" text-anchor="middle">THEY NEVER CAME BACK.</text>
-            </g>
-
-            <!-- Dynamic Rapid Horror Writing (Self-writes upon interaction) -->
-            <g id="blackboard-horror-writing">
-              <text id="bb-run-1" x="75" y="28" font-family="'Cinzel', serif" font-size="8.5" font-weight="800" fill="#e82c2c" text-anchor="middle" opacity="0">RUN.</text>
-              <text id="bb-run-2" x="75" y="46" font-family="'Cinzel', serif" font-size="8.5" font-weight="800" fill="#e82c2c" text-anchor="middle" opacity="0">RUN.</text>
-              <text id="bb-run-3" x="75" y="64" font-family="'Cinzel', serif" font-size="8.5" font-weight="800" fill="#e82c2c" text-anchor="middle" opacity="0">RUN.</text>
-              <text id="bb-he-is-here" x="75" y="82" font-family="'Cinzel', serif" font-size="7.8" font-weight="900" fill="#ff1a1a" text-anchor="middle" opacity="0" letter-spacing="1">HE IS HERE.</text>
-            </g>
-
-            <!-- Chalk Dust Ledge -->
-            <rect x="2" y="89" width="146" height="5" fill="#382517" />
-            <rect x="30" y="87" width="12" height="3" fill="#ffffff" opacity="0.8" />
-
-            <!-- Beacon Glow -->
-            <ellipse cx="75" cy="48" rx="40" ry="25" fill="#fedaa2" opacity="0.25" class="day-only" filter="url(#glow-blur)" />
-            <ellipse cx="75" cy="48" rx="40" ry="25" fill="#7bb5e8" opacity="0.35" class="night-only" filter="url(#glow-blur)" />
+          <!-- Weathered Wooden Swing Plank Seat -->
+          <g transform="translate(0, 215)">
+            <!-- Ground Cast Shadow -->
+            <ellipse cx="0" cy="45" rx="28" ry="8" fill="#000" opacity="0.35" class="day-only" />
+            <ellipse cx="0" cy="45" rx="28" ry="8" fill="#000" opacity="0.75" class="night-only" />
+            <!-- Wood Plank -->
+            <polygon points="-24,6 24,4 20,-4 -20,-2" fill="#5c3f27" stroke="#362212" stroke-width="2" class="day-only" />
+            <polygon points="-24,6 24,4 20,-4 -20,-2" fill="#181e2b" stroke="#0a0d14" stroke-width="2" class="night-only" />
+            <!-- Knotted rope ends beneath plank -->
+            <circle cx="-14" cy="10" r="3" fill="#7a5535" class="day-only" />
+            <circle cx="14" cy="8" r="3" fill="#7a5535" class="day-only" />
+            <circle cx="-14" cy="10" r="3" fill="#222a3a" class="night-only" />
+            <circle cx="14" cy="8" r="3" fill="#222a3a" class="night-only" />
           </g>
         </g>
+      </g>
 
-        <!-- Large Peepal Tree with Spreading Branch on Right -->
-        <g id="school-tree" transform="translate(250, 140)">
-          <!-- Massive Trunk Base -->
-          <path d="M40 380 Q55 240 70 120 Q80 40 120 0 L140 0 Q105 50 100 130 Q90 260 110 380 Z" fill="#452f1d" class="day-only" />
-          <path d="M40 380 Q55 240 70 120 Q80 40 120 0 L140 0 Q105 50 100 130 Q90 260 110 380 Z" fill="#131924" class="night-only" />
+      <!-- THE OLD VILLAGE SCHOOLHOUSE BUILDING -->
+      <g class="schoolhouse-facade" transform="translate(10, 160)">
+        <!-- Whitewashed Classroom Wall with Peeling Plaster -->
+        <polygon points="0,70 280,50 280,380 0,400" fill="url(#plaster-cream-day)" stroke="#523924" stroke-width="2" class="day-only" />
+        <polygon points="0,70 280,50 280,380 0,400" fill="url(#plaster-cream-night)" stroke="#121622" stroke-width="2" class="night-only" />
+        <polygon points="12,95 65,85 70,145 18,155" fill="url(#pat-brick)" class="day-only" />
+        <polygon points="12,95 65,85 70,145 18,155" fill="url(#pat-brick-night)" class="night-only" />
+        <!-- Tiled Eaves -->
+        <polygon points="-10,68 290,48 285,30 -15,50" fill="url(#pat-khaprail)" class="day-only" />
+        <polygon points="-10,68 290,48 285,30 -15,50" fill="url(#pat-khaprail-night)" class="night-only" />
 
-          <!-- Big Horizontal Limb Extending Left across Courtyard -->
-          <path d="M75 140 C30 145, -30 150, -80 160 C-30 165, 40 160, 75 160 Z" fill="#452f1d" class="day-only" />
-          <path d="M75 140 C30 145, -30 150, -80 160 C-30 165, 40 160, 75 160 Z" fill="#131924" class="night-only" />
+        <!-- Arched Classroom Doorway on Right -->
+        <g id="school-doorway-group" transform="translate(200, 160)">
+          <!-- Doorway Opening -->
+          <path d="M0 220 L0 50 C0 15, 65 15, 65 50 L65 220 Z" fill="#120c07" stroke="#52351c" stroke-width="2" class="day-only" />
+          <path d="M0 220 L0 50 C0 15, 65 15, 65 50 L65 220 Z" fill="#040609" stroke="#121622" stroke-width="2" class="night-only" />
 
-          <!-- Dense Canopy Foliage -->
-          <circle cx="80" cy="50" r="75" fill="#4d6b38" class="day-only" />
-          <circle cx="0" cy="90" r="60" fill="#3e572d" class="day-only" />
-          <circle cx="80" cy="50" r="75" fill="#101a18" class="night-only" />
-          <circle cx="0" cy="90" r="60" fill="#0b1211" class="night-only" />
-
-          <!-- THE SCHOOL SWING (#hotspot-school-swing) -->
-          <g id="hotspot-school-swing" class="interactive-object" style="cursor: pointer;" transform="translate(-20, 155)">
-            <!-- Animated Swing Rig (Sways slowly in Night mode) -->
-            <g id="school-swing-rig" class="school-swing-anim">
-              <!-- Left Rope -->
-              <line x1="-15" y1="0" x2="-15" y2="280" stroke="#705235" stroke-width="2.5" />
-              <!-- Right Rope -->
-              <line x1="25" y1="0" x2="25" y2="280" stroke="#705235" stroke-width="2.5" />
-              <!-- Wooden Seat Plank -->
-              <rect x="-24" y="278" width="58" height="12" rx="3" fill="#52341b" stroke="#331e0d" stroke-width="2" />
-
-              <!-- Beacon Glow on Seat -->
-              <ellipse cx="5" cy="284" rx="28" ry="16" fill="#fedaa2" opacity="0.25" class="day-only" filter="url(#glow-blur)" />
-              <ellipse cx="5" cy="284" rx="30" ry="18" fill="#7bb5e8" opacity="0.35" class="night-only" filter="url(#glow-blur)" />
-            </g>
+          <!-- DOORWAY RUNNER GHOST (#school-doorway-runner) Sprints past doorway -->
+          <g id="school-doorway-runner" opacity="0" filter="url(#ghost-haze)" transform="translate(-10, 45)">
+            <ellipse cx="28" cy="18" rx="8" ry="9" fill="#e2e8f0" />
+            <polygon points="20,27 36,27 42,75 14,75" fill="#cbd5e1" />
+            <!-- Sprinting Legs -->
+            <path d="M22 75 L38 105 L52 98" stroke="#cbd5e1" stroke-width="4.5" fill="none" stroke-linecap="round" />
+            <path d="M28 75 L12 108 L-4 95" stroke="#cbd5e1" stroke-width="4.5" fill="none" stroke-linecap="round" />
+            <!-- Motion Blur Streamers -->
+            <line x1="-15" y1="45" x2="15" y2="45" stroke="#93c5fd" stroke-width="3" opacity="0.6" />
+            <line x1="-25" y1="65" x2="5" y2="65" stroke="#93c5fd" stroke-width="3" opacity="0.6" />
           </g>
         </g>
 
-        <!-- Student Desks in Open Courtyard (#hotspot-student-desks) -->
-        <g id="hotspot-student-desks" class="interactive-object" style="cursor: pointer;" transform="translate(60, 560)">
-          <!-- Row 1 Desk -->
-          <polygon points="0,30 90,20 100,45 10,55" fill="#5e4026" stroke="#3b2615" stroke-width="1.8" />
-          <rect x="5" y="48" width="8" height="35" fill="#3b2615" />
-          <rect x="85" y="38" width="8" height="35" fill="#3b2615" />
-          <!-- Open Notebook Left on Desk -->
-          <polygon points="35,26 65,22 68,38 38,42" fill="#faf4eb" />
-          <line x1="51" y1="24" x2="53" y2="40" stroke="#4a3b2b" stroke-width="1" />
-          <!-- Slate Pencil -->
-          <line x1="20" y1="36" x2="30" y2="34" stroke="#8a8a8a" stroke-width="2" />
+        <!-- HOTSPOT 3: RUSTED IRON SCHOOL BELL GONG (#hotspot-school-bell) @ x=22%, y=42% (85.8, 354.5) -->
+        <g id="hotspot-school-bell" class="interactive-object school-bell-assembly" transform="translate(75, 195)">
+          <!-- Wooden Mounting Bracket -->
+          <rect x="-8" y="-12" width="16" height="24" fill="#3b2413" class="day-only" />
+          <rect x="-8" y="-12" width="16" height="24" fill="#121622" class="night-only" />
+          <line x1="0" y1="0" x2="0" y2="28" stroke="#241710" stroke-width="2.5" class="day-only" />
+          <line x1="0" y1="0" x2="0" y2="28" stroke="#0a0d14" stroke-width="2.5" class="night-only" />
+          <!-- Heavy Rusted Iron Disk Gong -->
+          <circle cx="0" cy="42" r="16" fill="#523928" stroke="#2b1a0d" stroke-width="2" class="day-only" />
+          <circle cx="0" cy="42" r="16" fill="#161b26" stroke="#080a10" stroke-width="2" class="night-only" />
+          <!-- Striker Hammer hanging beside gong -->
+          <line x1="16" y1="20" x2="16" y2="52" stroke="#4a301a" stroke-width="2" class="day-only" />
+          <circle cx="16" cy="52" r="4" fill="#2b1a0d" class="day-only" />
+          <line x1="16" y1="20" x2="16" y2="52" stroke="#141822" stroke-width="2" class="night-only" />
+          <circle cx="16" cy="52" r="4" fill="#080a10" class="night-only" />
         </g>
-      </svg>
-    `;
+
+        <!-- HOTSPOT 1: THE SLATE BLACKBOARD (#hotspot-school-blackboard) @ x=52%, y=50% (202.8, 422) -->
+        <g id="hotspot-school-blackboard" class="interactive-object blackboard-assembly" transform="translate(193, 262)">
+          <!-- Cast Shadow -->
+          <rect x="-68" y="-48" width="140" height="96" rx="4" fill="#000" opacity="0.35" class="day-only" />
+          <rect x="-68" y="-48" width="140" height="96" rx="4" fill="#000" opacity="0.75" class="night-only" />
+
+          <!-- Heavy Teak Wood Frame -->
+          <rect x="-70" y="-50" width="140" height="96" rx="3" fill="#4d321d" stroke="#2b1a0d" stroke-width="2.5" class="day-only" />
+          <rect x="-70" y="-50" width="140" height="96" rx="3" fill="#121622" stroke="#080a0f" stroke-width="2.5" class="night-only" />
+
+          <!-- Dark Slate Blackboard Surface -->
+          <rect x="-64" y="-44" width="128" height="84" fill="#1b2420" stroke="#0d1411" stroke-width="1.5" />
+          <!-- Chalk Dust Smudges -->
+          <path d="M-50 -30 Q-20 -20 20 -25 Q45 -30 50 -20" stroke="#fff" stroke-width="6" fill="none" opacity="0.08" />
+          <path d="M-40 10 Q0 15 40 12" stroke="#fff" stroke-width="8" fill="none" opacity="0.06" />
+
+          <!-- ORIGINAL CHALK TEXT (#blackboard-original-text) -->
+          <g id="blackboard-original-text">
+            <text x="0" y="-18" text-anchor="middle" font-family="'Caveat', cursive" font-size="12" font-weight="700" fill="#f8fafc" letter-spacing="1">CLASS DISMISSED — 1978</text>
+            <line x1="-52" y1="-10" x2="52" y2="-10" stroke="#cbd5e1" stroke-width="1" opacity="0.4" />
+            <!-- In much newer-looking chalk handwriting -->
+            <text x="0" y="16" text-anchor="middle" font-family="'Caveat', cursive" font-size="11" font-weight="700" fill="#fef08a" letter-spacing="1">THEY NEVER CAME BACK.</text>
+          </g>
+
+          <!-- HORROR CHALK REVEAL (#blackboard-horror-writing) -->
+          <g id="blackboard-horror-writing">
+            <text id="bb-run-1" x="-35" y="-18" text-anchor="middle" font-family="'Caveat', cursive" font-size="15" font-weight="700" fill="#ef4444" opacity="0">RUN.</text>
+            <text id="bb-run-2" x="0" y="-2" text-anchor="middle" font-family="'Caveat', cursive" font-size="16" font-weight="700" fill="#ef4444" opacity="0">RUN.</text>
+            <text id="bb-run-3" x="35" y="14" text-anchor="middle" font-family="'Caveat', cursive" font-size="17" font-weight="700" fill="#ef4444" opacity="0">RUN.</text>
+            <text id="bb-he-is-here" x="0" y="32" text-anchor="middle" font-family="'Cinzel', serif" font-size="12" font-weight="900" fill="#dc2626" opacity="0" letter-spacing="2">HE IS HERE.</text>
+          </g>
+
+          <!-- Chalk Ledge at Bottom with Chalk Pieces -->
+          <rect x="-64" y="40" width="128" height="6" fill="#3b2413" class="day-only" />
+          <rect x="-64" y="40" width="128" height="6" fill="#0d111a" class="night-only" />
+          <!-- White & Yellow Chalk Stubs -->
+          <rect x="-30" y="38" width="8" height="2.5" rx="1" fill="#fff" />
+          <rect x="-10" y="38" width="6" height="2.5" rx="1" fill="#fde047" />
+        </g>
+
+        <!-- DUSTY STUDENT WOODEN DESK & BENCH (#hotspot-school-desk) -->
+        <g id="hotspot-school-desk" class="interactive-object school-desk-assembly" transform="translate(60, 360)">
+          <!-- Ground Cast Shadow -->
+          <ellipse cx="0" cy="50" rx="42" ry="12" fill="#000" opacity="0.35" class="day-only" />
+          <ellipse cx="0" cy="50" rx="42" ry="12" fill="#000" opacity="0.75" class="night-only" />
+          <!-- Desk Surface -->
+          <polygon points="-38,0 38,-4 32,24 -34,28" fill="#5c3f27" stroke="#362212" stroke-width="2" class="day-only" />
+          <polygon points="-38,0 38,-4 32,24 -34,28" fill="#181e2b" stroke="#0a0d14" stroke-width="2" class="night-only" />
+          <!-- Inkwell Hole in Desk -->
+          <ellipse cx="22" cy="6" rx="4" ry="2.5" fill="#16130f" />
+          <!-- Desk Legs -->
+          <line x1="-32" y1="28" x2="-35" y2="48" stroke="#4a301a" stroke-width="3" class="day-only" />
+          <line x1="28" y1="24" x2="25" y2="46" stroke="#4a301a" stroke-width="3" class="day-only" />
+          <line x1="-32" y1="28" x2="-35" y2="48" stroke="#121622" stroke-width="3" class="night-only" />
+          <line x1="28" y1="24" x2="25" y2="46" stroke="#121622" stroke-width="3" class="night-only" />
+        </g>
+      </g>
+    </svg>
+  `;
+}).call(this);
   },
 
-  // 10. SCENE 10: The Forest Edge
+  // 12. SCENE 11: The Forest Edge
   renderForestEdgeScene() {
-    return `
-      <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
-        ${this.getAtmosphericSky('forest-edge')}
+    return (function renderForestEdgeScene() {
+  return `
+    <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
+      ${this.getAtmosphericSky('forestedge')}
 
-        <!-- Distant Mountain Ridges -->
-        <g class="distant-mountains">
-          <polygon points="0,340 70,300 160,330 280,290 390,325 390,440 0,440" fill="#9e7355" class="day-only" opacity="0.6" />
-          <polygon points="0,340 70,300 160,330 280,290 390,325 390,440 0,440" fill="#080e1a" class="night-only" opacity="0.8" />
+      <!-- Deep Jungle Understory Ground -->
+      <g id="forest-ground">
+        <rect x="0" y="460" width="390" height="384" fill="url(#ground-dirt-day)" class="day-only" />
+        <rect x="0" y="460" width="390" height="384" fill="url(#ground-dirt-night)" class="night-only" />
+
+        <!-- HOTSPOT 2: OVERGROWN DIRT PATH WINDING INTO TREES (#hotspot-forest-path) @ x=58%, y=70% (226.2, 590.8) -->
+        <g id="hotspot-forest-path" class="interactive-object forest-path-assembly">
+          <path d="M120 844 Q170 700 220 620 Q250 540 280 470 L330 470 Q280 550 250 640 Q210 730 200 844 Z" 
+                fill="#8f6338" opacity="0.85" class="day-only" />
+          <path d="M120 844 Q170 700 220 620 Q250 540 280 470 L330 470 Q280 550 250 640 Q210 730 200 844 Z" 
+                fill="#121724" opacity="0.85" class="night-only" />
+          <!-- Dry Fallen Leaves & Twigs on Path -->
+          <g class="day-only" fill="#6e3d1c" opacity="0.75">
+            <ellipse cx="170" cy="740" rx="6" ry="2.5" />
+            <ellipse cx="210" cy="670" rx="5" ry="2" />
+            <ellipse cx="245" cy="580" rx="4" ry="1.8" />
+            <ellipse cx="270" cy="520" rx="3.5" ry="1.5" />
+          </g>
+          <g class="night-only" fill="#090c14" opacity="0.8">
+            <ellipse cx="170" cy="740" rx="6" ry="2.5" />
+            <ellipse cx="210" cy="670" rx="5" ry="2" />
+            <ellipse cx="245" cy="580" rx="4" ry="1.8" />
+            <ellipse cx="270" cy="520" rx="3.5" ry="1.5" />
+          </g>
+        </g>
+      </g>
+
+      <!-- HOTSPOT 3: DENSE LOOMING FOREST CANOPY & GNARLED TREES (#hotspot-forest-trees) @ x=50%, y=28% (195, 236.3) -->
+      <g id="hotspot-forest-trees" class="interactive-object forest-trees-assembly">
+        <!-- Background Tree Trunks (Distant Layer) -->
+        <g stroke-linecap="round">
+          <!-- Tree 1 (Far Left) -->
+          <path d="M30 480 Q45 320 25 180" stroke="#362215" stroke-width="22" fill="none" class="day-only" />
+          <path d="M30 480 Q45 320 25 180" stroke="#0e121a" stroke-width="22" fill="none" class="night-only" />
+          <!-- Tree 2 (Mid Left) -->
+          <path d="M125 480 Q110 330 135 160" stroke="#3b2618" stroke-width="24" fill="none" class="day-only" />
+          <path d="M125 480 Q110 330 135 160" stroke="#10141e" stroke-width="24" fill="none" class="night-only" />
+          <!-- Tree 3 (Mid Right) -->
+          <path d="M260 480 Q280 340 250 170" stroke="#362215" stroke-width="26" fill="none" class="day-only" />
+          <path d="M260 480 Q280 340 250 170" stroke="#0e121a" stroke-width="26" fill="none" class="night-only" />
+          <!-- Tree 4 (Far Right) -->
+          <path d="M350 480 Q335 320 360 160" stroke="#311d12" stroke-width="28" fill="none" class="day-only" />
+          <path d="M350 480 Q335 320 360 160" stroke="#0a0e14" stroke-width="28" fill="none" class="night-only" />
         </g>
 
-        <!-- Dense Black Forest Background (Day: dark green / Night: pure abyss) -->
-        <g id="hotspot-forest-trees" class="interactive-object" style="cursor: pointer;">
-          <!-- Dense Background Tree Silhouettes -->
-          <path d="M0 220 Q70 140 140 230 Q210 130 290 220 Q350 150 390 200 L390 520 L0 520 Z" fill="#2d4529" class="day-only" />
-          <path d="M0 220 Q70 140 140 230 Q210 130 290 220 Q350 150 390 200 L390 520 L0 520 Z" fill="#030508" class="night-only" />
-
-          <!-- Massive Forest Tree Trunks Forming Wall of Trees -->
-          <g class="forest-trunks">
-            <rect x="20" y="160" width="35" height="360" fill="#3d2c1f" class="day-only" />
-            <rect x="20" y="160" width="35" height="360" fill="#06090e" class="night-only" />
-
-            <rect x="90" y="140" width="45" height="380" fill="#332419" class="day-only" />
-            <rect x="90" y="140" width="45" height="380" fill="#04060a" class="night-only" />
-
-            <rect x="270" y="130" width="55" height="390" fill="#332419" class="day-only" />
-            <rect x="270" y="130" width="55" height="390" fill="#04060a" class="night-only" />
-
-            <rect x="340" y="150" width="45" height="370" fill="#3d2c1f" class="day-only" />
-            <rect x="340" y="150" width="45" height="370" fill="#06090e" class="night-only" />
-          </g>
-
-          <!-- Multiple Dark Silhouettes Running between Trees (Warning Sign Horror Interaction) -->
-          <g id="forest-tree-shadow-runners">
-            <g id="forest-runner-1" class="forest-tree-runner" opacity="0">
-              <ellipse cx="65" cy="380" rx="14" ry="18" fill="#000000" />
-              <path d="M52 395 C52 380, 78 380, 78 395 L82 460 L48 460 Z" fill="#000000" />
-            </g>
-            <g id="forest-runner-2" class="forest-tree-runner" opacity="0">
-              <ellipse cx="195" cy="360" rx="12" ry="16" fill="#000000" />
-              <path d="M184 374 C184 360, 206 360, 206 374 L210 430 L180 430 Z" fill="#000000" />
-            </g>
-            <g id="forest-runner-3" class="forest-tree-runner" opacity="0">
-              <ellipse cx="320" cy="390" rx="15" ry="19" fill="#000000" />
-              <path d="M306 406 C306 390, 334 390, 334 406 L338 470 L302 470 Z" fill="#000000" />
-            </g>
-          </g>
-
-          <!-- NIGHT: Impenetrable Pure Black Void between Trees -->
-          <rect x="0" y="240" width="390" height="280" fill="#000000" opacity="0.95" class="night-only" />
-
-          <!-- NIGHT EVENT: 3 Pairs of Eerie Eyes appearing deep in forest -->
-          <g id="forest-night-event-eyes">
-            <g id="forest-eyes-pair-1" opacity="0">
-              <ellipse cx="140" cy="270" rx="3.5" ry="4.5" fill="#f7c843" filter="url(#glow-blur)" />
-              <ellipse cx="152" cy="270" rx="3.5" ry="4.5" fill="#f7c843" filter="url(#glow-blur)" />
-              <ellipse cx="140" cy="270" rx="1.5" ry="3.5" fill="#000" />
-              <ellipse cx="152" cy="270" rx="1.5" ry="3.5" fill="#000" />
-            </g>
-            <g id="forest-eyes-pair-2" opacity="0">
-              <ellipse cx="240" cy="235" rx="3" ry="4" fill="#ff3838" filter="url(#glow-blur)" />
-              <ellipse cx="250" cy="235" rx="3" ry="4" fill="#ff3838" filter="url(#glow-blur)" />
-              <ellipse cx="240" cy="235" rx="1.2" ry="3" fill="#000" />
-              <ellipse cx="250" cy="235" rx="1.2" ry="3" fill="#000" />
-            </g>
-            <g id="forest-eyes-pair-3" opacity="0">
-              <ellipse cx="185" cy="305" rx="4" ry="5" fill="#ff9f1a" filter="url(#glow-blur)" />
-              <ellipse cx="198" cy="305" rx="4" ry="5" fill="#ff9f1a" filter="url(#glow-blur)" />
-              <ellipse cx="185" cy="305" rx="1.5" ry="3.5" fill="#000" />
-              <ellipse cx="198" cy="305" rx="1.5" ry="3.5" fill="#000" />
-            </g>
-          </g>
-
-          <!-- Sudden Foreground Ghost Runner Sprint -->
-          <g id="forest-foreground-runner" opacity="0">
-            <ellipse cx="200" cy="620" rx="32" ry="44" fill="#020305" />
-            <path d="M162 650 C162 605, 238 605, 238 650 L248 830 L152 830 Z" fill="#020305" />
-            <path d="M135 680 Q190 640 260 690" stroke="#020305" stroke-width="8" stroke-linecap="round" fill="none" />
-          </g>
-
-          <!-- NIGHT: Unblinking Yellow Eyes High in Canopy -->
-          <g class="night-only" opacity="0.8">
-            <ellipse cx="110" cy="205" rx="2.5" ry="3.5" fill="#f7c843" />
-            <ellipse cx="118" cy="205" rx="2.5" ry="3.5" fill="#f7c843" />
-            <circle cx="110" cy="205" r="1.2" fill="#000" />
-            <circle cx="118" cy="205" r="1.2" fill="#000" />
-
-            <ellipse cx="295" cy="185" rx="2" ry="3" fill="#e6573c" />
-            <ellipse cx="303" cy="185" rx="2" ry="3" fill="#e6573c" />
-          </g>
-
-          <!-- Dense Interlocking Canopy Overhead -->
-          <circle cx="50" cy="90" r="100" fill="#20331d" class="day-only" />
-          <circle cx="200" cy="60" r="120" fill="#1b2e18" class="day-only" />
-          <circle cx="340" cy="80" r="110" fill="#20331d" class="day-only" />
-          <circle cx="50" cy="90" r="100" fill="#05080c" class="night-only" />
-          <circle cx="200" cy="60" r="120" fill="#020406" class="night-only" />
-          <circle cx="340" cy="80" r="110" fill="#05080c" class="night-only" />
+        <!-- HORROR: 3 RUNNING FIGURES SPRINTING DEEP BETWEEN THE TREES -->
+        <!-- Runner 1 (Deep background left-to-right) -->
+        <g id="forest-runner-1" opacity="0" filter="url(#ghost-haze)" transform="translate(60, 360) scale(0.65)">
+          <ellipse cx="20" cy="15" rx="6" ry="7" fill="#e2e8f0" />
+          <polygon points="12,22 28,22 32,60 8,60" fill="#cbd5e1" />
+          <line x1="16" y1="60" x2="30" y2="85" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round" />
+          <line x1="24" y1="60" x2="10" y2="85" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round" />
+        </g>
+        <!-- Runner 2 (Mid background right-to-left) -->
+        <g id="forest-runner-2" opacity="0" filter="url(#ghost-haze)" transform="translate(240, 350) scale(0.65) scaleX(-1)">
+          <ellipse cx="20" cy="15" rx="6" ry="7" fill="#e2e8f0" />
+          <polygon points="12,22 28,22 32,60 8,60" fill="#cbd5e1" />
+          <line x1="16" y1="60" x2="30" y2="85" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round" />
+          <line x1="24" y1="60" x2="10" y2="85" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round" />
+        </g>
+        <!-- Runner 3 (Center background sprinting away) -->
+        <g id="forest-runner-3" opacity="0" filter="url(#ghost-haze)" transform="translate(180, 380) scale(0.55)">
+          <ellipse cx="20" cy="15" rx="6" ry="7" fill="#e2e8f0" />
+          <polygon points="12,22 28,22 30,55 10,55" fill="#cbd5e1" />
+          <line x1="15" y1="55" x2="28" y2="78" stroke="#cbd5e1" stroke-width="3.5" stroke-linecap="round" />
+          <line x1="25" y1="55" x2="12" y2="78" stroke="#cbd5e1" stroke-width="3.5" stroke-linecap="round" />
         </g>
 
-        <!-- Dusty Forest Road Verge Ground -->
-        <polygon points="0,500 390,480 390,844 0,844" fill="#a87a4c" class="day-only" />
-        <polygon points="0,500 390,480 390,844 0,844" fill="#0d111a" class="night-only" />
-
-        <!-- NARROW DIRT PATH ENTERING THE TREES (#hotspot-forest-path) -->
-        <g id="hotspot-forest-path" class="interactive-object" style="cursor: pointer;">
-          <!-- Winding Path entering Darkness -->
-          <polygon points="175,440 215,440 310,844 110,844" fill="#8c6136" class="day-only" />
-          <polygon points="175,440 215,440 310,844 110,844" fill="#151b26" class="night-only" />
-
-          <!-- Path disappearing into Pure Black at horizon -->
-          <ellipse cx="195" cy="445" rx="35" ry="18" fill="#000" opacity="0.9" class="night-only" />
-
-          <!-- Stones & Wild Grass on Verge -->
-          <ellipse cx="135" cy="560" rx="14" ry="7" fill="#694d33" class="day-only" />
-          <ellipse cx="270" cy="610" rx="18" ry="9" fill="#694d33" class="day-only" />
-          <ellipse cx="135" cy="560" rx="14" ry="7" fill="#1f2533" class="night-only" />
-          <ellipse cx="270" cy="610" rx="18" ry="9" fill="#1f2533" class="night-only" />
+        <!-- HORROR: 3 PAIRS OF GLOWING RED/AMBER EYES IN DEEP UNDERGROWTH -->
+        <g id="forest-eyes-pair-1" opacity="0" filter="url(#glow-blur)" transform="translate(65, 410)">
+          <ellipse cx="0" cy="0" rx="2.5" ry="3" fill="#ef4444" />
+          <circle cx="0" cy="0" r="0.8" fill="#fff" />
+          <ellipse cx="8" cy="0" rx="2.5" ry="3" fill="#ef4444" />
+          <circle cx="8" cy="0" r="0.8" fill="#fff" />
+        </g>
+        <g id="forest-eyes-pair-2" opacity="0" filter="url(#glow-blur)" transform="translate(195, 385)">
+          <ellipse cx="0" cy="0" rx="2.5" ry="3.2" fill="#f59e0b" />
+          <circle cx="0" cy="0" r="0.8" fill="#fff" />
+          <ellipse cx="9" cy="0" rx="2.5" ry="3.2" fill="#f59e0b" />
+          <circle cx="9" cy="0" r="0.8" fill="#fff" />
+        </g>
+        <g id="forest-eyes-pair-3" opacity="0" filter="url(#glow-blur)" transform="translate(325, 400)">
+          <ellipse cx="0" cy="0" rx="2.5" ry="3" fill="#ef4444" />
+          <circle cx="0" cy="0" r="0.8" fill="#fff" />
+          <ellipse cx="8" cy="0" rx="2.5" ry="3" fill="#ef4444" />
+          <circle cx="8" cy="0" r="0.8" fill="#fff" />
         </g>
 
-        <!-- WEATHERED WOODEN SIGN (#hotspot-forest-sign) -->
-        <g id="hotspot-forest-sign" class="interactive-object" style="cursor: pointer;" transform="translate(65, 480)">
-          <!-- Cast Shadow -->
-          <ellipse cx="40" cy="185" rx="45" ry="14" fill="#000" opacity="0.35" class="day-only" />
-          <ellipse cx="40" cy="185" rx="45" ry="14" fill="#000" opacity="0.75" class="night-only" />
-
-          <!-- Rustic Timber Post sunk into earth -->
-          <rect x="34" y="40" width="14" height="150" fill="#472f1e" stroke="#26170d" stroke-width="2" />
-
-          <!-- Weathered Sign Board Plank -->
-          <polygon points="-15,10 95,0 92,75 -18,85" fill="#543823" stroke="#29160a" stroke-width="2.5" />
-          <!-- Wood Grain Splits -->
-          <line x1="-12" y1="36" x2="88" y2="28" stroke="#3b2313" stroke-width="1.8" />
-          <line x1="-10" y1="58" x2="86" y2="50" stroke="#3b2313" stroke-width="1.8" />
-
-          <!-- DAY SIGN TEXT: "DO NOT ENTER AFTER DARK" -->
-          <g class="day-only">
-            <text x="38" y="32" font-family="'Cinzel', serif" font-size="7.5" font-weight="700" fill="#24140b" text-anchor="middle">DO NOT ENTER</text>
-            <text x="38" y="52" font-family="'Cinzel', serif" font-size="6.5" font-weight="600" fill="#5c1a1a" text-anchor="middle">AFTER DARK</text>
-          </g>
-
-          <!-- NIGHT SIGN TEXT: "DO NOT ENTER" with "AFTER DARK" violently scratched away -->
-          <g class="night-only">
-            <text x="38" y="32" font-family="'Cinzel', serif" font-size="7.5" font-weight="700" fill="#e8ded8" text-anchor="middle">DO NOT ENTER</text>
-            <!-- Faded remnant of AFTER DARK -->
-            <text x="38" y="52" font-family="'Cinzel', serif" font-size="6.5" font-weight="600" fill="#4d3528" text-anchor="middle" opacity="0.5">AFTER DARK</text>
-            <!-- Violent Blood-Red Claw Scratches Gouging Out AFTER DARK -->
-            <path d="M0 48 L80 44 M5 56 L75 52 M-5 42 L85 58" stroke="#8c1111" stroke-width="3" stroke-linecap="round" />
-          </g>
-
-          <!-- Beacon Halo -->
-          <ellipse cx="38" cy="45" rx="35" ry="25" fill="#fedaa2" opacity="0.25" class="day-only" filter="url(#glow-blur)" />
-          <ellipse cx="38" cy="45" rx="35" ry="25" fill="#7bb5e8" opacity="0.35" class="night-only" filter="url(#glow-blur)" />
+        <!-- Massive Tangled Foliage Canopy Layers Blocking Sky -->
+        <g class="day-only">
+          <ellipse cx="70" cy="110" rx="110" ry="75" fill="#1b2a1a" />
+          <ellipse cx="200" cy="95" rx="125" ry="75" fill="#20331e" />
+          <ellipse cx="320" cy="115" rx="115" ry="75" fill="#1b2a1a" />
+          <!-- Mid layer -->
+          <ellipse cx="140" cy="140" rx="100" ry="60" fill="#2d4627" />
+          <ellipse cx="260" cy="135" rx="105" ry="60" fill="#2d4627" />
+          <!-- Hanging tangled jungle vines -->
+          <path d="M45 140 Q40 280 48 420" stroke="#2b1a0f" stroke-width="3" fill="none" />
+          <path d="M150 160 Q158 290 152 400" stroke="#2b1a0f" stroke-width="2.5" fill="none" />
+          <path d="M295 150 Q288 280 292 410" stroke="#2b1a0f" stroke-width="3" fill="none" />
         </g>
-      </svg>
-    `;
+        <g class="night-only">
+          <ellipse cx="70" cy="110" rx="110" ry="75" fill="#080e0a" />
+          <ellipse cx="200" cy="95" rx="125" ry="75" fill="#0b130e" />
+          <ellipse cx="320" cy="115" rx="115" ry="75" fill="#080e0a" />
+          <ellipse cx="140" cy="140" rx="100" ry="60" fill="#0e1711" />
+          <ellipse cx="260" cy="135" rx="105" ry="60" fill="#0e1711" />
+          <path d="M45 140 Q40 280 48 420" stroke="#080a0f" stroke-width="3" fill="none" />
+          <path d="M150 160 Q158 290 152 400" stroke="#080a0f" stroke-width="2.5" fill="none" />
+          <path d="M295 150 Q288 280 292 410" stroke="#080a0f" stroke-width="3" fill="none" />
+        </g>
+
+        <!-- HORROR: SUDDEN FOREGROUND RUNNER DASHING ACROSS CAMERA (#forest-foreground-runner) -->
+        <g id="forest-foreground-runner" opacity="0" filter="url(#ghost-haze)" transform="translate(-180, 520) scale(1.1)">
+          <ellipse cx="35" cy="20" rx="12" ry="14" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5" />
+          <polygon points="20,32 50,32 60,110 10,110" fill="#cbd5e1" />
+          <path d="M28 110 L56 165 L82 152" stroke="#cbd5e1" stroke-width="7" fill="none" stroke-linecap="round" />
+          <path d="M42 110 L15 168 L-14 150" stroke="#cbd5e1" stroke-width="7" fill="none" stroke-linecap="round" />
+          <line x1="-35" y1="70" x2="15" y2="70" stroke="#93c5fd" stroke-width="5" opacity="0.6" />
+        </g>
+      </g>
+
+      <!-- HOTSPOT 1: SLANTED ROTTED WARNING SIGNPOST (#hotspot-forest-sign) @ x=30%, y=64% (117, 540.2) -->
+      <g id="hotspot-forest-sign" class="interactive-object forest-sign-assembly" transform="translate(117, 540)">
+        <!-- Cast Ground Shadow -->
+        <ellipse cx="0" cy="85" rx="35" ry="12" fill="#000" opacity="0.4" class="day-only" />
+        <ellipse cx="0" cy="85" rx="35" ry="12" fill="#000" opacity="0.75" class="night-only" />
+
+        <!-- Weathered Wooden Post (Leaning slightly) -->
+        <line x1="0" y1="0" x2="-6" y2="85" stroke="#4d321d" stroke-width="7" stroke-linecap="round" class="day-only" />
+        <line x1="0" y1="0" x2="-6" y2="85" stroke="#121622" stroke-width="7" stroke-linecap="round" class="night-only" />
+
+        <!-- Slanted Weathered Warning Board (With Jagged Rotted Edges & Claw Scratches) -->
+        <g transform="rotate(-6)">
+          <polygon points="-58,-28 58,-32 55,22 -55,26" fill="#3b2413" stroke="#221307" stroke-width="2" class="day-only" />
+          <polygon points="-58,-28 58,-32 55,22 -55,26" fill="#0d111a" stroke="#06080e" stroke-width="2" class="night-only" />
+          <polygon points="-54,-25 54,-29 51,19 -51,23" fill="url(#pat-wood)" class="day-only" opacity="0.8" />
+          <polygon points="-54,-25 54,-29 51,19 -51,23" fill="url(#pat-wood-night)" class="night-only" opacity="0.8" />
+
+          <!-- Warning Inscriptions -->
+          <text x="0" y="-12" text-anchor="middle" font-family="'Cinzel', serif" font-size="6.5" font-weight="700" letter-spacing="1" fill="#ef4444">DO NOT PROCEED</text>
+          <text x="0" y="-2" text-anchor="middle" font-family="'Cinzel', serif" font-size="5.5" font-weight="700" letter-spacing="1" fill="#ef4444">PAST THIS POINT</text>
+          <text x="0" y="12" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="7.5" font-weight="600" fill="#e8d5b5" class="day-only">आगे मत जाओ</text>
+          <text x="0" y="12" text-anchor="middle" font-family="'Crimson Pro', serif" font-size="7.5" font-weight="600" fill="#94a3b8" class="night-only">आगे मत जाओ</text>
+
+          <!-- 4 Vicious Claw Mark Gouges Across the Board -->
+          <path d="M-40 -20 L-25 15 M-30 -22 L-15 13 M-20 -24 L-5 11 M-10 -23 L5 12" stroke="#7f1d1d" stroke-width="1.8" stroke-linecap="round" />
+        </g>
+      </g>
+    </svg>
+  `;
+}).call(this);
   },
 
-  // 11. SCENE 11: The Small Shrine
+  // 13. SCENE 12: The Small Shrine
   renderSmallShrineScene() {
-    return `
-      <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
-        ${this.getAtmosphericSky('small-shrine')}
+    return (function renderSmallShrineScene() {
+  return `
+    <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
+      ${this.getAtmosphericSky('smallshrine')}
 
-        <!-- Forest Verge Background -->
-        <polygon points="0,480 390,460 390,844 0,844" fill="#ba8c5b" class="day-only" />
-        <polygon points="0,480 390,460 390,844 0,844" fill="#111622" class="night-only" />
+      <!-- Secluded Forest Clearing Backdrop -->
+      <g class="distant-landscape">
+        <path class="day-only" fill="#9e714e" opacity="0.65" d="M0 450 Q100 425 200 440 T390 435 L390 510 L0 510 Z" />
+        <path class="night-only" fill="#0c121e" opacity="0.8" d="M0 450 Q100 425 200 440 T390 435 L390 510 L0 510 Z" />
+      </g>
 
-        <!-- Distant Trees Bordering Road -->
-        <g class="verge-trees">
-          <circle cx="60" cy="380" r="90" fill="#2d4224" class="day-only" opacity="0.5" />
-          <circle cx="330" cy="360" r="110" fill="#2d4224" class="day-only" opacity="0.5" />
-          <circle cx="60" cy="380" r="90" fill="#080d14" class="night-only" opacity="0.7" />
-          <circle cx="330" cy="360" r="110" fill="#080d14" class="night-only" opacity="0.7" />
+      <!-- Forest Clearing Ground Plane -->
+      <g id="shrine-ground">
+        <rect x="0" y="500" width="390" height="344" fill="url(#ground-dirt-day)" class="day-only" />
+        <rect x="0" y="500" width="390" height="344" fill="url(#ground-dirt-night)" class="night-only" />
+
+        <!-- Circular Flagstone Paved Altar Platform -->
+        <ellipse cx="195" cy="640" rx="160" ry="85" fill="url(#pat-cobbles)" class="day-only" opacity="0.75" />
+        <ellipse cx="195" cy="640" rx="160" ry="85" fill="url(#pat-cobbles-night)" class="night-only" opacity="0.75" />
+      </g>
+
+      <!-- THE ANCIENT ROADSIDE STONE SHRINE (DEVAL) -->
+      <g id="roadside-shrine-complex" transform="translate(195, 230)">
+        <!-- Ground Cast Shadow -->
+        <ellipse cx="0" cy="330" rx="110" ry="32" fill="#000" opacity="0.4" class="day-only" />
+        <ellipse cx="0" cy="330" rx="110" ry="32" fill="#000" opacity="0.8" class="night-only" />
+
+        <!-- Carved Sandstone Ribbed Dome Canopy -->
+        <g id="shrine-dome" transform="translate(0, 40)">
+          <!-- Ribbed Domed Chhatri Roof -->
+          <path d="M-65 70 C-65 0, 65 0, 65 70 Z" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="2" class="day-only" />
+          <path d="M-65 70 C-65 0, 65 0, 65 70 Z" fill="url(#sandstone-night)" stroke="#121622" stroke-width="2" class="night-only" />
+          <!-- Dome Ribs -->
+          <path d="M-40 68 C-40 18, 0 10, 0 0" stroke="#3b2413" stroke-width="1.8" fill="none" class="day-only" />
+          <path d="M40 68 C40 18, 0 10, 0 0" stroke="#3b2413" stroke-width="1.8" fill="none" class="day-only" />
+          <path d="M-40 68 C-40 18, 0 10, 0 0" stroke="#0a0d14" stroke-width="1.8" fill="none" class="night-only" />
+          <path d="M40 68 C40 18, 0 10, 0 0" stroke="#0a0d14" stroke-width="1.8" fill="none" class="night-only" />
+          <!-- Brass Kalash Finial Pot at Top -->
+          <ellipse cx="0" cy="-6" rx="8" ry="6" fill="#d99f36" stroke="#7a5518" stroke-width="1.2" class="day-only" />
+          <line x1="0" y1="-12" x2="0" y2="-24" stroke="#d99f36" stroke-width="2.5" class="day-only" />
+          <ellipse cx="0" cy="-6" rx="8" ry="6" fill="#423317" stroke="#1c160b" stroke-width="1.2" class="night-only" />
+          <line x1="0" y1="-12" x2="0" y2="-24" stroke="#423317" stroke-width="2.5" class="night-only" />
+          <!-- Cornice Lintel -->
+          <rect x="-72" y="70" width="144" height="16" rx="2" fill="url(#sandstone-highlight)" stroke="#52351c" stroke-width="2" class="day-only" />
+          <rect x="-72" y="70" width="144" height="16" rx="2" fill="#2d3750" stroke="#121622" stroke-width="2" class="night-only" />
         </g>
 
-        <!-- THE ROADSIDE SMALL STONE SHRINE STRUCTURE -->
-        <g id="small-shrine-monument" transform="translate(115, 300)">
-          <!-- Cast Shadow -->
-          <ellipse cx="80" cy="360" rx="90" ry="25" fill="#000" opacity="0.35" class="day-only" />
-          <ellipse cx="80" cy="360" rx="90" ry="25" fill="#000" opacity="0.75" class="night-only" />
+        <!-- Four Supporting Carved Sandstone Pillars -->
+        <!-- Left Pillar -->
+        <rect x="-60" y="126" width="16" height="185" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="1.8" class="day-only" />
+        <rect x="-60" y="126" width="16" height="185" fill="url(#sandstone-night)" stroke="#121622" stroke-width="1.8" class="night-only" />
+        <!-- Right Pillar -->
+        <rect x="44" y="126" width="16" height="185" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="1.8" class="day-only" />
+        <rect x="44" y="126" width="16" height="185" fill="url(#sandstone-night)" stroke="#121622" stroke-width="1.8" class="night-only" />
 
-          <!-- Stone Steps Base -->
-          <polygon points="10,340 150,340 160,370 0,370" fill="#8f7a68" class="day-only" />
-          <polygon points="10,340 150,340 160,370 0,370" fill="#1b212e" class="night-only" />
-          <polygon points="25,310 135,310 145,340 15,340" fill="#a8927e" class="day-only" />
-          <polygon points="25,310 135,310 145,340 15,340" fill="#232a3b" class="night-only" />
+        <!-- HOTSPOT 4: SMALL HANGING BRASS BELL (#hotspot-shrine-bell) -->
+        <g id="hotspot-shrine-bell" class="interactive-object shrine-bell-assembly" transform="translate(0, 126)">
+          <line x1="0" y1="0" x2="0" y2="18" stroke="#3b2413" stroke-width="2" class="day-only" />
+          <line x1="0" y1="0" x2="0" y2="18" stroke="#121622" stroke-width="2" class="night-only" />
+          <!-- Bell Body -->
+          <path d="M-6 18 C-8 24, -14 36, -16 42 L16 42 C14 36, 8 24, 6 18 Z" fill="#d99f36" stroke="#7a5518" stroke-width="1.4" class="day-only" />
+          <path d="M-6 18 C-8 24, -14 36, -16 42 L16 42 C14 36, 8 24, 6 18 Z" fill="#423317" stroke="#1c160b" stroke-width="1.4" class="night-only" />
+          <ellipse cx="0" cy="42" rx="16" ry="4.5" fill="#bfa042" stroke="#7a5518" stroke-width="1.2" class="day-only" />
+          <ellipse cx="0" cy="42" rx="16" ry="4.5" fill="#362c16" stroke="#1c160b" stroke-width="1.2" class="night-only" />
+        </g>
 
-          <!-- TARNISHED METAL BRASS PLATE (#hotspot-shrine-plate) -->
-          <g id="hotspot-shrine-plate" class="interactive-object" style="cursor: pointer;" transform="translate(35, 342)">
-            <!-- Tarnished Brass Plate -->
-            <rect x="0" y="0" width="90" height="22" rx="2" fill="#786c38" stroke="#3d371a" stroke-width="1.2" />
-            <!-- Patina Verdigris Highlights -->
-            <rect x="2" y="2" width="86" height="18" fill="#4d5c43" opacity="0.4" />
-            <!-- Engraved Weathered Inscription -->
-            <text x="45" y="11" font-family="'Cinzel', serif" font-size="4" font-weight="700" fill="#ede8d8" text-anchor="middle">FOR THOSE WHO</text>
-            <text x="45" y="18" font-family="'Cinzel', serif" font-size="4" font-weight="700" fill="#ede8d8" text-anchor="middle">COULD NOT LEAVE.</text>
-          </g>
+        <!-- Dark Inner Sanctum Niche -->
+        <rect x="-40" y="140" width="80" height="165" fill="#080a0f" stroke="#16120b" stroke-width="1.8" />
 
-          <!-- Shrine Main Stone Body -->
-          <polygon points="35,140 125,140 135,310 25,310" fill="#d1beaa" class="day-only" />
-          <polygon points="35,140 125,140 135,310 25,310" fill="#2a3347" class="night-only" />
+        <!-- HOTSPOT: ANCIENT CARVED DEITY IDOL (#hotspot-shrine-idol) Inside Sanctum Niche -->
+        <g id="hotspot-shrine-idol" class="interactive-object shrine-idol-assembly" transform="translate(0, 230)">
+          <!-- Black Stone Deity Figure (Bhairav / Devi) with Vermilion Smear -->
+          <ellipse cx="0" cy="18" rx="22" ry="10" fill="#181d29" stroke="#080a0f" stroke-width="1.4" />
+          <path d="M-14 18 C-14 -15, -8 -35, 0 -35 C8 -35, 14 -15, 14 18 Z" fill="#1b202e" stroke="#080a0f" stroke-width="1.5" />
+          <!-- Smeared Thick Red Sindoor & Silver Foil Eyes -->
+          <ellipse cx="0" cy="-18" rx="8" ry="10" fill="#cf232b" opacity="0.9" />
+          <ellipse cx="-4" cy="-20" rx="2.5" ry="1.8" fill="#e2e8f0" />
+          <ellipse cx="4" cy="-20" rx="2.5" ry="1.8" fill="#e2e8f0" />
+          <circle cx="-4" cy="-20" r="0.8" fill="#000" />
+          <circle cx="4" cy="-20" r="0.8" fill="#000" />
+          <!-- Silver Foil Crown (Mukut) -->
+          <polygon points="-8,-34 0,-42 8,-34" fill="#cbd5e1" stroke="#475569" stroke-width="0.8" />
+        </g>
 
-          <!-- Curved Sikhara / Dome Peak -->
-          <path d="M35 140 C55 60, 105 60, 125 140 Z" fill="#bfa893" class="day-only" />
-          <path d="M35 140 C55 60, 105 60, 125 140 Z" fill="#202738" class="night-only" />
-          <!-- Kalash Finial Brass Tip -->
-          <polygon points="76,45 84,45 80,25" fill="#c49f47" />
-          <circle cx="80" cy="50" r="5" fill="#d9b65b" />
+        <!-- Stone Altar Plinth Landing -->
+        <polygon points="-80,310 80,310 95,340 -95,340" fill="url(#sandstone-highlight)" stroke="#52351c" stroke-width="2" class="day-only" />
+        <polygon points="-80,310 80,310 95,340 -95,340" fill="#2d3750" stroke="#121622" stroke-width="2" class="night-only" />
 
-          <!-- Arched Sanctum Alcove Niche -->
-          <path d="M48 190 C48 165, 112 165, 112 190 L112 300 L48 300 Z" fill="#291e17" class="day-only" />
-          <path d="M48 190 C48 165, 112 165, 112 190 L112 300 L48 300 Z" fill="#080a0f" class="night-only" />
+        <!-- HOTSPOT 4: INCENSE BURNER WITH CURLING SMOKE (#hotspot-shrine-incense) @ x=62%, y=52% (241.8, 438.9) -->
+        <g id="hotspot-shrine-incense" class="interactive-object shrine-incense-assembly" transform="translate(47, 209)">
+          <ellipse cx="0" cy="12" rx="12" ry="5" fill="#a47a3e" stroke="#684718" stroke-width="1.2" class="day-only" />
+          <ellipse cx="0" cy="12" rx="12" ry="5" fill="#362814" stroke="#140f06" stroke-width="1.2" class="night-only" />
+          <!-- Red Burning Incense Stick Tips -->
+          <line x1="-3" y1="12" x2="-8" y2="-12" stroke="#78350f" stroke-width="1.5" />
+          <line x1="2" y1="12" x2="6" y2="-14" stroke="#78350f" stroke-width="1.5" />
+          <circle cx="-8" cy="-12" r="1.5" fill="#ef4444" />
+          <circle cx="6" cy="-14" r="1.5" fill="#ef4444" />
+          <!-- Wisp of Aromatic White Smoke -->
+          <path d="M-8 -12 Q-14 -32 4 -55 T-6 -85" stroke="#f1f5f9" stroke-width="1.8" fill="none" opacity="0.6" stroke-linecap="round" />
+          <path d="M6 -14 Q14 -34 -2 -60 T8 -90" stroke="#f1f5f9" stroke-width="1.8" fill="none" opacity="0.5" stroke-linecap="round" />
+        </g>
 
-          <!-- Stone Idol (Murti) inside Alcove -->
-          <g class="stone-idol" transform="translate(68, 205)">
-            <ellipse cx="12" cy="18" rx="9" ry="12" fill="#544941" />
-            <!-- Vermilion Red Cloth draped over idol -->
-            <polygon points="4,22 20,22 24,70 0,70" fill="#b02121" stroke="#6e1313" stroke-width="1.2" />
-            <!-- Sacred Tilak Mark -->
-            <line x1="12" y1="12" x2="12" y2="20" stroke="#ffdd44" stroke-width="2" />
-            <circle cx="12" cy="16" r="1.5" fill="#a11212" />
-          </g>
+        <!-- HOTSPOT 2: BURNING CLAY DIYA LAMP (#hotspot-shrine-lamp, #shrine-diya-flame) @ x=34%, y=56% (132.6, 472.6) -->
+        <g id="hotspot-shrine-lamp" class="interactive-object shrine-lamp-assembly" transform="translate(-62, 243)">
+          <!-- Terracotta Saucer -->
+          <ellipse cx="0" cy="8" rx="14" ry="6" fill="#8f492b" stroke="#522410" stroke-width="1.2" class="day-only" />
+          <ellipse cx="0" cy="8" rx="14" ry="6" fill="#2d170d" stroke="#120803" stroke-width="1.2" class="night-only" />
+          <!-- Oil Pool -->
+          <ellipse cx="0" cy="7" rx="9" ry="3.5" fill="#d97706" opacity="0.8" class="day-only" />
+          <ellipse cx="0" cy="7" rx="9" ry="3.5" fill="#4d2c0e" opacity="0.8" class="night-only" />
 
-          <!-- Little Brass Bells hanging from Canopy -->
-          <polygon points="48,160 54,160 52,172 50,172" fill="#d4ad48" />
-          <polygon points="106,160 112,160 110,172 108,172" fill="#d4ad48" />
-
-          <!-- Fresh Marigold Flowers scattered on Step (#hotspot-shrine-flowers) -->
-          <g id="hotspot-shrine-flowers" class="interactive-object shrine-marigolds" style="cursor: pointer;">
-            <circle class="shrine-flower-petal" cx="45" cy="305" r="4.5" fill="#f09624" />
-            <circle class="shrine-flower-petal" cx="53" cy="307" r="4" fill="#f0bf24" />
-            <circle class="shrine-flower-petal" cx="108" cy="305" r="4.5" fill="#f09624" />
-            <circle class="shrine-flower-petal" cx="116" cy="307" r="4" fill="#d94b18" />
-          </g>
-
-          <!-- BURNING DIYA OIL LAMP (#hotspot-shrine-lamp) -->
-          <g id="hotspot-shrine-lamp" class="interactive-object" style="cursor: pointer;" transform="translate(38, 290)">
-            <!-- Terracotta Diya Saucer -->
-            <ellipse cx="12" cy="16" rx="9" ry="4.5" fill="#8a4d2e" stroke="#572e18" stroke-width="1" />
-            <!-- Lamp Flame (Burns with warm steady flame in Night mode) -->
-            <g id="shrine-diya-flame" class="shrine-flame-flicker">
-              <path class="shrine-flame-core" d="M12 14 C9 12, 10 7, 12 2 C14 7, 15 12, 12 14 Z" fill="#ffbd38" />
-              <path class="shrine-flame-inner" d="M12 13 C10.5 11, 11 8, 12 5 C13 8, 13.5 11, 12 13 Z" fill="#ffffff" />
-              <!-- Flame Radial Glow (Prominent at Night) -->
-              <circle class="shrine-flame-halo" cx="12" cy="8" r="18" fill="#ffaa33" opacity="0.35" class="night-only" filter="url(#glow-blur)" />
-              <circle cx="12" cy="8" r="6" fill="#ffaa33" opacity="0.25" class="day-only" filter="url(#glow-blur)" />
-            </g>
-          </g>
-
-          <!-- INCENSE BURNER & RISING SMOKE (#hotspot-shrine-incense) -->
-          <g id="hotspot-shrine-incense" class="interactive-object" style="cursor: pointer;" transform="translate(112, 285)">
-            <!-- Small Brass Bowl -->
-            <polygon points="4,22 16,22 18,28 2,28" fill="#a1823d" />
-            <!-- Incense Stick -->
-            <line x1="10" y1="22" x2="6" y2="4" stroke="#4a3b2b" stroke-width="1.8" />
-            <!-- Burning Ember Tip -->
-            <circle cx="6" cy="4" r="1.5" fill="#f74d31" />
-
-            <!-- Rising Incense Smoke Curls (Smooth animated path) -->
-            <path id="shrine-incense-smoke" class="incense-smoke-anim" d="M6 3 C2 -10, 15 -25, 4 -40 C-6 -55, 12 -70, 2 -85" stroke="#e8ded8" stroke-width="1.8" fill="none" opacity="0.75" />
+          <!-- Flickering Golden Flame (#shrine-diya-flame) -->
+          <g id="shrine-diya-flame">
+            <ellipse cx="0" cy="6" rx="36" ry="16" fill="#ffb443" opacity="0.3" filter="url(#glow-blur)" />
+            <!-- Flame Body -->
+            <path d="M0 -22 C5 -12, 7 -2, 0 4 C-7 -2, -5 -12, 0 -22 Z" fill="#ff9100" opacity="0.9" />
+            <path d="M0 -17 C3 -9, 4 -2, 0 3 C-4 -2, -3 -9, 0 -17 Z" fill="#fffbe8" />
           </g>
         </g>
-      </svg>
-    `;
+
+        <!-- HOTSPOT 1: TARNISHED BRASS OFFERING THALI PLATE (#hotspot-shrine-plate) @ x=44%, y=72% (171.6, 607.7) -->
+        <g id="hotspot-shrine-plate" class="interactive-object shrine-plate-assembly" transform="translate(-23, 378)">
+          <!-- Ground Shadow -->
+          <ellipse cx="0" cy="6" rx="28" ry="11" fill="#000" opacity="0.4" class="day-only" />
+          <ellipse cx="0" cy="6" rx="28" ry="11" fill="#000" opacity="0.75" class="night-only" />
+          <!-- Brass Thali Disc Plate -->
+          <ellipse cx="0" cy="0" rx="28" ry="11" fill="#c99738" stroke="#7a5518" stroke-width="1.5" class="day-only" />
+          <ellipse cx="0" cy="0" rx="28" ry="11" fill="#423317" stroke="#1c160b" stroke-width="1.5" class="night-only" />
+          <!-- Inner Rim Recess -->
+          <ellipse cx="0" cy="0" rx="23" ry="9" fill="#b8832a" stroke="#7a5518" stroke-width="1" class="day-only" />
+          <ellipse cx="0" cy="0" rx="23" ry="9" fill="#362912" stroke="#1c160b" stroke-width="1" class="night-only" />
+          <!-- Kumkum Red Powder Smudge in Center -->
+          <ellipse cx="-4" cy="0" rx="6" ry="3" fill="#cf232b" opacity="0.85" />
+          <!-- Grain Offerings (Akshat Rice Grains) -->
+          <g fill="#fff" opacity="0.9">
+            <circle cx="6" cy="-2" r="1.2" />
+            <circle cx="9" cy="1" r="1.1" />
+            <circle cx="5" cy="2" r="1.2" />
+          </g>
+        </g>
+
+        <!-- HOTSPOT 3: FRESH MARIGOLD BLOSSOMS (#hotspot-shrine-flowers, .shrine-flower-petal) @ x=50%, y=64% (195, 540.2) -->
+        <g id="hotspot-shrine-flowers" class="interactive-object shrine-flowers-assembly" transform="translate(0, 310)">
+          <!-- Fresh Yellow & Orange Marigold Garland Piled on Plinth -->
+          <ellipse class="shrine-flower-petal" cx="-24" cy="6" rx="7" ry="5.5" fill="#f59e0b" />
+          <circle class="shrine-flower-petal" cx="-24" cy="6" r="3.5" fill="#d97706" />
+          
+          <ellipse class="shrine-flower-petal" cx="-8" cy="8" rx="8" ry="6.5" fill="#fbbf24" />
+          <circle class="shrine-flower-petal" cx="-8" cy="8" r="4" fill="#ea580c" />
+
+          <ellipse class="shrine-flower-petal" cx="12" cy="7" rx="8.5" ry="6.5" fill="#f59e0b" />
+          <circle class="shrine-flower-petal" cx="12" cy="7" r="4.2" fill="#d97706" />
+
+          <ellipse class="shrine-flower-petal" cx="28" cy="5" rx="7" ry="5" fill="#fbbf24" />
+          <circle class="shrine-flower-petal" cx="28" cy="5" r="3.2" fill="#ea580c" />
+
+          <!-- Scattered loose petals -->
+          <circle class="shrine-flower-petal" cx="-36" cy="12" r="2.5" fill="#f59e0b" />
+          <circle class="shrine-flower-petal" cx="38" cy="10" r="2.2" fill="#fbbf24" />
+          <circle class="shrine-flower-petal" cx="2" cy="14" r="2.8" fill="#ea580c" />
+        </g>
+      </g>
+    </svg>
+  `;
+}).call(this);
   },
 
-  // 12. SCENE 12: The Second Note
+  // 14. SCENE 13: The Second Note
   renderSecondNoteScene() {
-    return `
-      <svg viewBox="0 0 390 844" class="scene-illustration" xmlns="http://www.w3.org/2000/svg">
-        ${this.getAtmosphericSky('second-note')}
+    return (function renderSecondNoteScene() {
+  return `
+    <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
+      ${this.getAtmosphericSky('secondnote')}
 
-        <!-- Forest Verge Background -->
-        <polygon points="0,480 390,460 390,844 0,844" fill="#a87d55" class="day-only" />
-        <polygon points="0,480 390,460 390,844 0,844" fill="#101522" class="night-only" />
+      <!-- Forest Edge Clearing Backdrop -->
+      <g class="distant-landscape">
+        <path class="day-only" fill="#9e714e" opacity="0.65" d="M0 430 Q100 405 200 420 T390 415 L390 490 L0 490 Z" />
+        <path class="night-only" fill="#0c121e" opacity="0.8" d="M0 430 Q100 405 200 420 T390 415 L390 490 L0 490 Z" />
+      </g>
 
-        <!-- Distant Silhouette of Small Shrine & Trees -->
-        <g class="distant-shrine-view" transform="translate(260, 320)" opacity="0.75">
-          <path d="M15 80 C25 30, 55 30, 65 80 L65 140 L15 140 Z" fill="#695340" class="day-only" />
-          <path d="M15 80 C25 30, 55 30, 65 80 L65 140 L15 140 Z" fill="#080c14" class="night-only" />
-          <polygon points="38,20 42,20 40,10" fill="#c49f47" />
-          <!-- Small Burning Lamp Glow at Shrine -->
-          <circle cx="40" cy="120" r="4" fill="#ffaa33" class="night-only" filter="url(#glow-blur)" />
-        </g>
+      <!-- Dusty Forest Soil Ground -->
+      <g id="secondnote-ground">
+        <rect x="0" y="480" width="390" height="364" fill="url(#ground-dirt-day)" class="day-only" />
+        <rect x="0" y="480" width="390" height="364" fill="url(#ground-dirt-night)" class="night-only" />
+      </g>
 
-        <!-- Weathered Stone Boundary Marker (#hotspot-shrine-boundary) -->
-        <g id="hotspot-shrine-boundary" class="interactive-object cairn-monument" transform="translate(50, 420)">
-          <!-- Ground Cairn Shadow -->
-          <ellipse cx="50" cy="190" rx="65" ry="18" fill="#000" opacity="0.6" />
+      <!-- HOTSPOT 2: ANCIENT BOUNDARY STONE CAIRN (#hotspot-shrine-boundary) @ x=26%, y=50% (101.4, 422) -->
+      <g id="hotspot-shrine-boundary" class="interactive-object boundary-cairn-assembly" transform="translate(101, 422)">
+        <!-- Cast Shadow -->
+        <ellipse cx="0" cy="55" rx="42" ry="14" fill="#000" opacity="0.35" class="day-only" />
+        <ellipse cx="0" cy="55" rx="42" ry="14" fill="#000" opacity="0.75" class="night-only" />
+        <!-- Stacked Sandstone Boundary Stones (Cairn) -->
+        <!-- Base Block -->
+        <polygon points="-38,50 38,46 32,20 -35,24" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="2" class="day-only" />
+        <polygon points="-38,50 38,46 32,20 -35,24" fill="url(#sandstone-night)" stroke="#121622" stroke-width="2" class="night-only" />
+        <!-- Mid Block -->
+        <polygon points="-28,20 28,18 22,-10 -25,-8" fill="url(#sandstone-highlight)" stroke="#52351c" stroke-width="1.8" class="day-only" />
+        <polygon points="-28,20 28,18 22,-10 -25,-8" fill="#2d3750" stroke="#121622" stroke-width="1.8" class="night-only" />
+        <!-- Top Marker Stone -->
+        <polygon points="-16,-10 16,-12 10,-38 -12,-36" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="1.8" class="day-only" />
+        <polygon points="-16,-10 16,-12 10,-38 -12,-36" fill="url(#sandstone-night)" stroke="#121622" stroke-width="1.8" class="night-only" />
+        <!-- Smear of Red Vermilion Powder -->
+        <ellipse cx="0" cy="-22" rx="5" ry="7" fill="#cf232b" opacity="0.85" />
+      </g>
 
-          <!-- Stack of Ancient Weathered River Stones -->
-          <ellipse cx="45" cy="180" rx="55" ry="20" class="cairn-stone-block" />
-          <ellipse cx="55" cy="155" rx="46" ry="17" class="cairn-stone-block" />
-          <ellipse cx="48" cy="130" rx="38" ry="15" class="cairn-stone-block" />
-          <ellipse cx="52" cy="105" rx="28" ry="13" class="cairn-stone-block" />
-          <ellipse cx="50" cy="85" rx="18" ry="10" class="cairn-stone-block" />
+      <!-- STONE ALTAR PLINTH IN FOREGROUND -->
+      <g id="stone-altar-pedestal" transform="translate(195, 490)">
+        <!-- Ground Shadow -->
+        <ellipse cx="0" cy="115" rx="145" ry="38" fill="#000" opacity="0.4" class="day-only" />
+        <ellipse cx="0" cy="115" rx="145" ry="38" fill="#000" opacity="0.8" class="night-only" />
 
-          <!-- Carved Tally Marks on the Base Stone -->
-          <line x1="30" y1="172" x2="30" y2="186" stroke="#2b231c" stroke-width="1.8" />
-          <line x1="36" y1="172" x2="36" y2="186" stroke="#2b231c" stroke-width="1.8" />
-          <line x1="42" y1="172" x2="42" y2="186" stroke="#2b231c" stroke-width="1.8" />
-          <line x1="48" y1="172" x2="48" y2="186" stroke="#2b231c" stroke-width="1.8" />
-          <line x1="28" y1="184" x2="52" y2="174" stroke="#2b231c" stroke-width="1.8" />
+        <!-- Massive Sandstone Altar Slab -->
+        <polygon points="-130,55 130,50 145,105 -145,110" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="2.5" class="day-only" />
+        <polygon points="-130,55 130,50 145,105 -145,110" fill="url(#sandstone-night)" stroke="#121622" stroke-width="2.5" class="night-only" />
+        <!-- Top Polished Table Surface -->
+        <polygon points="-125,52 125,48 115,0 -115,4" fill="url(#sandstone-highlight)" stroke="#52351c" stroke-width="2" class="day-only" />
+        <polygon points="-125,52 125,48 115,0 -115,4" fill="#2d3750" stroke="#121622" stroke-width="2" class="night-only" />
 
-          <!-- NIGHT: Eerie Spectral Mist Around Cairn -->
-          <ellipse cx="50" cy="160" rx="70" ry="40" fill="#24344d" opacity="0.25" filter="url(#glow-blur)" class="night-only" />
-        </g>
+        <!-- HOTSPOT 1: THE OLD WOODEN BOX & SECOND NOTE (#hotspot-second-note-box) @ x=50%, y=62% (195, 523.3) -->
+        <g id="hotspot-second-note-box" class="interactive-object second-note-box-assembly" transform="translate(0, 33)">
+          <!-- Box Ground Shadow -->
+          <ellipse cx="0" cy="38" rx="65" ry="18" fill="#000" opacity="0.45" class="day-only" />
+          <ellipse cx="0" cy="38" rx="65" ry="18" fill="#000" opacity="0.85" class="night-only" />
 
-        <!-- THE OLD WOODEN BOX WITH THE SECOND NOTE (Interactive Hero Object) -->
-        <g id="hotspot-second-note-box" class="interactive-object wooden-box-assembly" style="cursor: pointer;" transform="translate(175, 520)">
-          <!-- Cast Box Shadow -->
-          <ellipse cx="55" cy="82" rx="65" ry="16" fill="#000" opacity="0.75" />
+          <!-- Carved Rosewood / Teak Box Body -->
+          <polygon points="-58,35 58,30 52,-15 -52,-10" fill="#4d2b17" stroke="#2b1408" stroke-width="2" class="day-only" />
+          <polygon points="-58,35 58,30 52,-15 -52,-10" fill="#141720" stroke="#080a0f" stroke-width="2" class="night-only" />
+          <polygon points="-56,33 56,28 50,-13 -50,-8" fill="url(#pat-wood)" class="day-only" opacity="0.85" />
+          <polygon points="-56,33 56,28 50,-13 -50,-8" fill="url(#pat-wood-night)" class="night-only" opacity="0.85" />
 
-          <!-- Box Base Body -->
-          <polygon points="10,40 100,32 108,80 18,88" class="wooden-box-body" />
-          <!-- Front Panel Face -->
-          <polygon points="18,88 108,80 108,82 18,90" fill="#26160b" />
+          <!-- Brass Corner Reinforcements -->
+          <polygon points="-58,-10 -42,-11 -40,3 -56,5" fill="#d99f36" stroke="#7a5518" stroke-width="1" class="day-only" />
+          <polygon points="52,-15 36,-14 38,0 54,-1" fill="#d99f36" stroke="#7a5518" stroke-width="1" class="day-only" />
+          <polygon points="-58,-10 -42,-11 -40,3 -56,5" fill="#423317" stroke="#1c160b" stroke-width="1" class="night-only" />
+          <polygon points="52,-15 36,-14 38,0 54,-1" fill="#423317" stroke="#1c160b" stroke-width="1" class="night-only" />
 
-          <!-- Brass Reinforcing Corner Brackets -->
-          <polygon points="10,40 22,39 20,52 11,50" class="wooden-box-brass" />
-          <polygon points="18,76 28,75 26,87 18,88" class="wooden-box-brass" />
-          <polygon points="98,32 100,32 108,44 96,44" class="wooden-box-brass" />
-          <polygon points="98,68 108,68 108,80 98,80" class="wooden-box-brass" />
+          <!-- Open Box Lid (Tilted Back) -->
+          <polygon points="-52,-10 52,-15 48,-55 -48,-50" fill="#3b1f0f" stroke="#241206" stroke-width="2" class="day-only" />
+          <polygon points="-52,-10 52,-15 48,-55 -48,-50" fill="#0f1118" stroke="#06070a" stroke-width="2" class="night-only" />
 
-          <!-- Brass Center Front Lock Hasp -->
-          <rect x="58" y="60" width="10" height="18" rx="1.5" class="wooden-box-brass" />
-          <circle cx="63" cy="73" r="2.2" fill="#26160b" />
+          <!-- Heavy Brass Clasp Latch -->
+          <rect x="-6" y="8" width="12" height="18" rx="2" fill="#d99f36" stroke="#7a5518" stroke-width="1.2" class="day-only" />
+          <rect x="-6" y="8" width="12" height="18" rx="2" fill="#423317" stroke="#1c160b" stroke-width="1.2" class="night-only" />
 
-          <!-- ROLLED SECOND NOTE PARCHMENT VISIBLE INSIDE -->
-          <g class="rolled-second-note" transform="translate(30, 26) rotate(-8)">
-            <!-- Rolled Parchment Cylinder -->
-            <path d="M6 14 C6 8, 12 6, 18 8 L54 12 C60 13, 62 20, 62 26 C62 32, 58 36, 52 35 L16 30 C10 29, 6 22, 6 14 Z" 
-                  fill="#f7eedb" stroke="#8b5a2b" stroke-width="1.2" />
-            <!-- Crimson Sealing Cord -->
-            <line x1="36" y1="10" x2="34" y2="33" stroke="#a31924" stroke-width="2.5" />
-            <circle cx="35" cy="22" r="3.8" fill="#750c14" />
-            <!-- Scroll Rolled Edges -->
-            <ellipse cx="10" cy="18" rx="3.5" ry="7" fill="#ebd8b5" stroke="#754c22" stroke-width="1" />
-            <ellipse cx="56" cy="23" rx="3" ry="6.5" fill="#ebd8b5" stroke="#754c22" stroke-width="1" />
+          <!-- HOTSPOT: UNFOLDED PARCHMENT SHEET INSIDE BOX (#hotspot-second-note-parchment, #second-note-sheet) -->
+          <g id="hotspot-second-note-parchment" transform="translate(0, 5)">
+            <!-- Yellowed Aged Parchment Sheet (#second-note-sheet) -->
+            <polygon id="second-note-sheet" points="-42,20 42,16 38,-6 -38,-2" fill="#fef3c7" stroke="#854d0e" stroke-width="1.5" class="parchment-sheet" />
+            <!-- Script text lines representation -->
+            <line x1="-32" y1="2" x2="32" y2="0" stroke="#78350f" stroke-width="1.5" opacity="0.75" />
+            <line x1="-32" y1="8" x2="28" y2="6" stroke="#78350f" stroke-width="1.5" opacity="0.75" />
+            <line x1="-32" y1="14" x2="22" y2="12" stroke="#78350f" stroke-width="1.5" opacity="0.75" />
+
+            <!-- BLOODY HANDPRINT HORROR REVEAL (#parchment-bloody-handprint) -->
+            <g id="parchment-bloody-handprint" opacity="0" filter="url(#glow-blur)" transform="translate(0, 6) scale(0.65)">
+              <ellipse cx="0" cy="5" rx="14" ry="12" fill="#991b1b" opacity="0.85" />
+              <!-- Fingers -->
+              <path d="M-12 2 L-18 -16 M-6 0 L-8 -22 M0 0 L0 -24 M6 0 L8 -22 M12 2 L16 -16" stroke="#991b1b" stroke-width="4.5" stroke-linecap="round" opacity="0.85" />
+            </g>
+
+            <!-- HORROR WARNING TEXT REVEAL (#parchment-horror-warning) -->
+            <text id="parchment-horror-warning" x="0" y="2" text-anchor="middle" font-family="'Cinzel', serif" font-size="6.5" font-weight="900" fill="#dc2626" opacity="0">THE VILLAGE REMEMBERS</text>
           </g>
-
-          <!-- Propped-Ajar Box Lid (Open enough to see the scroll) -->
-          <polygon points="6,34 98,24 104,10 12,20" class="wooden-box-body" stroke="#482914" stroke-width="2" />
-          <!-- Lid Interior Shadow -->
-          <polygon points="12,20 104,10 100,32 10,40" fill="#140b05" opacity="0.9" />
-
-          <!-- Beacon Glow over the Box -->
-          <ellipse cx="58" cy="45" rx="35" ry="20" fill="#fedaa2" opacity="0.25" class="day-only" filter="url(#glow-blur)" />
-          <ellipse cx="58" cy="45" rx="38" ry="22" fill="#7bb5e8" opacity="0.35" class="night-only" filter="url(#glow-blur)" />
         </g>
-      </svg>
-    `;
+      </g>
+    </svg>
+  `;
+}).call(this);
   },
 
-  // 14. SCENE 14: The Forgotten Street
+  // 15. SCENE 14: The Forgotten Street
   renderForgottenStreetScene() {
-    return `
-      <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
-        ${this.getAtmosphericSky('forgotten-street')}
+    return (function renderForgottenStreetScene() {
+  return `
+    <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
+      ${this.getAtmosphericSky('forgottenstreet')}
 
-        <!-- Narrow Alley Encroaching Walls: Left Haveli Facade -->
-        <g class="street-left-facade">
-          <polygon points="0,140 145,280 120,844 0,844" fill="#6d482f" />
-          <polygon points="0,140 145,280 140,844 120,844" fill="#4d3220" />
-          <!-- High weathered windows -->
-          <rect x="25" y="240" width="35" height="50" rx="3" fill="#2d1b11" />
-          <path d="M25 240 Q42 225 60 240 Z" fill="#2d1b11" />
-          <rect x="30" y="340" width="30" height="42" rx="2" fill="#24160e" />
-          <!-- Heavy Timber Roof Brackets -->
-          <polygon points="0,180 50,210 40,225 0,195" fill="#361f12" />
-          <polygon points="50,210 110,250 100,265 40,225" fill="#361f12" />
-          
-          <!-- Closed Left Door (Cracked slightly open at NIGHT) (Interactive Hotspot) -->
-          <g id="hotspot-street-doors" class="interactive-object">
-            <path d="M35 520 Q65 490 95 520 L95 670 L35 670 Z" fill="#261309" stroke="#5a3118" stroke-width="2" />
-            <line x1="65" y1="500" x2="65" y2="670" stroke="#140804" stroke-width="2.5" />
-            <circle cx="58" cy="590" r="3" fill="#c49a45" />
-            <!-- NIGHT ONLY: Dark void & faint amber glint inside -->
-            <g class="night-only">
-              <polygon points="62,502 67,504 67,670 62,670" fill="#050302" />
-              <line x1="64" y1="520" x2="64" y2="650" stroke="#ff8811" stroke-width="1.2" opacity="0.65" filter="url(#glow-blur)" />
-            </g>
-          </g>
+      <!-- Narrow Slice of Sky Between Looming Havelis -->
+      <!-- Ground Pavement Base -->
+      <g id="forgotten-street-ground">
+        <polygon points="175,340 215,340 375,844 15,844" fill="url(#ground-dirt-day)" class="day-only" />
+        <polygon points="175,340 215,340 375,844 15,844" fill="url(#ground-dirt-night)" class="night-only" />
+
+        <!-- Weathered Flagstone Pavement Covered in Desert Weeds (#hotspot-street-overgrowth) -->
+        <polygon id="hotspot-street-overgrowth" points="180,340 210,340 340,844 50,844" fill="url(#pat-cobbles)" class="day-only" opacity="0.85" />
+        <polygon points="180,340 210,340 340,844 50,844" fill="url(#pat-cobbles-night)" class="night-only" opacity="0.8" />
+
+        <!-- Overgrown Hardy Weeds & Grass Bursting Through Flagstone Mortar Joints -->
+        <g class="day-only" fill="#4d6638">
+          <ellipse cx="140" cy="720" rx="16" ry="6" />
+          <ellipse cx="230" cy="650" rx="14" ry="5" />
+          <ellipse cx="170" cy="540" rx="10" ry="4" />
+          <ellipse cx="190" cy="420" rx="7" ry="3" />
         </g>
-
-        <!-- Right Haveli Facade (Cracked plaster & creepers) -->
-        <g class="street-right-facade">
-          <polygon points="390,120 245,270 270,844 390,844" fill="#785034" />
-          <polygon points="245,270 250,844 270,844" fill="#543622" />
-          <!-- Upper arched jharokha balcony -->
-          <polygon points="300,210 375,170 380,270 305,310" fill="#4d301c" />
-          <rect x="320" y="240" width="32" height="48" rx="3" fill="#25160d" />
-          <path d="M320 240 Q336 226 352 240 Z" fill="#25160d" />
-          <!-- Wild creepers on stone -->
-          <path d="M260 450 Q280 430 275 390 T290 330 T285 270" stroke="#2e381b" stroke-width="3" fill="none" />
-          <ellipse cx="272" cy="420" rx="8" ry="4" fill="#3f4d25" />
-          <ellipse cx="282" cy="360" rx="9" ry="5" fill="#3f4d25" />
-          <!-- Right Wooden Door -->
-          <path d="M295 530 Q320 505 345 530 L345 665 L295 665 Z" fill="#2b170c" stroke="#5a3118" stroke-width="1.8" />
+        <g class="night-only" fill="#121a14">
+          <ellipse cx="140" cy="720" rx="16" ry="6" />
+          <ellipse cx="230" cy="650" rx="14" ry="5" />
+          <ellipse cx="170" cy="540" rx="10" ry="4" />
+          <ellipse cx="190" cy="420" rx="7" ry="3" />
         </g>
+      </g>
 
-        <!-- Vanishing Point Archway at Far End of Alley -->
-        <g class="street-distant-arch" transform="translate(160, 360)">
-          <!-- Distant arched opening -->
-          <path d="M5 90 Q35 45 65 90 L65 140 L5 140 Z" fill="#140c08" />
-          <path d="M0 92 Q35 40 70 92 L70 140 L0 140 Z" fill="none" stroke="#3d2417" stroke-width="3" />
+      <!-- TOWERING FLANKING HAVELI WALLS (CLAUSTROPHOBIC PERSPECTIVE) -->
+      <!-- Left Haveli Wall Block -->
+      <g id="street-left-havelis">
+        <polygon points="0,0 175,340 175,844 0,844" fill="url(#plaster-cream-day)" stroke="#523924" stroke-width="2" class="day-only" />
+        <polygon points="0,0 175,340 175,844 0,844" fill="url(#plaster-cream-night)" stroke="#121622" stroke-width="2" class="night-only" />
+        <!-- Exposed Brickwork Patches on Left -->
+        <polygon points="20,240 95,280 90,380 15,350" fill="url(#pat-brick)" class="day-only" />
+        <polygon points="20,240 95,280 90,380 15,350" fill="url(#pat-brick-night)" class="night-only" />
+        <!-- Overhanging Tiled Cornices -->
+        <polygon points="0,180 145,310 140,290 0,160" fill="url(#pat-khaprail)" class="day-only" />
+        <polygon points="0,180 145,310 140,290 0,160" fill="url(#pat-khaprail-night)" class="night-only" />
 
-          <!-- NIGHT ONLY: Distant Silhouetted Figure (Interactive Hotspot) -->
-          <g id="hotspot-street-figure" class="interactive-object night-only street-ghost-figure" opacity="0.95">
-            <!-- Figure head -->
-            <ellipse cx="35" cy="80" rx="4.5" ry="5.5" fill="#040201" />
-            <!-- Neck & shoulders -->
-            <path d="M26 94 Q35 84 44 94 L42 124 L28 124 Z" fill="#040201" />
-            <!-- Hanging shawl silhouette -->
-            <path d="M27 94 Q25 110 26 122 L44 122 Q45 110 43 94 Z" fill="#080402" />
-          </g>
+        <!-- HOTSPOT 2: CREAKING AJAR HEAVY TIMBER DOORS (#hotspot-street-doors) @ x=26%, y=54% (101.4, 455.8) -->
+        <g id="hotspot-street-doors" class="interactive-object street-doors-assembly" transform="translate(85, 410)">
+          <!-- Sandstone Chaokhat (Frame) -->
+          <polygon points="0,0 35,28 35,170 0,145" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="2" class="day-only" />
+          <polygon points="0,0 35,28 35,170 0,145" fill="url(#sandstone-night)" stroke="#121622" stroke-width="2" class="night-only" />
+          <!-- Pitch Black Interior Void Revealed by Ajar Door -->
+          <polygon points="4,12 32,34 32,165 4,142" fill="#000000" />
+          <!-- Heavy Timber Door Leaf Ajar (Swung open into dark) -->
+          <polygon points="4,12 18,22 18,154 4,142" fill="#4d321d" stroke="#241407" stroke-width="1.8" class="day-only" />
+          <polygon points="4,12 18,22 18,154 4,142" fill="#12151e" stroke="#06070a" stroke-width="1.8" class="night-only" />
+          <!-- Brass Studs on Door -->
+          <circle cx="11" cy="45" r="2" fill="#d99f36" class="day-only" />
+          <circle cx="11" cy="95" r="2" fill="#d99f36" class="day-only" />
+          <circle cx="11" cy="45" r="2" fill="#423317" class="night-only" />
+          <circle cx="11" cy="95" r="2" fill="#423317" class="night-only" />
         </g>
+      </g>
 
-        <!-- Deep Perspective Flagstone Road (Interactive Hotspot) -->
-        <g id="hotspot-street-whisper" class="interactive-object street-cobblestones">
-          <polygon points="165,450 225,450 330,844 60,844" fill="#523928" />
-          <!-- Receding center gutter & stone lines -->
-          <line x1="195" y1="450" x2="195" y2="844" stroke="#362215" stroke-width="2.5" />
-          <line x1="180" y1="450" x2="130" y2="844" stroke="#3a2517" stroke-width="1.5" />
-          <line x1="210" y1="450" x2="260" y2="844" stroke="#3a2517" stroke-width="1.5" />
-          <!-- Transverse stone joints -->
-          <line x1="168" y1="480" x2="222" y2="480" stroke="#362215" stroke-width="1.5" opacity="0.6" />
-          <line x1="155" y1="525" x2="235" y2="525" stroke="#362215" stroke-width="1.8" opacity="0.6" />
-          <line x1="138" y1="585" x2="252" y2="585" stroke="#362215" stroke-width="2" opacity="0.65" />
-          <line x1="115" y1="660" x2="275" y2="660" stroke="#362215" stroke-width="2.2" opacity="0.7" />
-          <line x1="88" y1="750" x2="302" y2="750" stroke="#362215" stroke-width="2.5" opacity="0.75" />
-          <!-- Weeds in cracks -->
-          <path d="M185 660 Q188 645 192 640 Q190 650 188 660 Z" fill="#3b421a" />
-          <path d="M205 750 Q208 732 214 728 Q210 740 208 750 Z" fill="#3b421a" />
-        </g>
+      <!-- Right Haveli Wall Block -->
+      <g id="street-right-havelis">
+        <polygon points="390,0 215,340 215,844 390,844" fill="url(#plaster-cream-day)" stroke="#523924" stroke-width="2" class="day-only" />
+        <polygon points="390,0 215,340 215,844 390,844" fill="url(#plaster-cream-night)" stroke="#121622" stroke-width="2" class="night-only" />
+        <!-- Exposed Brickwork Patches on Right -->
+        <polygon points="370,240 295,280 300,380 375,350" fill="url(#pat-brick)" class="day-only" />
+        <polygon points="370,240 295,280 300,380 375,350" fill="url(#pat-brick-night)" class="night-only" />
+        <!-- Tiled Cornices -->
+        <polygon points="390,180 245,310 250,290 390,160" fill="url(#pat-khaprail)" class="day-only" />
+        <polygon points="390,180 245,310 250,290 390,160" fill="url(#pat-khaprail-night)" class="night-only" />
 
-        <!-- Cold Ambient Fog Layer in Street (NIGHT ONLY) -->
-        <g class="night-only">
-          <ellipse cx="195" cy="540" rx="140" ry="32" fill="#1b2030" opacity="0.45" class="fog-drift" />
-          <ellipse cx="195" cy="700" rx="180" ry="40" fill="#131724" opacity="0.5" class="fog-drift" />
+        <!-- Barred Ground Window on Right -->
+        <g transform="translate(265, 430)">
+          <polygon points="0,20 30,0 30,65 0,85" fill="#090d14" stroke="#52351c" stroke-width="2" class="day-only" />
+          <polygon points="0,20 30,0 30,65 0,85" fill="#040608" stroke="#121622" stroke-width="2" class="night-only" />
+          <line x1="10" y1="13" x2="10" y2="78" stroke="#3b2413" stroke-width="2" class="day-only" />
+          <line x1="20" y1="7" x2="20" y2="72" stroke="#3b2413" stroke-width="2" class="day-only" />
+          <line x1="10" y1="13" x2="10" y2="78" stroke="#121622" stroke-width="2" class="night-only" />
+          <line x1="20" y1="7" x2="20" y2="72" stroke="#121622" stroke-width="2" class="night-only" />
         </g>
-      </svg>
-    `;
+      </g>
+
+      <!-- HOTSPOT 3: SOLITARY DISTANT FIGURE AT STREET END (#hotspot-street-figure) @ x=52%, y=44% (202.8, 371.4) -->
+      <g id="hotspot-street-figure" class="interactive-object street-figure-assembly" transform="translate(195, 342) scale(0.68)">
+        <!-- Silhouette of a Tall Person Standing Perfectly Still at the Vanishing Point -->
+        <ellipse cx="0" cy="48" rx="14" ry="5" fill="#000" opacity="0.65" />
+        <!-- Head with Shawl / Draped Cloth -->
+        <circle cx="0" cy="-22" r="7" fill="#141722" stroke="#080a0f" stroke-width="1.2" />
+        <!-- Torso & Draped Traditional Shawl (Loi) -->
+        <path d="M-10 -15 L10 -15 L14 26 L-14 26 Z" fill="#1b202e" stroke="#080a0f" stroke-width="1.4" />
+        <!-- Lower Dhoti Body -->
+        <polygon points="-12,26 12,26 10,48 -10,48" fill="#121622" />
+        <!-- Eerie Faint Moonlit Rim Highlight on Silhouette Edge (NIGHT) -->
+        <path d="M-7 -22 C-7 -28, 7 -28, 7 -22" stroke="#93c5fd" stroke-width="1" fill="none" opacity="0.5" class="night-only" />
+        <line x1="10" y1="-15" x2="14" y2="26" stroke="#93c5fd" stroke-width="1" opacity="0.4" class="night-only" />
+      </g>
+
+      <!-- HOTSPOT 1: HIDDEN LANE WHISPER HOTSPOT (#hotspot-street-whisper) @ x=50%, y=72% (195, 607.7) -->
+      <g id="hotspot-street-whisper" class="interactive-object street-whisper-assembly" transform="translate(195, 608)">
+        <ellipse cx="0" cy="0" rx="35" ry="12" fill="#000" opacity="0.01" />
+      </g>
+    </svg>
+  `;
+}).call(this);
   },
 
-  // 15. SCENE 15: The House at the End
+  // 16. SCENE 15: The House at the End
   renderHouseAtEndScene() {
-    return `
-      <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
-        ${this.getAtmosphericSky('house-at-end')}
+    return (function renderHouseAtEndScene() {
+  return `
+    <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
+      ${this.getAtmosphericSky('houseatend')}
 
-        <!-- Cul-de-sac Ground Mound & Cobblestones -->
-        <polygon points="0,560 390,560 390,844 0,844" fill="#5c4331" />
-        <ellipse cx="195" cy="620" rx="170" ry="45" fill="#4a3424" opacity="0.6" />
+      <!-- Dead-End Courtyard Ground -->
+      <g id="house-end-ground">
+        <rect x="0" y="480" width="390" height="364" fill="url(#ground-dirt-day)" class="day-only" />
+        <rect x="0" y="480" width="390" height="364" fill="url(#ground-dirt-night)" class="night-only" />
 
-        <!-- Distant Enclosing Walls on Left and Right -->
-        <polygon points="0,320 65,360 45,620 0,640" fill="#4d3322" />
-        <polygon points="390,310 325,355 345,620 390,640" fill="#4d3322" />
+        <!-- Weathered Flagstone Apron Leading to House Threshold -->
+        <polygon points="50,510 340,510 370,844 20,844" fill="url(#pat-cobbles)" class="day-only" opacity="0.85" />
+        <polygon points="50,510 340,510 370,844 20,844" fill="url(#pat-cobbles-night)" class="night-only" opacity="0.8" />
+      </g>
 
-        <!-- The Ancient Solitary Haveli Facade (Center) -->
-        <g class="house-at-end-building">
-          <!-- Main sandstone block -->
-          <polygon points="55,240 335,240 345,600 45,600" fill="#a1724d" />
-          <!-- Weathered roof parapet with carved merlons -->
-          <polygon points="45,210 345,210 335,240 55,240" fill="#7d5336" />
-          <rect x="75" y="195" width="240" height="15" fill="#5e3c25" />
-          <!-- Upper Carved Window with Warm Light / Shadow -->
-          <g id="hotspot-end-house-window" class="interactive-object">
-            <rect x="155" y="275" width="80" height="95" rx="4" fill="#24140b" />
-            <path d="M155 275 Q195 240 235 275 Z" fill="#24140b" />
-            <!-- DAY: Sun-bleached linen curtain -->
-            <rect x="160" y="280" width="70" height="85" fill="#d4c1a5" class="day-only" />
-            <!-- NIGHT: Warm Golden Lamp Light -->
-            <g class="night-only">
-              <rect id="end-house-window-light" x="160" y="280" width="70" height="85" fill="#ffa82e" filter="url(#glow-blur)" />
-              <rect x="160" y="280" width="70" height="85" fill="#ffdf94" opacity="0.75" />
-              <!-- Shadow Figure Passing Behind Curtain (Animated) -->
-              <path id="window-curtain-shadow" class="curtain-shadow-glide" d="M185 290 Q195 285 205 290 L212 360 L178 360 Z" fill="#291508" opacity="0.65" />
-            </g>
+      <!-- THE OLD HOUSE AT THE DEAD-END FACADE -->
+      <g class="house-end-facade" transform="translate(25, 140)">
+        <!-- Main Stone Wall -->
+        <polygon points="0,380 0,60 340,45 340,370" fill="url(#plaster-cream-day)" stroke="#523924" stroke-width="2" class="day-only" />
+        <polygon points="0,380 0,60 340,45 340,370" fill="url(#plaster-cream-night)" stroke="#121622" stroke-width="2" class="night-only" />
+        <polygon points="20,90 80,80 85,150 25,160" fill="url(#pat-brick)" class="day-only" />
+        <polygon points="20,90 80,80 85,150 25,160" fill="url(#pat-brick-night)" class="night-only" />
+
+        <!-- Overhanging Tiled Eaves -->
+        <polygon points="-10,65 350,48 345,28 -15,48" fill="url(#pat-khaprail)" class="day-only" />
+        <polygon points="-10,65 350,48 345,28 -15,48" fill="url(#pat-khaprail-night)" class="night-only" />
+
+        <!-- HOTSPOT 2: WARM LANTERN LIGHT WINDOW (#hotspot-house-end-light) -->
+        <g id="hotspot-house-end-light" class="interactive-object house-end-window-assembly" transform="translate(230, 160)">
+          <!-- Sandstone Window Frame -->
+          <rect x="-6" y="-6" width="62" height="78" rx="3" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="2" class="day-only" />
+          <rect x="-6" y="-6" width="62" height="78" rx="3" fill="url(#sandstone-night)" stroke="#121622" stroke-width="2" class="night-only" />
+          <!-- DAY: Window Interior -->
+          <rect x="0" y="0" width="50" height="66" fill="#141722" class="day-only" />
+
+          <!-- NIGHT: Living Warm Amber Lantern Glow Inside Room -->
+          <g class="night-only">
+            <!-- Warm Light Beam Spilling onto Ground Outside -->
+            <polygon points="25,33 -60,250 140,250" fill="#ffb443" opacity="0.25" filter="url(#glow-blur)" />
+            <rect x="0" y="0" width="50" height="66" fill="#ffb443" opacity="0.9" />
+            <rect x="0" y="0" width="50" height="66" fill="#ff8c1a" opacity="0.6" filter="url(#glow-blur)" />
+            <!-- Shadow of a Person Passing Behind the Curtain -->
+            <ellipse cx="25" cy="18" rx="8" ry="9" fill="#1f1105" opacity="0.85" class="flutter-slow" />
+            <path d="M12 66 C12 38, 38 38, 38 66 Z" fill="#1f1105" opacity="0.85" class="flutter-slow" />
           </g>
 
-          <!-- 3 Stone Steps Leading up to Veranda -->
-          <polygon points="105,585 285,585 295,605 95,605" fill="#875c3d" />
-          <polygon points="95,605 295,605 305,625 85,625" fill="#754e32" />
-          <polygon points="85,625 305,625 315,645 75,645" fill="#634129" />
+          <!-- Wooden Window Pane Bars -->
+          <line x1="25" y1="0" x2="25" y2="66" stroke="#2b1a0d" stroke-width="2" />
+          <line x1="0" y1="33" x2="50" y2="33" stroke="#2b1a0d" stroke-width="2" />
+        </g>
 
-          <!-- Entrance Doorway (Double Timber Doors with Opening Animation) (Interactive Hotspot) -->
-          <g id="hotspot-end-house-door" class="interactive-object">
-            <!-- Door Arch Frame -->
-            <path d="M140 430 Q195 380 250 430 L250 585 L140 585 Z" fill="#1b0e07" stroke="#482914" stroke-width="3" />
-            
-            <!-- Interior Warm Glow (Visible when door opens) -->
-            <path id="house-interior-glow" d="M145 435 Q195 390 245 435 L245 585 L145 585 Z" fill="#ffb443" opacity="0.85" filter="url(#glow-blur)" />
+        <!-- THE HOUSE FRONT DOORWAY ASSEMBLY (#house-end-door-group, #hotspot-house-end-door) @ x=48%, y=58% (187.2, 489.5) -->
+        <g id="house-end-door-group" class="interactive-object house-end-door-assembly" transform="translate(145, 230)">
+          <!-- Sandstone Door Frame -->
+          <rect x="-48" y="-12" width="96" height="152" fill="url(#sandstone-day)" stroke="#52351c" stroke-width="2.5" class="day-only" />
+          <rect x="-48" y="-12" width="96" height="152" fill="url(#sandstone-night)" stroke="#121622" stroke-width="2.5" class="night-only" />
 
-            <!-- The Door Leaves (Can rotate/creak open) -->
-            <g id="house-end-door-group" class="door-leaf-container">
-              <!-- Left Leaf -->
-              <path class="door-leaf-left" d="M142 432 Q168 405 195 408 L195 585 L142 585 Z" fill="#3d2112" stroke="#221107" stroke-width="1.8" />
-              <!-- Right Leaf -->
-              <path class="door-leaf-right" d="M195 408 Q222 405 248 432 L248 585 L195 585 Z" fill="#351c0e" stroke="#221107" stroke-width="1.8" />
-              <!-- Brass Studs & Latch -->
-              <circle cx="188" cy="505" r="3" fill="#c49a45" />
-              <line x1="184" y1="505" x2="195" y2="505" stroke="#c49a45" stroke-width="2" />
-            </g>
+          <!-- DAY: Dark Closed Door Threshold -->
+          <rect x="-38" y="0" width="76" height="138" fill="#140b05" class="day-only" />
+
+          <!-- NIGHT: Warm Golden Light Illuminating Interior Chamber when Door Opens -->
+          <g class="night-only">
+            <!-- Warm Light Pool on Threshold Ground -->
+            <polygon points="-38,138 38,138 85,240 -85,240" fill="#ffb443" opacity="0.35" filter="url(#glow-blur)" />
+            <!-- Interior Chamber Glow -->
+            <rect x="-38" y="0" width="76" height="138" fill="#ffb443" opacity="0.85" />
+            <!-- Shadow of Desk & Lamp Inside -->
+            <rect x="-25" y="85" width="50" height="35" fill="#4d321d" opacity="0.75" />
+            <circle cx="0" cy="72" r="5" fill="#ff9100" />
           </g>
 
-          <!-- Outside Bottle Sitting on Stone Step (Interactive Hotspot) -->
-          <g id="hotspot-end-house-bottle" class="interactive-object" transform="translate(245, 608) rotate(-10)">
-            <!-- Mini Bottle Glow -->
-            <ellipse cx="22" cy="10" rx="32" ry="16" fill="#7acbd8" opacity="0.25" filter="url(#glow-blur)" />
-            <!-- Bottle Shadow -->
-            <ellipse cx="20" cy="18" rx="26" ry="7" fill="#140c08" opacity="0.75" />
-            <!-- Glass Body -->
-            <path d="M5 8 C5 0, 15 -2, 22 2 L38 4 C45 5, 48 10, 48 15 C48 20, 45 24, 38 25 L22 26 C15 28, 5 26, 5 20 Z" fill="#1c3038" stroke="#68b9c7" stroke-width="1.6" opacity="0.85" />
-            <!-- Tiny Rolled Note Inside -->
-            <path d="M12 12 L32 14 L30 19 L10 17 Z" fill="#eed2a4" stroke="#8b5a2b" stroke-width="0.8" />
-            <line x1="22" y1="12" x2="22" y2="19" stroke="#a31924" stroke-width="1.5" />
-            <!-- Cork/Neck -->
-            <path d="M5 11 L-3 12 C-5 13, -5 16, -3 17 L5 18 Z" fill="#68b9c7" />
+          <!-- Heavy Wooden Front Door Leaf (#hotspot-house-end-door) -->
+          <g id="hotspot-house-end-door">
+            <rect x="-38" y="0" width="76" height="138" fill="#5c3f27" stroke="#362212" stroke-width="2" class="day-only" />
+            <rect x="-38" y="0" width="76" height="138" fill="#1e2433" stroke="#0a0d14" stroke-width="2" class="night-only" />
+            <!-- Wood Grain & Panels -->
+            <rect x="-32" y="8" width="28" height="55" fill="#4a301a" stroke="#2b1a0d" stroke-width="1.2" class="day-only" />
+            <rect x="4" y="8" width="28" height="55" fill="#4a301a" stroke="#2b1a0d" stroke-width="1.2" class="day-only" />
+            <rect x="-32" y="70" width="28" height="60" fill="#4a301a" stroke="#2b1a0d" stroke-width="1.2" class="day-only" />
+            <rect x="4" y="70" width="28" height="60" fill="#4a301a" stroke="#2b1a0d" stroke-width="1.2" class="day-only" />
+            <!-- Brass Handle Ring -->
+            <circle cx="18" cy="70" r="4.5" fill="#d99f36" stroke="#7a5518" stroke-width="1" class="day-only" />
+            <circle cx="18" cy="70" r="4.5" fill="#423317" stroke="#1c160b" stroke-width="1" class="night-only" />
           </g>
         </g>
 
-        <!-- Night Mist Floating on the Ground -->
-        <g class="night-only">
-          <ellipse cx="195" cy="690" rx="170" ry="38" fill="#171e2e" opacity="0.45" class="fog-drift" />
+        <!-- HOTSPOT 1: THE GLASS BOTTLE SITTING ON DOORSTEP (#hotspot-house-end-bottle) @ x=64%, y=74% (249.6, 624.6) -->
+        <g id="hotspot-house-end-bottle" class="interactive-object house-end-bottle-assembly" transform="translate(225, 485)">
+          <!-- Ground Shadow -->
+          <ellipse cx="0" cy="18" rx="20" ry="7" fill="#000" opacity="0.45" class="day-only" />
+          <ellipse cx="0" cy="18" rx="20" ry="7" fill="#000" opacity="0.8" class="night-only" />
+          <!-- Green Glass Bottle Standing Upright on Stone Step -->
+          <path d="M-6 16 C-8 16, -10 12, -10 4 L-10 -15 C-10 -22, -6 -26, -4 -30 L-4 -40 L4 -40 L4 -30 C6 -26, 10 -22, 10 -15 L10 4 C10 12, 8 16, 6 16 Z" 
+                fill="#1f3b33" stroke="#68b9c7" stroke-width="1.5" opacity="0.85" />
+          <!-- Specular Glass Highlight -->
+          <line x1="-6" y1="-20" x2="-6" y2="10" stroke="#fff" stroke-width="1.5" opacity="0.5" />
+          <!-- Rolled Note Inside Glass -->
+          <rect x="-5" y="-12" width="10" height="24" rx="2" fill="#fef08a" opacity="0.8" />
+          <!-- Cork Stopper in Neck -->
+          <rect x="-4" y="-45" width="8" height="6" rx="1.5" fill="#8f5b34" stroke="#4a2e19" stroke-width="0.8" />
         </g>
-      </svg>
-    `;
+      </g>
+    </svg>
+  `;
+}).call(this);
   },
 
-  // 16. SCENE 16: The Documentation Room
+  // 17. SCENE 16: The Documentation Room
   renderRoomScene() {
-    return `
-      <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <radialGradient id="lantern-glow-radial" cx="35%" cy="58%" r="65%">
-            <stop offset="0%" stop-color="#ffe6a8" stop-opacity="0.95" />
-            <stop offset="25%" stop-color="#ffb84d" stop-opacity="0.65" />
-            <stop offset="55%" stop-color="#d9751e" stop-opacity="0.3" />
-            <stop offset="85%" stop-color="#1c130d" stop-opacity="0.05" />
-            <stop offset="100%" stop-color="#140d08" stop-opacity="0" />
-          </radialGradient>
-        </defs>
+    return (function renderRoomScene() {
+  return `
+    <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Room Interior Atmospheric Gradients -->
+        <linearGradient id="room-wall-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#141824" />
+          <stop offset="50%" stop-color="#1b2233" />
+          <stop offset="100%" stop-color="#10141f" />
+        </linearGradient>
+        <radialGradient id="lamp-room-glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#fedca8" stop-opacity="0.85" />
+          <stop offset="35%" stop-color="#ffb443" stop-opacity="0.55" />
+          <stop offset="70%" stop-color="#ea580c" stop-opacity="0.18" />
+          <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+        </radialGradient>
+      </defs>
 
-        <!-- Room Background Walls (Dark plaster & ceiling beams) -->
-        <rect width="100%" height="100%" fill="#1a110a" />
-        <rect width="100%" height="480" fill="#24180f" />
-        
-        <!-- Heavy Ceiling Timber Beams -->
-        <polygon points="0,0 390,0 390,45 0,35" fill="#120b06" />
-        <polygon points="40,0 80,0 60,120 20,120" fill="#160e08" />
-        <polygon points="170,0 210,0 200,120 160,120" fill="#160e08" />
-        <polygon points="310,0 350,0 340,120 300,120" fill="#160e08" />
+      <!-- Stone Wall Interior Background -->
+      <rect width="100%" height="100%" fill="url(#room-wall-grad)" />
 
-        <!-- Wall Shelf with Glass Bottles (Top) -->
-        <polygon points="30,135 360,135 355,150 35,150" fill="#3a2414" />
-        <g id="room-shelf-bottles">
-          <!-- Bottle 1 on shelf -->
-          <rect x="70" y="85" width="22" height="50" rx="3" fill="#1b2d33" stroke="#68b9c7" stroke-width="1.2" opacity="0.8" />
-          <rect x="74" y="98" width="14" height="32" rx="2" fill="#eed2a4" />
-          <!-- Bottle 2 on shelf -->
-          <rect x="110" y="80" width="24" height="55" rx="3" fill="#1b2d33" stroke="#68b9c7" stroke-width="1.2" opacity="0.8" />
-          <rect x="114" y="95" width="16" height="35" rx="2" fill="#eed2a4" />
-          <!-- Bottle 3 on shelf -->
-          <rect x="290" y="88" width="20" height="47" rx="3" fill="#1b2d33" stroke="#68b9c7" stroke-width="1.2" opacity="0.8" />
-          <rect x="294" y="100" width="12" height="30" rx="2" fill="#eed2a4" />
+      <!-- Stone Floor Pavement -->
+      <polygon points="0,520 390,520 390,844 0,844" fill="url(#pat-cobbles-night)" opacity="0.85" />
+
+      <!-- HOTSPOT 3: HAND-DRAWN KALDHARA MAPS PINNED TO WALL (#hotspot-room-maps) @ x=50%, y=35% (195, 295.4) -->
+      <g id="hotspot-room-maps" class="interactive-object room-maps-assembly" transform="translate(195, 280)">
+        <!-- Cast Shadow -->
+        <polygon points="-82,-70 82,-74 86,54 -78,58" fill="#000" opacity="0.6" />
+        <!-- Large Weathered Parchment Map Sheet (Curling Corners) -->
+        <polygon points="-80,-72 80,-76 84,52 -76,56" fill="#fef3c7" stroke="#92400e" stroke-width="1.8" />
+        <!-- Map Grid Lines & Compass Rose -->
+        <g stroke="#78350f" opacity="0.45" stroke-width="1">
+          <line x1="-70" y1="-40" x2="75" y2="-44" />
+          <line x1="-70" y1="-10" x2="75" y2="-14" />
+          <line x1="-70" y1="20" x2="75" y2="16" />
+          <line x1="-40" y1="-68" x2="-36" y2="48" />
+          <line x1="0" y1="-70" x2="4" y2="46" />
+          <line x1="40" y1="-72" x2="44" y2="44" />
+        </g>
+        <!-- Architectural Sketch Layout of Kaldhara Village Streets & Well -->
+        <circle cx="-15" cy="-8" r="14" fill="none" stroke="#b45309" stroke-width="1.5" />
+        <rect x="-45" y="-35" width="22" height="16" fill="none" stroke="#b45309" stroke-width="1.5" />
+        <rect x="25" y="-45" width="28" height="20" fill="none" stroke="#b45309" stroke-width="1.5" />
+        <path d="M-60 30 Q-15 0 60 20" stroke="#dc2626" stroke-width="2" fill="none" stroke-dasharray="4 3" />
+        <!-- Handwritten Notes in Margins -->
+        <text x="0" y="-55" text-anchor="middle" font-family="'Cinzel', serif" font-size="8.5" font-weight="700" letter-spacing="2" fill="#78350f">SURVEY OF KALDHARA — 1981</text>
+        <text x="0" y="38" text-anchor="middle" font-family="'Caveat', cursive" font-size="9" font-weight="700" fill="#991b1b">"No one leaves."</text>
+        <!-- Iron Tacks Pinning Map Corners -->
+        <circle cx="-74" cy="-66" r="2.5" fill="#475569" stroke="#1e293b" stroke-width="1" />
+        <circle cx="74" cy="-70" r="2.5" fill="#475569" stroke="#1e293b" stroke-width="1" />
+      </g>
+
+      <!-- HOTSPOT 4: WALL SHELF WITH GLASS BOTTLES (#hotspot-room-bottles) -->
+      <g id="hotspot-room-bottles" class="interactive-object room-bottles-assembly" transform="translate(60, 160)">
+        <!-- Heavy Wood Wall Shelf -->
+        <rect x="0" y="0" width="270" height="14" rx="2" fill="#3b2413" stroke="#221307" stroke-width="1.8" />
+        <polygon points="15,14 25,35 35,14" fill="#2b1a0d" />
+        <polygon points="235,14 245,35 255,14" fill="#2b1a0d" />
+
+        <!-- Row of 5 Glass Bottles on Shelf, Each with Rolled Note -->
+        <!-- Bottle 1 -->
+        <g transform="translate(30, -32)">
+          <path d="M-5 32 C-7 32, -8 28, -8 22 L-8 6 C-8 2, -5 -2, -3 -5 L-3 -12 L3 -12 L3 -5 C5 -2, 8 2, 8 6 L8 22 C8 28, 7 32, 5 32 Z" fill="#1f3b33" stroke="#68b9c7" stroke-width="1" opacity="0.85" />
+          <rect x="-4" y="8" width="8" height="18" rx="1.5" fill="#fef08a" opacity="0.85" />
+          <rect x="-3" y="-15" width="6" height="4" fill="#8f5b34" />
+        </g>
+        <!-- Bottle 2 -->
+        <g transform="translate(80, -32)">
+          <path d="M-5 32 C-7 32, -8 28, -8 22 L-8 6 C-8 2, -5 -2, -3 -5 L-3 -12 L3 -12 L3 -5 C5 -2, 8 2, 8 6 L8 22 C8 28, 7 32, 5 32 Z" fill="#1f3b33" stroke="#68b9c7" stroke-width="1" opacity="0.85" />
+          <rect x="-4" y="8" width="8" height="18" rx="1.5" fill="#fef08a" opacity="0.85" />
+          <rect x="-3" y="-15" width="6" height="4" fill="#8f5b34" />
+        </g>
+        <!-- Bottle 3 -->
+        <g transform="translate(135, -32)">
+          <path d="M-5 32 C-7 32, -8 28, -8 22 L-8 6 C-8 2, -5 -2, -3 -5 L-3 -12 L3 -12 L3 -5 C5 -2, 8 2, 8 6 L8 22 C8 28, 7 32, 5 32 Z" fill="#1f3b33" stroke="#68b9c7" stroke-width="1" opacity="0.85" />
+          <rect x="-4" y="8" width="8" height="18" rx="1.5" fill="#fef08a" opacity="0.85" />
+          <rect x="-3" y="-15" width="6" height="4" fill="#8f5b34" />
+        </g>
+        <!-- Bottle 4 -->
+        <g transform="translate(190, -32)">
+          <path d="M-5 32 C-7 32, -8 28, -8 22 L-8 6 C-8 2, -5 -2, -3 -5 L-3 -12 L3 -12 L3 -5 C5 -2, 8 2, 8 6 L8 22 C8 28, 7 32, 5 32 Z" fill="#1f3b33" stroke="#68b9c7" stroke-width="1" opacity="0.85" />
+          <rect x="-4" y="8" width="8" height="18" rx="1.5" fill="#fef08a" opacity="0.85" />
+          <rect x="-3" y="-15" width="6" height="4" fill="#8f5b34" />
+        </g>
+        <!-- Bottle 5 -->
+        <g transform="translate(240, -32)">
+          <path d="M-5 32 C-7 32, -8 28, -8 22 L-8 6 C-8 2, -5 -2, -3 -5 L-3 -12 L3 -12 L3 -5 C5 -2, 8 2, 8 6 L8 22 C8 28, 7 32, 5 32 Z" fill="#1f3b33" stroke="#68b9c7" stroke-width="1" opacity="0.85" />
+          <rect x="-4" y="8" width="8" height="18" rx="1.5" fill="#fef08a" opacity="0.85" />
+          <rect x="-3" y="-15" width="6" height="4" fill="#8f5b34" />
+        </g>
+      </g>
+
+      <!-- MASSIVE RUSTIC WOODEN DESK & CHAIR -->
+      <g id="documentation-desk-assembly" transform="translate(195, 520)">
+        <!-- Ground Cast Shadow -->
+        <ellipse cx="0" cy="180" rx="170" ry="35" fill="#000" opacity="0.8" />
+
+        <!-- Wooden Chair Tucked into Desk -->
+        <g transform="translate(-85, 45)">
+          <rect x="-24" y="-35" width="48" height="8" rx="2" fill="#3b2413" />
+          <line x1="-18" y1="-30" x2="-22" y2="85" stroke="#3b2413" stroke-width="4" />
+          <line x1="18" y1="-30" x2="22" y2="85" stroke="#3b2413" stroke-width="4" />
         </g>
 
-        <!-- Pinned Village Maps on the Wall (Interactive Hotspot) -->
-        <g id="hotspot-room-maps" class="interactive-object" transform="translate(130, 165)">
-          <!-- Main Map Sheet -->
-          <polygon points="0,0 135,-8 138,150 5,155" fill="#dfc699" stroke="#8c6a3e" stroke-width="1.5" />
-          <!-- Pinned Wooden Tacks -->
-          <circle cx="12" cy="8" r="3" fill="#4d1a08" />
-          <circle cx="125" cy="3" r="3" fill="#4d1a08" />
-          <!-- Hand-drawn Village Routes & Roads in Ink -->
-          <path d="M20 30 Q45 60 70 45 T115 70 T95 120 T35 110 Z" fill="none" stroke="#6b4624" stroke-width="2" />
-          <circle cx="20" cy="30" r="3.5" fill="#8c2311" /> <!-- The Well -->
-          <polygon points="68,40 73,48 64,48" fill="#8c2311" /> <!-- Temple -->
-          <ellipse cx="115" cy="70" rx="4" ry="4" fill="#3b5e28" /> <!-- Banyan -->
-          <rect x="90" y="115" width="8" height="8" fill="#a81919" /> <!-- Red House -->
-          <text x="35" y="140" font-family="serif" font-size="8" fill="#543719" font-style="italic">"Kaldhara Loop 1978-2025"</text>
-        </g>
+        <!-- Desk Body & Heavy Legs -->
+        <!-- Rear Shadow under desk -->
+        <polygon points="-160,35 160,35 150,165 -150,165" fill="#080a0f" />
+        <!-- Left Desk Pillar Legs -->
+        <rect x="-155" y="35" width="28" height="145" fill="#3b2413" stroke="#221307" stroke-width="2" />
+        <!-- Right Desk Pillar Legs -->
+        <rect x="127" y="35" width="28" height="145" fill="#3b2413" stroke="#221307" stroke-width="2" />
 
-        <!-- Heavy Wooden Documentation Desk (Foreground) -->
-        <g class="room-desk-structure">
-          <!-- Antique Wooden Chair Backrest Behind Desk -->
-          <path d="M150 420 Q195 390 240 420 L235 480 L155 480 Z" fill="#2d1a0e" stroke="#160b05" stroke-width="2" />
-          <line x1="175" y1="410" x2="175" y2="480" stroke="#1c1008" stroke-width="3" />
-          <line x1="195" y1="405" x2="195" y2="480" stroke="#1c1008" stroke-width="3" />
-          <line x1="215" y1="410" x2="215" y2="480" stroke="#1c1008" stroke-width="3" />
+        <!-- Heavy Teak Desk Top Slab -->
+        <polygon points="-170,35 170,35 155,-15 -155,-15" fill="#4d321d" stroke="#2b1a0d" stroke-width="2.5" />
+        <polygon points="-168,33 168,33 153,-13 -153,-13" fill="url(#pat-wood)" opacity="0.85" />
 
-          <!-- Main Desk Surface -->
-          <polygon points="10,480 380,480 390,740 0,740" fill="#4a2e1b" />
-          <polygon points="0,740 390,740 390,770 0,770" fill="#311c0f" />
-          <!-- Front Desk Legs -->
-          <rect x="25" y="770" width="35" height="74" fill="#24140a" />
-          <rect x="330" y="770" width="35" height="74" fill="#24140a" />
-        </g>
-
-        <!-- Warm Radiant Cone of Lantern Light (Spreading Across Desk) -->
-        <circle cx="100" cy="540" r="280" fill="url(#lantern-glow-radial)" />
-
-        <!-- Glowing Brass Kerosene Lantern (Desk Left) -->
-        <g id="desk-lantern" transform="translate(65, 430)">
-          <!-- Base -->
-          <ellipse cx="25" cy="85" rx="24" ry="9" fill="#8c6a27" stroke="#4a3610" stroke-width="1.8" />
-          <!-- Glass Chimney with Flame Inside -->
-          <path d="M12 40 Q8 60 12 78 L38 78 Q42 60 38 40 Z" fill="#ffeec7" opacity="0.75" />
-          <!-- Burning Flame -->
-          <ellipse cx="25" cy="62" rx="5" ry="11" fill="#fff" filter="url(#glow-blur)" />
-          <ellipse cx="25" cy="62" rx="3" ry="7" fill="#ff9900" />
-          <!-- Top Brass Cap & Loop -->
-          <path d="M10 40 L40 40 L35 28 L15 28 Z" fill="#8c6a27" stroke="#4a3610" stroke-width="1.5" />
-          <path d="M17 28 Q25 10 33 28" fill="none" stroke="#73551d" stroke-width="2.5" />
-        </g>
-
-        <!-- Scattered Rolled Notes on Desk (Interactive Hotspot) -->
-        <g id="hotspot-room-notes" class="interactive-object" transform="translate(145, 520)">
-          <!-- Parchment Sheet Underneath -->
-          <polygon points="0,15 90,0 105,75 10,85" fill="#eed2a4" stroke="#8b5a2b" stroke-width="1.2" />
-          <!-- Rolled Scroll 1 -->
-          <g transform="rotate(12)">
-            <rect x="20" y="10" width="60" height="16" rx="4" fill="#f5dec0" stroke="#7a4e21" stroke-width="1.2" />
-            <line x1="45" y1="10" x2="45" y2="26" stroke="#a31924" stroke-width="2.5" />
-          </g>
-          <!-- Rolled Scroll 2 -->
-          <g transform="translate(15, 30) rotate(-8)">
-            <rect x="10" y="5" width="65" height="15" rx="4" fill="#eed2a4" stroke="#7a4e21" stroke-width="1.2" />
-            <line x1="42" y1="5" x2="42" y2="20" stroke="#a31924" stroke-width="2.5" />
-          </g>
-        </g>
-
-        <!-- Framed Vintage Photograph Propped on Desk (Interactive Hotspot) -->
-        <g id="hotspot-room-photo" class="interactive-object" transform="translate(265, 485)">
-          <!-- Wood/Brass Frame -->
-          <rect x="0" y="0" width="75" height="100" rx="3" fill="#2b1a10" stroke="#c49a45" stroke-width="2" />
-          <!-- Aged Sepia Photo Picture -->
-          <rect x="6" y="6" width="63" height="88" fill="#d9c2a3" />
-          <!-- Distant Kaldhara Road inside photo -->
-          <polygon points="12,88 38,45 42,45 58,88" fill="#a89274" />
-          <circle cx="38" cy="30" r="12" fill="#edd9be" opacity="0.6" />
-          <!-- The Lone Person Standing on the Road Facing Away -->
-          <ellipse cx="40" cy="55" rx="3.5" ry="4.5" fill="#2d1c10" />
-          <path d="M34 60 L46 60 L48 82 L32 82 Z" fill="#1f130a" />
-          <!-- Glass Sheen Highlight -->
-          <line x1="10" y1="10" x2="65" y2="90" stroke="#ffffff" stroke-width="1.2" opacity="0.3" />
-        </g>
-
-        <!-- Quill & Inkpot (Right corner) -->
-        <g transform="translate(345, 620)">
-          <ellipse cx="15" cy="20" rx="14" ry="7" fill="#1b120c" stroke="#402b1d" stroke-width="1.5" />
-          <path d="M15 15 L28 -15 Q26 -10 24 -5" stroke="#f0e2d1" stroke-width="2" fill="none" />
-        </g>
-      </svg>
-    `;
-  },
-
-  // 17. SCENE 17: The Person on the Road
-  renderRoadFigureScene() {
-    return `
-      <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
-        ${this.getAtmosphericSky('road-figure')}
-
-        <!-- Dark Distant Hills Horizon -->
-        <path d="M0 360 Q90 320 200 345 T390 335 L390 400 L0 400 Z" fill="#0c101a" />
-
-        <!-- Desolate Night Countryside Ground -->
-        <polygon points="0,370 390,370 390,844 0,844" fill="#121724" />
-
-        <!-- Gnarled Crooked Acacia Silhouettes on Verges -->
-        <g opacity="0.85">
-          <path d="M45 440 Q35 380 50 330 Q60 290 40 260" stroke="#080b12" stroke-width="7" stroke-linecap="round" fill="none" />
-          <path d="M45 350 Q20 330 5 320" stroke="#080b12" stroke-width="4" stroke-linecap="round" fill="none" />
-          <path d="M355 450 Q365 390 350 340 Q340 300 360 270" stroke="#080b12" stroke-width="7" stroke-linecap="round" fill="none" />
-        </g>
-
-        <!-- Long Perspective Road into the Night (Interactive Hotspot) -->
-        <g id="hotspot-road-walker" class="interactive-object">
-          <polygon points="190,370 200,370 365,844 25,844" fill="#181f30" />
-          <!-- Wheel ruts in the dust -->
-          <line x1="193" y1="370" x2="135" y2="844" stroke="#0f1422" stroke-width="2.5" />
-          <line x1="197" y1="370" x2="255" y2="844" stroke="#0f1422" stroke-width="2.5" />
-        </g>
-
-        <!-- Roadside Boundary Stones (Interactive Hotspot) -->
-        <g id="hotspot-road-night-stones" class="interactive-object" transform="translate(45, 520)">
-          <polygon points="10,40 28,35 32,70 8,75" fill="#1e273d" stroke="#0b0f17" stroke-width="1.5" />
-          <polygon points="35,48 50,44 54,75 32,80" fill="#171e30" stroke="#0b0f17" stroke-width="1.5" />
-        </g>
-
-        <!-- The Human Silhouette Walking Ahead (With step & turn animation wrappers) -->
-        <g id="road-figure-mover" class="road-figure-container" transform="translate(195, 370)">
-          <g id="walking-silhouette" class="walking-silhouette-svg figure-walking-anim">
-            <!-- Head & Hat/Hair -->
-            <ellipse cx="0" cy="-28" rx="4.5" ry="6" fill="#04060a" />
-            <!-- Neck & Shoulders -->
-            <path d="M-8 -21 Q0 -24 8 -21 L10 5 L-10 5 Z" fill="#04060a" />
-            <!-- Coat / Shawl Silhouette -->
-            <path d="M-10 -15 L10 -15 L13 18 L-13 18 Z" fill="#060910" />
-            <!-- Legs Walking Away -->
-            <line x1="-5" y1="18" x2="-6" y2="34" stroke="#04060a" stroke-width="3.5" stroke-linecap="round" />
-            <line x1="5" y1="18" x2="6" y2="34" stroke="#04060a" stroke-width="3.5" stroke-linecap="round" />
-          </g>
-        </g>
-
-        <!-- Creeping Night Mist Across the Ground -->
-        <g id="road-figure-mist">
-          <ellipse cx="195" cy="480" rx="160" ry="32" fill="#1b2336" opacity="0.45" class="fog-drift" />
-          <ellipse cx="195" cy="680" rx="210" ry="48" fill="#121826" opacity="0.55" class="fog-drift" />
-        </g>
-      </svg>
-    `;
-  },
-
-  // 18. SCENE 18: The Final House
-  renderFinalHouseScene() {
-    return `
-      <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
-        ${this.getAtmosphericSky('final-house')}
-
-        <!-- Village Street Returning Toward Final House -->
-        <polygon points="0,540 390,540 390,844 0,844" fill="#573e2c" />
-
-        <!-- Surrounding Houses (Now with warm lights in windows & open doors) -->
-        <g id="surrounding-lights-group">
-          <!-- Left Haveli with Glowing Window -->
-          <polygon points="0,260 110,310 90,620 0,640" fill="#6e4a31" />
-          <rect x="25" y="340" width="30" height="42" rx="2" fill="#ffaa33" filter="url(#glow-blur)" />
-          <rect x="25" y="340" width="30" height="42" rx="2" fill="#ffe094" opacity="0.8" />
-          <!-- Open door on Left Haveli -->
-          <rect x="35" y="480" width="35" height="85" fill="#110803" />
-          <polygon points="35,565 70,565 110,610 50,610" fill="#ff9922" opacity="0.25" />
-
-          <!-- Right Haveli with Glowing Window -->
-          <polygon points="390,250 280,305 300,620 390,640" fill="#6e4a31" />
-          <rect x="330" y="335" width="30" height="42" rx="2" fill="#ffaa33" filter="url(#glow-blur)" />
-          <rect x="330" y="335" width="30" height="42" rx="2" fill="#ffe094" opacity="0.8" />
-        </g>
-
-        <!-- The Final House (Center: Door Wide Open) -->
-        <g class="final-house-structure">
-          <polygon points="75,220 315,220 330,590 60,590" fill="#996a45" />
-          <!-- Eaves -->
-          <polygon points="65,190 325,190 315,220 75,220" fill="#754c2d" />
+        <!-- WARM ILLUMINATING BRASS KEROSENE OIL LAMP -->
+        <g transform="translate(85, -25)">
+          <!-- Radial Warm Glow Filling Room -->
+          <ellipse cx="0" cy="-35" rx="180" ry="120" fill="url(#lamp-room-glow)" filter="url(#glow-blur)" />
           
-          <!-- Upper Window (Warm Golden Light) -->
-          <rect x="165" y="255" width="60" height="75" rx="3" fill="#ffaa33" filter="url(#glow-blur)" />
-          <rect x="165" y="255" width="60" height="75" rx="3" fill="#fff0b8" opacity="0.85" />
+          <!-- Cast Lamp Shadow -->
+          <ellipse cx="0" cy="18" rx="24" ry="8" fill="#000" opacity="0.65" />
+          <!-- Heavy Ornate Brass Base & Font -->
+          <ellipse cx="0" cy="12" rx="18" ry="6" fill="#d99f36" stroke="#7a5518" stroke-width="1.4" />
+          <ellipse cx="0" cy="-5" rx="14" ry="12" fill="#bfa042" stroke="#7a5518" stroke-width="1.5" />
+          <!-- Glass Chimney with Golden Flame Inside -->
+          <path d="M-6 -18 C-10 -25, -10 -45, -5 -65 L5 -65 C10 -45, 10 -25, 6 -18 Z" fill="#fff" opacity="0.25" stroke="#ffeaa7" stroke-width="1.2" />
+          <!-- Living Golden Oil Flame -->
+          <ellipse cx="0" cy="-35" rx="5" ry="12" fill="#ff9100" />
+          <ellipse cx="0" cy="-33" rx="2.5" ry="8" fill="#fffbe8" />
+        </g>
 
-          <!-- Steps -->
-          <polygon points="110,570 280,570 290,595 100,595" fill="#7a4f32" />
-          <polygon points="100,595 290,595 300,620 90,620" fill="#694127" />
+        <!-- HOTSPOT 1: ROLLED YELLOWED NOTES & LETTERS (#hotspot-room-notes) @ x=42%, y=68% (163.8, 573.9) -->
+        <g id="hotspot-room-notes" class="interactive-object room-notes-assembly" transform="translate(-32, 10)">
+          <!-- Cast Shadow -->
+          <ellipse cx="0" cy="12" rx="35" ry="10" fill="#000" opacity="0.5" />
+          <!-- Rolled Scroll 1 -->
+          <g transform="rotate(-12)">
+            <rect x="-28" y="-8" width="56" height="15" rx="4" fill="#fef08a" stroke="#854d0e" stroke-width="1.2" />
+            <line x1="-24" y1="-1" x2="24" y2="-1" stroke="#a16207" stroke-width="1" opacity="0.6" />
+            <!-- Crimson Tie Ribbon -->
+            <rect x="-4" y="-8" width="8" height="15" fill="#dc2626" />
+          </g>
+          <!-- Rolled Scroll 2 (Stacked atop) -->
+          <g transform="translate(8, -6) rotate(8)">
+            <rect x="-24" y="-7" width="48" height="14" rx="3.5" fill="#fef3c7" stroke="#854d0e" stroke-width="1.2" />
+            <line x1="-20" y1="0" x2="20" y2="0" stroke="#a16207" stroke-width="1" opacity="0.6" />
+            <rect x="-2" y="-7" width="7" height="14" fill="#dc2626" />
+          </g>
+          <!-- Scattered Open Loose Note Page -->
+          <polygon points="-45,6 -5,2 -8,25 -48,29" fill="#fef9c3" stroke="#854d0e" stroke-width="1" />
+          <line x1="-42" y1="12" x2="-10" y2="9" stroke="#78350f" stroke-width="1.2" opacity="0.7" />
+          <line x1="-42" y1="18" x2="-14" y2="15" stroke="#78350f" stroke-width="1.2" opacity="0.7" />
+        </g>
 
-          <!-- WIDE OPEN FRONT DOORWAY (Revealing Study & Desk Inside) -->
-          <g id="final-house-door-open">
-            <!-- Dark Wall Opening -->
-            <rect x="140" y="410" width="110" height="160" rx="3" fill="#120803" />
-            
-            <!-- Interior Warm Golden Ambient Glow -->
-            <rect x="142" y="412" width="106" height="156" fill="#ffb03a" opacity="0.85" filter="url(#glow-blur)" />
-            
-            <!-- Study Desk Silhouette Inside -->
-            <polygon points="155,505 235,505 240,568 150,568" fill="#382112" />
+        <!-- HOTSPOT 2: VINTAGE BLACK & WHITE PHOTOGRAPH (#hotspot-room-photo) @ x=68%, y=62% (265.2, 523.3) -->
+        <g id="hotspot-room-photo" class="interactive-object room-photo-assembly" transform="translate(68, 6)">
+          <!-- Cast Shadow -->
+          <polygon points="-2,2 44,0 42,34 -4,36" fill="#000" opacity="0.5" />
+          <!-- Vintage Photo Print with White Border -->
+          <polygon points="0,0 42,-2 40,32 -2,34" fill="#f8fafc" stroke="#64748b" stroke-width="1" />
+          <!-- Black-and-white Village Scene on Photo -->
+          <polygon points="3,3 39,1 37,29 1,31" fill="#1e293b" />
+          <!-- Familiar Silhouette Standing in the Village on Photo -->
+          <circle cx="20" cy="12" r="3" fill="#cbd5e1" />
+          <polygon points="16,15 24,15 25,28 15,28" fill="#94a3b8" />
+        </g>
+      </g>
+    </svg>
+  `;
+}).call(this);
+  },
 
-            <!-- The First Note on the Desk (Interactive Hotspot) -->
-            <g id="hotspot-final-desk-note" class="interactive-object" transform="translate(180, 495)">
-              <!-- Parchment Glow -->
-              <ellipse cx="15" cy="8" rx="22" ry="12" fill="#fff5d6" opacity="0.5" filter="url(#glow-blur)" />
-              <!-- Unrolled First Note Paper -->
-              <polygon points="0,0 28,-3 30,18 2,21" fill="#eed2a4" stroke="#8b5a2b" stroke-width="1.2" />
-              <!-- Red Sealing Cord Mark -->
-              <line x1="14" y1="-2" x2="14" y2="20" stroke="#a31924" stroke-width="2" />
+  // 18. SCENE 17: The Person on the Road
+  renderRoadFigureScene() {
+    return (function renderRoadFigureScene() {
+  return `
+    <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
+      ${this.getAtmosphericSky('roadfigure')}
+
+      <!-- Cold Desert Night Horizon & Distant Ridges -->
+      <g class="distant-landscape">
+        <path fill="#080c14" opacity="0.9" d="M0 410 Q90 375 190 395 T390 385 L390 480 L0 480 Z" />
+        <path fill="#0c121e" opacity="0.8" d="M0 430 Q120 405 240 425 T390 415 L390 500 L0 500 Z" />
+      </g>
+
+      <!-- Dusty Desert Road Bed Under Cold Moonlit Sky -->
+      <g id="road-figure-ground">
+        <polygon points="185,420 205,420 375,844 15,844" fill="url(#ground-dirt-night)" />
+        <polygon points="188,420 202,420 320,844 70,844" fill="url(#pat-cobbles-night)" opacity="0.65" />
+
+        <!-- Deep Cart Ruts into Darkness -->
+        <path d="M192 420 Q188 600 130 844" stroke="#080b10" stroke-width="3.5" fill="none" stroke-dasharray="14 10" />
+        <path d="M198 420 Q202 600 245 844" stroke="#080b10" stroke-width="3.5" fill="none" stroke-dasharray="16 12" />
+      </g>
+
+      <!-- HOTSPOT 2: DESERT BORDER CAIRN STONES (#hotspot-road-night-stones) @ x=25%, y=68% (97.5, 573.9) -->
+      <g id="hotspot-road-night-stones" class="interactive-object border-stones-assembly" transform="translate(98, 574)">
+        <!-- Ground Cast Shadow -->
+        <ellipse cx="0" cy="38" rx="36" ry="12" fill="#000" opacity="0.8" />
+        <!-- Stacked Weathered Sandstone Boundary Blocks -->
+        <polygon points="-28,34 28,30 22,-8 -24,-5" fill="url(#sandstone-night)" stroke="#0e121a" stroke-width="2" />
+        <polygon points="-20,-8 20,-10 14,-36 -16,-34" fill="#2d3750" stroke="#0e121a" stroke-width="1.8" />
+        <!-- Moonlit Silver Rim Highlight -->
+        <line x1="-16" y1="-34" x2="14" y2="-36" stroke="#93c5fd" stroke-width="1.5" opacity="0.5" />
+      </g>
+
+      <!-- HOTSPOT 1 & HORROR: THE PERSON WALKING ON THE ROAD (#road-figure-mover, #road-walker-svg, #hotspot-road-walker) -->
+      <!-- Positioned at x=50%, y=55% (195, 464.2) -->
+      <g id="road-figure-mover" transform="translate(195, 464)">
+        <g id="road-walker-svg" class="interactive-object road-walker-assembly">
+          <g id="hotspot-road-walker">
+            <!-- Cast Moonlit Ground Shadow -->
+            <ellipse cx="0" cy="95" rx="32" ry="10" fill="#000" opacity="0.85" />
+
+            <!-- TRAVELER / VILLAGER FROM BEHIND (Walking steadily into darkness) -->
+            <!-- Traditional Woolen Shawl (Loi / Chaddar) Draped Over Shoulders -->
+            <path d="M-22 15 C-25 -5, -15 -18, 0 -18 C15 -18, 25 -5, 22 15 L18 68 L-18 68 Z" 
+                  fill="#1c2433" stroke="#0b0e14" stroke-width="2" />
+            <!-- Heavy Wool Texture Folds & Shading -->
+            <path d="M-12 -6 Q-16 28 -14 68" stroke="#121722" stroke-width="3" fill="none" />
+            <path d="M12 -6 Q16 28 14 68" stroke="#121722" stroke-width="3" fill="none" />
+            <path d="M0 -15 Q-2 25 0 68" stroke="#121722" stroke-width="2.5" fill="none" />
+
+            <!-- White/Grey Cotton Dhoti Lower Body (Tucked in Rajasthani style) -->
+            <polygon points="-16,68 16,68 12,94 -12,94" fill="#2a3344" stroke="#0e121a" stroke-width="1.5" />
+            <!-- Bare Dusty Feet Walking Away -->
+            <ellipse cx="-7" cy="96" rx="4.5" ry="3" fill="#141822" />
+            <ellipse cx="7" cy="94" rx="4.5" ry="3" fill="#141822" />
+
+            <!-- Head & Muffled Wool Scarf Wrapped Around (View from behind) -->
+            <ellipse cx="0" cy="-28" rx="10" ry="11" fill="#181e2b" stroke="#0a0d13" stroke-width="1.5" />
+
+            <!-- Cool Moonlight Rim Highlight on Back Shoulders -->
+            <path d="M-22 10 C-24 -4, -14 -18, 0 -18 C14 -18, 24 -4, 22 10" stroke="#7ba5db" stroke-width="1.8" fill="none" opacity="0.55" />
+
+            <!-- CHILLING PALE FACE REVEAL (.traveler-face-reveal) -->
+            <!-- Revealed when figure slowly turns around (.figure-slow-turn scaleX(-1)) -->
+            <g class="traveler-face-reveal" opacity="0" transform="translate(0, -28)">
+              <!-- Gaunt Pale Desaturated Visage (Ghostly identical to player) -->
+              <ellipse cx="0" cy="0" rx="9" ry="11" fill="#cbd5e1" stroke="#475569" stroke-width="1.2" />
+              <!-- Lifeless Black Hollow Eye Sockets -->
+              <ellipse cx="-3.5" cy="-2" rx="2.2" ry="2.8" fill="#040608" />
+              <ellipse cx="3.5" cy="-2" rx="2.2" ry="2.8" fill="#040608" />
+              <!-- Sunken Cheeks & Bloodless Open Mouth -->
+              <ellipse cx="0" cy="5.5" rx="2.2" ry="3.5" fill="#040608" />
             </g>
           </g>
         </g>
-
-        <!-- Final Horror Silhouette: Creeping Dark Figure in Viewpoint Shadows (Opacity 0 by default) -->
-        <g id="final-behind-silhouette" opacity="0">
-          <ellipse cx="195" cy="780" rx="140" ry="120" fill="#020305" opacity="0.95" />
-          <ellipse cx="195" cy="620" rx="55" ry="70" fill="#020305" opacity="0.95" />
-        </g>
-      </svg>
-    `;
+      </g>
+    </svg>
+  `;
+}).call(this);
   },
 
-  // 19. SCENE 19: Kaldhara (Wide Panoramic Establishing Ending View)
+  // 19. SCENE 18: The Final House
+  renderFinalHouseScene() {
+    return (function renderFinalHouseScene() {
+  return `
+    <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="final-room-wall" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#0c101a" />
+          <stop offset="50%" stop-color="#141a28" />
+          <stop offset="100%" stop-color="#090d14" />
+        </linearGradient>
+        <radialGradient id="final-lamp-glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ffb443" stop-opacity="0.85" />
+          <stop offset="40%" stop-color="#ea580c" stop-opacity="0.45" />
+          <stop offset="75%" stop-color="#991b1b" stop-opacity="0.15" />
+          <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+        </radialGradient>
+      </defs>
+
+      <!-- Dark Stone Room Interior Wall -->
+      <rect width="100%" height="100%" fill="url(#final-room-wall)" />
+
+      <!-- Stone Paved Floor -->
+      <polygon points="0,520 390,520 390,844 0,844" fill="url(#pat-cobbles-night)" opacity="0.85" />
+
+      <!-- OPEN DOORWAY LEADING OUT INTO NIGHT (#hotspot-final-house-door) -->
+      <g id="hotspot-final-house-door" class="interactive-object final-door-assembly" transform="translate(195, 260)">
+        <!-- Sandstone Door Frame -->
+        <rect x="-42" y="-120" width="84" height="240" fill="url(#sandstone-night)" stroke="#090c14" stroke-width="2.5" />
+        <!-- Night Abyss Beyond Open Door -->
+        <rect x="-34" y="-110" width="68" height="230" fill="#020306" />
+        <!-- Crescent Moon High Outside Door -->
+        <circle cx="12" cy="-60" r="14" fill="#cbd5e1" opacity="0.8" />
+        <circle cx="15" cy="-62" r="13" fill="#020306" />
+        <!-- Cold Mist Curving In Across Door Threshold -->
+        <ellipse cx="0" cy="115" rx="55" ry="16" fill="url(#fog-sweep-grad)" opacity="0.65" filter="url(#glow-blur)" />
+      </g>
+
+      <!-- THE WOODEN WRITING DESK IN FOREGROUND -->
+      <g id="final-desk-assembly" transform="translate(195, 520)">
+        <!-- Ground Cast Shadow -->
+        <ellipse cx="0" cy="180" rx="170" ry="35" fill="#000" opacity="0.85" />
+
+        <!-- Heavy Teak Desk Top Slab -->
+        <polygon points="-160,40 160,40 145,-15 -145,-15" fill="#3b2413" stroke="#221307" stroke-width="2.5" />
+        <polygon points="-158,38 158,38 143,-13 -143,-13" fill="url(#pat-wood-night)" opacity="0.9" />
+
+        <!-- Desk Pillar Legs -->
+        <rect x="-145" y="40" width="26" height="145" fill="#2b1a0d" stroke="#120a05" stroke-width="2" />
+        <rect x="119" y="40" width="26" height="145" fill="#2b1a0d" stroke="#120a05" stroke-width="2" />
+
+        <!-- BRASS OIL LAMP (#hotspot-final-house-lamp) -->
+        <g id="hotspot-final-house-lamp" class="interactive-object final-lamp-assembly" transform="translate(-75, -25)">
+          <ellipse cx="0" cy="-35" rx="160" ry="110" fill="url(#final-lamp-glow)" filter="url(#glow-blur)" />
+          <ellipse cx="0" cy="14" rx="16" ry="6" fill="#a47a3e" stroke="#523812" stroke-width="1.2" />
+          <ellipse cx="0" cy="-4" rx="12" ry="10" fill="#bfa042" stroke="#523812" stroke-width="1.4" />
+          <ellipse cx="0" cy="-28" rx="4.5" ry="10" fill="#ff9100" />
+          <ellipse cx="0" cy="-26" rx="2" ry="6" fill="#fffbe8" />
+        </g>
+
+        <!-- EMPTY GLASS BOTTLE WAITING ON DESK (#hotspot-final-house-bottle) -->
+        <g id="hotspot-final-house-bottle" class="interactive-object final-bottle-assembly" transform="translate(75, 5)">
+          <!-- Ground Shadow -->
+          <ellipse cx="0" cy="16" rx="18" ry="6" fill="#000" opacity="0.6" />
+          <!-- Upright Vintage Hand-Blown Green Bottle -->
+          <path d="M-6 16 C-8 16, -10 12, -10 4 L-10 -15 C-10 -22, -6 -26, -4 -30 L-4 -42 L4 -42 L4 -30 C6 -26, 10 -22, 10 -15 L10 4 C10 12, 8 16, 6 16 Z" 
+                fill="#162e28" stroke="#52a2b0" stroke-width="1.5" opacity="0.9" />
+          <!-- Specular Shimmer -->
+          <line x1="-5" y1="-22" x2="-5" y2="8" stroke="#fff" stroke-width="1.5" opacity="0.6" />
+          <!-- Cork Stopper Resting Beside Bottle -->
+          <rect x="14" y="8" width="10" height="7" rx="1.5" fill="#8f5b34" stroke="#4a2e19" stroke-width="1" />
+        </g>
+
+        <!-- HOTSPOT 1: THE FIRST NOTE LYING ON DESK (#hotspot-final-desk-note) @ x=50%, y=62% (195, 523.3) -->
+        <g id="hotspot-final-desk-note" class="interactive-object final-desk-note-assembly" transform="translate(0, 10)">
+          <!-- Cast Shadow -->
+          <polygon points="-40,16 40,12 36,-10 -36,-6" fill="#000" opacity="0.65" />
+          <!-- Yellowed Parchment Note Sheet -->
+          <polygon points="-38,14 38,10 34,-12 -34,-8" fill="#fef3c7" stroke="#92400e" stroke-width="1.8" />
+          <!-- First Note Headings & Text -->
+          <text x="0" y="-1" text-anchor="middle" font-family="'Cinzel', serif" font-size="5.5" font-weight="700" letter-spacing="1" fill="#78350f">THE VILLAGE OF KALDHARA</text>
+          <line x1="-28" y1="4" x2="28" y2="2" stroke="#b45309" stroke-width="1" opacity="0.7" />
+          <line x1="-28" y1="8" x2="24" y2="6" stroke="#b45309" stroke-width="1" opacity="0.7" />
+        </g>
+      </g>
+    </svg>
+  `;
+}).call(this);
+  },
+
+  // 20. SCENE 19: Kaldhara (Wide Panoramic Establishing Ending View)
   renderEndingScene() {
-    return `
-      <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="ending-sky-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#02040a" />
-            <stop offset="35%" stop-color="#070c18" />
-            <stop offset="70%" stop-color="#0f1629" />
-            <stop offset="100%" stop-color="#141829" />
-          </linearGradient>
-          <filter id="ending-window-glow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="4.5" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
-          </filter>
-        </defs>
+    return (function renderEndingScene() {
+  return `
+    <svg class="scene-illustration" viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="ending-sky-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#02040a" />
+          <stop offset="35%" stop-color="#070c18" />
+          <stop offset="70%" stop-color="#0f1629" />
+          <stop offset="100%" stop-color="#141829" />
+        </linearGradient>
+        <filter id="ending-window-glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="4.5" result="blur" />
+          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+      </defs>
 
-        <!-- Sky Background -->
-        <rect width="100%" height="100%" fill="url(#ending-sky-grad)" />
+      <!-- Midnight Starry Sky Background -->
+      <rect width="100%" height="100%" fill="url(#ending-sky-grad)" />
 
-        <!-- Thousands of Cold Clear Night Stars -->
-        <circle cx="12%" cy="6%" r="1.4" fill="#fff" opacity="0.85" class="twinkle-fast" />
-        <circle cx="28%" cy="11%" r="1.1" fill="#cde0ff" opacity="0.7" />
-        <circle cx="45%" cy="5%" r="1.6" fill="#fff" opacity="0.9" class="twinkle-slow" />
-        <circle cx="68%" cy="8%" r="1.3" fill="#cde0ff" opacity="0.75" />
-        <circle cx="85%" cy="14%" r="1.5" fill="#fff" opacity="0.8" class="twinkle-fast" />
-        <circle cx="92%" cy="22%" r="1.1" fill="#d8e8ff" opacity="0.6" />
-        <circle cx="36%" cy="19%" r="1.3" fill="#fff" opacity="0.65" />
-        <circle cx="58%" cy="16%" r="1.5" fill="#fff" opacity="0.75" class="twinkle-slow" />
+      <!-- Thousands of Cold Clear Night Stars -->
+      <g fill="#fff" opacity="0.85">
+        <circle cx="12%" cy="6%" r="1.4" class="twinkle-fast" />
+        <circle cx="28%" cy="11%" r="1.1" />
+        <circle cx="45%" cy="5%" r="1.6" class="twinkle-slow" />
+        <circle cx="68%" cy="8%" r="1.3" />
+        <circle cx="85%" cy="14%" r="1.5" class="twinkle-fast" />
+        <circle cx="92%" cy="22%" r="1.1" />
+        <circle cx="36%" cy="19%" r="1.3" />
+        <circle cx="58%" cy="16%" r="1.5" class="twinkle-slow" />
+        <circle cx="22%" cy="25%" r="1.2" />
+        <circle cx="75%" cy="21%" r="1.4" />
+      </g>
 
-        <!-- Pale Crescent Moon High Over the Valley -->
-        <circle cx="78%" cy="12%" r="35" fill="#7ba5db" opacity="0.12" filter="url(#glow-blur)" />
-        <circle cx="78%" cy="12%" r="16" fill="#eff6ff" opacity="0.8" />
-        <circle cx="82%" cy="10%" r="15" fill="#070c18" />
+      <!-- Pale Crescent Moon High Over the Desert Valley -->
+      <circle cx="78%" cy="12%" r="38" fill="#7ba5db" opacity="0.14" filter="url(#glow-blur)" />
+      <circle cx="78%" cy="12%" r="16" fill="#eff6ff" opacity="0.85" />
+      <circle cx="82%" cy="10%" r="15" fill="#070c18" />
 
-        <!-- Distant Desert Mountain Ridges -->
-        <path d="M0 240 Q90 190 200 225 T390 210 L390 320 L0 320 Z" fill="#080d19" />
-        <path d="M0 280 Q130 240 260 270 T390 255 L390 380 L0 380 Z" fill="#0b111f" />
+      <!-- Distant Desert Mountain Ridges -->
+      <path d="M0 240 Q90 190 200 225 T390 210 L390 320 L0 320 Z" fill="#080d19" />
+      <path d="M0 280 Q130 240 260 270 T390 255 L390 380 L0 380 Z" fill="#0b111f" />
 
-        <!-- The Sprawling Sandstone Valley of Kaldhara (Bird's Eye Perspective) -->
-        <g class="ending-village-panorama">
-          <!-- Valley Floor -->
-          <polygon points="0,320 390,320 390,844 0,844" fill="#131929" />
+      <!-- THE SPRAWLING DESERT VALLEY OF KALDHARA (BIRD'S EYE PERSPECTIVE) -->
+      <g id="hotspot-ending-view" class="ending-village-panorama">
+        <!-- Valley Sandstone Desert Floor -->
+        <polygon points="0,320 390,320 390,844 0,844" fill="#101524" />
 
-          <!-- Distant Central Temple Shikhara Spire -->
-          <polygon points="195,280 205,360 185,360" fill="#1a2238" />
-          <polygon points="180,360 210,360 215,410 175,410" fill="#202a45" />
+        <!-- Winding Desert Cart Track Path Winding Through Ruins to Horizon -->
+        <path d="M195 844 Q180 700 200 620 T170 500 T195 410" fill="none" stroke="#080c14" stroke-width="16" opacity="0.8" />
+        <path d="M195 844 Q180 700 200 620 T170 500 T195 410" fill="none" stroke="#161c2c" stroke-width="8" opacity="0.6" stroke-dasharray="12 10" />
 
-          <!-- Clusters of Havelis & Courtyard Walls Across the Landscape -->
-          <!-- North Cluster -->
-          <polygon points="110,370 160,355 165,420 105,430" fill="#1d263d" />
-          <polygon points="230,360 280,345 285,410 225,420" fill="#1d263d" />
+        <!-- CENTRAL ANCIENT SHIVA TEMPLE WITH TOWERING SHIKHARA -->
+        <g id="panorama-temple" transform="translate(195, 340)">
+          <polygon points="0,-60 -12,20 12,20" fill="#1b2438" stroke="#0d121c" stroke-width="1.2" />
+          <ellipse cx="0" cy="-62" rx="4" ry="2" fill="#2d3a54" />
+          <line x1="0" y1="-64" x2="0" y2="-72" stroke="#d99f36" stroke-width="1.5" />
+          <!-- Temple Base Plinth -->
+          <polygon points="-22,20 22,20 28,55 -28,55" fill="#222d46" stroke="#0d121c" stroke-width="1.5" />
           
-          <!-- Mid-Valley Havelis -->
-          <polygon points="50,440 120,420 125,510 45,525" fill="#242f4c" />
-          <polygon points="140,430 210,415 215,500 135,515" fill="#263252" />
-          <polygon points="270,425 340,410 345,495 265,510" fill="#242f4c" />
-
-          <!-- Lower Valley Complex (Foreground Havelis) -->
-          <polygon points="20,530 110,505 115,640 10,660" fill="#2a3657" />
-          <polygon points="130,520 250,500 260,650 120,670" fill="#2d3a5e" />
-          <polygon points="280,515 370,495 380,630 270,650" fill="#2a3657" />
-
-          <!-- Winding Village Pathway into Distance -->
-          <path d="M195 844 Q180 700 200 620 T170 500 T195 410" fill="none" stroke="#0e1320" stroke-width="12" opacity="0.75" />
-
-          <!-- 14 Windows Lighting up in Cascading Sequence Across the Entire Village -->
-          <!-- Temple Window 1 -->
-          <g id="end-window-1" class="ending-window" transform="translate(192, 375)">
-            <rect width="6" height="10" rx="1.5" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
+          <!-- WINDOW 1: Central Temple Sanctum Window -->
+          <g id="end-window-1" class="ending-window" transform="translate(-4, 32)">
+            <rect width="8" height="12" rx="1.5" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
           </g>
+        </g>
 
-          <!-- North Left Window 2 -->
-          <g id="end-window-2" class="ending-window" transform="translate(130, 385)">
-            <rect width="7" height="11" rx="1.5" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
+        <!-- NORTH CLUSTER OF HAVELIS (DEEP BACKGROUND) -->
+        <!-- North Left Haveli -->
+        <g transform="translate(110, 360)">
+          <polygon points="0,20 45,10 48,65 -3,70" fill="#182236" stroke="#090e18" stroke-width="1.2" />
+          <polygon points="-6,18 48,8 46,3 -8,12" fill="#263450" />
+          <!-- WINDOW 2 -->
+          <g id="end-window-2" class="ending-window" transform="translate(18, 28)">
+            <rect width="8" height="11" rx="1.5" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
           </g>
+        </g>
 
-          <!-- North Right Window 3 -->
-          <g id="end-window-3" class="ending-window" transform="translate(250, 375)">
-            <rect width="7" height="11" rx="1.5" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
+        <!-- North Right Haveli -->
+        <g transform="translate(235, 350)">
+          <polygon points="0,15 48,5 50,60 -2,66" fill="#182236" stroke="#090e18" stroke-width="1.2" />
+          <polygon points="-5,14 52,4 50,0 -8,10" fill="#263450" />
+          <!-- WINDOW 3 -->
+          <g id="end-window-3" class="ending-window" transform="translate(20, 24)">
+            <rect width="8" height="11" rx="1.5" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
           </g>
+        </g>
 
-          <!-- Mid Left Window 4 -->
-          <g id="end-window-4" class="ending-window" transform="translate(80, 460)">
-            <rect width="9" height="14" rx="2" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
+        <!-- MID-VALLEY HAVELI CLUSTERS -->
+        <!-- Mid Far Left Haveli -->
+        <g transform="translate(40, 420)">
+          <polygon points="0,25 65,10 68,85 -3,95" fill="#1e2a42" stroke="#0a101c" stroke-width="1.5" />
+          <polygon points="-6,24 68,9 65,2 -8,16" fill="#2b3b5c" />
+          <!-- WINDOW 4 -->
+          <g id="end-window-4" class="ending-window" transform="translate(26, 38)">
+            <rect width="9" height="13" rx="2" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
           </g>
+        </g>
 
-          <!-- Mid Center Window 5 -->
-          <g id="end-window-5" class="ending-window" transform="translate(170, 450)">
-            <rect width="10" height="15" rx="2" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
+        <!-- Mid Center-Left Haveli -->
+        <g transform="translate(125, 435)">
+          <polygon points="0,20 60,10 62,80 -2,88" fill="#202d46" stroke="#0a101c" stroke-width="1.5" />
+          <polygon points="-5,19 64,9 62,3 -7,13" fill="#2d3f63" />
+          <!-- WINDOW 5 -->
+          <g id="end-window-5" class="ending-window" transform="translate(24, 34)">
+            <rect width="10" height="14" rx="2" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
           </g>
+        </g>
 
-          <!-- Mid Right Window 6 -->
-          <g id="end-window-6" class="ending-window" transform="translate(300, 445)">
-            <rect width="9" height="14" rx="2" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
+        <!-- Mid Center-Right Haveli -->
+        <g transform="translate(215, 430)">
+          <polygon points="0,15 65,5 68,80 -3,86" fill="#202d46" stroke="#0a101c" stroke-width="1.5" />
+          <polygon points="-6,14 69,4 66,-1 -8,9" fill="#2d3f63" />
+          <!-- WINDOW 6 -->
+          <g id="end-window-6" class="ending-window" transform="translate(28, 30)">
+            <rect width="10" height="14" rx="2" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
           </g>
+        </g>
 
-          <!-- Foreground Left Windows 7 & 8 -->
-          <g id="end-window-7" class="ending-window" transform="translate(55, 560)">
-            <rect width="12" height="18" rx="2" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
+        <!-- Mid Far Right Haveli -->
+        <g transform="translate(295, 415)">
+          <polygon points="0,20 62,8 65,85 -3,92" fill="#1e2a42" stroke="#0a101c" stroke-width="1.5" />
+          <polygon points="-6,19 66,7 63,1 -8,12" fill="#2b3b5c" />
+          <!-- WINDOW 7 -->
+          <g id="end-window-7" class="ending-window" transform="translate(24, 36)">
+            <rect width="9" height="13" rx="2" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
           </g>
-          <g id="end-window-8" class="ending-window" transform="translate(85, 575)">
+        </g>
+
+        <!-- LOWER VALLEY HAVELIS (FOREGROUND ARCHITECTURE) -->
+        <!-- Foreground Left Haveli -->
+        <g transform="translate(15, 520)">
+          <polygon points="0,30 95,10 100,140 -5,155" fill="#253452" stroke="#0c1424" stroke-width="1.8" />
+          <polygon points="-8,28 100,8 96,-2 -12,18" fill="#364973" />
+          <!-- WINDOW 8 (Upper) -->
+          <g id="end-window-8" class="ending-window" transform="translate(32, 45)">
             <rect width="11" height="16" rx="2" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
           </g>
-
-          <!-- Foreground Center Windows 9, 10, 11 (The Final House Complex) -->
-          <g id="end-window-9" class="ending-window" transform="translate(160, 550)">
-            <rect width="14" height="20" rx="2.5" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
-          </g>
-          <g id="end-window-10" class="ending-window" transform="translate(205, 545)">
-            <rect width="14" height="20" rx="2.5" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
-          </g>
-          <g id="end-window-11" class="ending-window" transform="translate(180, 610)">
-            <rect width="16" height="25" rx="3" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
-          </g>
-
-          <!-- Foreground Right Windows 12, 13, 14 -->
-          <g id="end-window-12" class="ending-window" transform="translate(315, 540)">
-            <rect width="12" height="18" rx="2" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
-          </g>
-          <g id="end-window-13" class="ending-window" transform="translate(345, 565)">
-            <rect width="10" height="16" rx="2" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
-          </g>
-          <g id="end-window-14" class="ending-window" transform="translate(295, 600)">
-            <rect width="12" height="18" rx="2" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
+          <!-- WINDOW 9 (Lower) -->
+          <g id="end-window-9" class="ending-window" transform="translate(62, 75)">
+            <rect width="11" height="16" rx="2" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
           </g>
         </g>
 
-        <!-- Ambient Blue Ridge Mist Layer -->
-        <ellipse cx="195" cy="680" rx="240" ry="60" fill="#0d1424" opacity="0.65" class="fog-drift" />
-      </svg>
-    `;
+        <!-- Foreground Center-Left Haveli -->
+        <g transform="translate(130, 530)">
+          <polygon points="0,25 90,8 95,145 -5,158" fill="#273859" stroke="#0c1424" stroke-width="1.8" />
+          <polygon points="-7,24 95,7 92,-3 -10,14" fill="#394f7d" />
+          <!-- WINDOW 10 -->
+          <g id="end-window-10" class="ending-window" transform="translate(26, 52)">
+            <rect width="12" height="17" rx="2.5" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
+          </g>
+          <!-- WINDOW 11 -->
+          <g id="end-window-11" class="ending-window" transform="translate(64, 82)">
+            <rect width="12" height="17" rx="2.5" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
+          </g>
+        </g>
+
+        <!-- Foreground Center-Right Haveli -->
+        <g transform="translate(240, 525)">
+          <polygon points="0,20 105,5 110,145 -5,156" fill="#273859" stroke="#0c1424" stroke-width="1.8" />
+          <polygon points="-8,19 110,4 106,-5 -12,10" fill="#394f7d" />
+          <!-- WINDOW 12 -->
+          <g id="end-window-12" class="ending-window" transform="translate(35, 48)">
+            <rect width="12" height="17" rx="2.5" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
+          </g>
+          <!-- WINDOW 13 -->
+          <g id="end-window-13" class="ending-window" transform="translate(76, 78)">
+            <rect width="12" height="17" rx="2.5" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
+          </g>
+        </g>
+
+        <!-- Foreground Bottom Street Level (Center Forefront Window) -->
+        <g transform="translate(170, 680)">
+          <polygon points="0,15 65,5 68,85 -3,92" fill="#2c3f64" stroke="#0e1728" stroke-width="1.8" />
+          <polygon points="-5,14 69,4 66,-2 -8,8" fill="#3e578a" />
+          <!-- WINDOW 14: Final Climactic Window -->
+          <g id="end-window-14" class="ending-window" transform="translate(26, 32)">
+            <rect width="13" height="18" rx="2.5" fill="#ffb443" class="window-lit-rect" filter="url(#ending-window-glow)" />
+          </g>
+        </g>
+      </g>
+    </svg>
+  `;
+}).call(this);
   },
 
   // Main rendering dispatcher
@@ -2437,4 +3821,3 @@ const SceneIllustrations = {
     }
   }
 };
-

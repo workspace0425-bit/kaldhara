@@ -1627,42 +1627,127 @@ class KaldharaApp {
     canvas.height = canvas.offsetHeight || 844;
 
     const particles = [];
-    const numEmbers = 50;
+    const numEmbers = 60;
     for (let i = 0; i < numEmbers; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        len: 4 + Math.random() * 8,
-        speed: 2.5 + Math.random() * 3,
-        width: 1.5 + Math.random() * 1.5,
-        alpha: 0.4 + Math.random() * 0.6,
+        len: 8 + Math.random() * 14,
+        speed: 3 + Math.random() * 3.5,
+        width: 1.8 + Math.random() * 1.5,
+        alpha: 0.5 + Math.random() * 0.5,
         color: Math.random() > 0.3 ? '#ff6600' : '#ffcc00',
-        drift: -0.5 + Math.random() * 1
+        coreRadius: 1.5 + Math.random() * 2,
+        drift: -0.6 + Math.random() * 1.2
+      });
+    }
+
+    // Upward drifting sparks (micro-particles)
+    const sparks = [];
+    const numSparks = 35;
+    for (let i = 0; i < numSparks; i++) {
+      sparks.push({
+        x: Math.random() * canvas.width,
+        y: canvas.height * 0.5 + Math.random() * (canvas.height * 0.5),
+        radius: 0.8 + Math.random() * 1.4,
+        speedY: 0.8 + Math.random() * 2.2,
+        drift: -0.8 + Math.random() * 1.6,
+        alpha: 0.3 + Math.random() * 0.7,
+        phase: Math.random() * Math.PI * 2
       });
     }
 
     let animId = null;
+    let startTime = Date.now();
+    let isFireStorm = false;
 
     const renderFire = () => {
+      const elapsed = (Date.now() - startTime) / 1000;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+      // 1. Ominous Sky Atmospheric Glow (flares up during storm)
+      const skyGradient = ctx.createLinearGradient(0, 0, 0, canvas.height * 0.45);
+      const skyAlpha = isFireStorm ? (0.28 + 0.08 * Math.sin(elapsed * 5)) : 0.12;
+      skyGradient.addColorStop(0, `rgba(255, 30, 0, ${skyAlpha})`);
+      skyGradient.addColorStop(0.5, `rgba(220, 80, 0, ${skyAlpha * 0.5})`);
+      skyGradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      ctx.fillStyle = skyGradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height * 0.45);
+
+      // 2. Ambient Reddish-Orange Ground Reflection
+      const groundGrad = ctx.createRadialGradient(
+        canvas.width * 0.5, canvas.height, 20,
+        canvas.width * 0.5, canvas.height, canvas.width * 0.75
+      );
+      const groundAlpha = isFireStorm ? (0.35 + 0.1 * Math.sin(elapsed * 6)) : (0.16 + 0.05 * Math.sin(elapsed * 3));
+      groundGrad.addColorStop(0, `rgba(255, 75, 10, ${groundAlpha})`);
+      groundGrad.addColorStop(0.6, `rgba(200, 35, 0, ${groundAlpha * 0.4})`);
+      groundGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      ctx.fillStyle = groundGrad;
+      ctx.fillRect(0, canvas.height * 0.6, canvas.width, canvas.height * 0.4);
+
+      // 3. Falling Embers with Glowing Cores and Heat Trails
       particles.forEach(p => {
+        // Draw trailing heat streak
         ctx.beginPath();
-        ctx.strokeStyle = p.color;
+        const trailGrad = ctx.createLinearGradient(p.x, p.y, p.x + p.drift * 2, p.y + p.len);
+        trailGrad.addColorStop(0, 'rgba(255, 60, 0, 0.1)');
+        trailGrad.addColorStop(0.7, p.color);
+        trailGrad.addColorStop(1, '#ffffff');
+        ctx.strokeStyle = trailGrad;
         ctx.lineWidth = p.width;
+        ctx.lineCap = 'round';
         ctx.globalAlpha = p.alpha;
         ctx.moveTo(p.x, p.y);
         ctx.lineTo(p.x + p.drift * 2, p.y + p.len);
         ctx.stroke();
 
+        // Draw glowing ember core at tip
+        const coreX = p.x + p.drift * 2;
+        const coreY = p.y + p.len;
+        const rad = p.coreRadius * (isFireStorm ? 1.5 : 1);
+        const emberGrad = ctx.createRadialGradient(coreX, coreY, 0, coreX, coreY, rad * 3);
+        emberGrad.addColorStop(0, '#ffffff');
+        emberGrad.addColorStop(0.3, '#ffcc00');
+        emberGrad.addColorStop(0.7, '#ff3b00');
+        emberGrad.addColorStop(1, 'rgba(255, 20, 0, 0)');
+        ctx.fillStyle = emberGrad;
+        ctx.beginPath();
+        ctx.arc(coreX, coreY, rad * 3, 0, Math.PI * 2);
+        ctx.fill();
+
         p.y += p.speed;
         p.x += p.drift;
 
-        if (p.y > canvas.height) {
-          p.y = -p.len - Math.random() * 50;
+        if (p.y > canvas.height + 20) {
+          p.y = -p.len - Math.random() * 40;
           p.x = Math.random() * canvas.width;
         }
       });
+
+      // 4. Micro-Sparks Drifting Upward & Sideways
+      ctx.globalAlpha = 1;
+      sparks.forEach(s => {
+        const xOffset = Math.sin(elapsed * 3 + s.phase) * 1.5;
+        const sparkGrad = ctx.createRadialGradient(s.x + xOffset, s.y, 0, s.x + xOffset, s.y, s.radius * 2);
+        sparkGrad.addColorStop(0, '#ffffff');
+        sparkGrad.addColorStop(0.5, '#ffa200');
+        sparkGrad.addColorStop(1, 'rgba(255, 50, 0, 0)');
+        ctx.fillStyle = sparkGrad;
+        ctx.beginPath();
+        ctx.arc(s.x + xOffset, s.y, s.radius * 2, 0, Math.PI * 2);
+        ctx.fill();
+
+        s.y -= s.speedY;
+        s.x += s.drift;
+
+        if (s.y < 0) {
+          s.y = canvas.height + Math.random() * 30;
+          s.x = Math.random() * canvas.width;
+        }
+      });
+
+      ctx.globalAlpha = 1;
 
       if (this.fireRainActive) {
         animId = requestAnimationFrame(renderFire);
@@ -1673,10 +1758,11 @@ class KaldharaApp {
 
     // After 2.4 seconds, embers become larger streaks of fire
     setTimeout(() => {
+      isFireStorm = true;
       particles.forEach(p => {
-        p.len = 28 + Math.random() * 45;
-        p.speed = 10 + Math.random() * 8;
-        p.width = 2.5 + Math.random() * 2;
+        p.len = 32 + Math.random() * 50;
+        p.speed = 12 + Math.random() * 9;
+        p.width = 2.8 + Math.random() * 2.2;
         p.color = Math.random() > 0.25 ? '#ff3b00' : '#ffa200';
       });
     }, 2400);
